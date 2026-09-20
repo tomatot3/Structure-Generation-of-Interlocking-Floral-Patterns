@@ -1,0 +1,78 @@
+{
+  "stage_I": {
+    "contexts": 108,
+    "completed": {
+      "IndependentCurve": 108,
+      "HardConstraintGreedy": 106,
+      "GlobalL1": 108
+    },
+    "common_contexts": 106,
+    "mean_root_coverage": {
+      "IndependentCurve": 0.43967981702830183,
+      "HardConstraintGreedy": 0.6020583189245283,
+      "GlobalL1": 0.6357918810188679
+    },
+    "root_coverage_difference": {
+      "contexts": 106,
+      "median": 0.03030303000000001,
+      "CI95": [
+        4.999999858590343e-10,
+        0.03030303099999998
+      ]
+    }
+  },
+  "stage_II": {
+    "requests": 336,
+    "completion": {
+      "LocalGreedy": 283,
+      "LG+Count": 336,
+      "LG+CS": 336,
+      "JBC": 336
+    },
+    "objective_improved": 281,
+    "objective_tied": 55,
+    "objective_difference": {
+      "contexts": 108,
+      "median": 0.009754903417733995,
+      "CI95": [
+        0.00794637758458161,
+        0.01188540265913271
+      ]
+    },
+    "cotravel_reduced": 51,
+    "cotravel_equal": 279,
+    "cotravel_increased": 6,
+    "parents_with_children": {
+      "LG+CS": 1.5535714285714286,
+      "JBC": 1.5982142857142858
+    },
+    "parent_coverage_percent": {
+      "LG+CS": 26.77295918367347,
+      "JBC": 27.497165532879816
+    }
+  },
+  "soft_density": {
+    "triplets": 180,
+    "common_domain": 180,
+    "resource_changes": {
+      "strict": 176,
+      "ties": 4
+    }
+  },
+  "ratings": {
+    "D1_structure_ratings.json": {
+      "records": 270,
+      "mean": {
+        "A1": 4.714814814814815,
+        "A2": 4.662962962962963
+      }
+    },
+    "D3_render_ratings.json": {
+      "records": 150,
+      "mean": {
+        "B1": 4.153333333333333,
+        "C1": 4.126666666666667
+      }
+    }
+  }
+}

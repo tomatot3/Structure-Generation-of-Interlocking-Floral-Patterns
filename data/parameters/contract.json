@@ -1,0 +1,111 @@
+{
+  "schema": "dynamic_branch_stage3b_l1_flow_contract_v3",
+  "contract_id": "soft_density_global_l1_flow_v3",
+  "scope": {
+    "prototype_ids": [
+      "proto_sw_1_1",
+      "proto_sw_1_3",
+      "proto_sw_2_3",
+      "proto_sw_3_1",
+      "proto_sw_3_2"
+    ],
+    "seeds": [
+      4101,
+      4102,
+      4103
+    ],
+    "branch_skeleton_only": true,
+    "l1_only": true,
+    "l2_present": false,
+    "l3_present": false
+  },
+  "input_policy": {
+    "strict_p0_consumed": true,
+    "prototype_analysis_consumed": true,
+    "morphology_profile_consumed": true,
+    "fixed_visual_prior_consumed": true,
+    "edit_feedback_prior_consumed": true,
+    "editor_curve_original_to_edited_correction_consumed": true,
+    "edited_svg_as_runtime_template": false,
+    "old_stage3_selected_layout_consumed": false,
+    "old_stage4_curve_geometry_consumed": false
+  },
+  "planning_policy": {
+    "one_forward_global_solve_per_task": true,
+    "validation_guided_retry_allowed": false,
+    "validation_guided_resample_allowed": false,
+    "automatic_repair_allowed": false,
+    "automatic_lane_deletion_allowed": false,
+    "silent_fallback_allowed": false,
+    "selected_layout_count_per_task": 1,
+    "ordinary_density_level_selected_once_per_task": true,
+    "ordinary_density_level_seed_domain": "branch_seed",
+    "flower_support_excluded_from_ordinary_density_resource": true,
+    "controlled_density_override_changes_only_soft_resource_preference": true,
+    "ordinary_l1_count_preselected_by_density": false,
+    "all_geometry_witnessed_cardinalities_jointly_ranked": true,
+    "selected_count_is_solver_result": true,
+    "soft_density_objective": {
+      "version": "soft_resource_v3",
+      "target_quantiles": {
+        "simple": 0.2,
+        "medium": 0.5,
+        "rich": 0.8
+      },
+      "resource_component_weights": {
+        "ordinary_l1_count": 0.3,
+        "total_planning_length": 0.45,
+        "mean_backbone_excursion": 0.15,
+        "mean_vertical_span": 0.1
+      },
+      "fit_kernel": "gaussian",
+      "fit_bandwidth_fraction": 0.5,
+      "minimum_fit_bandwidth": 0.08,
+      "structural_weight": 0.6,
+      "density_fit_weight": 0.4
+    }
+  },
+  "lane_semantics": {
+    "role_labels_are_weak_compatibility_metadata": true,
+    "mandatory_support_wrap_balance_ordinary_partition": false,
+    "mandatory_flower_service_lane_count": 0,
+    "flowers_are_soft_spatial_anchors_and_hard_collision_reserves": true
+  },
+  "hard_constraints": [
+    "root_on_backbone",
+    "tangent_led_outward_departure",
+    "no_non_root_backbone_crossing",
+    "no_lane_crossing",
+    "no_periodic_lane_crossing",
+    "minimum_root_spacing",
+    "minimum_visible_lane_clearance",
+    "flower_reserve_not_entered"
+  ],
+  "soft_objectives": [
+    "unique_sample_sustained_near_parallel_penalty",
+    "compact_medium_long_l1_rhythm",
+    "root_arc_coverage",
+    "local_target_distribution",
+    "tangent_run_then_outward_turn",
+    "editor_demonstrated_original_to_edited_curve_correction",
+    "visible_bow_and_settle",
+    "controlled_backbone_excursion",
+    "controlled_vertical_span",
+    "flower_proximity_without_mandatory_wrap",
+    "ordinary_l1_soft_resource_density",
+    "prototype_identity",
+    "seed_diversity_without_identity_drift"
+  ],
+  "output": {
+    "geometry_semantics": "planning_flow_lane_not_final_branch_curve",
+    "selected_l1_layout_only": true,
+    "internal_candidate_inventory_preserved": true,
+    "structural_diagnostics_present": true,
+    "density_objective_present": true,
+    "geometry_witnessed_count_domain_present": true,
+    "selected_count_reported_as_result": true,
+    "visual_review_required": true,
+    "numeric_checks_can_approve_visual_gate": false,
+    "initial_review_state": "l1_flow_pending_visual_review"
+  }
+}

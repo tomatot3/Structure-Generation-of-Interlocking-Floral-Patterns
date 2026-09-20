@@ -1,0 +1,70 @@
+{
+  "schema": "dynamic_backbone_variation_contract_v2",
+  "contract_id": "prototype_domain_joint_backbone_variation_v2",
+  "stage": "5B",
+  "scope": {
+    "backbone_geometry_changes": true,
+    "flower_geometry_changes": false,
+    "l1_count_changes": false,
+    "branchunit_complexity_changes": false,
+    "repeat_width_changes": false
+  },
+  "shape_dimensions": {
+    "amplitude": {
+      "maximum_relative_delta": 0.1
+    },
+    "arc_length": {
+      "maximum_relative_delta": 0.055
+    },
+    "curvature_concentration": {
+      "maximum_relative_delta": 0.08
+    },
+    "asymmetry": {
+      "maximum_absolute_delta": 0.065
+    }
+  },
+  "joint_solver": {
+    "finite_difference_step": 0.018,
+    "ridge": 0.0005,
+    "maximum_joint_iterations": 12,
+    "joint_step_decay": 0.72,
+    "maximum_coefficient_norm": 1.0,
+    "feasibility_scales": [
+      1.0,
+      0.82,
+      0.67,
+      0.52,
+      0.38,
+      0.25,
+      0.12,
+      0.0
+    ],
+    "random_domains": [
+      "amplitude_domain",
+      "arc_length_domain",
+      "curvature_domain",
+      "asymmetry_domain"
+    ]
+  },
+  "hard_constraints": {
+    "flower_centers_and_radii_fixed": true,
+    "peak_trough_sequence_fixed": true,
+    "backbone_self_intersection_allowed": false,
+    "vertical_canvas_margin": 0.035,
+    "minimum_adjacent_sample_distance": 0.0005,
+    "sw1_maximum_flower_to_trough_s_distance": 0.26,
+    "sw2_axis_penetration_required": true,
+    "sw3_minimum_long_slope_count": 1,
+    "sw3_remote_root_minimum_arc_distance": 0.3,
+    "sw3_remote_root_maximum_arc_distance": 0.48
+  },
+  "fallback": {
+    "method": "project_target_toward_baseline_over_declared_scales",
+    "random_retry_allowed": false,
+    "per_prototype_coordinate_patch_allowed": false
+  },
+  "review": {
+    "state": "VISUAL_REVIEW_PENDING",
+    "numeric_checks_cannot_approve_visual_quality": true
+  }
+}

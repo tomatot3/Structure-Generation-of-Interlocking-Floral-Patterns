@@ -1,0 +1,115 @@
+{
+  "schema": "dynamic_branch_stage5_global_selection_contract_v2",
+  "contract_id": "stage5e_joint_sparse_local_l2_selection_v2",
+  "stage": "H2-B",
+  "scope": {
+    "old_mainline_only": true,
+    "branch_skeleton_only": true,
+    "new_curve_generation_present": false,
+    "curve_mutation_present": false,
+    "frozen_stage3b_v3_l1_set_is_immutable": true,
+    "stage4_candidate_pool_is_immutable": true,
+    "l2_forks_are_sparse_local_emphasis_only": true,
+    "l3_candidates_are_not_selectable": true,
+    "leaves_and_swellings_are_not_generated": true
+  },
+  "required_inputs": {
+    "inventory_schema": "dynamic_branch_stage4_unit_candidate_inventory_v2",
+    "source_l1_geometry_policy": "stage3b_global_l1_flow_v3",
+    "intrinsically_invalid_candidates_are_preserved_but_not_selectable": true,
+    "editor_l2_placement_prior_consumed": true
+  },
+  "selection": {
+    "candidate_count_per_lane": 1,
+    "eligible_candidate_rule": "intrinsic geometry valid and real unit state is one of L1_ONLY, SINGLE_L2_LEFT, SINGLE_L2_RIGHT, OPPOSED_L2_PAIR",
+    "hierarchy_policy": "joint_sparse_local_l2_for_h2b",
+    "solver": "bounded_joint_branch_and_bound_over_complete_units",
+    "stop_rule": "exhaust the bounded composition space or stop at the explicit node limit and retain the best feasible composition seen",
+    "one_candidate_per_lane_is_hard": true,
+    "old_irreversible_lane_upgrade_order_used": false,
+    "best_of_n_visual_ranking_used": false,
+    "composite_visual_score_used": false,
+    "validation_guided_retry_used": false,
+    "validation_guided_resample_used": false,
+    "automatic_repair_used": false,
+    "automatic_deletion_used": false,
+    "silent_fallback_used": false
+  },
+  "sparse_l2": {
+    "allowed_unit_states": [
+      "L1_ONLY",
+      "SINGLE_L2_LEFT",
+      "SINGLE_L2_RIGHT",
+      "OPPOSED_L2_PAIR"
+    ],
+    "state_derivation": "recomputed from hierarchy counts and actual L2 turn signs; same-side pairs and all L3 are excluded",
+    "unit_seed_role": "sets the sparse maximum upgraded-lane intent and resolves exact objective ties only",
+    "intent_upgrade_budget": "1 + (unit_seed mod 3), capped so a majority of lanes remain L1-only",
+    "budget_is_a_maximum_not_a_required_count": true,
+    "zero_l2_landed_is_legal": true,
+    "no_fixed_l1_only_single_double_proportions": true,
+    "old_hierarchy_mix_fraction_targets_are_not_consumed": true
+  },
+  "joint_objective": {
+    "direction": "maximize",
+    "local_quality": "continuous Stage4 safety margin plus same-state inventory-median typicality for child-parent length ratio and entry opening",
+    "weights": {
+      "local_quality": 1.0,
+      "upgraded_lane_reward": 0.18,
+      "total_parallel_penalty": 0.65,
+      "peak_parallel_penalty": 0.4,
+      "extra_l2_child_penalty": 0.0
+    },
+    "sparse_budget_unit": "upgraded L1 lanes; an opposed two-child L2 fork is one local upgrade and is not unconditionally penalized",
+    "local_quality_component_weights": {
+      "clearance_quality": 0.55,
+      "child_parent_length_typicality": 0.25,
+      "entry_opening_typicality": 0.2
+    },
+    "global_optimum_claimed": false
+  },
+  "bounded_search": {
+    "method": "depth_first_branch_and_bound",
+    "node_limit": 300000,
+    "hard_conflict_pruning": true,
+    "sparse_budget_pruning": true,
+    "optimistic_objective_bound_pruning": true,
+    "all_stage4_candidates_remain_search_eligible": true
+  },
+  "hard_constraints": {
+    "one_complete_unit_per_approved_lane": true,
+    "selected_candidate_must_be_intrinsically_valid": true,
+    "selected_candidate_actual_l3_count": 0,
+    "selected_candidate_curve_levels": [
+      "L1",
+      "L2"
+    ],
+    "paired_l2_turn_signs_must_differ": true,
+    "cross_unit_curve_crossing_allowed": false,
+    "periodic_repeat_crossing_allowed": false,
+    "repeat_shifts_checked": [
+      -1.0,
+      0.0,
+      1.0
+    ],
+    "minimum_full_unit_clearance_uses_occupancy_diameter_and_editor_profile_q10": true
+  },
+  "deterministic_order": {
+    "lane_order": "fewest eligible candidates then lane id",
+    "candidate_order": [
+      "descending local objective gain",
+      "cross-unit hard conflict degree",
+      "unit-seed tie break"
+    ],
+    "complete_composition_tie_break": "unit-seed hash of sorted selected candidate ids"
+  },
+  "output": {
+    "conflict_graph_saved": true,
+    "selected_complete_composition_saved_when_feasible": true,
+    "selected_hierarchy_is_recomputed_from_geometry": true,
+    "solver_trace_saved": true,
+    "objective_terms_saved": true,
+    "review_state": "h2b_joint_sparse_l2_pending_visual_review",
+    "numeric_checks_cannot_auto_approve_visual_gate": true
+  }
+}

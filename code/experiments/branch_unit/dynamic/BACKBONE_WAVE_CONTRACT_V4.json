@@ -1,0 +1,124 @@
+{
+  "schema": "dynamic_backbone_wave_contract_v4",
+  "contract_id": "prototype_domain_global_periodic_wave_v4",
+  "stage": "5B",
+  "scope": {
+    "backbone_global_wave_changes": true,
+    "flower_independent_changes": false,
+    "l1_count_changes": false,
+    "branchunit_complexity_changes": false
+  },
+  "controls": {
+    "amplitude_scale": {
+      "minimum": 0.55,
+      "baseline": 1.0,
+      "maximum": 1.45
+    },
+    "wavelength_scale": {
+      "minimum": 0.7,
+      "baseline": 1.0,
+      "maximum": 1.38
+    },
+    "rhythm_warp": {
+      "minimum": -0.28,
+      "baseline": 0.0,
+      "maximum": 0.28,
+      "minimum_phase_derivative": 0.72
+    },
+    "roundness": {
+      "minimum": -0.3,
+      "baseline": 0.0,
+      "maximum": 0.3,
+      "minimum_value_derivative": 0.4
+    }
+  },
+  "family_domains": {
+    "SW-1_valley_filling": {
+      "amplitude_scale": [
+        0.7,
+        1.3
+      ],
+      "wavelength_scale": [
+        0.72,
+        1.34
+      ],
+      "rhythm_warp": [
+        -0.26,
+        0.26
+      ],
+      "roundness": [
+        -0.28,
+        0.28
+      ]
+    },
+    "SW-2_axis_penetrating": {
+      "amplitude_scale": [
+        0.55,
+        1.45
+      ],
+      "wavelength_scale": [
+        0.74,
+        1.3
+      ],
+      "rhythm_warp": [
+        -0.22,
+        0.22
+      ],
+      "roundness": [
+        -0.24,
+        0.24
+      ]
+    },
+    "SW-3_tangent_terminal": {
+      "amplitude_scale": [
+        0.68,
+        1.32
+      ],
+      "wavelength_scale": [
+        0.7,
+        1.38
+      ],
+      "rhythm_warp": [
+        -0.28,
+        0.28
+      ],
+      "roundness": [
+        -0.3,
+        0.3
+      ]
+    }
+  },
+  "geometry": {
+    "centerline_statistic": "periodic_mean_y",
+    "rhythm_anchor": "strongest_detected_extremum",
+    "waveform_source": "baseline_periodic_cubic_hermite",
+    "sampling_policy": "fixed_uniform_phase_samples",
+    "independent_point_noise_allowed": false,
+    "local_extremum_displacement_allowed": false,
+    "descriptor_optimization_allowed": false
+  },
+  "projection": {
+    "feasibility_scales": [
+      1.0,
+      0.82,
+      0.67,
+      0.52,
+      0.38,
+      0.25,
+      0.12,
+      0.0
+    ],
+    "random_retry_allowed": false
+  },
+  "hard_constraints": {
+    "flower_geometry_fixed_within_repeat_in_5b": true,
+    "peak_trough_sequence_fixed": true,
+    "backbone_self_intersection_allowed": false,
+    "vertical_canvas_margin": 0.035,
+    "minimum_adjacent_sample_distance": 0.0005
+  },
+  "review": {
+    "state": "VISUAL_REVIEW_PENDING",
+    "numeric_checks_cannot_approve_visual_quality": true
+  }
+}

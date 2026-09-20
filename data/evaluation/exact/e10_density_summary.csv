@@ -1,0 +1,5 @@
+observable,role,planned_triplets,complete_numeric_triplets,median_paired_slope,mean_paired_slope,bootstrap_95ci_low,bootstrap_95ci_high,strict_monotonic_count,nondecreasing_count,reversal_count,tie_without_reversal_count,unavailable_triplet_count
+Ordinary L1 count,Prescribed control,180,180,2.0,2.0,2.0,2.0,180,180,0,0,0
+Selected L2 count,Prescribed control,180,180,2.0,2.0,2.0,2.0,180,180,0,0,0
+Normalized ordinary branch length,Primary response,180,180,0.7243547264779897,0.7326188117896029,0.7100362260446199,0.7411949961558555,180,180,0,0,0
+Occupied area ratio,Secondary,180,180,0.011900274775480366,0.011557193995773355,,,178,178,2,0,0

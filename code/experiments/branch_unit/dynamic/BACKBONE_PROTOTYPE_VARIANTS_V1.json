@@ -1,0 +1,204 @@
+{
+  "schema": "dynamic_backbone_prototype_variant_library_v1",
+  "library_id": "prototype_combined_wave_variants_v1",
+  "generator": "global_periodic_wave_v4",
+  "control_semantics": "normalized_family_domain_coordinates",
+  "variants_per_prototype": {
+    "proto_sw_1_1": [
+      {
+        "variant_id": "expanded",
+        "label_zh": "舒展长波",
+        "controls": {
+          "amplitude": -0.55,
+          "wavelength": 1,
+          "rhythm": -0.65,
+          "roundness": -1
+        }
+      },
+      {
+        "variant_id": "compact",
+        "label_zh": "紧凑强波",
+        "controls": {
+          "amplitude": 1,
+          "wavelength": -1,
+          "rhythm": 0.45,
+          "roundness": 0.75
+        }
+      },
+      {
+        "variant_id": "swept",
+        "label_zh": "偏势长坡",
+        "controls": {
+          "amplitude": 0.35,
+          "wavelength": 0.2,
+          "rhythm": 1,
+          "roundness": -0.45
+        }
+      }
+    ],
+    "proto_sw_1_3": [
+      {
+        "variant_id": "expanded",
+        "label_zh": "舒展长波",
+        "controls": {
+          "amplitude": -0.45,
+          "wavelength": 1,
+          "rhythm": -0.9,
+          "roundness": -0.8
+        }
+      },
+      {
+        "variant_id": "compact",
+        "label_zh": "紧凑强波",
+        "controls": {
+          "amplitude": 0.75,
+          "wavelength": -0.8,
+          "rhythm": 0.65,
+          "roundness": 0.6
+        }
+      },
+      {
+        "variant_id": "swept",
+        "label_zh": "偏势长坡",
+        "controls": {
+          "amplitude": 0.2,
+          "wavelength": 0.35,
+          "rhythm": 1,
+          "roundness": -0.4
+        }
+      }
+    ],
+    "proto_sw_2_3": [
+      {
+        "variant_id": "expanded",
+        "label_zh": "舒展长轴",
+        "controls": {
+          "amplitude": -1,
+          "wavelength": 1,
+          "rhythm": -0.35,
+          "roundness": -0.8
+        }
+      },
+      {
+        "variant_id": "compact",
+        "label_zh": "紧凑活轴",
+        "controls": {
+          "amplitude": 1,
+          "wavelength": -1,
+          "rhythm": 0.35,
+          "roundness": 0.65
+        }
+      },
+      {
+        "variant_id": "swept",
+        "label_zh": "偏势贯穿",
+        "controls": {
+          "amplitude": 0.45,
+          "wavelength": 0.15,
+          "rhythm": -1,
+          "roundness": -0.35
+        }
+      }
+    ],
+    "proto_sw_3_1": [
+      {
+        "variant_id": "expanded",
+        "label_zh": "舒展长伸",
+        "controls": {
+          "amplitude": -0.2,
+          "wavelength": 1,
+          "rhythm": 1,
+          "roundness": -0.75
+        }
+      },
+      {
+        "variant_id": "compact",
+        "label_zh": "紧凑折势",
+        "controls": {
+          "amplitude": 0.35,
+          "wavelength": -0.9,
+          "rhythm": -0.75,
+          "roundness": 0.75
+        }
+      },
+      {
+        "variant_id": "swept",
+        "label_zh": "偏势远伸",
+        "controls": {
+          "amplitude": -0.55,
+          "wavelength": 0.45,
+          "rhythm": -1,
+          "roundness": -0.25
+        }
+      }
+    ],
+    "proto_sw_3_2": [
+      {
+        "variant_id": "expanded",
+        "label_zh": "舒展长伸",
+        "controls": {
+          "amplitude": -0.2,
+          "wavelength": 1,
+          "rhythm": 1,
+          "roundness": -0.75
+        }
+      },
+      {
+        "variant_id": "compact",
+        "label_zh": "紧凑折势",
+        "controls": {
+          "amplitude": 1,
+          "wavelength": -0.9,
+          "rhythm": -0.7,
+          "roundness": 0.75
+        }
+      },
+      {
+        "variant_id": "swept",
+        "label_zh": "偏势远伸",
+        "controls": {
+          "amplitude": 0.45,
+          "wavelength": 0.25,
+          "rhythm": -1,
+          "roundness": -0.4
+        }
+      }
+    ],
+    "proto_sw_1_c": [
+      {
+        "variant_id": "expanded",
+        "label_zh": "舒展长波",
+        "controls": {
+          "amplitude": -0.55,
+          "wavelength": 1,
+          "rhythm": -0.65,
+          "roundness": -1
+        }
+      },
+      {
+        "variant_id": "compact",
+        "label_zh": "紧凑强波",
+        "controls": {
+          "amplitude": 1,
+          "wavelength": -1,
+          "rhythm": 0.45,
+          "roundness": 0.75
+        }
+      },
+      {
+        "variant_id": "swept",
+        "label_zh": "偏势长坡",
+        "controls": {
+          "amplitude": 0.35,
+          "wavelength": 0.2,
+          "rhythm": 1,
+          "roundness": -0.45
+        }
+      }
+    ]
+  },
+  "review": {
+    "state": "VISUAL_REVIEW_PENDING",
+    "named_variants_are_calibration_directions_not_visual_approval": true
+  }
+}

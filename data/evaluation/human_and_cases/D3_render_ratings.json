@@ -1,0 +1,1352 @@
+[
+  {
+    "render_id": "R01",
+    "prototype": "SW1-A",
+    "structure_input": "sw1-1.png",
+    "model": "ChatGPT",
+    "evaluator": "E01",
+    "B1": 4,
+    "C1": 3
+  },
+  {
+    "render_id": "R01",
+    "prototype": "SW1-A",
+    "structure_input": "sw1-1.png",
+    "model": "ChatGPT",
+    "evaluator": "E02",
+    "B1": 5,
+    "C1": 4
+  },
+  {
+    "render_id": "R01",
+    "prototype": "SW1-A",
+    "structure_input": "sw1-1.png",
+    "model": "ChatGPT",
+    "evaluator": "E03",
+    "B1": 5,
+    "C1": 4
+  },
+  {
+    "render_id": "R01",
+    "prototype": "SW1-A",
+    "structure_input": "sw1-1.png",
+    "model": "ChatGPT",
+    "evaluator": "E04",
+    "B1": 4,
+    "C1": 4
+  },
+  {
+    "render_id": "R01",
+    "prototype": "SW1-A",
+    "structure_input": "sw1-1.png",
+    "model": "ChatGPT",
+    "evaluator": "E05",
+    "B1": 4,
+    "C1": 5
+  },
+  {
+    "render_id": "R02",
+    "prototype": "SW1-A",
+    "structure_input": "sw1-1.png",
+    "model": "Gemini",
+    "evaluator": "E01",
+    "B1": 4,
+    "C1": 3
+  },
+  {
+    "render_id": "R02",
+    "prototype": "SW1-A",
+    "structure_input": "sw1-1.png",
+    "model": "Gemini",
+    "evaluator": "E02",
+    "B1": 4,
+    "C1": 4
+  },
+  {
+    "render_id": "R02",
+    "prototype": "SW1-A",
+    "structure_input": "sw1-1.png",
+    "model": "Gemini",
+    "evaluator": "E03",
+    "B1": 5,
+    "C1": 4
+  },
+  {
+    "render_id": "R02",
+    "prototype": "SW1-A",
+    "structure_input": "sw1-1.png",
+    "model": "Gemini",
+    "evaluator": "E04",
+    "B1": 4,
+    "C1": 4
+  },
+  {
+    "render_id": "R02",
+    "prototype": "SW1-A",
+    "structure_input": "sw1-1.png",
+    "model": "Gemini",
+    "evaluator": "E05",
+    "B1": 3,
+    "C1": 3
+  },
+  {
+    "render_id": "R03",
+    "prototype": "SW1-A",
+    "structure_input": "sw1-1.png",
+    "model": "Grok",
+    "evaluator": "E01",
+    "B1": 4,
+    "C1": 3
+  },
+  {
+    "render_id": "R03",
+    "prototype": "SW1-A",
+    "structure_input": "sw1-1.png",
+    "model": "Grok",
+    "evaluator": "E02",
+    "B1": 4,
+    "C1": 5
+  },
+  {
+    "render_id": "R03",
+    "prototype": "SW1-A",
+    "structure_input": "sw1-1.png",
+    "model": "Grok",
+    "evaluator": "E03",
+    "B1": 4,
+    "C1": 4
+  },
+  {
+    "render_id": "R03",
+    "prototype": "SW1-A",
+    "structure_input": "sw1-1.png",
+    "model": "Grok",
+    "evaluator": "E04",
+    "B1": 4,
+    "C1": 4
+  },
+  {
+    "render_id": "R03",
+    "prototype": "SW1-A",
+    "structure_input": "sw1-1.png",
+    "model": "Grok",
+    "evaluator": "E05",
+    "B1": 4,
+    "C1": 4
+  },
+  {
+    "render_id": "R04",
+    "prototype": "SW1-A",
+    "structure_input": "sw1-1.png",
+    "model": "MAI",
+    "evaluator": "E01",
+    "B1": 5,
+    "C1": 4
+  },
+  {
+    "render_id": "R04",
+    "prototype": "SW1-A",
+    "structure_input": "sw1-1.png",
+    "model": "MAI",
+    "evaluator": "E02",
+    "B1": 4,
+    "C1": 4
+  },
+  {
+    "render_id": "R04",
+    "prototype": "SW1-A",
+    "structure_input": "sw1-1.png",
+    "model": "MAI",
+    "evaluator": "E03",
+    "B1": 4,
+    "C1": 5
+  },
+  {
+    "render_id": "R04",
+    "prototype": "SW1-A",
+    "structure_input": "sw1-1.png",
+    "model": "MAI",
+    "evaluator": "E04",
+    "B1": 4,
+    "C1": 4
+  },
+  {
+    "render_id": "R04",
+    "prototype": "SW1-A",
+    "structure_input": "sw1-1.png",
+    "model": "MAI",
+    "evaluator": "E05",
+    "B1": 4,
+    "C1": 4
+  },
+  {
+    "render_id": "R06",
+    "prototype": "SW1-A",
+    "structure_input": "sw1-1.png",
+    "model": "Seedream 5.0 Pro",
+    "evaluator": "E01",
+    "B1": 3,
+    "C1": 3
+  },
+  {
+    "render_id": "R06",
+    "prototype": "SW1-A",
+    "structure_input": "sw1-1.png",
+    "model": "Seedream 5.0 Pro",
+    "evaluator": "E02",
+    "B1": 5,
+    "C1": 4
+  },
+  {
+    "render_id": "R06",
+    "prototype": "SW1-A",
+    "structure_input": "sw1-1.png",
+    "model": "Seedream 5.0 Pro",
+    "evaluator": "E03",
+    "B1": 4,
+    "C1": 5
+  },
+  {
+    "render_id": "R06",
+    "prototype": "SW1-A",
+    "structure_input": "sw1-1.png",
+    "model": "Seedream 5.0 Pro",
+    "evaluator": "E04",
+    "B1": 4,
+    "C1": 4
+  },
+  {
+    "render_id": "R06",
+    "prototype": "SW1-A",
+    "structure_input": "sw1-1.png",
+    "model": "Seedream 5.0 Pro",
+    "evaluator": "E05",
+    "B1": 4,
+    "C1": 4
+  },
+  {
+    "render_id": "R07",
+    "prototype": "SW1-B",
+    "structure_input": "A128",
+    "model": "ChatGPT",
+    "evaluator": "E01",
+    "B1": 4,
+    "C1": 3
+  },
+  {
+    "render_id": "R07",
+    "prototype": "SW1-B",
+    "structure_input": "A128",
+    "model": "ChatGPT",
+    "evaluator": "E02",
+    "B1": 4,
+    "C1": 3
+  },
+  {
+    "render_id": "R07",
+    "prototype": "SW1-B",
+    "structure_input": "A128",
+    "model": "ChatGPT",
+    "evaluator": "E03",
+    "B1": 4,
+    "C1": 5
+  },
+  {
+    "render_id": "R07",
+    "prototype": "SW1-B",
+    "structure_input": "A128",
+    "model": "ChatGPT",
+    "evaluator": "E04",
+    "B1": 3,
+    "C1": 4
+  },
+  {
+    "render_id": "R07",
+    "prototype": "SW1-B",
+    "structure_input": "A128",
+    "model": "ChatGPT",
+    "evaluator": "E05",
+    "B1": 4,
+    "C1": 4
+  },
+  {
+    "render_id": "R08",
+    "prototype": "SW1-B",
+    "structure_input": "A128",
+    "model": "Gemini",
+    "evaluator": "E01",
+    "B1": 3,
+    "C1": 4
+  },
+  {
+    "render_id": "R08",
+    "prototype": "SW1-B",
+    "structure_input": "A128",
+    "model": "Gemini",
+    "evaluator": "E02",
+    "B1": 5,
+    "C1": 4
+  },
+  {
+    "render_id": "R08",
+    "prototype": "SW1-B",
+    "structure_input": "A128",
+    "model": "Gemini",
+    "evaluator": "E03",
+    "B1": 5,
+    "C1": 4
+  },
+  {
+    "render_id": "R08",
+    "prototype": "SW1-B",
+    "structure_input": "A128",
+    "model": "Gemini",
+    "evaluator": "E04",
+    "B1": 4,
+    "C1": 4
+  },
+  {
+    "render_id": "R08",
+    "prototype": "SW1-B",
+    "structure_input": "A128",
+    "model": "Gemini",
+    "evaluator": "E05",
+    "B1": 4,
+    "C1": 4
+  },
+  {
+    "render_id": "R09",
+    "prototype": "SW1-B",
+    "structure_input": "A128",
+    "model": "Grok",
+    "evaluator": "E01",
+    "B1": 4,
+    "C1": 4
+  },
+  {
+    "render_id": "R09",
+    "prototype": "SW1-B",
+    "structure_input": "A128",
+    "model": "Grok",
+    "evaluator": "E02",
+    "B1": 4,
+    "C1": 5
+  },
+  {
+    "render_id": "R09",
+    "prototype": "SW1-B",
+    "structure_input": "A128",
+    "model": "Grok",
+    "evaluator": "E03",
+    "B1": 5,
+    "C1": 4
+  },
+  {
+    "render_id": "R09",
+    "prototype": "SW1-B",
+    "structure_input": "A128",
+    "model": "Grok",
+    "evaluator": "E04",
+    "B1": 4,
+    "C1": 4
+  },
+  {
+    "render_id": "R09",
+    "prototype": "SW1-B",
+    "structure_input": "A128",
+    "model": "Grok",
+    "evaluator": "E05",
+    "B1": 4,
+    "C1": 4
+  },
+  {
+    "render_id": "R10",
+    "prototype": "SW1-B",
+    "structure_input": "A128",
+    "model": "MAI",
+    "evaluator": "E01",
+    "B1": 4,
+    "C1": 4
+  },
+  {
+    "render_id": "R10",
+    "prototype": "SW1-B",
+    "structure_input": "A128",
+    "model": "MAI",
+    "evaluator": "E02",
+    "B1": 5,
+    "C1": 3
+  },
+  {
+    "render_id": "R10",
+    "prototype": "SW1-B",
+    "structure_input": "A128",
+    "model": "MAI",
+    "evaluator": "E03",
+    "B1": 5,
+    "C1": 4
+  },
+  {
+    "render_id": "R10",
+    "prototype": "SW1-B",
+    "structure_input": "A128",
+    "model": "MAI",
+    "evaluator": "E04",
+    "B1": 4,
+    "C1": 4
+  },
+  {
+    "render_id": "R10",
+    "prototype": "SW1-B",
+    "structure_input": "A128",
+    "model": "MAI",
+    "evaluator": "E05",
+    "B1": 4,
+    "C1": 4
+  },
+  {
+    "render_id": "R12",
+    "prototype": "SW1-B",
+    "structure_input": "A128",
+    "model": "Seedream 5.0 Pro",
+    "evaluator": "E01",
+    "B1": 4,
+    "C1": 3
+  },
+  {
+    "render_id": "R12",
+    "prototype": "SW1-B",
+    "structure_input": "A128",
+    "model": "Seedream 5.0 Pro",
+    "evaluator": "E02",
+    "B1": 5,
+    "C1": 4
+  },
+  {
+    "render_id": "R12",
+    "prototype": "SW1-B",
+    "structure_input": "A128",
+    "model": "Seedream 5.0 Pro",
+    "evaluator": "E03",
+    "B1": 4,
+    "C1": 5
+  },
+  {
+    "render_id": "R12",
+    "prototype": "SW1-B",
+    "structure_input": "A128",
+    "model": "Seedream 5.0 Pro",
+    "evaluator": "E04",
+    "B1": 5,
+    "C1": 3
+  },
+  {
+    "render_id": "R12",
+    "prototype": "SW1-B",
+    "structure_input": "A128",
+    "model": "Seedream 5.0 Pro",
+    "evaluator": "E05",
+    "B1": 4,
+    "C1": 4
+  },
+  {
+    "render_id": "R13",
+    "prototype": "SW2-A",
+    "structure_input": "A224",
+    "model": "ChatGPT",
+    "evaluator": "E01",
+    "B1": 5,
+    "C1": 3
+  },
+  {
+    "render_id": "R13",
+    "prototype": "SW2-A",
+    "structure_input": "A224",
+    "model": "ChatGPT",
+    "evaluator": "E02",
+    "B1": 4,
+    "C1": 4
+  },
+  {
+    "render_id": "R13",
+    "prototype": "SW2-A",
+    "structure_input": "A224",
+    "model": "ChatGPT",
+    "evaluator": "E03",
+    "B1": 4,
+    "C1": 4
+  },
+  {
+    "render_id": "R13",
+    "prototype": "SW2-A",
+    "structure_input": "A224",
+    "model": "ChatGPT",
+    "evaluator": "E04",
+    "B1": 5,
+    "C1": 4
+  },
+  {
+    "render_id": "R13",
+    "prototype": "SW2-A",
+    "structure_input": "A224",
+    "model": "ChatGPT",
+    "evaluator": "E05",
+    "B1": 4,
+    "C1": 4
+  },
+  {
+    "render_id": "R14",
+    "prototype": "SW2-A",
+    "structure_input": "A224",
+    "model": "Gemini",
+    "evaluator": "E01",
+    "B1": 4,
+    "C1": 3
+  },
+  {
+    "render_id": "R14",
+    "prototype": "SW2-A",
+    "structure_input": "A224",
+    "model": "Gemini",
+    "evaluator": "E02",
+    "B1": 5,
+    "C1": 4
+  },
+  {
+    "render_id": "R14",
+    "prototype": "SW2-A",
+    "structure_input": "A224",
+    "model": "Gemini",
+    "evaluator": "E03",
+    "B1": 5,
+    "C1": 4
+  },
+  {
+    "render_id": "R14",
+    "prototype": "SW2-A",
+    "structure_input": "A224",
+    "model": "Gemini",
+    "evaluator": "E04",
+    "B1": 4,
+    "C1": 4
+  },
+  {
+    "render_id": "R14",
+    "prototype": "SW2-A",
+    "structure_input": "A224",
+    "model": "Gemini",
+    "evaluator": "E05",
+    "B1": 3,
+    "C1": 4
+  },
+  {
+    "render_id": "R15",
+    "prototype": "SW2-A",
+    "structure_input": "A224",
+    "model": "Grok",
+    "evaluator": "E01",
+    "B1": 4,
+    "C1": 4
+  },
+  {
+    "render_id": "R15",
+    "prototype": "SW2-A",
+    "structure_input": "A224",
+    "model": "Grok",
+    "evaluator": "E02",
+    "B1": 5,
+    "C1": 5
+  },
+  {
+    "render_id": "R15",
+    "prototype": "SW2-A",
+    "structure_input": "A224",
+    "model": "Grok",
+    "evaluator": "E03",
+    "B1": 4,
+    "C1": 4
+  },
+  {
+    "render_id": "R15",
+    "prototype": "SW2-A",
+    "structure_input": "A224",
+    "model": "Grok",
+    "evaluator": "E04",
+    "B1": 4,
+    "C1": 4
+  },
+  {
+    "render_id": "R15",
+    "prototype": "SW2-A",
+    "structure_input": "A224",
+    "model": "Grok",
+    "evaluator": "E05",
+    "B1": 4,
+    "C1": 4
+  },
+  {
+    "render_id": "R16",
+    "prototype": "SW2-A",
+    "structure_input": "A224",
+    "model": "MAI",
+    "evaluator": "E01",
+    "B1": 4,
+    "C1": 4
+  },
+  {
+    "render_id": "R16",
+    "prototype": "SW2-A",
+    "structure_input": "A224",
+    "model": "MAI",
+    "evaluator": "E02",
+    "B1": 4,
+    "C1": 5
+  },
+  {
+    "render_id": "R16",
+    "prototype": "SW2-A",
+    "structure_input": "A224",
+    "model": "MAI",
+    "evaluator": "E03",
+    "B1": 3,
+    "C1": 4
+  },
+  {
+    "render_id": "R16",
+    "prototype": "SW2-A",
+    "structure_input": "A224",
+    "model": "MAI",
+    "evaluator": "E04",
+    "B1": 4,
+    "C1": 4
+  },
+  {
+    "render_id": "R16",
+    "prototype": "SW2-A",
+    "structure_input": "A224",
+    "model": "MAI",
+    "evaluator": "E05",
+    "B1": 4,
+    "C1": 4
+  },
+  {
+    "render_id": "R18",
+    "prototype": "SW2-A",
+    "structure_input": "A224",
+    "model": "Seedream 5.0 Pro",
+    "evaluator": "E01",
+    "B1": 5,
+    "C1": 4
+  },
+  {
+    "render_id": "R18",
+    "prototype": "SW2-A",
+    "structure_input": "A224",
+    "model": "Seedream 5.0 Pro",
+    "evaluator": "E02",
+    "B1": 4,
+    "C1": 5
+  },
+  {
+    "render_id": "R18",
+    "prototype": "SW2-A",
+    "structure_input": "A224",
+    "model": "Seedream 5.0 Pro",
+    "evaluator": "E03",
+    "B1": 4,
+    "C1": 4
+  },
+  {
+    "render_id": "R18",
+    "prototype": "SW2-A",
+    "structure_input": "A224",
+    "model": "Seedream 5.0 Pro",
+    "evaluator": "E04",
+    "B1": 4,
+    "C1": 4
+  },
+  {
+    "render_id": "R18",
+    "prototype": "SW2-A",
+    "structure_input": "A224",
+    "model": "Seedream 5.0 Pro",
+    "evaluator": "E05",
+    "B1": 4,
+    "C1": 4
+  },
+  {
+    "render_id": "R19",
+    "prototype": "SW3-A",
+    "structure_input": "A293",
+    "model": "ChatGPT",
+    "evaluator": "E01",
+    "B1": 5,
+    "C1": 4
+  },
+  {
+    "render_id": "R19",
+    "prototype": "SW3-A",
+    "structure_input": "A293",
+    "model": "ChatGPT",
+    "evaluator": "E02",
+    "B1": 4,
+    "C1": 5
+  },
+  {
+    "render_id": "R19",
+    "prototype": "SW3-A",
+    "structure_input": "A293",
+    "model": "ChatGPT",
+    "evaluator": "E03",
+    "B1": 5,
+    "C1": 3
+  },
+  {
+    "render_id": "R19",
+    "prototype": "SW3-A",
+    "structure_input": "A293",
+    "model": "ChatGPT",
+    "evaluator": "E04",
+    "B1": 4,
+    "C1": 4
+  },
+  {
+    "render_id": "R19",
+    "prototype": "SW3-A",
+    "structure_input": "A293",
+    "model": "ChatGPT",
+    "evaluator": "E05",
+    "B1": 5,
+    "C1": 5
+  },
+  {
+    "render_id": "R20",
+    "prototype": "SW3-A",
+    "structure_input": "A293",
+    "model": "Gemini",
+    "evaluator": "E01",
+    "B1": 5,
+    "C1": 4
+  },
+  {
+    "render_id": "R20",
+    "prototype": "SW3-A",
+    "structure_input": "A293",
+    "model": "Gemini",
+    "evaluator": "E02",
+    "B1": 3,
+    "C1": 4
+  },
+  {
+    "render_id": "R20",
+    "prototype": "SW3-A",
+    "structure_input": "A293",
+    "model": "Gemini",
+    "evaluator": "E03",
+    "B1": 4,
+    "C1": 4
+  },
+  {
+    "render_id": "R20",
+    "prototype": "SW3-A",
+    "structure_input": "A293",
+    "model": "Gemini",
+    "evaluator": "E04",
+    "B1": 4,
+    "C1": 4
+  },
+  {
+    "render_id": "R20",
+    "prototype": "SW3-A",
+    "structure_input": "A293",
+    "model": "Gemini",
+    "evaluator": "E05",
+    "B1": 5,
+    "C1": 4
+  },
+  {
+    "render_id": "R21",
+    "prototype": "SW3-A",
+    "structure_input": "A293",
+    "model": "Grok",
+    "evaluator": "E01",
+    "B1": 3,
+    "C1": 4
+  },
+  {
+    "render_id": "R21",
+    "prototype": "SW3-A",
+    "structure_input": "A293",
+    "model": "Grok",
+    "evaluator": "E02",
+    "B1": 4,
+    "C1": 3
+  },
+  {
+    "render_id": "R21",
+    "prototype": "SW3-A",
+    "structure_input": "A293",
+    "model": "Grok",
+    "evaluator": "E03",
+    "B1": 5,
+    "C1": 5
+  },
+  {
+    "render_id": "R21",
+    "prototype": "SW3-A",
+    "structure_input": "A293",
+    "model": "Grok",
+    "evaluator": "E04",
+    "B1": 5,
+    "C1": 4
+  },
+  {
+    "render_id": "R21",
+    "prototype": "SW3-A",
+    "structure_input": "A293",
+    "model": "Grok",
+    "evaluator": "E05",
+    "B1": 4,
+    "C1": 4
+  },
+  {
+    "render_id": "R22",
+    "prototype": "SW3-A",
+    "structure_input": "A293",
+    "model": "MAI",
+    "evaluator": "E01",
+    "B1": 4,
+    "C1": 4
+  },
+  {
+    "render_id": "R22",
+    "prototype": "SW3-A",
+    "structure_input": "A293",
+    "model": "MAI",
+    "evaluator": "E02",
+    "B1": 3,
+    "C1": 5
+  },
+  {
+    "render_id": "R22",
+    "prototype": "SW3-A",
+    "structure_input": "A293",
+    "model": "MAI",
+    "evaluator": "E03",
+    "B1": 4,
+    "C1": 4
+  },
+  {
+    "render_id": "R22",
+    "prototype": "SW3-A",
+    "structure_input": "A293",
+    "model": "MAI",
+    "evaluator": "E04",
+    "B1": 4,
+    "C1": 4
+  },
+  {
+    "render_id": "R22",
+    "prototype": "SW3-A",
+    "structure_input": "A293",
+    "model": "MAI",
+    "evaluator": "E05",
+    "B1": 4,
+    "C1": 4
+  },
+  {
+    "render_id": "R24",
+    "prototype": "SW3-A",
+    "structure_input": "A293",
+    "model": "Seedream 5.0 Pro",
+    "evaluator": "E01",
+    "B1": 3,
+    "C1": 3
+  },
+  {
+    "render_id": "R24",
+    "prototype": "SW3-A",
+    "structure_input": "A293",
+    "model": "Seedream 5.0 Pro",
+    "evaluator": "E02",
+    "B1": 5,
+    "C1": 5
+  },
+  {
+    "render_id": "R24",
+    "prototype": "SW3-A",
+    "structure_input": "A293",
+    "model": "Seedream 5.0 Pro",
+    "evaluator": "E03",
+    "B1": 4,
+    "C1": 5
+  },
+  {
+    "render_id": "R24",
+    "prototype": "SW3-A",
+    "structure_input": "A293",
+    "model": "Seedream 5.0 Pro",
+    "evaluator": "E04",
+    "B1": 4,
+    "C1": 4
+  },
+  {
+    "render_id": "R24",
+    "prototype": "SW3-A",
+    "structure_input": "A293",
+    "model": "Seedream 5.0 Pro",
+    "evaluator": "E05",
+    "B1": 4,
+    "C1": 5
+  },
+  {
+    "render_id": "R25",
+    "prototype": "SW3-B",
+    "structure_input": "A380",
+    "model": "ChatGPT",
+    "evaluator": "E01",
+    "B1": 4,
+    "C1": 3
+  },
+  {
+    "render_id": "R25",
+    "prototype": "SW3-B",
+    "structure_input": "A380",
+    "model": "ChatGPT",
+    "evaluator": "E02",
+    "B1": 5,
+    "C1": 4
+  },
+  {
+    "render_id": "R25",
+    "prototype": "SW3-B",
+    "structure_input": "A380",
+    "model": "ChatGPT",
+    "evaluator": "E03",
+    "B1": 3,
+    "C1": 3
+  },
+  {
+    "render_id": "R25",
+    "prototype": "SW3-B",
+    "structure_input": "A380",
+    "model": "ChatGPT",
+    "evaluator": "E04",
+    "B1": 4,
+    "C1": 3
+  },
+  {
+    "render_id": "R25",
+    "prototype": "SW3-B",
+    "structure_input": "A380",
+    "model": "ChatGPT",
+    "evaluator": "E05",
+    "B1": 4,
+    "C1": 4
+  },
+  {
+    "render_id": "R26",
+    "prototype": "SW3-B",
+    "structure_input": "A380",
+    "model": "Gemini",
+    "evaluator": "E01",
+    "B1": 5,
+    "C1": 3
+  },
+  {
+    "render_id": "R26",
+    "prototype": "SW3-B",
+    "structure_input": "A380",
+    "model": "Gemini",
+    "evaluator": "E02",
+    "B1": 4,
+    "C1": 4
+  },
+  {
+    "render_id": "R26",
+    "prototype": "SW3-B",
+    "structure_input": "A380",
+    "model": "Gemini",
+    "evaluator": "E03",
+    "B1": 5,
+    "C1": 3
+  },
+  {
+    "render_id": "R26",
+    "prototype": "SW3-B",
+    "structure_input": "A380",
+    "model": "Gemini",
+    "evaluator": "E04",
+    "B1": 3,
+    "C1": 3
+  },
+  {
+    "render_id": "R26",
+    "prototype": "SW3-B",
+    "structure_input": "A380",
+    "model": "Gemini",
+    "evaluator": "E05",
+    "B1": 4,
+    "C1": 4
+  },
+  {
+    "render_id": "R27",
+    "prototype": "SW3-B",
+    "structure_input": "A380",
+    "model": "Grok",
+    "evaluator": "E01",
+    "B1": 4,
+    "C1": 4
+  },
+  {
+    "render_id": "R27",
+    "prototype": "SW3-B",
+    "structure_input": "A380",
+    "model": "Grok",
+    "evaluator": "E02",
+    "B1": 3,
+    "C1": 4
+  },
+  {
+    "render_id": "R27",
+    "prototype": "SW3-B",
+    "structure_input": "A380",
+    "model": "Grok",
+    "evaluator": "E03",
+    "B1": 4,
+    "C1": 3
+  },
+  {
+    "render_id": "R27",
+    "prototype": "SW3-B",
+    "structure_input": "A380",
+    "model": "Grok",
+    "evaluator": "E04",
+    "B1": 3,
+    "C1": 5
+  },
+  {
+    "render_id": "R27",
+    "prototype": "SW3-B",
+    "structure_input": "A380",
+    "model": "Grok",
+    "evaluator": "E05",
+    "B1": 4,
+    "C1": 4
+  },
+  {
+    "render_id": "R28",
+    "prototype": "SW3-B",
+    "structure_input": "A380",
+    "model": "MAI",
+    "evaluator": "E01",
+    "B1": 4,
+    "C1": 4
+  },
+  {
+    "render_id": "R28",
+    "prototype": "SW3-B",
+    "structure_input": "A380",
+    "model": "MAI",
+    "evaluator": "E02",
+    "B1": 5,
+    "C1": 5
+  },
+  {
+    "render_id": "R28",
+    "prototype": "SW3-B",
+    "structure_input": "A380",
+    "model": "MAI",
+    "evaluator": "E03",
+    "B1": 3,
+    "C1": 4
+  },
+  {
+    "render_id": "R28",
+    "prototype": "SW3-B",
+    "structure_input": "A380",
+    "model": "MAI",
+    "evaluator": "E04",
+    "B1": 4,
+    "C1": 4
+  },
+  {
+    "render_id": "R28",
+    "prototype": "SW3-B",
+    "structure_input": "A380",
+    "model": "MAI",
+    "evaluator": "E05",
+    "B1": 4,
+    "C1": 4
+  },
+  {
+    "render_id": "R30",
+    "prototype": "SW3-B",
+    "structure_input": "A380",
+    "model": "Seedream 5.0 Pro",
+    "evaluator": "E01",
+    "B1": 4,
+    "C1": 3
+  },
+  {
+    "render_id": "R30",
+    "prototype": "SW3-B",
+    "structure_input": "A380",
+    "model": "Seedream 5.0 Pro",
+    "evaluator": "E02",
+    "B1": 5,
+    "C1": 5
+  },
+  {
+    "render_id": "R30",
+    "prototype": "SW3-B",
+    "structure_input": "A380",
+    "model": "Seedream 5.0 Pro",
+    "evaluator": "E03",
+    "B1": 4,
+    "C1": 5
+  },
+  {
+    "render_id": "R30",
+    "prototype": "SW3-B",
+    "structure_input": "A380",
+    "model": "Seedream 5.0 Pro",
+    "evaluator": "E04",
+    "B1": 4,
+    "C1": 4
+  },
+  {
+    "render_id": "R30",
+    "prototype": "SW3-B",
+    "structure_input": "A380",
+    "model": "Seedream 5.0 Pro",
+    "evaluator": "E05",
+    "B1": 4,
+    "C1": 4
+  },
+  {
+    "render_id": "R31",
+    "prototype": "SW1-C",
+    "structure_input": "A473",
+    "model": "ChatGPT",
+    "evaluator": "E01",
+    "B1": 5,
+    "C1": 5
+  },
+  {
+    "render_id": "R31",
+    "prototype": "SW1-C",
+    "structure_input": "A473",
+    "model": "ChatGPT",
+    "evaluator": "E02",
+    "B1": 4,
+    "C1": 5
+  },
+  {
+    "render_id": "R31",
+    "prototype": "SW1-C",
+    "structure_input": "A473",
+    "model": "ChatGPT",
+    "evaluator": "E03",
+    "B1": 5,
+    "C1": 5
+  },
+  {
+    "render_id": "R31",
+    "prototype": "SW1-C",
+    "structure_input": "A473",
+    "model": "ChatGPT",
+    "evaluator": "E04",
+    "B1": 5,
+    "C1": 5
+  },
+  {
+    "render_id": "R31",
+    "prototype": "SW1-C",
+    "structure_input": "A473",
+    "model": "ChatGPT",
+    "evaluator": "E05",
+    "B1": 4,
+    "C1": 5
+  },
+  {
+    "render_id": "R32",
+    "prototype": "SW1-C",
+    "structure_input": "A473",
+    "model": "Gemini",
+    "evaluator": "E01",
+    "B1": 5,
+    "C1": 4
+  },
+  {
+    "render_id": "R32",
+    "prototype": "SW1-C",
+    "structure_input": "A473",
+    "model": "Gemini",
+    "evaluator": "E02",
+    "B1": 5,
+    "C1": 5
+  },
+  {
+    "render_id": "R32",
+    "prototype": "SW1-C",
+    "structure_input": "A473",
+    "model": "Gemini",
+    "evaluator": "E03",
+    "B1": 5,
+    "C1": 4
+  },
+  {
+    "render_id": "R32",
+    "prototype": "SW1-C",
+    "structure_input": "A473",
+    "model": "Gemini",
+    "evaluator": "E04",
+    "B1": 5,
+    "C1": 5
+  },
+  {
+    "render_id": "R32",
+    "prototype": "SW1-C",
+    "structure_input": "A473",
+    "model": "Gemini",
+    "evaluator": "E05",
+    "B1": 5,
+    "C1": 4
+  },
+  {
+    "render_id": "R33",
+    "prototype": "SW1-C",
+    "structure_input": "A473",
+    "model": "Grok",
+    "evaluator": "E01",
+    "B1": 3,
+    "C1": 5
+  },
+  {
+    "render_id": "R33",
+    "prototype": "SW1-C",
+    "structure_input": "A473",
+    "model": "Grok",
+    "evaluator": "E02",
+    "B1": 4,
+    "C1": 5
+  },
+  {
+    "render_id": "R33",
+    "prototype": "SW1-C",
+    "structure_input": "A473",
+    "model": "Grok",
+    "evaluator": "E03",
+    "B1": 3,
+    "C1": 5
+  },
+  {
+    "render_id": "R33",
+    "prototype": "SW1-C",
+    "structure_input": "A473",
+    "model": "Grok",
+    "evaluator": "E04",
+    "B1": 4,
+    "C1": 5
+  },
+  {
+    "render_id": "R33",
+    "prototype": "SW1-C",
+    "structure_input": "A473",
+    "model": "Grok",
+    "evaluator": "E05",
+    "B1": 3,
+    "C1": 5
+  },
+  {
+    "render_id": "R34",
+    "prototype": "SW1-C",
+    "structure_input": "A473",
+    "model": "MAI",
+    "evaluator": "E01",
+    "B1": 4,
+    "C1": 5
+  },
+  {
+    "render_id": "R34",
+    "prototype": "SW1-C",
+    "structure_input": "A473",
+    "model": "MAI",
+    "evaluator": "E02",
+    "B1": 4,
+    "C1": 5
+  },
+  {
+    "render_id": "R34",
+    "prototype": "SW1-C",
+    "structure_input": "A473",
+    "model": "MAI",
+    "evaluator": "E03",
+    "B1": 4,
+    "C1": 5
+  },
+  {
+    "render_id": "R34",
+    "prototype": "SW1-C",
+    "structure_input": "A473",
+    "model": "MAI",
+    "evaluator": "E04",
+    "B1": 5,
+    "C1": 5
+  },
+  {
+    "render_id": "R34",
+    "prototype": "SW1-C",
+    "structure_input": "A473",
+    "model": "MAI",
+    "evaluator": "E05",
+    "B1": 4,
+    "C1": 5
+  },
+  {
+    "render_id": "R36",
+    "prototype": "SW1-C",
+    "structure_input": "A473",
+    "model": "Seedream 5.0 Pro",
+    "evaluator": "E01",
+    "B1": 4,
+    "C1": 5
+  },
+  {
+    "render_id": "R36",
+    "prototype": "SW1-C",
+    "structure_input": "A473",
+    "model": "Seedream 5.0 Pro",
+    "evaluator": "E02",
+    "B1": 5,
+    "C1": 5
+  },
+  {
+    "render_id": "R36",
+    "prototype": "SW1-C",
+    "structure_input": "A473",
+    "model": "Seedream 5.0 Pro",
+    "evaluator": "E03",
+    "B1": 4,
+    "C1": 4
+  },
+  {
+    "render_id": "R36",
+    "prototype": "SW1-C",
+    "structure_input": "A473",
+    "model": "Seedream 5.0 Pro",
+    "evaluator": "E04",
+    "B1": 4,
+    "C1": 5
+  },
+  {
+    "render_id": "R36",
+    "prototype": "SW1-C",
+    "structure_input": "A473",
+    "model": "Seedream 5.0 Pro",
+    "evaluator": "E05",
+    "B1": 4,
+    "C1": 5
+  }
+]

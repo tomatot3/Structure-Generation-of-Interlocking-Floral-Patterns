@@ -1,0 +1,33 @@
+﻿parameter,value,unit,source,notes
+geometry_epsilon,1e-10,normalized coordinate,active geometry code,orientation and intersection epsilon
+attachment_tolerance,2e-06,normalized coordinate,independent evaluator policy,legal shared-root attachment window
+parent_junction_exclusion_tolerance,1e-07,normalized coordinate,branch_unit_grammar_v1.py,ignore only curve intersections whose two segments both contain the legal parent-child junction
+l1_backbone_root_exclusion_min_points,4,polyline points,global_l1_flow.py,minimum L1 prefix excluded from non-root backbone evaluation
+l1_backbone_root_exclusion_fraction,0.16,polyline fraction,global_l1_flow.py,L1 prefix excluded from non-root backbone evaluation
+l2_backbone_contact_tolerance,0.001,normalized coordinate,branch_unit_grammar_v1.py,descendant-to-backbone contact threshold
+ordinary_flower_root_exclusion_points,3,polyline points,global_l1_flow.py,upstream L1 flower-reserve root exclusion
+flower_region_intrusion_epsilon,2e-06,ellipse equation,flower_mounting_v1.py,inside reserve when value < 1-epsilon
+parallel_resample_count,48,samples per curve,independent evaluator policy,co-travel measurement only
+backbone_seam_position_tolerance,0.001,normalized coordinate,run_stage5f_full_integration.py,period position closure
+backbone_seam_tangent_dot_min,0.999,cosine,run_stage5f_full_integration.py,period tangent continuity
+occupancy_radius,0.01,normalized coordinate,STAGE4_UNIT_GRAMMAR_CONTRACT_V2.json,per-curve occupancy radius
+l2_mount_fraction_min,0.28,parent arc fraction,STAGE4_UNIT_GRAMMAR_CONTRACT_V2.json,legal child mount window
+l2_mount_fraction_max,0.76,parent arc fraction,STAGE4_UNIT_GRAMMAR_CONTRACT_V2.json,legal child mount window
+minimum_sibling_mount_separation,0.14,parent arc fraction,STAGE4_UNIT_GRAMMAR_CONTRACT_V2.json,paired child mount exclusion
+repeat_shifts_checked,-1.0;0.0;1.0,period widths,STAGE5E_L2_JOINT_SELECTION_CONTRACT_V2.json,crossing and clearance checks
+stage5_search_node_limit,300000,nodes,STAGE5E_L2_JOINT_SELECTION_CONTRACT_V2.json,bounded joint search budget
+density_target_quantile.simple,0.2,quantile,STAGE3B_L1_FLOW_CONTRACT_V3.json,soft resource target
+density_target_quantile.medium,0.5,quantile,STAGE3B_L1_FLOW_CONTRACT_V3.json,soft resource target
+density_target_quantile.rich,0.8,quantile,STAGE3B_L1_FLOW_CONTRACT_V3.json,soft resource target
+density_resource_weight.ordinary_l1_count,0.3,weight,STAGE3B_L1_FLOW_CONTRACT_V3.json,soft density resource
+density_resource_weight.total_planning_length,0.45,weight,STAGE3B_L1_FLOW_CONTRACT_V3.json,soft density resource
+density_resource_weight.mean_backbone_excursion,0.15,weight,STAGE3B_L1_FLOW_CONTRACT_V3.json,soft density resource
+density_resource_weight.mean_vertical_span,0.1,weight,STAGE3B_L1_FLOW_CONTRACT_V3.json,soft density resource
+density_fit_bandwidth_fraction,0.5,fraction,STAGE3B_L1_FLOW_CONTRACT_V3.json,Gaussian density fit
+density_minimum_fit_bandwidth,0.08,normalized resource,STAGE3B_L1_FLOW_CONTRACT_V3.json,Gaussian density fit floor
+minimum_full_unit_clearance.proto_sw_1_1,0.027768053,normalized coordinate,Stage4 occupancy diameter and EDITOR_L2_PLACEMENT_PRIOR_V1 q10,"max(0.02, 0.027768053) using profile proto_sw_1_1"
+minimum_full_unit_clearance.proto_sw_1_3,0.041459216,normalized coordinate,Stage4 occupancy diameter and EDITOR_L2_PLACEMENT_PRIOR_V1 q10,"max(0.02, 0.041459216) using profile proto_sw_1_3"
+minimum_full_unit_clearance.proto_sw_2_3,0.02,normalized coordinate,Stage4 occupancy diameter and EDITOR_L2_PLACEMENT_PRIOR_V1 q10,"max(0.02, 0.00192267) using profile proto_sw_2_3"
+minimum_full_unit_clearance.proto_sw_3_1,0.020067678,normalized coordinate,Stage4 occupancy diameter and EDITOR_L2_PLACEMENT_PRIOR_V1 q10,"max(0.02, 0.020067678) using profile proto_sw_3_1"
+minimum_full_unit_clearance.proto_sw_3_2,0.021319526,normalized coordinate,Stage4 occupancy diameter and EDITOR_L2_PLACEMENT_PRIOR_V1 q10,"max(0.02, 0.021319526) using profile proto_sw_3_2"
+minimum_full_unit_clearance.proto_sw_1_c,0.027768053,normalized coordinate,SW1-A prior inherited unchanged by SW1-C,"max(0.02, 0.027768053) using profile proto_sw_1_1"

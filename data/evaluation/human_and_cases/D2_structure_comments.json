@@ -1,0 +1,308 @@
+[
+  {
+    "sample_id": "S23",
+    "case_id": "A237",
+    "evaluator": "E01",
+    "original_comment": "结构关系清楚；整体较平直，节奏变化略弱。",
+    "use_in_text_analysis": true,
+    "correction_status": "原记录",
+    "replacement_comment": null
+  },
+  {
+    "sample_id": "S03",
+    "case_id": "A049",
+    "evaluator": "E01",
+    "original_comment": "层级明确，局部疏密略有差异，但不影响整体。",
+    "use_in_text_analysis": true,
+    "correction_status": "原记录",
+    "replacement_comment": null
+  },
+  {
+    "sample_id": "S34",
+    "case_id": "A287",
+    "evaluator": "E01",
+    "original_comment": "结构完整；部分分枝集中在下侧，视觉重心稍偏。",
+    "use_in_text_analysis": true,
+    "correction_status": "原记录",
+    "replacement_comment": null
+  },
+  {
+    "sample_id": "S24",
+    "case_id": "A190",
+    "evaluator": "E01",
+    "original_comment": "连接无明显问题，整体偏平缓，节奏感一般。",
+    "use_in_text_analysis": true,
+    "correction_status": "原记录",
+    "replacement_comment": null
+  },
+  {
+    "sample_id": "S25",
+    "case_id": "A188",
+    "evaluator": "E01",
+    "original_comment": "结构正确，局部小分枝略密，整体仍协调。",
+    "use_in_text_analysis": true,
+    "correction_status": "原记录",
+    "replacement_comment": null
+  },
+  {
+    "sample_id": "S26",
+    "case_id": "A243",
+    "evaluator": "E01",
+    "original_comment": "中部普通分枝较集中，局部交叠稍多，但层级仍可追踪。",
+    "use_in_text_analysis": true,
+    "correction_status": "原记录",
+    "replacement_comment": null
+  },
+  {
+    "sample_id": "S31",
+    "case_id": "A344",
+    "evaluator": "E01",
+    "original_comment": "层级关系完整，右侧局部留白略多。",
+    "use_in_text_analysis": true,
+    "correction_status": "原记录",
+    "replacement_comment": null
+  },
+  {
+    "sample_id": "S29",
+    "case_id": "A339",
+    "evaluator": "E01",
+    "original_comment": "连接正确，局部分枝方向较集中，节奏稍单一。",
+    "use_in_text_analysis": true,
+    "correction_status": "原记录",
+    "replacement_comment": null
+  },
+  {
+    "sample_id": "S20",
+    "case_id": "A240",
+    "evaluator": "E01",
+    "original_comment": "结构清楚，分枝分布稍密，视觉上略显拥挤。",
+    "use_in_text_analysis": true,
+    "correction_status": "原记录",
+    "replacement_comment": null
+  },
+  {
+    "sample_id": "S27",
+    "case_id": "A196",
+    "evaluator": "E01",
+    "original_comment": "关系明确，主藤起伏较小，整体节奏偏平。",
+    "use_in_text_analysis": true,
+    "correction_status": "原记录",
+    "replacement_comment": null
+  },
+  {
+    "sample_id": "S21",
+    "case_id": "A238",
+    "evaluator": "E01",
+    "original_comment": "结构没有明显错误，局部枝条较集中。",
+    "use_in_text_analysis": true,
+    "correction_status": "原记录",
+    "replacement_comment": null
+  },
+  {
+    "sample_id": "S33",
+    "case_id": "A271",
+    "evaluator": "E01",
+    "original_comment": "层级关系正常，局部下侧空间略紧。",
+    "use_in_text_analysis": true,
+    "correction_status": "原记录",
+    "replacement_comment": null
+  },
+  {
+    "sample_id": "S15",
+    "case_id": "A145",
+    "evaluator": "E01",
+    "original_comment": "结构正确，主藤与花位周边略显紧凑。",
+    "use_in_text_analysis": true,
+    "correction_status": "原记录",
+    "replacement_comment": null
+  },
+  {
+    "sample_id": "S35",
+    "case_id": "A288",
+    "evaluator": "E01",
+    "original_comment": "连接清楚，部分分枝集中在下侧，节奏略偏重。",
+    "use_in_text_analysis": true,
+    "correction_status": "原记录",
+    "replacement_comment": null
+  },
+  {
+    "sample_id": "S06",
+    "case_id": "A064",
+    "evaluator": "E01",
+    "original_comment": "整体关系正确，局部枝条较少，视觉节奏稍弱。",
+    "use_in_text_analysis": true,
+    "correction_status": "原记录",
+    "replacement_comment": null
+  },
+  {
+    "sample_id": "S22",
+    "case_id": "A218",
+    "evaluator": "E01",
+    "original_comment": "主藤附近小分枝较密，局部关系略显拥挤，但整体结构仍成立。",
+    "use_in_text_analysis": true,
+    "correction_status": "原记录",
+    "replacement_comment": null
+  },
+  {
+    "sample_id": "S13",
+    "case_id": "A164",
+    "evaluator": "E01",
+    "original_comment": "结构完整，局部分枝分布略杂，但不影响整体读取。",
+    "use_in_text_analysis": true,
+    "correction_status": "原记录",
+    "replacement_comment": null
+  },
+  {
+    "sample_id": "S36",
+    "case_id": "A304",
+    "evaluator": "E04",
+    "original_comment": "花位直接依附主藤（无独立承花茎），结构可追踪；构图偏水平带，疏密节奏略单调",
+    "use_in_text_analysis": false,
+    "correction_status": "作者于2026-09-19确认文字复制错误；无替代意见，评分未变",
+    "replacement_comment": null
+  },
+  {
+    "sample_id": "S27",
+    "case_id": "A196",
+    "evaluator": "E04",
+    "original_comment": "花位直接依附主藤（无独立承花茎），结构可追踪；构图偏水平带，疏密节奏略单调",
+    "use_in_text_analysis": true,
+    "correction_status": "原记录",
+    "replacement_comment": null
+  },
+  {
+    "sample_id": "S23",
+    "case_id": "A237",
+    "evaluator": "E04",
+    "original_comment": "花位直接依附主藤（无独立承花茎），结构可追踪；构图偏水平带，疏密节奏略单调",
+    "use_in_text_analysis": true,
+    "correction_status": "原记录",
+    "replacement_comment": null
+  },
+  {
+    "sample_id": "S08",
+    "case_id": "A045",
+    "evaluator": "E04",
+    "original_comment": "花位直接依附主藤（无独立承花茎），结构可追踪；构图偏水平带，疏密节奏略单调",
+    "use_in_text_analysis": false,
+    "correction_status": "作者于2026-09-19确认文字复制错误；无替代意见，评分未变",
+    "replacement_comment": null
+  },
+  {
+    "sample_id": "S35",
+    "case_id": "A288",
+    "evaluator": "E04",
+    "original_comment": "顶部一级/二级分枝伸出画面上缘被裁切，构图完整性略受影响",
+    "use_in_text_analysis": true,
+    "correction_status": "原记录",
+    "replacement_comment": null
+  },
+  {
+    "sample_id": "S24",
+    "case_id": "A190",
+    "evaluator": "E04",
+    "original_comment": "花位直接依附主藤（无独立承花茎），结构可追踪；构图偏水平带，疏密节奏略单调",
+    "use_in_text_analysis": true,
+    "correction_status": "原记录",
+    "replacement_comment": null
+  },
+  {
+    "sample_id": "S06",
+    "case_id": "A064",
+    "evaluator": "E04",
+    "original_comment": "顶部一级/二级分枝伸出画面上缘被裁切，构图完整性略受影响",
+    "use_in_text_analysis": true,
+    "correction_status": "原记录",
+    "replacement_comment": null
+  },
+  {
+    "sample_id": "S30",
+    "case_id": "A292",
+    "evaluator": "E04",
+    "original_comment": "花位直接依附主藤（无独立承花茎），结构可追踪；构图偏水平带，疏密节奏略单调",
+    "use_in_text_analysis": false,
+    "correction_status": "作者于2026-09-19确认文字复制错误；无替代意见，评分未变",
+    "replacement_comment": null
+  },
+  {
+    "sample_id": "S11",
+    "case_id": "A159",
+    "evaluator": "E04",
+    "original_comment": "花位直接依附主藤（无独立承花茎），结构可追踪；构图偏水平带，疏密节奏略单调",
+    "use_in_text_analysis": false,
+    "correction_status": "作者于2026-09-19确认文字复制错误；无替代意见，评分未变",
+    "replacement_comment": null
+  },
+  {
+    "sample_id": "S19",
+    "case_id": "A212",
+    "evaluator": "E04",
+    "original_comment": "花位直接依附主藤（无独立承花茎），结构可追踪；构图偏水平带，疏密节奏略单调",
+    "use_in_text_analysis": true,
+    "correction_status": "原记录",
+    "replacement_comment": null
+  },
+  {
+    "sample_id": "S20",
+    "case_id": "A240",
+    "evaluator": "E04",
+    "original_comment": "花位直接依附主藤（无独立承花茎），结构可追踪；构图偏水平带，疏密节奏略单调",
+    "use_in_text_analysis": true,
+    "correction_status": "原记录",
+    "replacement_comment": null
+  },
+  {
+    "sample_id": "S26",
+    "case_id": "A243",
+    "evaluator": "E04",
+    "original_comment": "花位直接依附主藤（无独立承花茎），结构可追踪；构图偏水平带，疏密节奏略单调",
+    "use_in_text_analysis": true,
+    "correction_status": "原记录",
+    "replacement_comment": null
+  },
+  {
+    "sample_id": "S43",
+    "case_id": "A440",
+    "evaluator": "E05",
+    "original_comment": "分枝走向有些死板，末端弯曲过度，",
+    "use_in_text_analysis": true,
+    "correction_status": "原记录",
+    "replacement_comment": null
+  },
+  {
+    "sample_id": "S38",
+    "case_id": "A402",
+    "evaluator": "E05",
+    "original_comment": "分枝集中在左侧，有些不均衡",
+    "use_in_text_analysis": true,
+    "correction_status": "原记录",
+    "replacement_comment": null
+  },
+  {
+    "sample_id": "S37",
+    "case_id": "A410",
+    "evaluator": "E05",
+    "original_comment": "分枝集中在左侧，有些不均衡",
+    "use_in_text_analysis": true,
+    "correction_status": "原记录",
+    "replacement_comment": null
+  },
+  {
+    "sample_id": "S27",
+    "case_id": "A196",
+    "evaluator": "E05",
+    "original_comment": "分支集中在右侧",
+    "use_in_text_analysis": true,
+    "correction_status": "原记录",
+    "replacement_comment": null
+  },
+  {
+    "sample_id": "S31",
+    "case_id": "A344",
+    "evaluator": "E05",
+    "original_comment": "部分分枝距离过近",
+    "use_in_text_analysis": true,
+    "correction_status": "原记录",
+    "replacement_comment": null
+  }
+]

@@ -1,0 +1,170 @@
+{
+  "core_sources": [
+    {
+      "source_id": "R013",
+      "annotation_id": "13",
+      "reference_number": 3,
+      "bibliographic_reference": "陈茹茹．2018．敦煌石窟中卷草纹在现代设计中的应用研究．硕士学位论文，兰州大学．",
+      "printed_page": "12",
+      "figure_or_object": "莫高窟211窟卷草纹；图2.2；同文第8页表1.2另有同一图样",
+      "source_url": "https://ygx.sxu.edu.cn/db/%E5%AD%A6%E4%BD%8D/D01451691.pdf",
+      "used_in": [
+        "补充图S1",
+        "补充表S1及来源复核"
+      ],
+      "record_basis": "最新版补充材料表S1与正文参考文献"
+    },
+    {
+      "source_id": "R014",
+      "annotation_id": "14",
+      "reference_number": 3,
+      "bibliographic_reference": "陈茹茹．2018．敦煌石窟中卷草纹在现代设计中的应用研究．硕士学位论文，兰州大学．",
+      "printed_page": "8",
+      "figure_or_object": "莫高窟392窟卷草边饰；表1.2第二行",
+      "source_url": "https://ygx.sxu.edu.cn/db/%E5%AD%A6%E4%BD%8D/D01451691.pdf",
+      "used_in": [
+        "正文图6a",
+        "补充表S1及来源复核"
+      ],
+      "record_basis": "最新版补充材料表S1与正文参考文献"
+    },
+    {
+      "source_id": "R016",
+      "annotation_id": "16",
+      "reference_number": 3,
+      "bibliographic_reference": "陈茹茹．2018．敦煌石窟中卷草纹在现代设计中的应用研究．硕士学位论文，兰州大学．",
+      "printed_page": "11",
+      "figure_or_object": "莫高窟418窟卷草边饰；表1.4续表，莫418窟三种图样第2行",
+      "source_url": "https://ygx.sxu.edu.cn/db/%E5%AD%A6%E4%BD%8D/D01451691.pdf",
+      "used_in": [
+        "补充表S1及来源复核"
+      ],
+      "record_basis": "最新版补充材料表S1与正文参考文献"
+    },
+    {
+      "source_id": "R018",
+      "annotation_id": "18",
+      "reference_number": 3,
+      "bibliographic_reference": "陈茹茹．2018．敦煌石窟中卷草纹在现代设计中的应用研究．硕士学位论文，兰州大学．",
+      "printed_page": "11",
+      "figure_or_object": "莫高窟418窟卷草边饰；表1.4续表，莫418窟三种图样第3行",
+      "source_url": "https://ygx.sxu.edu.cn/db/%E5%AD%A6%E4%BD%8D/D01451691.pdf",
+      "used_in": [
+        "补充表S1及来源复核"
+      ],
+      "record_basis": "最新版补充材料表S1与正文参考文献"
+    },
+    {
+      "source_id": "R019",
+      "annotation_id": "19",
+      "reference_number": 24,
+      "bibliographic_reference": "陈振旺，佟艳．2017．中唐早期莫高窟藻井图案研究．敦煌学辑刊，(4)，131–140．",
+      "printed_page": "138",
+      "figure_or_object": "莫高窟180窟卷草纹边饰；表2卷草纹类别，第180窟行",
+      "source_url": "https://ygx.sxu.edu.cn/db/%E6%9C%9F%E5%88%8A/dhxjk/dhxj2017/1704pdf/170416.pdf",
+      "used_in": [
+        "补充表S1及来源复核"
+      ],
+      "record_basis": "最新版补充材料表S1与正文参考文献"
+    },
+    {
+      "source_id": "R020",
+      "annotation_id": "20",
+      "reference_number": 24,
+      "bibliographic_reference": "陈振旺，佟艳．2017．中唐早期莫高窟藻井图案研究．敦煌学辑刊，(4)，131–140．",
+      "printed_page": "138",
+      "figure_or_object": "莫高窟154窟卷草纹边饰；表2卷草纹类别，第154窟行",
+      "source_url": "https://ygx.sxu.edu.cn/db/%E6%9C%9F%E5%88%8A/dhxjk/dhxj2017/1704pdf/170416.pdf",
+      "used_in": [
+        "补充表S1及来源复核"
+      ],
+      "record_basis": "最新版补充材料表S1与正文参考文献"
+    },
+    {
+      "source_id": "R022",
+      "annotation_id": "22",
+      "reference_number": 2,
+      "bibliographic_reference": "张红颖．2008．魏晋南北朝时期卷草纹样视觉形式语言研究．硕士学位论文，湖南工业大学．",
+      "printed_page": "7",
+      "figure_or_object": "宋代汝窑瓷器卷草边饰（依原图注）；图2-4",
+      "source_url": "https://ygx.sxu.edu.cn/db/%E5%AD%A6%E4%BD%8D/D625113.pdf",
+      "used_in": [
+        "补充图S1",
+        "补充表S1及来源复核"
+      ],
+      "record_basis": "最新版补充材料表S1与正文参考文献"
+    },
+    {
+      "source_id": "R027",
+      "annotation_id": "27",
+      "reference_number": 2,
+      "bibliographic_reference": "张红颖．2008．魏晋南北朝时期卷草纹样视觉形式语言研究．硕士学位论文，湖南工业大学．",
+      "printed_page": "23",
+      "figure_or_object": "魏晋织物植物纹样（依原图注）；图3-12，左图",
+      "source_url": "https://ygx.sxu.edu.cn/db/%E5%AD%A6%E4%BD%8D/D625113.pdf",
+      "used_in": [
+        "正文图2",
+        "补充图S1",
+        "补充表S1及来源复核"
+      ],
+      "record_basis": "最新版补充材料表S1与正文参考文献"
+    },
+    {
+      "source_id": "R035",
+      "annotation_id": "35",
+      "reference_number": 22,
+      "bibliographic_reference": "范祎珂．2018．巩义石窟寺装饰图案及艺术研究．硕士学位论文，中原工学院．",
+      "printed_page": "59",
+      "figure_or_object": "龙门古阳洞南壁第一排东起第四小龛平台上边饰；附录4，龙门石窟栏C2-3",
+      "source_url": "https://ygx.sxu.edu.cn/db/%E5%AD%A6%E4%BD%8D/D01430115.pdf",
+      "used_in": [
+        "正文图1",
+        "正文图3",
+        "正文图6a",
+        "补充表S1及来源复核"
+      ],
+      "record_basis": "最新版补充材料表S1与正文参考文献"
+    },
+    {
+      "source_id": "R056",
+      "annotation_id": "56",
+      "reference_number": 26,
+      "bibliographic_reference": "陈振旺．2018．隋及唐前期莫高窟藻井图案研究．博士学位论文，兰州大学．",
+      "printed_page": "122",
+      "figure_or_object": "莫高窟329窟卷草纹B型（依原表）；表3-3续表，329窟卷草纹B型；另见第228页图7-47",
+      "source_url": "https://ygx.sxu.edu.cn/db/%E5%AD%A6%E4%BD%8D/D01448673.pdf",
+      "used_in": [
+        "补充表S1及来源复核"
+      ],
+      "record_basis": "最新版补充材料表S1与正文参考文献"
+    }
+  ],
+  "additional_sources": [
+    {
+      "source_id": "DHA-CAVE16",
+      "reference_number": 25,
+      "bibliographic_reference": "敦煌研究院．莫高窟第16窟．图像：甬道—缠枝西番莲纹样．https://www.dha.ac.cn/info/1425/3607.htm（访问日期：2026年9月16日）．",
+      "figure_or_object": "莫高窟第16窟甬道—缠枝西番莲纹样",
+      "printed_page": "",
+      "source_url": "https://www.dha.ac.cn/info/1425/3607.htm",
+      "used_in": [
+        "正文图3",
+        "正文图6b",
+        "补充图S2"
+      ],
+      "record_basis": "正文及补充图注"
+    },
+    {
+      "source_id": "YONGZHENG-BROCADE",
+      "reference_number": 27,
+      "bibliographic_reference": "梁科．2016．明清宫廷织物中的牡丹纹样设计．紫禁城，(6)，70–91．图版见第87页．",
+      "figure_or_object": "故宫博物院藏清雍正黄色地缠枝牡丹纹织金锦料",
+      "printed_page": "87",
+      "source_url": "",
+      "used_in": [
+        "正文图3"
+      ],
+      "record_basis": "正文及补充图注"
+    }
+  ]
+}

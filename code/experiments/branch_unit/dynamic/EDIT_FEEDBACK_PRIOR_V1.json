@@ -1,0 +1,118 @@
+{
+  "schema": "dynamic_branch_edit_feedback_prior_v1",
+  "prior_id": "old_mainline_editor_batch_20260806",
+  "source_scope": {
+    "edited_case_count": 14,
+    "prototype_count": 5,
+    "source_curve_count": 202,
+    "edited_curve_count": 202,
+    "deleted_curve_count": 51,
+    "added_curve_count": 51,
+    "role_annotations_required": false,
+    "fixed_svg_templates_consumed": false
+  },
+  "global_observations": {
+    "source_l1_count": 86,
+    "edited_l1_count": 98,
+    "source_l2_count": 115,
+    "edited_l2_count": 103,
+    "edited_l1_without_children_count": 27,
+    "l1_median_length_ratio": 0.716,
+    "l1_backbone_excursion_ratio": 0.58,
+    "vertical_span_ratio": 0.792,
+    "bow_ratio_multiplier": 1.283,
+    "nearest_flower_gap_ratio": 0.888,
+    "l2_median_length_ratio": 1.078,
+    "l2_median_mount_shift": -0.04
+  },
+  "stage3b_policy": {
+    "role_semantics": "weak_compatibility_label_only",
+    "mandatory_flower_service_lanes": false,
+    "fixed_warp_candidates_allowed": false,
+    "length_strata": [
+      0.62,
+      0.82,
+      1.02
+    ],
+    "length_stratum_target_fractions": [
+      0.22,
+      0.64,
+      0.14
+    ],
+    "tangent_run_ratio_range": [
+      0.18,
+      0.34
+    ],
+    "outward_reach_ratio_range": [
+      0.46,
+      0.72
+    ],
+    "return_ratio_range": [
+      0.05,
+      0.18
+    ],
+    "minimum_initial_tangent_alignment": 0.5,
+    "minimum_initial_outward_alignment": 0.12,
+    "curve_geometry_source": "continuous_editor_descriptor_distribution",
+    "curve_geometry_prior_schema": "dynamic_branch_editor_curve_geometry_prior_v4",
+    "fixed_curve_shape_quota": false,
+    "maximum_vertical_span": 0.29,
+    "maximum_backbone_excursion": 0.27
+  },
+  "stage4_policy": {
+    "hierarchy_class_fraction_targets": {
+      "l1_only": 0.276,
+      "single_child": 0.398,
+      "paired_child": 0.326
+    },
+    "derivation": {
+      "edited_l1_count": 98,
+      "edited_l1_without_children_count": 27,
+      "edited_single_child_l1_count": 39,
+      "edited_paired_child_l1_count": 32
+    },
+    "l2_length_multiplier_over_source": 1.078,
+    "minimum_visible_child_parent_ratio": 0.5
+  },
+  "prototype_profiles": {
+    "proto_sw_1_1": {
+      "preferred_l1_count": 7,
+      "length_multiplier": 1.12,
+      "maximum_vertical_span": 0.3,
+      "maximum_backbone_excursion": 0.28
+    },
+    "proto_sw_1_3": {
+      "preferred_l1_count": 7,
+      "length_multiplier": 1.0,
+      "root_rhythm_quantiles": [
+        0.089,
+        0.181,
+        0.338,
+        0.36,
+        0.46,
+        0.681,
+        0.909
+      ],
+      "maximum_vertical_span": 0.27,
+      "maximum_backbone_excursion": 0.25
+    },
+    "proto_sw_2_3": {
+      "preferred_l1_count": 6,
+      "length_multiplier": 0.88,
+      "maximum_vertical_span": 0.25,
+      "maximum_backbone_excursion": 0.22
+    },
+    "proto_sw_3_1": {
+      "preferred_l1_count": 7,
+      "length_multiplier": 1.02,
+      "maximum_vertical_span": 0.28,
+      "maximum_backbone_excursion": 0.25
+    },
+    "proto_sw_3_2": {
+      "preferred_l1_count": 8,
+      "length_multiplier": 1.08,
+      "maximum_vertical_span": 0.29,
+      "maximum_backbone_excursion": 0.27
+    }
+  }
+}

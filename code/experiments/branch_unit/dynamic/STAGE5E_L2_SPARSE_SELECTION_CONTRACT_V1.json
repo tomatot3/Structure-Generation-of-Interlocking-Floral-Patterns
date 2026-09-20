@@ -1,0 +1,90 @@
+{
+  "schema": "dynamic_branch_stage5_global_selection_contract_v2",
+  "contract_id": "stage5e_sparse_local_l2_selection_v1",
+  "stage": "5E",
+  "scope": {
+    "old_mainline_only": true,
+    "branch_skeleton_only": true,
+    "new_curve_generation_present": false,
+    "curve_mutation_present": false,
+    "frozen_5d_l1_set_is_immutable": true,
+    "l2_forks_are_sparse_local_emphasis_only": true,
+    "l3_candidates_are_not_selectable": true,
+    "leaves_and_swellings_are_not_generated": true
+  },
+  "required_inputs": {
+    "inventory_schema": "dynamic_branch_stage4_unit_candidate_inventory_v2",
+    "stage4_candidate_pool_is_immutable": true,
+    "intrinsically_invalid_candidates_are_preserved_but_not_selectable": true,
+    "editor_l2_placement_prior_consumed": true
+  },
+  "selection": {
+    "candidate_count_per_lane": 1,
+    "eligible_candidate_rule": "intrinsic geometry valid and unit state is one of L1_ONLY, SINGLE_L2_LEFT, SINGLE_L2_RIGHT, OPPOSED_L2_PAIR",
+    "hierarchy_policy": "sparse_local_l2_for_5e",
+    "solver": "deterministic_l1_only_baseline_then_seeded_sparse_l2_upgrade",
+    "stop_rule": "exhaust_l1_only_baseline_then_apply_upgrades_until_intent_budget_or_no_feasible_upgrade",
+    "overlap_objective": "lexicographically_minimize_worst_then_total_parallel_co_travel_penalty",
+    "best_of_n_visual_ranking_used": false,
+    "composite_visual_score_used": false,
+    "validation_guided_retry_used": false,
+    "validation_guided_resample_used": false,
+    "automatic_repair_used": false,
+    "automatic_deletion_used": false,
+    "silent_fallback_used": false
+  },
+  "sparse_l2": {
+    "allowed_unit_states": [
+      "L1_ONLY",
+      "SINGLE_L2_LEFT",
+      "SINGLE_L2_RIGHT",
+      "OPPOSED_L2_PAIR"
+    ],
+    "state_derivation": "recomputed from hierarchy counts and actual L2 turn signs; paired children with identical signs are excluded; any L3 is excluded",
+    "left_right_convention": "turn sign +1 departs right of the parent L1 travel direction and -1 departs left in the rendered y-down frame",
+    "unit_seed_role": "derives lane upgrade priority, per-lane state phase, and an intent upgrade budget; feasibility and hard conflicts decide whether intent lands",
+    "intent_upgrade_budget": "1 + (unit_seed mod 3), capped so a majority of lanes remain L1-only",
+    "zero_l2_landed_is_legal": true,
+    "no_fixed_l1_only_single_double_proportions": true,
+    "old_hierarchy_mix_fraction_targets_are_not_consumed": true
+  },
+  "hard_constraints": {
+    "one_complete_unit_per_approved_lane": true,
+    "selected_candidate_must_be_intrinsically_valid": true,
+    "selected_candidate_actual_l3_count": 0,
+    "selected_candidate_curve_levels": [
+      "L1",
+      "L2"
+    ],
+    "paired_l2_turn_signs_must_differ": true,
+    "cross_unit_curve_crossing_allowed": false,
+    "periodic_repeat_crossing_allowed": false,
+    "repeat_shifts_checked": [
+      -1.0,
+      0.0,
+      1.0
+    ],
+    "minimum_full_unit_clearance_uses_occupancy_diameter_and_editor_profile_q10": true
+  },
+  "deterministic_order": {
+    "lane_priority": "seeded_permutation_of_lanes_by_unit_seed",
+    "candidate_order": [
+      "state_phase_cycle_by_lane",
+      "cross_unit_conflict_degree",
+      "candidate_id"
+    ],
+    "state_phase_cycle": [
+      "SINGLE_L2_LEFT",
+      "SINGLE_L2_RIGHT",
+      "OPPOSED_L2_PAIR"
+    ]
+  },
+  "output": {
+    "conflict_graph_saved": true,
+    "selected_complete_composition_saved_when_feasible": true,
+    "selected_hierarchy_is_recomputed_from_geometry": true,
+    "sparse_l2_trace_saved": true,
+    "review_state": "stage5e_l2_sparse_pending_visual_review",
+    "numeric_checks_cannot_auto_approve_visual_gate": true
+  }
+}

@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>结构编辑</title>
+  <link rel="stylesheet" href="/editor/editor.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="identity">
+      <span class="eyebrow">DIRECT BRANCH RULE EDITOR</span>
+      <strong id="seed-title">Seed 0</strong>
+      <span class="phase">M0–M6</span>
+    </div>
+    <nav class="tools" aria-label="直接绘制工具">
+      <button class="tool active" id="select-tool" data-mode="select" type="button">选择</button>
+      <button class="tool" id="add-tool" data-mode="add" type="button">新增枝</button>
+      <button class="tool" id="root-range-tool" data-mode="root-range" type="button">根点范围</button>
+      <button class="tool" id="endpoint-region-tool" data-mode="endpoint-region" type="button">枝尖合法区</button>
+      <button class="tool" id="envelope-tool" data-mode="envelope" type="button">曲线包络</button>
+      <button class="tool danger-tool" id="forbidden-tool" data-mode="forbidden" type="button">禁区</button>
+      <span class="divider" aria-hidden="true"></span>
+      <button class="tool" id="undo-button" type="button" disabled>撤销</button>
+      <button class="tool" id="redo-button" type="button" disabled>重做</button>
+      <button class="save" id="save-button" type="button">保存版本</button><div class="download-group"><button class="tool" data-download="svg">下载 SVG</button><button class="tool" data-download="png">下载 PNG</button><button class="tool" data-download="geometry">下载 JSON</button></div>
+    </nav>
+  </header>
+
+  <section class="contextbar" aria-label="会话与视图">
+    <label id="seed-label">结构
+      <select id="seed-select">
+        <option value="0">当前结构</option>
+      </select>
+    </label>
+    <div class="view-tools" role="group" aria-label="视图模式">
+      <button class="micro active" data-view="context" type="button">三周期</button>
+      <button class="micro" data-view="whole" type="button">整图</button>
+      <button class="micro" data-view="double" type="button">双周期</button>
+      <button class="micro" data-view="unit" type="button">枝组</button>
+    </div>
+    <span class="context-divider"></span>
+    <div class="branch-status-tools" role="group" aria-label="分支数量状态">
+      <span>选中枝：</span>
+      <button class="micro status-required" data-status="required" type="button">必需</button>
+      <button class="micro status-optional" data-status="optional" type="button">可选</button>
+      <button class="micro status-forbidden" data-status="forbidden" type="button">禁用</button>
+      <button class="micro delete" id="delete-button" type="button" disabled>删除</button>
+    </div>
+    <label id="forbidden-scope-label">禁区范围
+      <select id="forbidden-scope">
+        <option value="global">全局</option>
+        <option value="unit">当前枝组</option>
+        <option value="parent">当前父枝</option>
+        <option value="level">当前层级</option>
+      </select>
+    </label>
+  </section>
+
+  <main>
+    <section class="statusbar" aria-live="polite">
+      <div id="selection-status">正在载入结构…</div>
+      <div id="geometry-status"></div>
+      <div id="save-status"></div>
+    </section>
+    <section class="canvas-shell">
+      <svg id="editor-canvas" role="img" aria-label="可直接操控和绘制合法域的 SVG 分支画布"></svg>
+      <div class="mode-hint" id="mode-hint">选择分支后直接拖动根点、枝尖或控制柄</div>
+      <div class="canvas-key" aria-hidden="true">
+        <span><i class="key-preferred"></i>preferred</span>
+        <span><i class="key-allowed"></i>allowed</span>
+        <span><i class="key-forbidden"></i>forbidden</span>
+        <span><i class="key-ghost"></i>相邻周期</span>
+      </div>
+    </section>
+
+    <section class="analysis-dock">
+      <article>
+        <h2>枝组数量</h2>
+        <div id="unit-stats">选择分枝查看所属枝组</div>
+      </article>
+      <article>
+        <h2>图形约束</h2>
+        <div id="constraint-stats">尚未绘制 allowed / forbidden 区域</div>
+      </article>
+      <article class="target-card">
+        <h2>保存的版本</h2>
+        <div class="target-controls">
+          <select id="target-select" aria-label="保存的版本"><option value="">暂无保存版本</option></select>
+          <button id="load-version" type="button">载入</button>
+          <button class="micro" id="compare-button" type="button" disabled>比较</button>
+        </div>
+        <div id="target-stats">正在读取保存记录…</div>
+      </article>
+    </section>
+
+    <section class="instructions">
+      <span><b>选择</b> 拖根点/枝尖/Bézier 柄</span>
+      <span><b>新增枝</b> 从父枝直接拖出</span>
+      <span><b>合法区/禁区</b> 在画布自由圈定</span>
+      <span><b>包络</b> 拖两条边界曲线</span>
+    </section>
+  </main>
+
+  <section class="feedback-panel"><h2>自愿提交修改，用于改进</h2><p>保存版本供你继续编辑和下载。只有勾选下方说明并点击提交，这次修改才会进入研究数据集。</p><label><input id="feedback-consent" type="checkbox">我同意提交原始结构、修改后的结构、生成参数和修改记录，供研究团队分析并改进参数。此处不要求姓名或联系方式。</label><textarea id="feedback-note" maxlength="2000" placeholder="可选：为什么这样修改？"></textarea><div class="feedback-actions"><button class="save" id="feedback-submit">提交用于改进</button><span id="feedback-status"></span></div></section>
+  <template id="error-template"><div class="fatal-error" role="alert"></div></template>
+  <script>window.EDITOR_SEED = 0;window.EDITOR_SOURCE = new URLSearchParams(location.search).get("source");</script>
+  <script src="/editor/editor.js" defer></script>
+</body>
+</html>

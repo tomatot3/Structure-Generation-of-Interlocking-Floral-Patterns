@@ -1,0 +1,395 @@
+{
+  "proto_sw_1_1": {
+    "strategy_id": "strategy_proto_sw_1_1_v1",
+    "prototype_id": "proto_sw_1_1",
+    "family_id": "SW-1_valley_filling",
+    "route_signature": {
+      "flower_relation": "valley_support",
+      "flower_count": 2,
+      "style_intent": "dense"
+    },
+    "invariants": {
+      "flower_count": 2,
+      "flower_position_policy": "fixed_prototype_relation",
+      "repeat_width": 1,
+      "prototype_identity_locked": true
+    },
+    "backbone_domain": {
+      "generator": "global_periodic_wave_v4",
+      "flower_transport_policy": "fixed_geometry_in_5b",
+      "variation_contract": "prototype_domain_global_periodic_wave_v4",
+      "variant_library": "prototype_combined_wave_variants_v1",
+      "topology_policy": "preserve_peak_trough_sequence",
+      "family_guard": "sw1_fixed_flower_valley_relation",
+      "independent_flower_variation": "disabled"
+    },
+    "flower_layout": {
+      "mode": "fixed_prototype_relation",
+      "seed_domain": "flower_seed",
+      "position_variation_enabled": false
+    },
+    "flower_mount": {
+      "mechanism": "valley_flank_support",
+      "binding": "trough_or_valley_flank_support",
+      "support_count_policy": "one_per_flower"
+    },
+    "l1_profile": {
+      "feedback_profile_key": "proto_sw_1_1",
+      "curve_geometry_profile_key": "proto_sw_1_1",
+      "root_rhythm_profile_key": "proto_sw_1_1",
+      "random_namespace": "proto_sw_1_1",
+      "side_rhythm": "near_balanced_frequent_alternation",
+      "ordinary_role_cycle": [
+        "frontier",
+        "primary_sweep",
+        "balance",
+        "primary_sweep"
+      ],
+      "legacy_fixed_warp_visual_prior": false
+    },
+    "branchunit_profile": {
+      "editor_l2_profile_key": "proto_sw_1_1",
+      "candidate_coverage_policy": "contract_weak_role_grammar_strata",
+      "complexity_domain": "dense_short"
+    },
+    "global_selection_profile": {
+      "hierarchy_mix_policy": "contract_fraction_targets",
+      "candidate_order_policy": "contract_class_cycle_seed_phase",
+      "class_cycle_phase_offset": 0
+    },
+    "schema": "dynamic_branch_prototype_strategy_projection_v1",
+    "registry_id": "sw_prototype_domain_strategy_v1"
+  },
+  "proto_sw_1_3": {
+    "strategy_id": "strategy_proto_sw_1_3_v1",
+    "prototype_id": "proto_sw_1_3",
+    "family_id": "SW-1_valley_filling",
+    "route_signature": {
+      "flower_relation": "valley_support",
+      "flower_count": 2,
+      "style_intent": "sparse"
+    },
+    "invariants": {
+      "flower_count": 2,
+      "flower_position_policy": "fixed_prototype_relation",
+      "repeat_width": 1,
+      "prototype_identity_locked": true
+    },
+    "backbone_domain": {
+      "generator": "global_periodic_wave_v4",
+      "flower_transport_policy": "fixed_geometry_in_5b",
+      "variation_contract": "prototype_domain_global_periodic_wave_v4",
+      "variant_library": "prototype_combined_wave_variants_v1",
+      "topology_policy": "preserve_peak_trough_sequence",
+      "family_guard": "sw1_fixed_flower_valley_relation",
+      "independent_flower_variation": "disabled"
+    },
+    "flower_layout": {
+      "mode": "fixed_prototype_relation",
+      "seed_domain": "flower_seed",
+      "position_variation_enabled": false
+    },
+    "flower_mount": {
+      "mechanism": "valley_flank_support",
+      "binding": "trough_or_valley_flank_support",
+      "support_count_policy": "one_per_flower"
+    },
+    "l1_profile": {
+      "feedback_profile_key": "proto_sw_1_3",
+      "curve_geometry_profile_key": "proto_sw_1_3",
+      "root_rhythm_profile_key": "proto_sw_1_3",
+      "random_namespace": "proto_sw_1_3",
+      "side_rhythm": "sparse_asymmetric_alternation",
+      "ordinary_role_cycle": [
+        "frontier",
+        "primary_sweep",
+        "balance",
+        "primary_sweep"
+      ],
+      "legacy_fixed_warp_visual_prior": true
+    },
+    "branchunit_profile": {
+      "editor_l2_profile_key": "proto_sw_1_3",
+      "candidate_coverage_policy": "contract_weak_role_grammar_strata",
+      "complexity_domain": "sparse_long"
+    },
+    "global_selection_profile": {
+      "hierarchy_mix_policy": "contract_fraction_targets",
+      "candidate_order_policy": "contract_class_cycle_seed_phase",
+      "class_cycle_phase_offset": 0
+    },
+    "schema": "dynamic_branch_prototype_strategy_projection_v1",
+    "registry_id": "sw_prototype_domain_strategy_v1"
+  },
+  "proto_sw_2_3": {
+    "strategy_id": "strategy_proto_sw_2_3_v1",
+    "prototype_id": "proto_sw_2_3",
+    "family_id": "SW-2_axis_penetrating",
+    "route_signature": {
+      "flower_relation": "axis_integrated",
+      "flower_count": 1,
+      "style_intent": "primary_sweep_led"
+    },
+    "invariants": {
+      "flower_count": 1,
+      "flower_position_policy": "fixed_prototype_relation",
+      "repeat_width": 1,
+      "prototype_identity_locked": true
+    },
+    "backbone_domain": {
+      "generator": "global_periodic_wave_v4",
+      "flower_transport_policy": "fixed_geometry_in_5b",
+      "variation_contract": "prototype_domain_global_periodic_wave_v4",
+      "variant_library": "prototype_combined_wave_variants_v1",
+      "topology_policy": "preserve_peak_trough_sequence",
+      "family_guard": "sw2_fixed_flower_axis_integration",
+      "independent_flower_variation": "disabled"
+    },
+    "flower_layout": {
+      "mode": "fixed_prototype_relation",
+      "seed_domain": "flower_seed",
+      "position_variation_enabled": false
+    },
+    "flower_mount": {
+      "mechanism": "axis_integration",
+      "binding": "flower_is_part_of_continuous_main_axis",
+      "support_count_policy": "zero"
+    },
+    "l1_profile": {
+      "feedback_profile_key": "proto_sw_2_3",
+      "curve_geometry_profile_key": "proto_sw_2_3",
+      "root_rhythm_profile_key": "proto_sw_2_3",
+      "random_namespace": "proto_sw_2_3",
+      "side_rhythm": "broad_axis_flank_alternation",
+      "ordinary_role_cycle": [
+        "primary_sweep",
+        "frontier",
+        "primary_sweep",
+        "balance"
+      ],
+      "legacy_fixed_warp_visual_prior": false
+    },
+    "branchunit_profile": {
+      "editor_l2_profile_key": "proto_sw_2_3",
+      "candidate_coverage_policy": "contract_weak_role_grammar_strata",
+      "complexity_domain": "primary_sweep_led"
+    },
+    "global_selection_profile": {
+      "hierarchy_mix_policy": "contract_fraction_targets",
+      "candidate_order_policy": "contract_class_cycle_seed_phase",
+      "class_cycle_phase_offset": 0
+    },
+    "schema": "dynamic_branch_prototype_strategy_projection_v1",
+    "registry_id": "sw_prototype_domain_strategy_v1"
+  },
+  "proto_sw_3_1": {
+    "strategy_id": "strategy_proto_sw_3_1_v1",
+    "prototype_id": "proto_sw_3_1",
+    "family_id": "SW-3_tangent_terminal",
+    "route_signature": {
+      "flower_relation": "tangent_terminal",
+      "flower_count": 1,
+      "style_intent": "light"
+    },
+    "invariants": {
+      "flower_count": 1,
+      "flower_position_policy": "variable_within_sw3_domain",
+      "repeat_width": 1,
+      "prototype_identity_locked": true
+    },
+    "backbone_domain": {
+      "generator": "global_periodic_wave_v4",
+      "flower_transport_policy": "fixed_geometry_in_5b",
+      "variation_contract": "prototype_domain_global_periodic_wave_v4",
+      "variant_library": "prototype_combined_wave_variants_v1",
+      "topology_policy": "preserve_peak_trough_sequence",
+      "family_guard": "sw3_fixed_flower_remote_tangent_corridor",
+      "independent_flower_variation": "enabled_in_5c"
+    },
+    "flower_layout": {
+      "mode": "sw3_single_joint_domain",
+      "seed_domain": "flower_seed",
+      "position_variation_enabled": true,
+      "state_variables": [
+        "anchor_shift",
+        "normal_standoff",
+        "tangent_bias"
+      ],
+      "feasible_tuple": [
+        "flower_center",
+        "support_root",
+        "support_path"
+      ],
+      "projection_policy": "single_seeded_intent_ray_toward_baseline"
+    },
+    "flower_mount": {
+      "mechanism": "remote_tangent_underside",
+      "binding": "remote_tangent_extension_to_flower_underside",
+      "support_count_policy": "one_per_flower"
+    },
+    "l1_profile": {
+      "feedback_profile_key": "proto_sw_3_1",
+      "curve_geometry_profile_key": "proto_sw_3_1",
+      "root_rhythm_profile_key": "proto_sw_3_1",
+      "random_namespace": "proto_sw_3_1",
+      "side_rhythm": "light_near_balanced",
+      "ordinary_role_cycle": [
+        "primary_sweep",
+        "balance",
+        "frontier"
+      ],
+      "legacy_fixed_warp_visual_prior": false
+    },
+    "branchunit_profile": {
+      "editor_l2_profile_key": "proto_sw_3_1",
+      "candidate_coverage_policy": "contract_weak_role_grammar_strata",
+      "complexity_domain": "light_terminal"
+    },
+    "global_selection_profile": {
+      "hierarchy_mix_policy": "contract_fraction_targets",
+      "candidate_order_policy": "contract_class_cycle_seed_phase",
+      "class_cycle_phase_offset": 0
+    },
+    "schema": "dynamic_branch_prototype_strategy_projection_v1",
+    "registry_id": "sw_prototype_domain_strategy_v1"
+  },
+  "proto_sw_3_2": {
+    "strategy_id": "strategy_proto_sw_3_2_v1",
+    "prototype_id": "proto_sw_3_2",
+    "family_id": "SW-3_tangent_terminal",
+    "route_signature": {
+      "flower_relation": "tangent_terminal",
+      "flower_count": 2,
+      "style_intent": "moderate"
+    },
+    "invariants": {
+      "flower_count": 2,
+      "flower_position_policy": "variable_within_sw3_domain",
+      "repeat_width": 1,
+      "prototype_identity_locked": true
+    },
+    "backbone_domain": {
+      "generator": "global_periodic_wave_v4",
+      "flower_transport_policy": "fixed_geometry_in_5b",
+      "variation_contract": "prototype_domain_global_periodic_wave_v4",
+      "variant_library": "prototype_combined_wave_variants_v1",
+      "topology_policy": "preserve_peak_trough_sequence",
+      "family_guard": "sw3_fixed_flower_remote_tangent_corridor",
+      "independent_flower_variation": "enabled_in_5c"
+    },
+    "flower_layout": {
+      "mode": "sw3_pair_joint_domain",
+      "seed_domain": "flower_seed",
+      "position_variation_enabled": true,
+      "state_variables": [
+        "group_shift",
+        "pair_spread",
+        "height_stagger",
+        "group_standoff",
+        "asymmetry"
+      ],
+      "feasible_tuple": [
+        "paired_flower_centers",
+        "paired_support_roots",
+        "paired_support_paths"
+      ],
+      "projection_policy": "single_seeded_intent_ray_toward_baseline"
+    },
+    "flower_mount": {
+      "mechanism": "remote_tangent_underside",
+      "binding": "remote_tangent_extension_to_flower_underside",
+      "support_count_policy": "one_per_flower"
+    },
+    "l1_profile": {
+      "feedback_profile_key": "proto_sw_3_2",
+      "curve_geometry_profile_key": "proto_sw_3_2",
+      "root_rhythm_profile_key": "proto_sw_3_2",
+      "random_namespace": "proto_sw_3_2",
+      "side_rhythm": "upper_side_emphasis",
+      "ordinary_role_cycle": [
+        "primary_sweep",
+        "balance",
+        "frontier"
+      ],
+      "legacy_fixed_warp_visual_prior": false
+    },
+    "branchunit_profile": {
+      "editor_l2_profile_key": "proto_sw_3_2",
+      "candidate_coverage_policy": "contract_weak_role_grammar_strata",
+      "complexity_domain": "moderate_upper_emphasis"
+    },
+    "global_selection_profile": {
+      "hierarchy_mix_policy": "contract_fraction_targets",
+      "candidate_order_policy": "contract_class_cycle_seed_phase",
+      "class_cycle_phase_offset": 0
+    },
+    "schema": "dynamic_branch_prototype_strategy_projection_v1",
+    "registry_id": "sw_prototype_domain_strategy_v1"
+  },
+  "proto_sw_1_c": {
+    "strategy_id": "strategy_proto_sw_1_c_author_svg_v1",
+    "prototype_id": "proto_sw_1_c",
+    "family_id": "SW-1_valley_filling",
+    "route_signature": {
+      "flower_relation": "authored_alternating_carriers",
+      "flower_count": 2,
+      "style_intent": "dense"
+    },
+    "invariants": {
+      "flower_count": 2,
+      "flower_position_policy": "fixed_prototype_relation",
+      "repeat_width": 1,
+      "prototype_identity_locked": true
+    },
+    "backbone_domain": {
+      "generator": "global_periodic_wave_v4",
+      "flower_transport_policy": "fixed_geometry_in_5b",
+      "variation_contract": "prototype_domain_global_periodic_wave_v4",
+      "variant_library": "prototype_combined_wave_variants_v1",
+      "topology_policy": "preserve_peak_trough_sequence",
+      "family_guard": "sw1_fixed_flower_valley_relation",
+      "independent_flower_variation": "disabled"
+    },
+    "flower_layout": {
+      "mode": "fixed_prototype_relation",
+      "seed_domain": "flower_seed",
+      "position_variation_enabled": false
+    },
+    "flower_mount": {
+      "mechanism": "authored_svg_carriers",
+      "binding": "author_main_and_alternating_carriers",
+      "support_count_policy": "one_per_flower"
+    },
+    "l1_profile": {
+      "feedback_profile_key": "proto_sw_1_1",
+      "curve_geometry_profile_key": "proto_sw_1_1",
+      "root_rhythm_profile_key": "proto_sw_1_1",
+      "random_namespace": "proto_sw_1_c",
+      "side_rhythm": "near_balanced_frequent_alternation",
+      "ordinary_role_cycle": [
+        "frontier",
+        "primary_sweep",
+        "balance",
+        "primary_sweep"
+      ],
+      "legacy_fixed_warp_visual_prior": false
+    },
+    "branchunit_profile": {
+      "editor_l2_profile_key": "proto_sw_1_1",
+      "candidate_coverage_policy": "contract_weak_role_grammar_strata",
+      "complexity_domain": "dense_short"
+    },
+    "global_selection_profile": {
+      "hierarchy_mix_policy": "contract_fraction_targets",
+      "candidate_order_policy": "contract_class_cycle_seed_phase",
+      "class_cycle_phase_offset": 0
+    },
+    "input_derivation": {
+      "base_prototype_id": "proto_sw_1_1",
+      "geometry_policy": "author_svg",
+      "input_file": "prototype_inputs/proto_sw_1_c/sw1-C.svg"
+    },
+    "schema": "dynamic_branch_prototype_strategy_projection_v1",
+    "registry_id": "sw_prototype_domain_strategy_v1"
+  }
+}

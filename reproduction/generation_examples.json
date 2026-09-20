@@ -1,0 +1,26 @@
+[
+  {
+    "case_id": "A091",
+    "group": "density",
+    "prototype": "SW1-B",
+    "maximum_coordinate_difference": 0.0,
+    "L1_count": 4,
+    "L2_count": 1
+  },
+  {
+    "case_id": "E11V2_B052",
+    "group": "seed",
+    "prototype": "SW1-C",
+    "maximum_coordinate_difference": 1.1102230246251565e-16,
+    "L1_count": 5,
+    "L2_count": 3
+  },
+  {
+    "case_id": "E10V2_A001",
+    "group": "exact",
+    "prototype": "SW1-A",
+    "maximum_coordinate_difference": 0.0,
+    "L1_count": 3,
+    "L2_count": 1
+  }
+]

@@ -1,0 +1,17 @@
+{
+  "schema": "visual_density_control_profile_v2",
+  "profile_id": "paper_a_e10_density_control_v2",
+  "target_total_l1_count_by_level": {
+    "simple": 5,
+    "medium": 7,
+    "rich": 9
+  },
+  "target_selected_l2_count_by_level": {
+    "simple": 1,
+    "medium": 3,
+    "rich": 5
+  },
+  "l1_target_semantics": "exact total L1 count including frozen flower-support branches; compatible geometry remains selected by the existing structural and soft-resource objective",
+  "l2_target_semantics": "exact selected L2 count under the unchanged complete BranchUnit candidate inventory, conflict graph, and joint objective",
+  "failure_policy": "retain every planned case; do not replace a failed seed or relax a target"
+}

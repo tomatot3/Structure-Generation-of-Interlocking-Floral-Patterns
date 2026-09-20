@@ -1,0 +1,75 @@
+{
+  "schema": "dynamic_backbone_variation_contract_v3",
+  "contract_id": "prototype_domain_extremum_skeleton_backbone_v3",
+  "stage": "5B_RETRY",
+  "scope": {
+    "backbone_geometry_changes": true,
+    "flower_geometry_changes": false,
+    "l1_count_changes": false,
+    "branchunit_complexity_changes": false,
+    "repeat_width_changes": false
+  },
+  "shape_controls": {
+    "amplitude": {
+      "minimum_extremum_shift": 0.04,
+      "maximum_extremum_shift": 0.075,
+      "maximum_shift_as_baseline_amplitude_fraction": 0.22,
+      "support_radius_as_neighbor_fraction": 0.58,
+      "minimum_support_radius": 0.075,
+      "maximum_support_radius": 0.26
+    },
+    "arc_length": {
+      "maximum_horizontal_spacing_warp": 0.04
+    },
+    "curvature_concentration": {
+      "maximum_shoulder_warp": 0.28
+    },
+    "asymmetry": {
+      "maximum_slope_bias": 0.055
+    }
+  },
+  "seed_policy": {
+    "minimum_random_control_magnitude": 0.5,
+    "random_domains": [
+      "amplitude_domain",
+      "arc_length_domain",
+      "curvature_domain",
+      "asymmetry_domain"
+    ]
+  },
+  "projection": {
+    "feasibility_scales": [
+      1.0,
+      0.82,
+      0.67,
+      0.52,
+      0.38,
+      0.25
+    ],
+    "random_retry_allowed": false,
+    "minimum_maximum_corresponding_displacement_per_strength": 0.04,
+    "minimum_rms_corresponding_displacement_per_strength": 0.018
+  },
+  "hard_constraints": {
+    "flower_centers_and_radii_fixed": true,
+    "peak_trough_sequence_fixed": true,
+    "backbone_self_intersection_allowed": false,
+    "vertical_canvas_margin": 0.035,
+    "minimum_adjacent_sample_distance": 0.0005,
+    "sw2_axis_penetration_required": true,
+    "sw3_minimum_long_slope_count": 1,
+    "sw3_remote_root_minimum_arc_distance": 0.3,
+    "sw3_remote_root_maximum_arc_distance": 0.48
+  },
+  "implementation_rule": {
+    "primary_geometry": "move_extremum_skeleton_and_rebuild_c1_smooth_backbone",
+    "descriptors_are_acceptance_drivers": false,
+    "equal_arc_resampling_after_deformation": false,
+    "direct_sample_x_displacement_allowed": false,
+    "per_prototype_coordinate_patch_allowed": false
+  },
+  "review": {
+    "state": "VISUAL_REVIEW_PENDING",
+    "numeric_checks_cannot_approve_visual_quality": true
+  }
+}

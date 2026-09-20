@@ -1,0 +1,188 @@
+{
+  "schema": "dynamic_branch_stage4_unit_grammar_contract_v2",
+  "contract_id": "edit_feedback_sparse_branchunit_grammar_v2",
+  "scope": {
+    "prototype_ids": [
+      "proto_sw_1_1",
+      "proto_sw_1_3",
+      "proto_sw_2_3",
+      "proto_sw_3_1",
+      "proto_sw_3_2"
+    ],
+    "branch_skeleton_only": true,
+    "leaves_present": false,
+    "buds_present": false,
+    "curl_heads_present": false
+  },
+  "required_inputs": {
+    "stage3b_schema": "dynamic_branch_global_l1_flow_plan_v2",
+    "stage3b_review_state": "l1_flow_pending_visual_review",
+    "approved_l1_geometry_is_immutable": true,
+    "edit_feedback_prior_consumed_upstream": true,
+    "editor_l2_placement_prior_consumed": true,
+    "old_stage3_layout_consumed": false,
+    "old_stage4_geometry_consumed": false
+  },
+  "role_policy": {
+    "role_labels_are_weak_compatibility_metadata": true,
+    "role_specific_grammar_required": false,
+    "mandatory_support_wrap_balance_ordinary_partition": false
+  },
+  "grammar": {
+    "L1-Only": {
+      "l2_count": 0,
+      "l3_count_options": [
+        0
+      ]
+    },
+    "Y-C": {
+      "l2_count": 1,
+      "l3_count_options": [
+        0
+      ]
+    },
+    "Y-2C": {
+      "l2_count": 2,
+      "l3_count_options": [
+        0
+      ]
+    }
+  },
+  "candidate_coverage": {
+    "weak_role_grammar_strata": {
+      "L1-Only": [
+        "independent_l1"
+      ],
+      "Y-C": [
+        "compact_c",
+        "balanced_s",
+        "open_c"
+      ],
+      "Y-2C": [
+        "staggered_c",
+        "nested_s",
+        "open_asymmetric"
+      ]
+    },
+    "single_child_turn_sign_variants": [
+      "context_preferred",
+      "context_opposed"
+    ],
+    "paired_child_turn_sign_variants": [
+      "context_preferred",
+      "context_swapped",
+      "editor_same_sign"
+    ],
+    "turn_sign_variants_require_editor_evidence": true,
+    "turn_sign_variants_filtered_by_prototype_editor_evidence": true,
+    "l1_only_candidate_required_for_every_lane": true,
+    "single_child_candidate_required_for_every_lane": true,
+    "paired_child_candidate_required_for_every_lane": true,
+    "best_of_n_selection_in_stage4": false,
+    "global_candidate_selection_in_stage4": false
+  },
+  "sampling": {
+    "method": "seeded_scrambled_halton_quantile_mapping",
+    "generated_once": true,
+    "role_conditioned_empirical_distributions": false,
+    "edit_feedback_conditioned_hierarchy": true,
+    "editor_demonstrated_l2_mount_distribution": true,
+    "editor_demonstrated_l2_turn_sign_coverage": true,
+    "independent_uniform_sampling_allowed": false,
+    "validation_guided_retry_allowed": false,
+    "validation_guided_resample_allowed": false,
+    "automatic_repair_allowed": false,
+    "automatic_deletion_allowed": false,
+    "silent_fallback_allowed": false
+  },
+  "geometry": {
+    "curve_type": "cubic_bezier",
+    "l1_source": "stage3b_v2_immutable_lane",
+    "mount_fraction_range": [
+      0.28,
+      0.76
+    ],
+    "minimum_sibling_mount_separation": 0.14,
+    "entry_opening_degrees_range": [
+      36.0,
+      66.0
+    ],
+    "c_entry_opening_degrees_range": [
+      38.0,
+      54.0
+    ],
+    "s_entry_opening_degrees_range": [
+      36.0,
+      50.0
+    ],
+    "s_internal_turn_degrees_range": [
+      42.0,
+      58.0
+    ],
+    "flower_wrap_c_entry_opening_degrees_range": [
+      38.0,
+      54.0
+    ],
+    "c_internal_turn_degrees_range": [
+      18.0,
+      32.0
+    ],
+    "c_handle_ratio_range": [
+      0.34,
+      0.46
+    ],
+    "minimum_immediate_departure_distance": 0.006,
+    "ordinary_child_parent_length_ratio_range": [
+      0.5,
+      0.86
+    ],
+    "frontier_child_parent_length_ratio_range": [
+      0.5,
+      0.86
+    ],
+    "support_child_parent_length_ratio_range": [
+      0.5,
+      0.86
+    ],
+    "flower_support_child_parent_length_ratio_range": [
+      0.5,
+      0.86
+    ],
+    "terminal_support_child_parent_length_ratio_range": [
+      0.5,
+      0.86
+    ],
+    "tertiary_parent_length_ratio_range": [
+      0.24,
+      0.58
+    ],
+    "occupancy_radius": 0.01
+  },
+  "intrinsic_hard_constraints": [
+    "valid_parent_graph",
+    "finite_cubic_geometry",
+    "exact_parent_attachment",
+    "minimum_child_mount_separation",
+    "minimum_sibling_curve_clearance_from_editor_profile",
+    "immediate_child_departure",
+    "child_clears_parent_occupancy_after_attachment",
+    "no_child_parent_occupancy_reentry",
+    "sibling_centerlines_separated_by_combined_occupancy_radius",
+    "no_unit_self_crossing",
+    "no_non_root_backbone_crossing",
+    "descendants_outside_flower_reserves",
+    "no_periodic_self_crossing"
+  ],
+  "failure_policy": {
+    "invalid_candidates_are_preserved_with_reasons": true,
+    "every_l1_lane_requires_a_feasible_candidate": true,
+    "missing_feasible_lane_is_stage_failure": true
+  },
+  "output": {
+    "schema": "dynamic_branch_stage4_unit_candidate_inventory_v2",
+    "review_state": "unit_candidate_pool_pending_visual_review",
+    "complete_candidate_inventory_required": true,
+    "whole_composition_selection_present": false,
+    "numeric_checks_can_approve_visual_gate": false
+  }
+}

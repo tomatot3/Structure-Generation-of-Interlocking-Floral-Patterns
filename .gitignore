@@ -1,0 +1,26 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db
+/results/
+/outputs/
+*.zip
+*.log
+node_modules/
+web/.runtime/
+web/frontend/dist/
+.sites-runtime/
+
+# Source annotations are retained locally outside the public repository.
+/source_materials/role_annotations/
+
+# Download large collections from GitHub Releases.
+/data/structural_assets/assets/
+/data/paired_renderings/structures/
+/data/paired_renderings/renderings/
+/data/comparison_contexts/

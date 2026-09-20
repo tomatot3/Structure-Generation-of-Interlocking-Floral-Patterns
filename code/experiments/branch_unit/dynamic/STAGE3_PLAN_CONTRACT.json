@@ -1,0 +1,240 @@
+{
+  "schema": "dynamic_branch_stage3_plan_contract_v1",
+  "contract_id": "dynamic_branchunit_directional_layout_stage3_v3",
+  "purpose": "generate one seed-driven branch-unit directional layout per prototype and seed with explicit position distance direction and corridor control but without branch-shape simulation",
+  "task_matrix": {
+    "prototype_ids": [
+      "proto_sw_1_1",
+      "proto_sw_1_3",
+      "proto_sw_2_3",
+      "proto_sw_3_1",
+      "proto_sw_3_2"
+    ],
+    "seeds": [
+      4101,
+      4102,
+      4103
+    ],
+    "raw_candidate_count_per_prototype_seed": 1,
+    "expected_task_count": 15,
+    "all_tasks_must_be_preserved": true
+  },
+  "required_inputs": {
+    "strict_p0": {
+      "schema": "dynamic_branch_strict_p0_v2",
+      "purpose": "repeat-local backbone flowers and protection geometry"
+    },
+    "prototype_analysis": {
+      "schema": "dynamic_branch_prototype_analysis_v1",
+      "purpose": "landmarks blank-space probes and non-selected attachment intervals",
+      "required_review_state": "analysis_approved"
+    },
+    "morphology_profile": {
+      "schema": "dynamic_branch_morphology_profile_v1",
+      "purpose": "family invariants plus five-instance density and rhythm priors",
+      "required_review_state": "morphology_approved"
+    }
+  },
+  "output": {
+    "schema": "dynamic_branch_plan_v3",
+    "coordinate_system": "repeat_local_isotropic",
+    "one_raw_plan_per_task": true,
+    "required_artifacts_per_task": [
+      "stage3_input_snapshot.json",
+      "dynamic_branch_plan.json",
+      "dynamic_branch_plan.svg",
+      "dynamic_branch_plan.png",
+      "plan_review.json"
+    ],
+    "failure_artifact": "planning_failure.json",
+    "curve_geometry_present": false
+  },
+  "structural_primitive": {
+    "name": "BranchUnitPlan",
+    "required_fields": [
+      "branch_unit_id",
+      "parent_ref",
+      "family_id",
+      "structural_role",
+      "root_interval_ref",
+      "root_tangent_intent",
+      "primary_sweep_intent",
+      "directional_layout_intent",
+      "flower_relation_intents",
+      "child_rhythm_envelope",
+      "occupancy_envelope",
+      "reserve_zone_refs",
+      "terminal_intent",
+      "provenance"
+    ],
+    "minimum_complete_unit_requirements": [
+      "mounted_on_real_parent_geometry",
+      "primary_sweep_present_or_family_exempt",
+      "flower_relation_satisfied",
+      "child_rhythm_declared",
+      "reserve_zones_declared",
+      "occupancy_envelope_declared",
+      "terminal_direction_declared"
+    ],
+    "independent_curve_as_primary_primitive_allowed": false
+  },
+  "planning_sequence": [
+    "derive_role_and_density_field_from_approved_morphology",
+    "enumerate_complete_branch_unit_candidates",
+    "derive_immediate_outward_direction_or_sw3_below_flower_route",
+    "apply_directional_corridor_clearance_root_spacing_and_local_direction_constraints_without_curve_compilation",
+    "score_candidate_sets_against_the_role_density_field",
+    "select_one_global_branch_unit_set_for_the_repeat",
+    "emit_one_immutable_raw_symbolic_plan",
+    "render_non_curve_plan_preview",
+    "stop_at_human_visual_review"
+  ],
+  "family_invariants": {
+    "SW-1_valley_filling": [
+      "flower_support_present_per_flower",
+      "valley_space_organized_by_branch_units",
+      "flower_breathing_ring_preserved"
+    ],
+    "SW-2_axis_penetrating": [
+      "continuous_axis_reading_preserved",
+      "primary_sweep_present_per_repeat",
+      "flower_not_converted_to_side_attachment"
+    ],
+    "SW-3_tangent_terminal": [
+      "terminal_flower_stem_present_per_flower",
+      "terminal_flower_stem_originates_remote_from_flower",
+      "terminal_flower_stem_reads_as_a_long_directional_reach",
+      "terminal_flower_route_passes_below_flower",
+      "terminal_flower_contact_is_on_flower_underside",
+      "parent_tangent_is_reference_not_a_preview_segment",
+      "secondary_rhythm_subordinate_to_terminal_direction"
+    ]
+  },
+  "initial_layout_constraints": {
+    "role_density_field_consumed_by_global_selection": true,
+    "one_selected_root_per_density_bin": true,
+    "opposite_side_same_root_exception_allowed": false,
+    "symbolic_intent_polyline_crossing_allowed": false,
+    "symbolic_intent_polyline_clearance_is_hard_constraint": true,
+    "minimum_symbolic_intent_clearance": 0.035,
+    "occupancy_radius_clearance_factor": 0.42,
+    "directional_preview_is_branch_shape_simulation": false,
+    "parent_tangent_departure_segment_in_preview_allowed": false,
+    "immediate_outward_departure_required": true,
+    "minimum_outward_normal_alignment": 0.82,
+    "minimum_parent_clearance_after_initial_departure": 0.03,
+    "parent_clearance_measurement_start_fraction": 0.3,
+    "minimum_periodic_root_spacing_by_density_class": {
+      "dense": 0.065,
+      "sparse": 0.1,
+      "primary_sweep_led": 0.1,
+      "light": 0.1,
+      "moderate": 0.075
+    },
+    "direction_neighborhood_s": 0.15,
+    "maximum_local_direction_difference_degrees_by_density_class": {
+      "dense": 90.0,
+      "sparse": 90.0,
+      "primary_sweep_led": 90.0,
+      "light": 90.0,
+      "moderate": 90.0
+    },
+    "sw3_remote_terminal_support": {
+      "minimum_arc_distance_from_nearest_flower_mount": 0.32,
+      "maximum_arc_distance_from_nearest_flower_mount": 0.48,
+      "preferred_arc_distance": 0.4,
+      "minimum_root_to_flower_boundary_reach": 0.22,
+      "root_must_be_below_flower_center": true,
+      "route_below_flower_required": true,
+      "underside_contact_required": true,
+      "minimum_below_flower_corridor_margin": 0.055,
+      "candidates_per_arc_direction": 16,
+      "near_flower_stub_allowed": false
+    }
+  },
+  "seed_policy": {
+    "may_change": [
+      "optional_branch_unit_selection",
+      "optional_role_count_within_instance_prior",
+      "left_right_choice_within_allowed_space",
+      "long_short_rhythm",
+      "relative_sweep_strength",
+      "terminal_direction_within_family_rule"
+    ],
+    "must_not_change": [
+      "prototype_id",
+      "morphology_family",
+      "required_family_relationships",
+      "flower_count",
+      "backbone_geometry",
+      "repeat_geometry",
+      "protected_regions",
+      "candidate_policy"
+    ]
+  },
+  "candidate_and_failure_policy": {
+    "validation_guided_retry_allowed": false,
+    "validation_guided_resample_allowed": false,
+    "automatic_repair_allowed": false,
+    "automatic_deletion_allowed": false,
+    "planning_failures_must_be_preserved": true,
+    "failed_tasks_count_toward_the_fifteen_task_inventory": true,
+    "global_selection_is_part_of_the_single_forward_plan": true,
+    "global_selection_is_not_validation_guided_retry": true
+  },
+  "prohibited_implementation_shortcuts": [
+    "prototype_id_specific_topology_branching",
+    "copying_legacy_branch_geometry",
+    "greedy_curve_by_curve_blank_filling",
+    "intersection_only_scoring",
+    "near_flower_stub_used_as_sw3_terminal_support",
+    "close_root_clusters_deferred_to_curve_compilation",
+    "large_local_direction_conflicts_deferred_to_curve_compilation",
+    "symbolic_intent_polyline_crossings_deferred_to_curve_compilation",
+    "drawing_parent_tangent_as_an_initial_unit_segment",
+    "directional_intent_that_hugs_the_parent_backbone",
+    "sw3_route_that_contacts_the_flower_side_or_top",
+    "using_stage3_preview_as_branch_shape_simulation",
+    "using_evidence_counts_as_fixed_target_counts",
+    "compiling_bezier_or_spline_geometry_in_stage_3",
+    "adding_leaves_buds_or_curl_heads"
+  ],
+  "review": {
+    "initial_state": "plan_pending_review",
+    "allowed_terminal_states": [
+      "plan_approved_for_curve_compilation",
+      "plan_needs_revision",
+      "plan_rejected",
+      "planning_failed"
+    ],
+    "all_fifteen_tasks_require_terminal_review_state": true,
+    "numeric_checks_cannot_auto_approve_visual_gate": true,
+    "stage_4_requires_at_least_one_approved_plan_per_prototype": true,
+    "criteria": [
+      "five_prototypes_read_as_distinct",
+      "same_family_instances_keep_family_resemblance_and_instance_difference",
+      "flower_branch_relationship_is_structural",
+      "sw3_terminal_support_starts_remote_from_the_flower",
+      "sw3_terminal_support_routes_below_and_contacts_the_underside",
+      "primary_secondary_hierarchy_is_legible",
+      "initial_root_spacing_and_local_direction_field_are_coherent",
+      "symbolic_branchunit_intents_do_not_cross",
+      "ordinary_units_depart_immediately_toward_free_space",
+      "directional_preview_controls_position_distance_and_direction_not_visual_shape",
+      "long_short_left_right_dense_open_rhythm_is_legible",
+      "no_floating_or_uniform_filler_branch_units",
+      "three_seeds_are_same_type_different_form"
+    ]
+  },
+  "stage_boundary": {
+    "candidate_slots_are_symbolic": true,
+    "dynamic_branch_plan_present": true,
+    "directional_layout_only": true,
+    "branch_shape_simulation_present": false,
+    "curve_compilation_present": false,
+    "leaves_present": false,
+    "buds_present": false,
+    "curl_heads_present": false,
+    "editor_integration_present": false
+  }
+}
