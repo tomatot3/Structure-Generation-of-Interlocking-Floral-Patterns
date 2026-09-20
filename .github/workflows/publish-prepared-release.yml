@@ -1,0 +1,86 @@
+name: Publish prepared code and dataset
+on:
+  push:
+    branches: [main]
+    paths: [.github/workflows/publish-prepared-release.yml]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: initial-dataset-release
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      GH_TOKEN: ${{ github.token }}
+      SOURCE_URL: https://scope-juice-professor-emails.trycloudflare.com
+    steps:
+      - name: Import prepared source files
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh auth setup-git
+          gh repo clone "$GITHUB_REPOSITORY" "$RUNNER_TEMP/repo" -- --depth 1
+          cd "$RUNNER_TEMP/repo"
+          python - <<'PY'
+          import subprocess
+          paths=subprocess.check_output(['git','ls-tree','-r','--name-only','HEAD'],text=True).splitlines()
+          if paths != ['.github/workflows/publish-prepared-release.yml']:
+              raise SystemExit('Repository changed since preparation. Refusing to overwrite existing files.')
+          PY
+          curl --fail --location --retry 3 --connect-timeout 20 --max-time 180 "$SOURCE_URL/code.zip" -o "$RUNNER_TEMP/code.zip"
+          python - <<'PY'
+          from pathlib import Path
+          import zipfile,os
+          root=Path.cwd()
+          with zipfile.ZipFile(Path(os.environ['RUNNER_TEMP'])/'code.zip') as z:
+              names=z.namelist()
+              assert len(names)==153
+              for name in names:
+                  p=(root/name).resolve()
+                  assert p.is_relative_to(root) and '.git' not in Path(name).parts
+                  assert not name.startswith(('web/.runtime/','source_materials/role_annotations/'))
+              z.extractall(root)
+          for name in ['README.md','code/generate.py','web/backend/app.py','data/structural_assets/asset_index.json']:
+              assert (root/name).is_file()
+          PY
+          git rm .github/workflows/publish-prepared-release.yml
+          git add .
+          git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m "Add floral pattern generation code, website and dataset documentation"
+          git push origin HEAD:main
+          echo "SOURCE_COMMIT=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
+      - name: Receive prepared data archives
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/release-assets"
+          cd "$RUNNER_TEMP/release-assets"
+          curl --fail --location --retry 2 --connect-timeout 20 --max-time 1800 "$SOURCE_URL/PaperA_Generated_Dataset_1128_Structures_500_Pairs_v1.0.0.zip" -o PaperA_Generated_Dataset_1128_Structures_500_Pairs_v1.0.0.zip
+          curl --fail --location --retry 2 --connect-timeout 20 --max-time 600 "$SOURCE_URL/PaperA_Experiment_Reproduction_Data_v1.0.0.zip" -o PaperA_Experiment_Reproduction_Data_v1.0.0.zip
+          curl --fail --location --retry 2 "$SOURCE_URL/release-notes.md" -o release-notes.md
+          python - <<'PY'
+          from pathlib import Path
+          import zipfile,json
+          p=Path('PaperA_Generated_Dataset_1128_Structures_500_Pairs_v1.0.0.zip')
+          assert p.stat().st_size==995115710
+          with zipfile.ZipFile(p) as z:
+              names=set(z.namelist())
+              assert sum(n.startswith('data/structural_assets/assets/') and n.endswith('/structure.svg') for n in names)==1128
+              assert sum(n.startswith('data/paired_renderings/structures/') and n.endswith('.png') for n in names)==500
+              assert sum(n.startswith('data/paired_renderings/renderings/') and n.endswith('.png') for n in names)==500
+              assert not any(n.startswith('source_materials/') for n in names)
+              pairs=json.loads(z.read('data/paired_renderings/pairs.json'))
+              assert len(pairs)==500
+          assert Path('PaperA_Experiment_Reproduction_Data_v1.0.0.zip').stat().st_size==34480814
+          PY
+      - name: Publish code and both data archives
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP/repo"
+          gh release create v1.0.0 --draft --target "$SOURCE_COMMIT" --title "Code and generated dataset v1.0.0" --notes-file "$RUNNER_TEMP/release-assets/release-notes.md"
+          gh release upload v1.0.0 "$RUNNER_TEMP/release-assets/"*.zip
+          gh release edit v1.0.0 --draft=false
+          gh release view v1.0.0 --json url,assets --jq '{url, assets: [.assets[] | {name,size}]}'
