@@ -3,28 +3,28 @@
     "sample_id": "S01",
     "case_id": "A032",
     "evaluator": "E01",
-    "A1": 5,
-    "A2": 5
-  },
-  {
-    "sample_id": "S01",
-    "case_id": "A032",
-    "evaluator": "E02",
-    "A1": 5,
-    "A2": 5
-  },
-  {
-    "sample_id": "S01",
-    "case_id": "A032",
-    "evaluator": "E03",
     "A1": 4,
     "A2": 5
   },
   {
     "sample_id": "S01",
     "case_id": "A032",
+    "evaluator": "E02",
+    "A1": 4,
+    "A2": 5
+  },
+  {
+    "sample_id": "S01",
+    "case_id": "A032",
+    "evaluator": "E03",
+    "A1": 4,
+    "A2": 5
+  },
+  {
+    "sample_id": "S01",
+    "case_id": "A032",
     "evaluator": "E04",
-    "A1": 5,
+    "A1": 4,
     "A2": 5
   },
   {
@@ -52,19 +52,19 @@
     "sample_id": "S02",
     "case_id": "A033",
     "evaluator": "E03",
-    "A1": 4,
-    "A2": 4
-  },
-  {
-    "sample_id": "S02",
-    "case_id": "A033",
-    "evaluator": "E04",
     "A1": 5,
     "A2": 5
   },
   {
     "sample_id": "S02",
     "case_id": "A033",
+    "evaluator": "E04",
+    "A1": 5,
+    "A2": 5
+  },
+  {
+    "sample_id": "S02",
+    "case_id": "A033",
     "evaluator": "E05",
     "A1": 5,
     "A2": 5
@@ -74,7 +74,7 @@
     "case_id": "A049",
     "evaluator": "E01",
     "A1": 5,
-    "A2": 4
+    "A2": 5
   },
   {
     "sample_id": "S03",
@@ -87,50 +87,50 @@
     "sample_id": "S03",
     "case_id": "A049",
     "evaluator": "E03",
+    "A1": 5,
+    "A2": 5
+  },
+  {
+    "sample_id": "S03",
+    "case_id": "A049",
+    "evaluator": "E04",
+    "A1": 5,
+    "A2": 5
+  },
+  {
+    "sample_id": "S03",
+    "case_id": "A049",
+    "evaluator": "E05",
     "A1": 4,
     "A2": 5
   },
   {
-    "sample_id": "S03",
-    "case_id": "A049",
-    "evaluator": "E04",
-    "A1": 5,
-    "A2": 5
-  },
-  {
-    "sample_id": "S03",
-    "case_id": "A049",
-    "evaluator": "E05",
-    "A1": 5,
-    "A2": 5
-  },
-  {
     "sample_id": "S04",
     "case_id": "A020",
     "evaluator": "E01",
     "A1": 5,
-    "A2": 5
+    "A2": 4
   },
   {
     "sample_id": "S04",
     "case_id": "A020",
     "evaluator": "E02",
     "A1": 5,
-    "A2": 5
+    "A2": 4
   },
   {
     "sample_id": "S04",
     "case_id": "A020",
     "evaluator": "E03",
     "A1": 5,
-    "A2": 5
+    "A2": 4
   },
   {
     "sample_id": "S04",
     "case_id": "A020",
     "evaluator": "E04",
     "A1": 5,
-    "A2": 5
+    "A2": 4
   },
   {
     "sample_id": "S04",
@@ -144,20 +144,20 @@
     "case_id": "A030",
     "evaluator": "E01",
     "A1": 5,
-    "A2": 5
+    "A2": 4
   },
   {
     "sample_id": "S05",
     "case_id": "A030",
     "evaluator": "E02",
     "A1": 5,
-    "A2": 5
+    "A2": 4
   },
   {
     "sample_id": "S05",
     "case_id": "A030",
     "evaluator": "E03",
-    "A1": 4,
+    "A1": 5,
     "A2": 4
   },
   {
@@ -165,42 +165,42 @@
     "case_id": "A030",
     "evaluator": "E04",
     "A1": 5,
-    "A2": 5
+    "A2": 4
   },
   {
     "sample_id": "S05",
     "case_id": "A030",
     "evaluator": "E05",
-    "A1": 5,
-    "A2": 5
-  },
-  {
-    "sample_id": "S06",
-    "case_id": "A064",
-    "evaluator": "E01",
-    "A1": 5,
-    "A2": 4
-  },
-  {
-    "sample_id": "S06",
-    "case_id": "A064",
-    "evaluator": "E02",
-    "A1": 5,
-    "A2": 5
-  },
-  {
-    "sample_id": "S06",
-    "case_id": "A064",
-    "evaluator": "E03",
     "A1": 4,
     "A2": 4
   },
   {
     "sample_id": "S06",
     "case_id": "A064",
+    "evaluator": "E01",
+    "A1": 5,
+    "A2": 5
+  },
+  {
+    "sample_id": "S06",
+    "case_id": "A064",
+    "evaluator": "E02",
+    "A1": 5,
+    "A2": 5
+  },
+  {
+    "sample_id": "S06",
+    "case_id": "A064",
+    "evaluator": "E03",
+    "A1": 5,
+    "A2": 5
+  },
+  {
+    "sample_id": "S06",
+    "case_id": "A064",
     "evaluator": "E04",
     "A1": 5,
-    "A2": 4
+    "A2": 5
   },
   {
     "sample_id": "S06",
@@ -227,8 +227,8 @@
     "sample_id": "S07",
     "case_id": "A053",
     "evaluator": "E03",
-    "A1": 4,
-    "A2": 4
+    "A1": 5,
+    "A2": 5
   },
   {
     "sample_id": "S07",
@@ -262,15 +262,15 @@
     "sample_id": "S08",
     "case_id": "A045",
     "evaluator": "E03",
-    "A1": 4,
-    "A2": 4
+    "A1": 5,
+    "A2": 5
   },
   {
     "sample_id": "S08",
     "case_id": "A045",
     "evaluator": "E04",
     "A1": 5,
-    "A2": 4
+    "A2": 5
   },
   {
     "sample_id": "S08",
@@ -297,7 +297,7 @@
     "sample_id": "S09",
     "case_id": "A007",
     "evaluator": "E03",
-    "A1": 4,
+    "A1": 5,
     "A2": 5
   },
   {
@@ -332,19 +332,19 @@
     "sample_id": "S10",
     "case_id": "A113",
     "evaluator": "E03",
-    "A1": 4,
-    "A2": 5
-  },
-  {
-    "sample_id": "S10",
-    "case_id": "A113",
-    "evaluator": "E04",
     "A1": 5,
     "A2": 5
   },
   {
     "sample_id": "S10",
     "case_id": "A113",
+    "evaluator": "E04",
+    "A1": 5,
+    "A2": 5
+  },
+  {
+    "sample_id": "S10",
+    "case_id": "A113",
     "evaluator": "E05",
     "A1": 5,
     "A2": 5
@@ -367,7 +367,7 @@
     "sample_id": "S11",
     "case_id": "A159",
     "evaluator": "E03",
-    "A1": 4,
+    "A1": 5,
     "A2": 5
   },
   {
@@ -375,7 +375,7 @@
     "case_id": "A159",
     "evaluator": "E04",
     "A1": 5,
-    "A2": 4
+    "A2": 5
   },
   {
     "sample_id": "S11",
@@ -402,8 +402,8 @@
     "sample_id": "S12",
     "case_id": "A103",
     "evaluator": "E03",
-    "A1": 4,
-    "A2": 4
+    "A1": 5,
+    "A2": 5
   },
   {
     "sample_id": "S12",
@@ -424,7 +424,7 @@
     "case_id": "A164",
     "evaluator": "E01",
     "A1": 5,
-    "A2": 4
+    "A2": 5
   },
   {
     "sample_id": "S13",
@@ -437,8 +437,8 @@
     "sample_id": "S13",
     "case_id": "A164",
     "evaluator": "E03",
-    "A1": 4,
-    "A2": 4
+    "A1": 5,
+    "A2": 5
   },
   {
     "sample_id": "S13",
@@ -458,28 +458,28 @@
     "sample_id": "S14",
     "case_id": "A120",
     "evaluator": "E01",
-    "A1": 5,
-    "A2": 5
+    "A1": 4,
+    "A2": 4
   },
   {
     "sample_id": "S14",
     "case_id": "A120",
     "evaluator": "E02",
-    "A1": 5,
-    "A2": 5
+    "A1": 4,
+    "A2": 4
   },
   {
     "sample_id": "S14",
     "case_id": "A120",
     "evaluator": "E03",
-    "A1": 5,
-    "A2": 5
+    "A1": 4,
+    "A2": 4
   },
   {
     "sample_id": "S14",
     "case_id": "A120",
     "evaluator": "E04",
-    "A1": 5,
+    "A1": 4,
     "A2": 5
   },
   {
@@ -487,14 +487,14 @@
     "case_id": "A120",
     "evaluator": "E05",
     "A1": 4,
-    "A2": 5
+    "A2": 4
   },
   {
     "sample_id": "S15",
     "case_id": "A145",
     "evaluator": "E01",
     "A1": 5,
-    "A2": 4
+    "A2": 5
   },
   {
     "sample_id": "S15",
@@ -507,7 +507,7 @@
     "sample_id": "S15",
     "case_id": "A145",
     "evaluator": "E03",
-    "A1": 4,
+    "A1": 5,
     "A2": 4
   },
   {
@@ -535,7 +535,7 @@
     "sample_id": "S16",
     "case_id": "A152",
     "evaluator": "E02",
-    "A1": 5,
+    "A1": 4,
     "A2": 5
   },
   {
@@ -543,7 +543,7 @@
     "case_id": "A152",
     "evaluator": "E03",
     "A1": 5,
-    "A2": 5
+    "A2": 4
   },
   {
     "sample_id": "S16",
@@ -563,14 +563,14 @@
     "sample_id": "S17",
     "case_id": "A180",
     "evaluator": "E01",
-    "A1": 5,
+    "A1": 4,
     "A2": 5
   },
   {
     "sample_id": "S17",
     "case_id": "A180",
     "evaluator": "E02",
-    "A1": 5,
+    "A1": 4,
     "A2": 5
   },
   {
@@ -578,35 +578,35 @@
     "case_id": "A180",
     "evaluator": "E03",
     "A1": 4,
-    "A2": 4
-  },
-  {
-    "sample_id": "S17",
-    "case_id": "A180",
-    "evaluator": "E04",
-    "A1": 5,
     "A2": 5
   },
   {
     "sample_id": "S17",
     "case_id": "A180",
+    "evaluator": "E04",
+    "A1": 4,
+    "A2": 5
+  },
+  {
+    "sample_id": "S17",
+    "case_id": "A180",
     "evaluator": "E05",
-    "A1": 5,
+    "A1": 4,
     "A2": 5
   },
   {
     "sample_id": "S18",
     "case_id": "A124",
     "evaluator": "E01",
-    "A1": 5,
-    "A2": 5
+    "A1": 4,
+    "A2": 4
   },
   {
     "sample_id": "S18",
     "case_id": "A124",
     "evaluator": "E02",
-    "A1": 5,
-    "A2": 5
+    "A1": 4,
+    "A2": 4
   },
   {
     "sample_id": "S18",
@@ -619,29 +619,29 @@
     "sample_id": "S18",
     "case_id": "A124",
     "evaluator": "E04",
-    "A1": 5,
-    "A2": 5
+    "A1": 4,
+    "A2": 4
   },
   {
     "sample_id": "S18",
     "case_id": "A124",
     "evaluator": "E05",
     "A1": 4,
-    "A2": 5
+    "A2": 4
   },
   {
     "sample_id": "S19",
     "case_id": "A212",
     "evaluator": "E01",
-    "A1": 5,
+    "A1": 4,
     "A2": 5
   },
   {
     "sample_id": "S19",
     "case_id": "A212",
     "evaluator": "E02",
-    "A1": 4,
-    "A2": 4
+    "A1": 5,
+    "A2": 5
   },
   {
     "sample_id": "S19",
@@ -654,14 +654,14 @@
     "sample_id": "S19",
     "case_id": "A212",
     "evaluator": "E04",
-    "A1": 5,
-    "A2": 4
+    "A1": 4,
+    "A2": 5
   },
   {
     "sample_id": "S19",
     "case_id": "A212",
     "evaluator": "E05",
-    "A1": 5,
+    "A1": 4,
     "A2": 5
   },
   {
@@ -669,28 +669,28 @@
     "case_id": "A240",
     "evaluator": "E01",
     "A1": 5,
-    "A2": 4
+    "A2": 5
   },
   {
     "sample_id": "S20",
     "case_id": "A240",
     "evaluator": "E02",
-    "A1": 4,
-    "A2": 4
+    "A1": 5,
+    "A2": 5
   },
   {
     "sample_id": "S20",
     "case_id": "A240",
     "evaluator": "E03",
-    "A1": 5,
-    "A2": 4
+    "A1": 4,
+    "A2": 5
   },
   {
     "sample_id": "S20",
     "case_id": "A240",
     "evaluator": "E04",
     "A1": 5,
-    "A2": 4
+    "A2": 5
   },
   {
     "sample_id": "S20",
@@ -703,7 +703,7 @@
     "sample_id": "S21",
     "case_id": "A238",
     "evaluator": "E01",
-    "A1": 5,
+    "A1": 4,
     "A2": 4
   },
   {
@@ -718,42 +718,42 @@
     "case_id": "A238",
     "evaluator": "E03",
     "A1": 4,
-    "A2": 5
+    "A2": 4
   },
   {
     "sample_id": "S21",
     "case_id": "A238",
     "evaluator": "E04",
-    "A1": 5,
-    "A2": 5
+    "A1": 4,
+    "A2": 4
   },
   {
     "sample_id": "S21",
     "case_id": "A238",
     "evaluator": "E05",
-    "A1": 5,
+    "A1": 4,
     "A2": 4
   },
   {
     "sample_id": "S22",
     "case_id": "A218",
     "evaluator": "E01",
-    "A1": 4,
-    "A2": 4
+    "A1": 5,
+    "A2": 5
   },
   {
     "sample_id": "S22",
     "case_id": "A218",
     "evaluator": "E02",
-    "A1": 4,
-    "A2": 4
+    "A1": 5,
+    "A2": 5
   },
   {
     "sample_id": "S22",
     "case_id": "A218",
     "evaluator": "E03",
-    "A1": 4,
-    "A2": 5
+    "A1": 5,
+    "A2": 4
   },
   {
     "sample_id": "S22",
@@ -766,14 +766,14 @@
     "sample_id": "S22",
     "case_id": "A218",
     "evaluator": "E05",
-    "A1": 4,
+    "A1": 5,
     "A2": 4
   },
   {
     "sample_id": "S23",
     "case_id": "A237",
     "evaluator": "E01",
-    "A1": 5,
+    "A1": 4,
     "A2": 4
   },
   {
@@ -794,7 +794,7 @@
     "sample_id": "S23",
     "case_id": "A237",
     "evaluator": "E04",
-    "A1": 5,
+    "A1": 4,
     "A2": 4
   },
   {
@@ -808,71 +808,71 @@
     "sample_id": "S24",
     "case_id": "A190",
     "evaluator": "E01",
-    "A1": 5,
-    "A2": 4
-  },
-  {
-    "sample_id": "S24",
-    "case_id": "A190",
-    "evaluator": "E02",
-    "A1": 4,
-    "A2": 4
-  },
-  {
-    "sample_id": "S24",
-    "case_id": "A190",
-    "evaluator": "E03",
     "A1": 4,
     "A2": 5
   },
   {
     "sample_id": "S24",
     "case_id": "A190",
-    "evaluator": "E04",
-    "A1": 5,
+    "evaluator": "E02",
+    "A1": 4,
+    "A2": 5
+  },
+  {
+    "sample_id": "S24",
+    "case_id": "A190",
+    "evaluator": "E03",
+    "A1": 4,
     "A2": 4
+  },
+  {
+    "sample_id": "S24",
+    "case_id": "A190",
+    "evaluator": "E04",
+    "A1": 4,
+    "A2": 5
   },
   {
     "sample_id": "S24",
     "case_id": "A190",
     "evaluator": "E05",
     "A1": 4,
-    "A2": 4
+    "A2": 5
   },
   {
     "sample_id": "S25",
     "case_id": "A188",
     "evaluator": "E01",
-    "A1": 5,
-    "A2": 4
-  },
-  {
-    "sample_id": "S25",
-    "case_id": "A188",
-    "evaluator": "E02",
     "A1": 4,
     "A2": 4
   },
   {
     "sample_id": "S25",
     "case_id": "A188",
-    "evaluator": "E03",
+    "evaluator": "E02",
     "A1": 5,
-    "A2": 5
+    "A2": 4
+  },
+  {
+    "sample_id": "S25",
+    "case_id": "A188",
+    "evaluator": "E03",
+    "A1": 4,
+    "A2": 4
   },
   {
     "sample_id": "S25",
     "case_id": "A188",
     "evaluator": "E04",
     "A1": 5,
-    "A2": 5
+    "A2": 4
   },
   {
     "sample_id": "S25",
     "case_id": "A188",
     "evaluator": "E05",
-    "A1": 5,
-    "A2": 5
+    "A1": 4,
+    "A2": 4
   },
   {
     "sample_id": "S26",
@@ -899,7 +899,7 @@
     "sample_id": "S26",
     "case_id": "A243",
     "evaluator": "E04",
-    "A1": 5,
+    "A1": 4,
     "A2": 4
   },
   {
@@ -907,13 +907,13 @@
     "case_id": "A243",
     "evaluator": "E05",
     "A1": 4,
-    "A2": 5
+    "A2": 4
   },
   {
     "sample_id": "S27",
     "case_id": "A196",
     "evaluator": "E01",
-    "A1": 5,
+    "A1": 4,
     "A2": 4
   },
   {
@@ -921,84 +921,84 @@
     "case_id": "A196",
     "evaluator": "E02",
     "A1": 4,
-    "A2": 4
+    "A2": 5
   },
   {
     "sample_id": "S27",
     "case_id": "A196",
     "evaluator": "E03",
     "A1": 4,
-    "A2": 5
+    "A2": 4
   },
   {
     "sample_id": "S27",
     "case_id": "A196",
     "evaluator": "E04",
-    "A1": 5,
+    "A1": 4,
     "A2": 4
   },
   {
     "sample_id": "S27",
     "case_id": "A196",
     "evaluator": "E05",
-    "A1": 5,
+    "A1": 4,
     "A2": 4
   },
   {
     "sample_id": "S28",
     "case_id": "A311",
     "evaluator": "E01",
-    "A1": 5,
-    "A2": 5
+    "A1": 4,
+    "A2": 4
   },
   {
     "sample_id": "S28",
     "case_id": "A311",
     "evaluator": "E02",
-    "A1": 5,
-    "A2": 5
+    "A1": 4,
+    "A2": 4
   },
   {
     "sample_id": "S28",
     "case_id": "A311",
     "evaluator": "E03",
-    "A1": 5,
-    "A2": 5
+    "A1": 4,
+    "A2": 4
   },
   {
     "sample_id": "S28",
     "case_id": "A311",
     "evaluator": "E04",
-    "A1": 5,
-    "A2": 5
+    "A1": 4,
+    "A2": 4
   },
   {
     "sample_id": "S28",
     "case_id": "A311",
     "evaluator": "E05",
-    "A1": 5,
-    "A2": 5
+    "A1": 4,
+    "A2": 4
   },
   {
     "sample_id": "S29",
     "case_id": "A339",
     "evaluator": "E01",
     "A1": 5,
-    "A2": 4
+    "A2": 5
   },
   {
     "sample_id": "S29",
     "case_id": "A339",
     "evaluator": "E02",
-    "A1": 4,
-    "A2": 4
+    "A1": 5,
+    "A2": 5
   },
   {
     "sample_id": "S29",
     "case_id": "A339",
     "evaluator": "E03",
-    "A1": 4,
-    "A2": 4
+    "A1": 5,
+    "A2": 5
   },
   {
     "sample_id": "S29",
@@ -1040,7 +1040,7 @@
     "case_id": "A292",
     "evaluator": "E04",
     "A1": 5,
-    "A2": 4
+    "A2": 5
   },
   {
     "sample_id": "S30",
@@ -1053,36 +1053,36 @@
     "sample_id": "S31",
     "case_id": "A344",
     "evaluator": "E01",
-    "A1": 5,
+    "A1": 4,
     "A2": 4
   },
   {
     "sample_id": "S31",
     "case_id": "A344",
     "evaluator": "E02",
-    "A1": 5,
-    "A2": 5
+    "A1": 4,
+    "A2": 4
   },
   {
     "sample_id": "S31",
     "case_id": "A344",
     "evaluator": "E03",
     "A1": 4,
-    "A2": 5
+    "A2": 4
   },
   {
     "sample_id": "S31",
     "case_id": "A344",
     "evaluator": "E04",
-    "A1": 5,
-    "A2": 5
+    "A1": 4,
+    "A2": 4
   },
   {
     "sample_id": "S31",
     "case_id": "A344",
     "evaluator": "E05",
     "A1": 4,
-    "A2": 5
+    "A2": 4
   },
   {
     "sample_id": "S32",
@@ -1103,7 +1103,7 @@
     "case_id": "A309",
     "evaluator": "E03",
     "A1": 4,
-    "A2": 4
+    "A2": 5
   },
   {
     "sample_id": "S32",
@@ -1131,48 +1131,48 @@
     "case_id": "A271",
     "evaluator": "E02",
     "A1": 5,
-    "A2": 5
+    "A2": 4
   },
   {
     "sample_id": "S33",
     "case_id": "A271",
     "evaluator": "E03",
     "A1": 5,
-    "A2": 5
+    "A2": 4
   },
   {
     "sample_id": "S33",
     "case_id": "A271",
     "evaluator": "E04",
     "A1": 5,
-    "A2": 5
+    "A2": 4
   },
   {
     "sample_id": "S33",
     "case_id": "A271",
     "evaluator": "E05",
     "A1": 5,
-    "A2": 5
+    "A2": 4
   },
   {
     "sample_id": "S34",
     "case_id": "A287",
     "evaluator": "E01",
     "A1": 5,
-    "A2": 4
+    "A2": 5
   },
   {
     "sample_id": "S34",
     "case_id": "A287",
     "evaluator": "E02",
     "A1": 5,
-    "A2": 5
+    "A2": 4
   },
   {
     "sample_id": "S34",
     "case_id": "A287",
     "evaluator": "E03",
-    "A1": 4,
+    "A1": 5,
     "A2": 5
   },
   {
@@ -1193,56 +1193,56 @@
     "sample_id": "S35",
     "case_id": "A288",
     "evaluator": "E01",
-    "A1": 5,
-    "A2": 4
-  },
-  {
-    "sample_id": "S35",
-    "case_id": "A288",
-    "evaluator": "E02",
-    "A1": 5,
-    "A2": 5
-  },
-  {
-    "sample_id": "S35",
-    "case_id": "A288",
-    "evaluator": "E03",
     "A1": 4,
     "A2": 4
   },
   {
     "sample_id": "S35",
     "case_id": "A288",
-    "evaluator": "E04",
+    "evaluator": "E02",
     "A1": 5,
     "A2": 4
   },
   {
     "sample_id": "S35",
     "case_id": "A288",
+    "evaluator": "E03",
+    "A1": 4,
+    "A2": 4
+  },
+  {
+    "sample_id": "S35",
+    "case_id": "A288",
+    "evaluator": "E04",
+    "A1": 4,
+    "A2": 4
+  },
+  {
+    "sample_id": "S35",
+    "case_id": "A288",
     "evaluator": "E05",
-    "A1": 5,
-    "A2": 5
+    "A1": 4,
+    "A2": 4
   },
   {
     "sample_id": "S36",
     "case_id": "A304",
     "evaluator": "E01",
     "A1": 5,
-    "A2": 5
+    "A2": 4
   },
   {
     "sample_id": "S36",
     "case_id": "A304",
     "evaluator": "E02",
-    "A1": 4,
+    "A1": 5,
     "A2": 5
   },
   {
     "sample_id": "S36",
     "case_id": "A304",
     "evaluator": "E03",
-    "A1": 4,
+    "A1": 5,
     "A2": 4
   },
   {
@@ -1256,36 +1256,36 @@
     "sample_id": "S36",
     "case_id": "A304",
     "evaluator": "E05",
-    "A1": 4,
-    "A2": 5
+    "A1": 5,
+    "A2": 4
   },
   {
     "sample_id": "S37",
     "case_id": "A410",
     "evaluator": "E01",
-    "A1": 5,
-    "A2": 5
+    "A1": 4,
+    "A2": 4
   },
   {
     "sample_id": "S37",
     "case_id": "A410",
     "evaluator": "E02",
-    "A1": 5,
-    "A2": 5
+    "A1": 4,
+    "A2": 4
   },
   {
     "sample_id": "S37",
     "case_id": "A410",
     "evaluator": "E03",
-    "A1": 5,
-    "A2": 5
+    "A1": 4,
+    "A2": 4
   },
   {
     "sample_id": "S37",
     "case_id": "A410",
     "evaluator": "E04",
-    "A1": 5,
-    "A2": 5
+    "A1": 4,
+    "A2": 4
   },
   {
     "sample_id": "S37",
@@ -1298,15 +1298,15 @@
     "sample_id": "S38",
     "case_id": "A402",
     "evaluator": "E01",
-    "A1": 5,
-    "A2": 5
+    "A1": 4,
+    "A2": 4
   },
   {
     "sample_id": "S38",
     "case_id": "A402",
     "evaluator": "E02",
-    "A1": 5,
-    "A2": 5
+    "A1": 4,
+    "A2": 4
   },
   {
     "sample_id": "S38",
@@ -1319,29 +1319,29 @@
     "sample_id": "S38",
     "case_id": "A402",
     "evaluator": "E04",
-    "A1": 5,
-    "A2": 5
+    "A1": 4,
+    "A2": 4
   },
   {
     "sample_id": "S38",
     "case_id": "A402",
     "evaluator": "E05",
-    "A1": 5,
+    "A1": 4,
     "A2": 4
   },
   {
     "sample_id": "S39",
     "case_id": "A409",
     "evaluator": "E01",
-    "A1": 5,
-    "A2": 5
+    "A1": 4,
+    "A2": 4
   },
   {
     "sample_id": "S39",
     "case_id": "A409",
     "evaluator": "E02",
-    "A1": 5,
-    "A2": 5
+    "A1": 4,
+    "A2": 4
   },
   {
     "sample_id": "S39",
@@ -1354,63 +1354,63 @@
     "sample_id": "S39",
     "case_id": "A409",
     "evaluator": "E04",
-    "A1": 5,
+    "A1": 4,
     "A2": 5
   },
   {
     "sample_id": "S39",
     "case_id": "A409",
     "evaluator": "E05",
-    "A1": 5,
-    "A2": 5
+    "A1": 4,
+    "A2": 4
   },
   {
     "sample_id": "S40",
     "case_id": "A389",
     "evaluator": "E01",
-    "A1": 5,
+    "A1": 4,
     "A2": 5
   },
   {
     "sample_id": "S40",
     "case_id": "A389",
     "evaluator": "E02",
-    "A1": 5,
+    "A1": 4,
     "A2": 5
   },
   {
     "sample_id": "S40",
     "case_id": "A389",
     "evaluator": "E03",
-    "A1": 5,
+    "A1": 4,
     "A2": 5
   },
   {
     "sample_id": "S40",
     "case_id": "A389",
     "evaluator": "E04",
-    "A1": 5,
+    "A1": 4,
     "A2": 5
   },
   {
     "sample_id": "S40",
     "case_id": "A389",
     "evaluator": "E05",
-    "A1": 5,
+    "A1": 4,
     "A2": 5
   },
   {
     "sample_id": "S41",
     "case_id": "A372",
     "evaluator": "E01",
-    "A1": 5,
-    "A2": 5
+    "A1": 4,
+    "A2": 4
   },
   {
     "sample_id": "S41",
     "case_id": "A372",
     "evaluator": "E02",
-    "A1": 5,
+    "A1": 4,
     "A2": 4
   },
   {
@@ -1424,8 +1424,8 @@
     "sample_id": "S41",
     "case_id": "A372",
     "evaluator": "E04",
-    "A1": 5,
-    "A2": 5
+    "A1": 4,
+    "A2": 4
   },
   {
     "sample_id": "S41",
@@ -1438,15 +1438,15 @@
     "sample_id": "S42",
     "case_id": "A406",
     "evaluator": "E01",
-    "A1": 5,
-    "A2": 5
+    "A1": 4,
+    "A2": 4
   },
   {
     "sample_id": "S42",
     "case_id": "A406",
     "evaluator": "E02",
-    "A1": 5,
-    "A2": 5
+    "A1": 4,
+    "A2": 4
   },
   {
     "sample_id": "S42",
@@ -1459,7 +1459,7 @@
     "sample_id": "S42",
     "case_id": "A406",
     "evaluator": "E04",
-    "A1": 5,
+    "A1": 4,
     "A2": 5
   },
   {
@@ -1473,15 +1473,15 @@
     "sample_id": "S43",
     "case_id": "A440",
     "evaluator": "E01",
-    "A1": 5,
-    "A2": 5
+    "A1": 4,
+    "A2": 4
   },
   {
     "sample_id": "S43",
     "case_id": "A440",
     "evaluator": "E02",
-    "A1": 5,
-    "A2": 5
+    "A1": 4,
+    "A2": 4
   },
   {
     "sample_id": "S43",
@@ -1494,78 +1494,78 @@
     "sample_id": "S43",
     "case_id": "A440",
     "evaluator": "E04",
-    "A1": 5,
+    "A1": 4,
     "A2": 5
   },
   {
     "sample_id": "S43",
     "case_id": "A440",
     "evaluator": "E05",
-    "A1": 3,
+    "A1": 4,
     "A2": 4
   },
   {
     "sample_id": "S44",
     "case_id": "A414",
     "evaluator": "E01",
-    "A1": 5,
-    "A2": 5
+    "A1": 4,
+    "A2": 4
   },
   {
     "sample_id": "S44",
     "case_id": "A414",
     "evaluator": "E02",
-    "A1": 5,
-    "A2": 5
+    "A1": 4,
+    "A2": 4
   },
   {
     "sample_id": "S44",
     "case_id": "A414",
     "evaluator": "E03",
     "A1": 4,
-    "A2": 5
+    "A2": 4
   },
   {
     "sample_id": "S44",
     "case_id": "A414",
     "evaluator": "E04",
-    "A1": 5,
-    "A2": 5
+    "A1": 4,
+    "A2": 4
   },
   {
     "sample_id": "S44",
     "case_id": "A414",
     "evaluator": "E05",
-    "A1": 5,
-    "A2": 5
+    "A1": 4,
+    "A2": 4
   },
   {
     "sample_id": "S45",
     "case_id": "A412",
     "evaluator": "E01",
-    "A1": 5,
-    "A2": 5
+    "A1": 4,
+    "A2": 4
   },
   {
     "sample_id": "S45",
     "case_id": "A412",
     "evaluator": "E02",
-    "A1": 5,
-    "A2": 5
+    "A1": 4,
+    "A2": 4
   },
   {
     "sample_id": "S45",
     "case_id": "A412",
     "evaluator": "E03",
     "A1": 5,
-    "A2": 5
+    "A2": 4
   },
   {
     "sample_id": "S45",
     "case_id": "A412",
     "evaluator": "E04",
     "A1": 5,
-    "A2": 5
+    "A2": 4
   },
   {
     "sample_id": "S45",
@@ -1578,8 +1578,8 @@
     "sample_id": "S46",
     "case_id": "A500",
     "evaluator": "E01",
-    "A1": 4,
-    "A2": 5
+    "A1": 5,
+    "A2": 4
   },
   {
     "sample_id": "S46",
@@ -1592,7 +1592,7 @@
     "sample_id": "S46",
     "case_id": "A500",
     "evaluator": "E03",
-    "A1": 4,
+    "A1": 5,
     "A2": 4
   },
   {
@@ -1600,14 +1600,14 @@
     "case_id": "A500",
     "evaluator": "E04",
     "A1": 5,
-    "A2": 5
+    "A2": 4
   },
   {
     "sample_id": "S46",
     "case_id": "A500",
     "evaluator": "E05",
     "A1": 5,
-    "A2": 5
+    "A2": 4
   },
   {
     "sample_id": "S47",
@@ -1656,7 +1656,7 @@
     "case_id": "A463",
     "evaluator": "E02",
     "A1": 5,
-    "A2": 5
+    "A2": 4
   },
   {
     "sample_id": "S48",
@@ -1677,20 +1677,20 @@
     "case_id": "A463",
     "evaluator": "E05",
     "A1": 5,
-    "A2": 4
+    "A2": 5
   },
   {
     "sample_id": "S49",
     "case_id": "A479",
     "evaluator": "E01",
-    "A1": 5,
+    "A1": 4,
     "A2": 5
   },
   {
     "sample_id": "S49",
     "case_id": "A479",
     "evaluator": "E02",
-    "A1": 5,
+    "A1": 4,
     "A2": 5
   },
   {
@@ -1698,28 +1698,28 @@
     "case_id": "A479",
     "evaluator": "E03",
     "A1": 4,
-    "A2": 4
+    "A2": 5
   },
   {
     "sample_id": "S49",
     "case_id": "A479",
     "evaluator": "E04",
-    "A1": 5,
+    "A1": 4,
     "A2": 5
   },
   {
     "sample_id": "S49",
     "case_id": "A479",
     "evaluator": "E05",
-    "A1": 5,
+    "A1": 4,
     "A2": 5
   },
   {
     "sample_id": "S50",
     "case_id": "A471",
     "evaluator": "E01",
-    "A1": 4,
-    "A2": 4
+    "A1": 5,
+    "A2": 5
   },
   {
     "sample_id": "S50",
@@ -1733,7 +1733,7 @@
     "case_id": "A471",
     "evaluator": "E03",
     "A1": 5,
-    "A2": 4
+    "A2": 5
   },
   {
     "sample_id": "S50",
@@ -1760,29 +1760,29 @@
     "sample_id": "S51",
     "case_id": "A478",
     "evaluator": "E02",
-    "A1": 4,
-    "A2": 4
+    "A1": 5,
+    "A2": 5
   },
   {
     "sample_id": "S51",
     "case_id": "A478",
     "evaluator": "E03",
-    "A1": 4,
-    "A2": 4
+    "A1": 5,
+    "A2": 5
   },
   {
     "sample_id": "S51",
     "case_id": "A478",
     "evaluator": "E04",
-    "A1": 4,
-    "A2": 4
+    "A1": 5,
+    "A2": 5
   },
   {
     "sample_id": "S51",
     "case_id": "A478",
     "evaluator": "E05",
-    "A1": 4,
-    "A2": 4
+    "A1": 5,
+    "A2": 5
   },
   {
     "sample_id": "S52",
@@ -1795,8 +1795,8 @@
     "sample_id": "S52",
     "case_id": "A494",
     "evaluator": "E02",
-    "A1": 5,
-    "A2": 5
+    "A1": 4,
+    "A2": 4
   },
   {
     "sample_id": "S52",
@@ -1809,7 +1809,7 @@
     "sample_id": "S52",
     "case_id": "A494",
     "evaluator": "E04",
-    "A1": 5,
+    "A1": 4,
     "A2": 4
   },
   {
@@ -1817,7 +1817,7 @@
     "case_id": "A494",
     "evaluator": "E05",
     "A1": 4,
-    "A2": 5
+    "A2": 4
   },
   {
     "sample_id": "S53",
@@ -1830,21 +1830,21 @@
     "sample_id": "S53",
     "case_id": "A495",
     "evaluator": "E02",
-    "A1": 4,
-    "A2": 5
+    "A1": 5,
+    "A2": 4
   },
   {
     "sample_id": "S53",
     "case_id": "A495",
     "evaluator": "E03",
     "A1": 5,
-    "A2": 5
+    "A2": 4
   },
   {
     "sample_id": "S53",
     "case_id": "A495",
     "evaluator": "E04",
-    "A1": 4,
+    "A1": 5,
     "A2": 4
   },
   {
@@ -1852,7 +1852,7 @@
     "case_id": "A495",
     "evaluator": "E05",
     "A1": 5,
-    "A2": 5
+    "A2": 4
   },
   {
     "sample_id": "S54",
@@ -1873,7 +1873,7 @@
     "case_id": "A457",
     "evaluator": "E03",
     "A1": 4,
-    "A2": 5
+    "A2": 4
   },
   {
     "sample_id": "S54",
@@ -1886,7 +1886,7 @@
     "sample_id": "S54",
     "case_id": "A457",
     "evaluator": "E05",
-    "A1": 5,
-    "A2": 5
+    "A1": 4,
+    "A2": 4
   }
 ]

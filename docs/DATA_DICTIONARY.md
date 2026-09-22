@@ -55,7 +55,7 @@ Table 3 uses `U` and `U / number of ordinary parents`. This coverage is distinct
 
 `evaluation/default` contains the corrected soft-density records and 180 matched triplets. `D` is the selected resource score, `target` its requested value and `residual = D − target`. The triplet files retain ties and decreases in each measured quantity. `evaluation/exact` and `evaluation/seed` contain the prescribed-count and seed-control experiments. The prescribed total L1 count includes flower-support paths; ordinary L1 is recorded separately.
 
-`evaluation/human_and_cases` contains D1–D6 and its original data description. A1 is hierarchical organization; A2 is continuous composition and rhythm; B1 is appearance quality; C1 is structural preservation. Scores range from 1 to 5. Four E04 comments confirmed as copied text remain flagged in D2; their numeric ratings are unchanged.
+`evaluation/human_and_cases` contains D1–D8 and the analysis scripts. A1 is hierarchical organization; A2 is continuous composition and rhythm; B1 is appearance quality; C1 is structural preservation. Scores range from 1 to 5. D2 is empty because no optional comments were submitted. D7 reports ordinal agreement and item-bootstrap intervals; D8 contains Stage II weight-sensitivity settings and results.
 
 ## Prototype inputs and parameters
 

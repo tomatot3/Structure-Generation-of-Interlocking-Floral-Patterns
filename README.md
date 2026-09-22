@@ -9,7 +9,7 @@ Source code, parameters, small indexes and evaluation records are tracked in thi
 | Download | Contents |
 | --- | --- |
 | `PaperA_Generated_Dataset_1128_Structures_500_Pairs_v1.0.0.zip` | 1,128 structural assets and 500 structure–rendering pairs, with indexes and an offline preview |
-| `PaperA_Experiment_Reproduction_Data_v1.0.0.zip` | 108 comparison contexts with candidate inventories and archived method results |
+| `PaperA_Experiment_Reproduction_Data_v1.0.0.zip` | 108 comparison contexts, archived comparisons, human ratings and weight-sensitivity results |
 
 Download the first archive to browse the collection or run the website. Download the second to recompute the result summaries and rerun the selector comparisons. Extract the archives directly into the repository root, merging their `data/` folders with the existing folder. The 118 source-annotation SVGs and their embedded source images are excluded from both archives and this repository.
 
@@ -76,6 +76,8 @@ Pairs have the same filename in `structures/` and `renderings/`, for example `sw
 Coordinates are normalized by repeat width. Geometry, roles and parent attachments are stored separately in `structure.json`. SVG files retain object identifiers and role attributes. See [the data dictionary](docs/DATA_DICTIONARY.md) for the schema and coordinate conventions.
 
 The 500 new pairs form a reusable asset collection. The human rendering evaluation used a separate set of 30 images and five evaluators. Its 150 individual rating records are retained in D3. The 54-structure evaluation has 270 records in D1.
+
+Reproduce ordinal agreement with `python data/evaluation/human_and_cases/analyze_rating_agreement.py`. D7 contains the estimates and image-level summaries. The settings, results and scripts for the Stage II weight-sensitivity analysis are in `data/evaluation/human_and_cases/D8_weight_sensitivity/`.
 
 ## Reproduction and release
 
