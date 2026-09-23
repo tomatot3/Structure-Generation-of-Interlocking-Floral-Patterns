@@ -1,25 +1,18 @@
 # Structure Generation of Interlocking Floral Patterns
 
-This package records compositional relationships in the studied floral scrolls and provides editable structures for analysis, redesign and appearance generation. It contains the six procedural prototypes, generated geometry, paired images, evaluation observations and the code used for the two-stage selection method.
+This repository records compositional relationships in the studied floral scrolls and provides the six procedural prototypes, source annotations, evaluation observations and code used for the two-stage selection method. Full generated geometry and paired images are retained in the local research archive.
 
-## Download the data
+## Data and code
 
-Source code, parameters, small indexes and evaluation records are tracked in this repository. Large files are distributed as two assets in [Releases](https://github.com/tomatot3/Structure-Generation-of-Interlocking-Floral-Patterns/releases):
-
-| Download | Contents |
-| --- | --- |
-| `PaperA_Generated_Dataset_1128_Structures_500_Pairs_v1.0.0.zip` | 1,128 structural assets and 500 structure–rendering pairs, with indexes and an offline preview |
-| `PaperA_Experiment_Reproduction_Data_v1.0.0.zip` | 108 comparison contexts, archived comparisons, human ratings and weight-sensitivity results |
-
-Download the first archive to browse the collection or run the website. Download the second to recompute the result summaries and rerun the selector comparisons. Extract the archives directly into the repository root, merging their `data/` folders with the existing folder. The 118 source-annotation SVGs are included in `source_materials/role_annotations/` with their embedded source images removed. They can be downloaded directly from the repository.
+Source code, parameters, evaluation records and 118 source-annotation SVGs without embedded source images are tracked in this repository. The complete collection of 1,128 generated structures and 500 structure–rendering pairs, together with the 108-context comparison archive, is retained in the project’s local research archive. The source annotations can be downloaded from `source_materials/role_annotations/`; geometry-prior sensitivity data are in `data/evaluation/human_and_cases/D10_geometry_prior_sensitivity/`.
 
 ## Contents
 
 | Directory | Contents |
 | --- | --- |
-| `data/structural_assets/` | 1,128 distinct structures in semantic SVG, geometric JSON and PNG; 1,140 case records with seeds and controls |
-| `data/paired_renderings/` | 500 structure–rendering pairs with matching filenames, case links and the submitted prompt |
-| `data/comparison_contexts/` | 108 fixed parent layouts, complete candidate inventories and conflict graphs |
+| `data/structural_assets/` (local archive) | 1,128 distinct structures in semantic SVG, geometric JSON and PNG; 1,140 case records with seeds and controls |
+| `data/paired_renderings/` (local archive) | 500 structure–rendering pairs with matching filenames, case links and the submitted prompt |
+| `data/comparison_contexts/` (local archive) | 108 fixed parent layouts, complete candidate inventories and conflict graphs |
 | `data/evaluation/` | Stage I and II results, density and seed experiments, robustness results and individual ratings |
 | `data/parameters/` | Archived numerical priors and selection settings |
 | `data/manual_corrections/` | 25 before/after comparison images of manual corrections, with an offline preview |
@@ -28,7 +21,7 @@ Download the first archive to browse the collection or run the website. Download
 | `reproduction/` | Recomputed paper results and a concise record of package checks |
 | `docs/` | Data dictionary, rendering protocol and release notes |
 
-Open **[preview.html](preview.html)** to browse the 500 pairs in a horizontal layout. The page works offline.
+The 500-pair offline preview is retained with the local image archive.
 
 The interactive website is implemented in **[web/](web/README.md)**. It includes new structure generation, linked role highlighting, fixed-floral-configuration comparisons, the paired collection and downloads. Start it locally using the instructions there. A Cloudflare Quick Tunnel is available for temporary testing; see [the deployment notes](web/CLOUDFLARE.md).
 
@@ -43,12 +36,10 @@ python -m venv .venv
 python -m pip install -r code/requirements.txt
 python code/generate.py --prototype SW1-C --seed 20260920 --density medium --output results/new_structure
 python code/summarize_results.py --output results/main_results.json
-python code/export_svg.py --asset A001 --output results/A001.svg
-python code/generate.py --case A091 --compare-archive --output results/generated_A091
-python code/compare_selectors.py --case C019 --output results/C019_selectors
 ```
 
 Generation and comparison commands create new output directories. Choose a new directory for a repeat run. All inputs are resolved relative to the package, so the scripts can also be called from another working directory.
+Archived-case export and selector comparisons require the comparison and structural-asset folders retained in the local research archive.
 
 New generation accepts six prototype labels, a production seed, a main-vine variant and a density level. Use repeated `--seed` arguments for a batch. Add `--control exact` for the prescribed-count profile. Each successful run saves geometric JSON, a semantic SVG and an unlabelled conditioning SVG. For a conditioning PNG, install Inkscape and add `--inkscape inkscape` or its executable path.
 
@@ -76,7 +67,7 @@ Pairs have the same filename in `structures/` and `renderings/`, for example `sw
 
 Coordinates are normalized by repeat width. Geometry, roles and parent attachments are stored separately in `structure.json`. SVG files retain object identifiers and role attributes. See [the data dictionary](docs/DATA_DICTIONARY.md) for the schema and coordinate conventions.
 
-The 500 new pairs form a reusable asset collection. The human rendering evaluation used a separate set of 30 images and five evaluators. Its 150 individual rating records are retained in D3. The 54-structure evaluation has 270 records in D1.
+The 500 new pairs form a reusable asset collection retained locally. The human rendering evaluation used a separate set of 30 images and five evaluators. Its 150 individual rating records are retained in D3. The 54-structure evaluation has 270 records in D1.
 
 Reproduce ordinal agreement with `python data/evaluation/human_and_cases/analyze_rating_agreement.py`. D7 contains the estimates and image-level summaries. The settings, results and scripts for the Stage II weight-sensitivity analysis are in `data/evaluation/human_and_cases/D8_weight_sensitivity/`.
 
