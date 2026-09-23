@@ -1,13 +1,5 @@
-# Package reproduction checks
+# Numerical result summary
 
-Checked on 20 September 2026 with the files inside this package.
+`main_results.json` records the main numerical outcomes used by the manuscript, including formal human-rating means. The code and parameter files needed to generate new structures are public. Individual human ratings, fixed comparison inventories and per-case outcomes are retained in the local experiment archive.
 
-- All 500 pair IDs are unique. Their conditioning PNG pixels match the linked structural assets, and all 500 rendering PNGs decode successfully.
-- All 108 shared contexts and 336 Stage II requests were rerun across four selectors: 1,344 objective-component records matched the archive within 1e-10.
-- The Stage I HardConstraintGreedy control was rerun for C019. Its count, root coverage and crossing result matched the archive.
-- Three generation examples cover default density (A091), prescribed counts (E10V2_A001), and fixed-control seed variation with the authored SW1-C input (E11V2_B052). Their geometry and parent relationships match the archived assets within 1e-12 of repeat width. The largest observed coordinate difference was 1.11e-16.
-- Main comparison statistics and rating means were recomputed from the packaged records. See `main_results.json`.
-
-These checks use coordinates, parent relationships, candidate selections and recorded observations. The original full generation batches are archived; they were not all rerun during packaging. Image readability and pairing checks do not assign new aesthetic ratings.
-
-The new-seed command was also run with SW1-C, production seed 20260920, expanded main vine and medium soft density. It produced six ordinary parents and one child, passed the recorded geometric checks, and exported semantic JSON, SVG and a 2048-pixel conditioning PNG. See `new_seed_run.json`.
+The original complete package was checked with Python 3.12.14, NumPy 2.3.5 and Pillow 12.3.0 on Windows. Selector comparisons used 108 fixed contexts and 336 Stage II requests. The raw inputs and checks are not part of this summary-only public repository.

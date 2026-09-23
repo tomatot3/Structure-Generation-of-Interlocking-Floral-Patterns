@@ -1,19 +1,19 @@
 # Structure Generation of Interlocking Floral Patterns
 
-This repository records compositional relationships in the studied floral scrolls and provides the six procedural prototypes, source annotations, evaluation observations and code used for the two-stage selection method. Full generated geometry and paired images are retained in the local research archive.
+This repository records compositional relationships in the studied floral scrolls and provides the six procedural prototypes, source annotations and code used for the two-stage selection method. The generated structure and rendering collection is available as a Git LFS archive.
 
 ## Data and code
 
-Source code, parameters, evaluation records and 118 source-annotation SVGs without embedded source images are tracked in this repository. The complete collection of 1,128 generated structures and 500 structure–rendering pairs, together with the 108-context comparison archive, is retained in the project’s local research archive. The source annotations can be downloaded from `source_materials/role_annotations/`; geometry-prior sensitivity data are in `data/evaluation/human_and_cases/D10_geometry_prior_sensitivity/`.
+Download [`PaperA_Generated_Dataset_1128_Structures_500_Pairs.zip`](archives/PaperA_Generated_Dataset_1128_Structures_500_Pairs.zip) for 1,128 generated structures, 500 structure–rendering pairs and an offline preview. Git LFS is required when cloning the archive. Source code, parameters, summary results and 118 source-annotation SVGs without embedded source images are also available here. Individual ratings and detailed experimental records remain in the local research archive.
 
 ## Contents
 
 | Directory | Contents |
 | --- | --- |
-| `data/structural_assets/` (local archive) | 1,128 distinct structures in semantic SVG, geometric JSON and PNG; 1,140 case records with seeds and controls |
-| `data/paired_renderings/` (local archive) | 500 structure–rendering pairs with matching filenames, case links and the submitted prompt |
+| `data/structural_assets/` (dataset ZIP) | 1,128 distinct structures in semantic SVG, geometric JSON and PNG; 1,140 case records with seeds and controls |
+| `data/paired_renderings/` (dataset ZIP) | 500 structure–rendering pairs with matching filenames, case links and the submitted prompt |
 | `data/comparison_contexts/` (local archive) | 108 fixed parent layouts, complete candidate inventories and conflict graphs |
-| `data/evaluation/` | Stage I and II results, density and seed experiments, robustness results and individual ratings |
+| `data/evaluation/` | Published summaries, settings and analysis scripts |
 | `data/parameters/` | Archived numerical priors and selection settings |
 | `data/manual_corrections/` | 25 before/after comparison images of manual corrections, with an offline preview |
 | `code/` | New-seed generation, archived-case reproduction, asset export, evaluation and comparison entry points |
@@ -21,7 +21,7 @@ Source code, parameters, evaluation records and 118 source-annotation SVGs witho
 | `reproduction/` | Recomputed paper results and a concise record of package checks |
 | `docs/` | Data dictionary, rendering protocol and release notes |
 
-The 500-pair offline preview is retained with the local image archive.
+Extract the dataset ZIP into the repository root to use the 500-pair offline preview.
 
 The interactive website is implemented in **[web/](web/README.md)**. It includes new structure generation, linked role highlighting, fixed-floral-configuration comparisons, the paired collection and downloads. Start it locally using the instructions there. A Cloudflare Quick Tunnel is available for temporary testing; see [the deployment notes](web/CLOUDFLARE.md).
 
@@ -35,7 +35,6 @@ python -m venv .venv
 # macOS/Linux: source .venv/bin/activate
 python -m pip install -r code/requirements.txt
 python code/generate.py --prototype SW1-C --seed 20260920 --density medium --output results/new_structure
-python code/summarize_results.py --output results/main_results.json
 ```
 
 Generation and comparison commands create new output directories. Choose a new directory for a repeat run. All inputs are resolved relative to the package, so the scripts can also be called from another working directory.
@@ -67,16 +66,16 @@ Pairs have the same filename in `structures/` and `renderings/`, for example `sw
 
 Coordinates are normalized by repeat width. Geometry, roles and parent attachments are stored separately in `structure.json`. SVG files retain object identifiers and role attributes. See [the data dictionary](docs/DATA_DICTIONARY.md) for the schema and coordinate conventions.
 
-The 500 new pairs form a reusable asset collection retained locally. The human rendering evaluation used a separate set of 30 images and five evaluators. Its 150 individual rating records are retained in D3. The 54-structure evaluation has 270 records in D1.
+The 500 pairs form a reusable public asset collection. The separate 30-image rendering evaluation and 54-structure evaluation are reported as manuscript summaries; their individual rating records are retained locally.
 
-Reproduce ordinal agreement with `python data/evaluation/human_and_cases/analyze_rating_agreement.py`. D7 contains the estimates and image-level summaries. The settings, results and scripts for the Stage II weight-sensitivity analysis are in `data/evaluation/human_and_cases/D8_weight_sensitivity/`.
+The repository retains the ordinal-agreement analysis script and summary statistics. Settings, summaries and scripts for Stage II weight sensitivity and geometry-prior sensitivity are in `data/evaluation/human_and_cases/`.
 
 ## Reproduction and release
 
-The package was checked with Python 3.12.14, NumPy 2.3.5 and Pillow 12.3.0 on Windows. The packaged selectors reproduce all 1,344 archived method–request results. The main statistical results can be recomputed with `summarize_results.py`; its output is included in `reproduction/main_results.json`.
+The original package was checked with Python 3.12.14, NumPy 2.3.5 and Pillow 12.3.0 on Windows. The main statistical summaries are in `reproduction/main_results.json`; detailed comparison inventories are retained locally.
 
 Appearance images were produced with the built-in image generation service. The package includes the actual submitted prompt, structure inputs, outputs and generation dates. The service did not return a model ID or random seed. Structural generation and numerical comparisons run locally; new appearance generation requires access to an image service. See [the rendering protocol](docs/RENDERING_PROTOCOL.md).
 
 Author/citation metadata and the license will be supplied separately. The 118 source-annotation SVGs are included without embedded source images in `source_materials/role_annotations/`. Their existing bibliographic and source metadata are retained in `source_materials/index.json`; figure-level sources are listed in `docs/SOURCE_INDEX.md`.
 
-The directory is arranged for a GitHub repository. `.gitignore` excludes large downloaded asset folders, environments, caches, local run outputs and ZIP archives. `.gitattributes` keeps text line endings consistent and treats PNGs as binary files. See [GitHub upload instructions](docs/GITHUB.md).
+The dataset ZIP is tracked with Git LFS. `.gitignore` excludes extracted asset folders, other ZIP archives, environments, caches and local run outputs. See [the data layout](docs/GITHUB.md).

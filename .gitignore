@@ -10,6 +10,7 @@ Thumbs.db
 /results/
 /outputs/
 *.zip
+!archives/*.zip
 *.log
 node_modules/
 web/.runtime/
@@ -18,7 +19,7 @@ web/frontend/dist/
 
 # Image-free source annotations are public; original source images stay local.
 
-# Download large collections from GitHub Releases.
+# The public dataset ZIP is tracked with Git LFS; extracted folders stay local.
 /data/structural_assets/assets/
 /data/paired_renderings/structures/
 /data/paired_renderings/renderings/

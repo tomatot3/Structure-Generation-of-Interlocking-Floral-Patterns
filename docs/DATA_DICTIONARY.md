@@ -2,7 +2,7 @@
 
 ## Structural assets
 
-`data/structural_assets/asset_index.json` has one record per distinct structure. `case_records.json` has one record per generation run. Their principal fields are:
+The public dataset ZIP contains `data/structural_assets/asset_index.json`, with one record per distinct structure. `case_records.json` has one record per generation run. Their principal fields are:
 
 | Field | Meaning |
 | --- | --- |
@@ -30,7 +30,7 @@ Distances use repeat width W = 1. The central repeat has shift zero; the SVG dis
 
 ## Paired images
 
-`data/paired_renderings/pairs.csv` and `pairs.json` contain the same 500 records. Image and prompt paths are relative to `data/paired_renderings`.
+Inside the public dataset ZIP, `data/paired_renderings/pairs.csv` and `pairs.json` contain the same 500 records. Image and prompt paths are relative to `data/paired_renderings`.
 
 | Field | Meaning |
 | --- | --- |
@@ -43,11 +43,11 @@ Distances use repeat width W = 1. The central repeat has shift zero; the SVG dis
 | `attempt` | Archived attempt used for the delivered image |
 | `started_at`, `finished_at` | Recorded generation times, including timezone |
 
-These records contain no new human ratings. D3 describes the separate 30-image rendering evaluation.
+These records contain no human ratings. The separate 30-image rendering evaluation is summarized in the manuscript; individual ratings are retained locally.
 
 ## Evaluation files
 
-`evaluation/matrix_c/evaluated_results.csv` retains the original method names. `Ours` identifies the Global L1 Layout result in the Stage I comparison. `controls/l1/results.csv` contains HardConstraintGreedy. `root_coverage_qcov` is the root-position coverage measure used in Table 2; Stage I means use the 106 contexts completed by all three compared methods.
+The detailed evaluation tables described below are retained in the local experiment archive. The public repository contains summary results, settings and analysis scripts. `root_coverage_qcov` is the root-position coverage measure used in Table 2; Stage I means use the 106 contexts completed by all three compared methods.
 
 `evaluation/matched/objective_components.csv` has 1,344 rows: 336 requests × four methods. `target` is the requested L2 count; `attained` records whether it was reached. `score` is the common combination objective, `quality` its local-quality sum, `B` the child count, `U` the number of parents with children, and `total`/`peak` the total/maximum co-travel penalties. Objective differences are computed within the same context and requested count. For the confidence interval, request differences are first reduced to a median per context; the median across contexts is bootstrapped 2,000 times with seed 20260825.
 
@@ -55,13 +55,13 @@ Table 3 uses `U` and `U / number of ordinary parents`. This coverage is distinct
 
 `evaluation/default` contains the corrected soft-density records and 180 matched triplets. `D` is the selected resource score, `target` its requested value and `residual = D − target`. The triplet files retain ties and decreases in each measured quantity. `evaluation/exact` and `evaluation/seed` contain the prescribed-count and seed-control experiments. The prescribed total L1 count includes flower-support paths; ordinary L1 is recorded separately.
 
-`evaluation/human_and_cases` contains D1–D8 and the analysis scripts. A1 is hierarchical organization; A2 is continuous composition and rhythm; B1 is appearance quality; C1 is structural preservation. Scores range from 1 to 5. D2 is empty because no optional comments were submitted. D7 reports ordinal agreement and item-bootstrap intervals; D8 contains Stage II weight-sensitivity settings and results.
+`evaluation/human_and_cases` publicly contains D8 and D10 summaries, settings and scripts. The individual D1–D7 records are retained locally. A1 is hierarchical organization; A2 is continuous composition and rhythm; B1 is appearance quality; C1 is structural preservation. Scores range from 1 to 5.
 
 ## Prototype inputs and parameters
 
 `code/inputs/prototype_inputs.json` contains the six materialized prototype inputs consumed by generation. The priors and contracts alongside it preserve the numerical settings. The two-stage algorithm and geometric predicates are in `code/experiments/branch_unit/dynamic`. Package changes are limited to input loading and file/font paths; `code/portability_changes.json` records them.
 
-`data/parameters` preserves the archived parameter files. The original prior files retain their 14-case collection metadata. The manuscript's 25-case calibration count includes the additional cases reported by the author with unchanged final parameters; their individual correction records were not supplied on this machine.
+`data/parameters` preserves the numerical prior and selection settings used by the generator.
 
 ## Source annotations
 
