@@ -1,0 +1,40 @@
+{
+  "cases": 54,
+  "paired_inputs": 18,
+  "workers": 4,
+  "prototype_ids": {
+    "SW1-A": "proto_sw_1_1",
+    "SW1-B": "proto_sw_1_3",
+    "SW1-C": "proto_sw_1_c",
+    "SW2-A": "proto_sw_2_3",
+    "SW3-A": "proto_sw_3_1",
+    "SW3-B": "proto_sw_3_2"
+  },
+  "seeds": [
+    20260923,
+    20260924,
+    20260925
+  ],
+  "scales": [
+    1.0,
+    0.8,
+    1.2
+  ],
+  "main_vine_variant": "expanded",
+  "density": "medium",
+  "code_repository": "https://github.com/tomatot3/Structure-Generation-of-Interlocking-Floral-Patterns",
+  "code_commit": "c5fd1985f1605761d8c01436f943b2f4e7962642",
+  "prior_source": "existing released prior, not reestimated from the supplementary correction sessions",
+  "pilot_policy": "pilot confirms consumption; all 54 cases measured in this run under the same execution mode",
+  "failure_policy": "keep every planned input; no replacement seeds or amplitude adjustment",
+  "mechanical_checks": [
+    "internal_unit_crossing_count",
+    "cross_unit_crossing_count",
+    "ordinary_backbone_nonroot_crossing_count",
+    "ordinary_support_crossing_count",
+    "periodic_crossing_count",
+    "clearance_violation_count",
+    "flower_region_intrusion_curve_count",
+    "periodic_seam_violation_count"
+  ]
+}

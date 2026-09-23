@@ -20,3 +20,7 @@ A1 measures hierarchical organization; A2 measures continuous composition and rh
 D2 is an empty list because no optional structure comments were submitted.
 
 Agreement estimates use ordinal Krippendorff alpha and 5,000 complete-image bootstrap resamples, retaining all five evaluators (seed 20260922). Reproduce D7 by running `python analyze_rating_agreement.py` in this directory; Python and NumPy are required. Image-level scores and within-image score ranges are retained for inspection. The script does not modify D1 or D3.
+
+## D10 Geometry-prior width sensitivity
+
+`D10_geometry_prior_sensitivity/` contains the 54 generated outputs, paired results, prior settings and scripts used in Supplementary Information S9.

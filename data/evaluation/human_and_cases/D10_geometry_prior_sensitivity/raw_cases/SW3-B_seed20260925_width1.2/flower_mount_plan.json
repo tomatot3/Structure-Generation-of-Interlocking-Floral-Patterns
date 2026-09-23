@@ -1,0 +1,935 @@
+{
+  "expected_mount_count": 2,
+  "flower_binding": "remote_tangent_extension_to_flower_underside",
+  "flower_mount_mechanism": "remote_tangent_underside",
+  "mechanical_checks": {
+    "axis_flower_integration": [],
+    "backbone_proper_crossing_count": 0,
+    "expected_mount_count": 2,
+    "flower_count": 2,
+    "flower_reserve_precontact_intrusion_count": 0,
+    "maximum_contact_ellipse_error": 0.0,
+    "mount_count": 2,
+    "periodic_mount_proper_crossing_count": 0
+  },
+  "morphology_family": "SW-3_tangent_terminal",
+  "mount_policy": {
+    "best_of_n_visual_ranking_used": false,
+    "mounts_frozen_before_ordinary_l1": true,
+    "nearest_backbone_short_stub_used": false,
+    "ordinary_l1_present_during_mount_selection": false,
+    "prototype_family_and_flower_position_control_root": true,
+    "sw1_distinct_flower_growth_roots": true,
+    "sw1_minimum_flower_root_s_gap": 0.06,
+    "sw1_root_source": "detected_trough_and_flower_conditioned_valley_flank",
+    "sw2_support_curve_policy": "none_axis_integration",
+    "sw3_root_source": "remote_long_slope_or_tangent_corridor"
+  },
+  "mounts": [
+    {
+      "centerline": [
+        [
+          -0.051319355,
+          0.954654536
+        ],
+        [
+          -0.041117571,
+          0.950665329
+        ],
+        [
+          -0.031673866,
+          0.945753172
+        ],
+        [
+          -0.022956571,
+          0.939964778
+        ],
+        [
+          -0.01493402,
+          0.93334686
+        ],
+        [
+          -0.007574545,
+          0.925946132
+        ],
+        [
+          -0.000846477,
+          0.917809306
+        ],
+        [
+          0.00528185,
+          0.908983096
+        ],
+        [
+          0.010842104,
+          0.899514215
+        ],
+        [
+          0.015865954,
+          0.889449377
+        ],
+        [
+          0.020385066,
+          0.878835294
+        ],
+        [
+          0.024431108,
+          0.867718681
+        ],
+        [
+          0.028035748,
+          0.85614625
+        ],
+        [
+          0.031230653,
+          0.844164714
+        ],
+        [
+          0.034047491,
+          0.831820786
+        ],
+        [
+          0.03651793,
+          0.819161181
+        ],
+        [
+          0.038673637,
+          0.806232611
+        ],
+        [
+          0.040546281,
+          0.79308179
+        ],
+        [
+          0.042167527,
+          0.77975543
+        ],
+        [
+          0.043569046,
+          0.766300245
+        ],
+        [
+          0.044782502,
+          0.752762948
+        ],
+        [
+          0.045839566,
+          0.739190253
+        ],
+        [
+          0.046771903,
+          0.725628873
+        ],
+        [
+          0.047611182,
+          0.71212552
+        ],
+        [
+          0.048389071,
+          0.698726909
+        ],
+        [
+          0.049137236,
+          0.685479752
+        ],
+        [
+          0.049887346,
+          0.672430763
+        ],
+        [
+          0.050671069,
+          0.659626655
+        ],
+        [
+          0.051520071,
+          0.647114141
+        ],
+        [
+          0.052466021,
+          0.634939935
+        ],
+        [
+          0.053540586,
+          0.623150749
+        ],
+        [
+          0.054775433,
+          0.611793298
+        ],
+        [
+          0.056202231,
+          0.600914294
+        ],
+        [
+          0.057852647,
+          0.59056045
+        ],
+        [
+          0.059758349,
+          0.58077848
+        ],
+        [
+          0.061951004,
+          0.571615097
+        ],
+        [
+          0.06446228,
+          0.563117014
+        ],
+        [
+          0.067323845,
+          0.555330944
+        ],
+        [
+          0.070567365,
+          0.548303602
+        ],
+        [
+          0.07422451,
+          0.542081699
+        ],
+        [
+          0.078326946,
+          0.53671195
+        ],
+        [
+          0.080102655,
+          0.534746344
+        ],
+        [
+          0.0819538,
+          0.532795092
+        ],
+        [
+          0.083874126,
+          0.530857186
+        ],
+        [
+          0.085857378,
+          0.528931621
+        ],
+        [
+          0.087897303,
+          0.527017387
+        ],
+        [
+          0.089987645,
+          0.52511348
+        ],
+        [
+          0.092122151,
+          0.523218892
+        ],
+        [
+          0.094294566,
+          0.521332615
+        ],
+        [
+          0.096498636,
+          0.519453643
+        ],
+        [
+          0.098728107,
+          0.517580969
+        ],
+        [
+          0.100976723,
+          0.515713587
+        ],
+        [
+          0.103238231,
+          0.513850488
+        ],
+        [
+          0.105506376,
+          0.511990666
+        ],
+        [
+          0.107774905,
+          0.510133114
+        ],
+        [
+          0.110037562,
+          0.508276826
+        ],
+        [
+          0.112288093,
+          0.506420793
+        ],
+        [
+          0.114520243,
+          0.50456401
+        ],
+        [
+          0.11672776,
+          0.502705469
+        ],
+        [
+          0.118904387,
+          0.500844163
+        ],
+        [
+          0.121043871,
+          0.498979086
+        ],
+        [
+          0.123139957,
+          0.49710923
+        ],
+        [
+          0.125186392,
+          0.495233588
+        ],
+        [
+          0.127176919,
+          0.493351154
+        ],
+        [
+          0.129105286,
+          0.49146092
+        ],
+        [
+          0.130965238,
+          0.48956188
+        ],
+        [
+          0.132750521,
+          0.487653026
+        ],
+        [
+          0.134454879,
+          0.485733352
+        ],
+        [
+          0.13607206,
+          0.483801851
+        ],
+        [
+          0.137595807,
+          0.481857515
+        ],
+        [
+          0.139019868,
+          0.479899338
+        ],
+        [
+          0.140337987,
+          0.477926312
+        ],
+        [
+          0.141543911,
+          0.475937432
+        ],
+        [
+          0.142631384,
+          0.473931689
+        ],
+        [
+          0.143594153,
+          0.471908077
+        ],
+        [
+          0.144425963,
+          0.469865589
+        ],
+        [
+          0.14512056,
+          0.467803218
+        ],
+        [
+          0.145671689,
+          0.465719956
+        ],
+        [
+          0.146073096,
+          0.463614798
+        ],
+        [
+          0.146318527,
+          0.461486736
+        ],
+        [
+          0.146401727,
+          0.459334763
+        ]
+      ],
+      "contact_normal": [
+        0.0,
+        -1.0
+      ],
+      "contact_point": [
+        0.146401727,
+        0.459334763
+      ],
+      "cubic_segments": [
+        {
+          "p0": [
+            -0.051319355,
+            0.954654536
+          ],
+          "p1": [
+            0.089899031,
+            0.907825729
+          ],
+          "p2": [
+            0.020518445,
+            0.602419971
+          ],
+          "p3": [
+            0.078326946,
+            0.53671195
+          ]
+        },
+        {
+          "p0": [
+            0.078326946,
+            0.53671195
+          ],
+          "p1": [
+            0.101472371,
+            0.510403706
+          ],
+          "p2": [
+            0.146401727,
+            0.488191619
+          ],
+          "p3": [
+            0.146401727,
+            0.459334763
+          ]
+        }
+      ],
+      "flower_center_periodic": [
+        0.146401727,
+        0.272858201
+      ],
+      "flower_id": "flower_1",
+      "flower_rx": 0.173660156,
+      "flower_ry": 0.186476562,
+      "geometry": {
+        "curve_length": 0.563388626,
+        "minimum_precontact_ellipse_value": 1.023213765,
+        "root_to_contact_chord": 0.533324764
+      },
+      "morphology_family": "SW-3_tangent_terminal",
+      "mount_id": "proto_sw_3_2__flower_1__flower_support",
+      "root": [
+        -0.051319355,
+        0.954654536
+      ],
+      "root_s": 0.95,
+      "root_tangent": [
+        0.949174126,
+        -0.314751454
+      ],
+      "route": {
+        "arc_distance": 0.4,
+        "contact_side": "underside",
+        "feasible_candidate_rank": 1,
+        "near_flower_stub_allowed": false,
+        "nearest_flower_s": 0.35,
+        "origin_kind": "remote_tangent_extension",
+        "under_flower_waypoint": [
+          0.078326946,
+          0.53671195
+        ]
+      },
+      "semantic_role": "flower_support_stem",
+      "source_relation": "remote_long_slope_tangent_corridor_to_flower_underside"
+    },
+    {
+      "centerline": [
+        [
+          0.888646687,
+          0.964496915
+        ],
+        [
+          0.881547635,
+          0.964259973
+        ],
+        [
+          0.875208887,
+          0.963109846
+        ],
+        [
+          0.869596415,
+          0.961089967
+        ],
+        [
+          0.864676187,
+          0.958243771
+        ],
+        [
+          0.860414173,
+          0.954614691
+        ],
+        [
+          0.856776341,
+          0.950246162
+        ],
+        [
+          0.853728663,
+          0.945181618
+        ],
+        [
+          0.851237106,
+          0.939464493
+        ],
+        [
+          0.849267641,
+          0.933138221
+        ],
+        [
+          0.847786237,
+          0.926246235
+        ],
+        [
+          0.846758863,
+          0.91883197
+        ],
+        [
+          0.846151489,
+          0.91093886
+        ],
+        [
+          0.845930084,
+          0.902610339
+        ],
+        [
+          0.846060618,
+          0.893889841
+        ],
+        [
+          0.84650906,
+          0.8848208
+        ],
+        [
+          0.84724138,
+          0.875446649
+        ],
+        [
+          0.848223547,
+          0.865810824
+        ],
+        [
+          0.849421531,
+          0.855956758
+        ],
+        [
+          0.8508013,
+          0.845927885
+        ],
+        [
+          0.852328825,
+          0.835767639
+        ],
+        [
+          0.853970075,
+          0.825519455
+        ],
+        [
+          0.85569102,
+          0.815226765
+        ],
+        [
+          0.857457628,
+          0.804933005
+        ],
+        [
+          0.859235869,
+          0.794681608
+        ],
+        [
+          0.860991713,
+          0.784516008
+        ],
+        [
+          0.86269113,
+          0.774479639
+        ],
+        [
+          0.864300087,
+          0.764615936
+        ],
+        [
+          0.865784556,
+          0.754968332
+        ],
+        [
+          0.867110506,
+          0.745580262
+        ],
+        [
+          0.868243905,
+          0.736495159
+        ],
+        [
+          0.869150724,
+          0.727756458
+        ],
+        [
+          0.869796932,
+          0.719407592
+        ],
+        [
+          0.870148498,
+          0.711491995
+        ],
+        [
+          0.870171392,
+          0.704053102
+        ],
+        [
+          0.869831583,
+          0.697134347
+        ],
+        [
+          0.86909504,
+          0.690779163
+        ],
+        [
+          0.867927734,
+          0.685030985
+        ],
+        [
+          0.866295634,
+          0.679933247
+        ],
+        [
+          0.864164708,
+          0.675529382
+        ],
+        [
+          0.861500927,
+          0.671862825
+        ],
+        [
+          0.859665664,
+          0.669868237
+        ],
+        [
+          0.857752435,
+          0.667889033
+        ],
+        [
+          0.855767706,
+          0.665924124
+        ],
+        [
+          0.853717939,
+          0.663972423
+        ],
+        [
+          0.851609599,
+          0.662032842
+        ],
+        [
+          0.849449151,
+          0.660104291
+        ],
+        [
+          0.847243058,
+          0.658185684
+        ],
+        [
+          0.844997784,
+          0.656275931
+        ],
+        [
+          0.842719794,
+          0.654373946
+        ],
+        [
+          0.840415552,
+          0.652478639
+        ],
+        [
+          0.838091521,
+          0.650588922
+        ],
+        [
+          0.835754166,
+          0.648703708
+        ],
+        [
+          0.833409952,
+          0.646821908
+        ],
+        [
+          0.831065342,
+          0.644942434
+        ],
+        [
+          0.8287268,
+          0.643064198
+        ],
+        [
+          0.826400791,
+          0.641186112
+        ],
+        [
+          0.824093778,
+          0.639307088
+        ],
+        [
+          0.821812226,
+          0.637426037
+        ],
+        [
+          0.819562599,
+          0.635541872
+        ],
+        [
+          0.817351361,
+          0.633653503
+        ],
+        [
+          0.815184976,
+          0.631759844
+        ],
+        [
+          0.813069908,
+          0.629859806
+        ],
+        [
+          0.811012622,
+          0.627952301
+        ],
+        [
+          0.809019581,
+          0.62603624
+        ],
+        [
+          0.80709725,
+          0.624110536
+        ],
+        [
+          0.805252093,
+          0.6221741
+        ],
+        [
+          0.803490573,
+          0.620225845
+        ],
+        [
+          0.801819156,
+          0.618264682
+        ],
+        [
+          0.800244305,
+          0.616289522
+        ],
+        [
+          0.798772484,
+          0.614299279
+        ],
+        [
+          0.797410158,
+          0.612292863
+        ],
+        [
+          0.79616379,
+          0.610269187
+        ],
+        [
+          0.795039845,
+          0.608227162
+        ],
+        [
+          0.794044787,
+          0.606165701
+        ],
+        [
+          0.793185079,
+          0.604083714
+        ],
+        [
+          0.792467187,
+          0.601980115
+        ],
+        [
+          0.791897574,
+          0.599853815
+        ],
+        [
+          0.791482705,
+          0.597703725
+        ],
+        [
+          0.791229043,
+          0.595528758
+        ],
+        [
+          0.791143052,
+          0.593327825
+        ]
+      ],
+      "contact_normal": [
+        0.0,
+        -1.0
+      ],
+      "contact_point": [
+        0.791143052,
+        0.593327825
+      ],
+      "cubic_segments": [
+        {
+          "p0": [
+            0.888646687,
+            0.964496915
+          ],
+          "p1": [
+            0.788772705,
+            0.967618632
+          ],
+          "p2": [
+            0.900721625,
+            0.715641826
+          ],
+          "p3": [
+            0.861500927,
+            0.671862825
+          ]
+        },
+        {
+          "p0": [
+            0.861500927,
+            0.671862825
+          ],
+          "p1": [
+            0.83757925,
+            0.645160925
+          ],
+          "p2": [
+            0.791143052,
+            0.622851534
+          ],
+          "p3": [
+            0.791143052,
+            0.593327825
+          ]
+        }
+      ],
+      "flower_center_periodic": [
+        0.791143052,
+        0.397202825
+      ],
+      "flower_id": "flower_2",
+      "flower_rx": 0.179484375,
+      "flower_ry": 0.196125,
+      "geometry": {
+        "curve_length": 0.428300656,
+        "minimum_precontact_ellipse_value": 1.022570348,
+        "root_to_contact_chord": 0.383762234
+      },
+      "morphology_family": "SW-3_tangent_terminal",
+      "mount_id": "proto_sw_3_2__flower_2__flower_support",
+      "root": [
+        0.888646687,
+        0.964496915
+      ],
+      "root_s": 0.9,
+      "root_tangent": [
+        -0.999511872,
+        0.031241298
+      ],
+      "route": {
+        "arc_distance": 0.4,
+        "contact_side": "underside",
+        "feasible_candidate_rank": 5,
+        "near_flower_stub_allowed": false,
+        "nearest_flower_s": 0.5,
+        "origin_kind": "remote_tangent_extension",
+        "under_flower_waypoint": [
+          0.861500927,
+          0.671862825
+        ]
+      },
+      "semantic_role": "flower_support_stem",
+      "source_relation": "remote_long_slope_tangent_corridor_to_flower_underside"
+    }
+  ],
+  "plan_id": "proto_sw_3_2__seed_1494503882__flower_mount_first_v1",
+  "prototype_id": "proto_sw_3_2",
+  "prototype_strategy": {
+    "backbone_domain": {
+      "family_guard": "sw3_fixed_flower_remote_tangent_corridor",
+      "flower_transport_policy": "fixed_geometry_in_5b",
+      "generator": "global_periodic_wave_v4",
+      "independent_flower_variation": "enabled_in_5c",
+      "topology_policy": "preserve_peak_trough_sequence",
+      "variant_library": "prototype_combined_wave_variants_v1",
+      "variation_contract": "prototype_domain_global_periodic_wave_v4"
+    },
+    "branchunit_profile": {
+      "candidate_coverage_policy": "contract_weak_role_grammar_strata",
+      "complexity_domain": "moderate_upper_emphasis",
+      "editor_l2_profile_key": "proto_sw_3_2"
+    },
+    "family_id": "SW-3_tangent_terminal",
+    "flower_layout": {
+      "feasible_tuple": [
+        "paired_flower_centers",
+        "paired_support_roots",
+        "paired_support_paths"
+      ],
+      "mode": "sw3_pair_joint_domain",
+      "position_variation_enabled": true,
+      "projection_policy": "single_seeded_intent_ray_toward_baseline",
+      "seed_domain": "flower_seed",
+      "state_variables": [
+        "group_shift",
+        "pair_spread",
+        "height_stagger",
+        "group_standoff",
+        "asymmetry"
+      ]
+    },
+    "flower_mount": {
+      "binding": "remote_tangent_extension_to_flower_underside",
+      "mechanism": "remote_tangent_underside",
+      "support_count_policy": "one_per_flower"
+    },
+    "global_selection_profile": {
+      "candidate_order_policy": "contract_class_cycle_seed_phase",
+      "class_cycle_phase_offset": 0,
+      "hierarchy_mix_policy": "contract_fraction_targets"
+    },
+    "invariants": {
+      "flower_count": 2,
+      "flower_position_policy": "variable_within_sw3_domain",
+      "prototype_identity_locked": true,
+      "repeat_width": 1
+    },
+    "l1_profile": {
+      "curve_geometry_profile_key": "proto_sw_3_2",
+      "feedback_profile_key": "proto_sw_3_2",
+      "legacy_fixed_warp_visual_prior": false,
+      "ordinary_role_cycle": [
+        "primary_sweep",
+        "balance",
+        "frontier"
+      ],
+      "random_namespace": "proto_sw_3_2",
+      "root_rhythm_profile_key": "proto_sw_3_2",
+      "side_rhythm": "upper_side_emphasis"
+    },
+    "prototype_id": "proto_sw_3_2",
+    "registry_id": "sw_prototype_domain_strategy_v1",
+    "route_signature": {
+      "flower_count": 2,
+      "flower_relation": "tangent_terminal",
+      "style_intent": "moderate"
+    },
+    "schema": "dynamic_branch_prototype_strategy_projection_v1",
+    "strategy_id": "strategy_proto_sw_3_2_v1"
+  },
+  "review_gate": {
+    "numeric_checks_cannot_auto_approve_visual_gate": true,
+    "status": "family_conditioned_flower_binding_pending_visual_review"
+  },
+  "schema": "dynamic_branch_flower_mount_plan_v2",
+  "seed": 1494503882,
+  "source_stage": "variant_analysis_before_ordinary_l1",
+  "source_stage3_contract_schema": "dynamic_branch_stage3_plan_contract_v1"
+}

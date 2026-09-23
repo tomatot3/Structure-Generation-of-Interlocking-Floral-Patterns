@@ -1,0 +1,15 @@
+{
+  "backbone_seed": "2578163044",
+  "backbone_variant": "expanded",
+  "branch_seed": "2670868118",
+  "case_id": "SW1-B_seed20260923_width1.2",
+  "density_level": "medium",
+  "flower_seed": "2295247667",
+  "matrix_id": "PRIOR_SENSITIVITY",
+  "prior_width_scale": 1.2,
+  "production_seed": "20260923",
+  "prototype": "SW1-B",
+  "prototype_id": "proto_sw_1_3",
+  "replicate": "1",
+  "unit_seed": "603398327"
+}
