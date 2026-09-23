@@ -24,7 +24,6 @@
   "density": "medium",
   "code_repository": "https://github.com/tomatot3/Structure-Generation-of-Interlocking-Floral-Patterns",
   "code_commit": "c5fd1985f1605761d8c01436f943b2f4e7962642",
-  "prior_source": "existing released prior, not reestimated from the supplementary correction sessions",
   "pilot_policy": "pilot confirms consumption; all 54 cases measured in this run under the same execution mode",
   "failure_policy": "keep every planned input; no replacement seeds or amplitude adjustment",
   "mechanical_checks": [

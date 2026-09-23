@@ -71,7 +71,7 @@ def main():
         for scale in SCALES:
             prior,audit=perturb(original,scale);write(a.output/f'prior_width_{scale:.1f}.json',prior);write(a.output/f'perturbations_{scale:.1f}.json',audit)
         git=subprocess.run(['git','rev-parse','HEAD'],cwd=REPO,text=True,capture_output=True,creationflags=subprocess.CREATE_NO_WINDOW)
-        write(a.output/'run_settings.json',{'cases':54,'paired_inputs':18,'workers':a.workers,'prototype_ids':PROTOTYPES,'seeds':SEEDS,'scales':SCALES,'main_vine_variant':'expanded','density':'medium','code_repository':str(REPO),'code_commit':git.stdout.strip(),'prior_source':'existing released prior, not reestimated from the supplementary correction sessions','pilot_policy':'pilot confirms consumption; all 54 cases measured in this run under the same execution mode','failure_policy':'keep every planned input; no replacement seeds or amplitude adjustment','mechanical_checks':CHECKS})
+        write(a.output/'run_settings.json',{'cases':54,'paired_inputs':18,'workers':a.workers,'prototype_ids':PROTOTYPES,'seeds':SEEDS,'scales':SCALES,'main_vine_variant':'expanded','density':'medium','code_repository':str(REPO),'code_commit':git.stdout.strip(),'pilot_policy':'pilot confirms consumption; all 54 cases measured in this run under the same execution mode','failure_policy':'keep every planned input; no replacement seeds or amplitude adjustment','mechanical_checks':CHECKS})
     results={}
     for i,row in enumerate(rows):
         path=a.output/'case_results'/f"{row['case_id']}.json"
