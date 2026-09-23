@@ -9,7 +9,7 @@ The release contains:
 - `PaperA_Generated_Dataset_1128_Structures_500_Pairs_v1.0.0.zip`
 - `PaperA_Experiment_Reproduction_Data_v1.0.0.zip`
 
-Both archives extract into the repository's existing relative layout. Do not add the extracted large folders to Git; `.gitignore` lists them explicitly. No source-annotation SVGs, local website runtime, saved user edits, feedback submissions, tunnel processes or environment files belong in the repository or data release.
+Both archives extract into the repository's existing relative layout. Do not add the extracted large folders to Git; `.gitignore` lists them explicitly. Only the image-free source-annotation SVGs belong in the repository. Do not include the source images, local website runtime, saved user edits, feedback submissions, tunnel processes or environment files.
 
 Create the `v1.0.0` release after pushing the code. Attach the two ZIP files to that release. The GitHub-generated Source code ZIP contains only the Git-tracked files, so it does not replace these data attachments.
 

@@ -1,16 +1,6 @@
 {
   "schema": "dynamic_branch_edit_feedback_prior_v1",
   "prior_id": "old_mainline_editor_batch_20260806",
-  "source_scope": {
-    "edited_case_count": 14,
-    "prototype_count": 5,
-    "source_curve_count": 202,
-    "edited_curve_count": 202,
-    "deleted_curve_count": 51,
-    "added_curve_count": 51,
-    "role_annotations_required": false,
-    "fixed_svg_templates_consumed": false
-  },
   "global_observations": {
     "source_l1_count": 86,
     "edited_l1_count": 98,

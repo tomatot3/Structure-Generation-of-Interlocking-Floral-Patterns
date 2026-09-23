@@ -1,0 +1,127 @@
+[
+  {
+    "case_id": "SW1-A-01",
+    "prototype": "SW1-A",
+    "image": "images/SW1-A-01.png"
+  },
+  {
+    "case_id": "SW1-A-02",
+    "prototype": "SW1-A",
+    "image": "images/SW1-A-02.png"
+  },
+  {
+    "case_id": "SW1-A-03",
+    "prototype": "SW1-A",
+    "image": "images/SW1-A-03.png"
+  },
+  {
+    "case_id": "SW1-A-04",
+    "prototype": "SW1-A",
+    "image": "images/SW1-A-04.png"
+  },
+  {
+    "case_id": "SW1-A-05",
+    "prototype": "SW1-A",
+    "image": "images/SW1-A-05.png"
+  },
+  {
+    "case_id": "SW1-B-01",
+    "prototype": "SW1-B",
+    "image": "images/SW1-B-01.png"
+  },
+  {
+    "case_id": "SW1-B-02",
+    "prototype": "SW1-B",
+    "image": "images/SW1-B-02.png"
+  },
+  {
+    "case_id": "SW1-B-03",
+    "prototype": "SW1-B",
+    "image": "images/SW1-B-03.png"
+  },
+  {
+    "case_id": "SW1-B-04",
+    "prototype": "SW1-B",
+    "image": "images/SW1-B-04.png"
+  },
+  {
+    "case_id": "SW1-B-05",
+    "prototype": "SW1-B",
+    "image": "images/SW1-B-05.png"
+  },
+  {
+    "case_id": "SW2-A-01",
+    "prototype": "SW2-A",
+    "image": "images/SW2-A-01.png"
+  },
+  {
+    "case_id": "SW2-A-02",
+    "prototype": "SW2-A",
+    "image": "images/SW2-A-02.png"
+  },
+  {
+    "case_id": "SW2-A-03",
+    "prototype": "SW2-A",
+    "image": "images/SW2-A-03.png"
+  },
+  {
+    "case_id": "SW2-A-04",
+    "prototype": "SW2-A",
+    "image": "images/SW2-A-04.png"
+  },
+  {
+    "case_id": "SW2-A-05",
+    "prototype": "SW2-A",
+    "image": "images/SW2-A-05.png"
+  },
+  {
+    "case_id": "SW3-A-01",
+    "prototype": "SW3-A",
+    "image": "images/SW3-A-01.png"
+  },
+  {
+    "case_id": "SW3-A-02",
+    "prototype": "SW3-A",
+    "image": "images/SW3-A-02.png"
+  },
+  {
+    "case_id": "SW3-A-03",
+    "prototype": "SW3-A",
+    "image": "images/SW3-A-03.png"
+  },
+  {
+    "case_id": "SW3-A-04",
+    "prototype": "SW3-A",
+    "image": "images/SW3-A-04.png"
+  },
+  {
+    "case_id": "SW3-A-05",
+    "prototype": "SW3-A",
+    "image": "images/SW3-A-05.png"
+  },
+  {
+    "case_id": "SW3-B-01",
+    "prototype": "SW3-B",
+    "image": "images/SW3-B-01.png"
+  },
+  {
+    "case_id": "SW3-B-02",
+    "prototype": "SW3-B",
+    "image": "images/SW3-B-02.png"
+  },
+  {
+    "case_id": "SW3-B-03",
+    "prototype": "SW3-B",
+    "image": "images/SW3-B-03.png"
+  },
+  {
+    "case_id": "SW3-B-04",
+    "prototype": "SW3-B",
+    "image": "images/SW3-B-04.png"
+  },
+  {
+    "case_id": "SW3-B-05",
+    "prototype": "SW3-B",
+    "image": "images/SW3-B-05.png"
+  }
+]

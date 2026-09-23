@@ -11,7 +11,7 @@ Source code, parameters, small indexes and evaluation records are tracked in thi
 | `PaperA_Generated_Dataset_1128_Structures_500_Pairs_v1.0.0.zip` | 1,128 structural assets and 500 structure–rendering pairs, with indexes and an offline preview |
 | `PaperA_Experiment_Reproduction_Data_v1.0.0.zip` | 108 comparison contexts, archived comparisons, human ratings and weight-sensitivity results |
 
-Download the first archive to browse the collection or run the website. Download the second to recompute the result summaries and rerun the selector comparisons. Extract the archives directly into the repository root, merging their `data/` folders with the existing folder. The 118 source-annotation SVGs and their embedded source images are excluded from both archives and this repository.
+Download the first archive to browse the collection or run the website. Download the second to recompute the result summaries and rerun the selector comparisons. Extract the archives directly into the repository root, merging their `data/` folders with the existing folder. The 118 source-annotation SVGs are included in `source_materials/role_annotations/` with their embedded source images removed. They can be downloaded directly from the repository.
 
 ## Contents
 
@@ -22,8 +22,9 @@ Download the first archive to browse the collection or run the website. Download
 | `data/comparison_contexts/` | 108 fixed parent layouts, complete candidate inventories and conflict graphs |
 | `data/evaluation/` | Stage I and II results, density and seed experiments, robustness results and individual ratings |
 | `data/parameters/` | Archived numerical priors and selection settings |
+| `data/manual_corrections/` | 25 before/after comparison images of manual corrections, with an offline preview |
 | `code/` | New-seed generation, archived-case reproduction, asset export, evaluation and comparison entry points |
-| `source_materials/` | Source metadata for 118 annotations; annotation SVGs and embedded reference images are retained locally |
+| `source_materials/` | 118 editable source-annotation SVGs without embedded source images, with the existing source index |
 | `reproduction/` | Recomputed paper results and a concise record of package checks |
 | `docs/` | Data dictionary, rendering protocol and release notes |
 
@@ -85,6 +86,6 @@ The package was checked with Python 3.12.14, NumPy 2.3.5 and Pillow 12.3.0 on Wi
 
 Appearance images were produced with the built-in image generation service. The package includes the actual submitted prompt, structure inputs, outputs and generation dates. The service did not return a model ID or random seed. Structural generation and numerical comparisons run locally; new appearance generation requires access to an image service. See [the rendering protocol](docs/RENDERING_PROTOCOL.md).
 
-Author/citation metadata and the license will be supplied separately. The 118 source-annotation SVGs and embedded reference images are not included in this repository. Their existing bibliographic and source metadata are retained in `source_materials/index.json`; figure-level sources are listed in `docs/SOURCE_INDEX.md`.
+Author/citation metadata and the license will be supplied separately. The 118 source-annotation SVGs are included without embedded source images in `source_materials/role_annotations/`. Their existing bibliographic and source metadata are retained in `source_materials/index.json`; figure-level sources are listed in `docs/SOURCE_INDEX.md`.
 
 The directory is arranged for a GitHub repository. `.gitignore` excludes large downloaded asset folders, environments, caches, local run outputs and ZIP archives. `.gitattributes` keeps text line endings consistent and treats PNGs as binary files. See [GitHub upload instructions](docs/GITHUB.md).

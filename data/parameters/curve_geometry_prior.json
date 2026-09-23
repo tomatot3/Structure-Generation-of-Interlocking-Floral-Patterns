@@ -16,7 +16,6 @@
     "end_angle_normalized_deg",
     "parent_tangent_departure_deg"
   ],
-  "edited_case_count": 14,
   "prior_id": "saved_editor_parent_local_l1_exemplars_20260811__cotravel_v2_20260916",
   "profiles": {
     "global": {
@@ -12314,106 +12313,6 @@
       "single_cubic_l1_count": 18
     }
   },
-  "provenance": [
-    {
-      "modified_count": 12,
-      "ordinary_active_l1_count": 4,
-      "prototype_id": "proto_sw_1_1",
-      "seed": 4101,
-      "session_id": "seed4101_20260805T042249834982Z_fa5845c28a"
-    },
-    {
-      "modified_count": 16,
-      "ordinary_active_l1_count": 8,
-      "prototype_id": "proto_sw_1_1",
-      "seed": 4102,
-      "session_id": "seed4102_20260805T053047327500Z_093d0f28d9"
-    },
-    {
-      "modified_count": 13,
-      "ordinary_active_l1_count": 4,
-      "prototype_id": "proto_sw_1_1",
-      "seed": 4103,
-      "session_id": "seed4103_20260805T054145658060Z_cb3ee80f41"
-    },
-    {
-      "modified_count": 15,
-      "ordinary_active_l1_count": 5,
-      "prototype_id": "proto_sw_1_3",
-      "seed": 4101,
-      "session_id": "seed4101_20260805T055011977970Z_2d78be17b0"
-    },
-    {
-      "modified_count": 9,
-      "ordinary_active_l1_count": 5,
-      "prototype_id": "proto_sw_1_3",
-      "seed": 4102,
-      "session_id": "seed4102_20260805T055600774619Z_f6d11c9053"
-    },
-    {
-      "modified_count": 12,
-      "ordinary_active_l1_count": 5,
-      "prototype_id": "proto_sw_1_3",
-      "seed": 4103,
-      "session_id": "seed4103_20260805T061536689555Z_45e1dd4915"
-    },
-    {
-      "modified_count": 13,
-      "ordinary_active_l1_count": 5,
-      "prototype_id": "proto_sw_2_3",
-      "seed": 4101,
-      "session_id": "seed4101_20260805T083051013336Z_edff1292a8"
-    },
-    {
-      "modified_count": 15,
-      "ordinary_active_l1_count": 6,
-      "prototype_id": "proto_sw_2_3",
-      "seed": 4102,
-      "session_id": "seed4102_20260805T083402102787Z_2d57da0fdd"
-    },
-    {
-      "modified_count": 9,
-      "ordinary_active_l1_count": 8,
-      "prototype_id": "proto_sw_2_3",
-      "seed": 4103,
-      "session_id": "seed4103_20260805T083735178351Z_d0fe800797"
-    },
-    {
-      "modified_count": 14,
-      "ordinary_active_l1_count": 7,
-      "prototype_id": "proto_sw_3_1",
-      "seed": 4101,
-      "session_id": "seed4101_20260806T062036615857Z_189616adbf"
-    },
-    {
-      "modified_count": 11,
-      "ordinary_active_l1_count": 4,
-      "prototype_id": "proto_sw_3_1",
-      "seed": 4102,
-      "session_id": "seed4102_20260806T065228556147Z_f050f2e8b5"
-    },
-    {
-      "modified_count": 16,
-      "ordinary_active_l1_count": 6,
-      "prototype_id": "proto_sw_3_2",
-      "seed": 4101,
-      "session_id": "seed4101_20260806T065921256665Z_fb1945fedc"
-    },
-    {
-      "modified_count": 14,
-      "ordinary_active_l1_count": 4,
-      "prototype_id": "proto_sw_3_2",
-      "seed": 4102,
-      "session_id": "seed4102_20260806T073316251256Z_99457bb628"
-    },
-    {
-      "modified_count": 16,
-      "ordinary_active_l1_count": 8,
-      "prototype_id": "proto_sw_3_2",
-      "seed": 4103,
-      "session_id": "seed4103_20260806T073939864080Z_ebd043119d"
-    }
-  ],
   "schema": "dynamic_branch_editor_curve_geometry_prior_v4",
   "source_policy": {
     "active_ordinary_l1_only": true,

@@ -9,15 +9,15 @@
 <body>
   <header class="topbar">
     <div class="identity">
-      <span class="eyebrow">DIRECT BRANCH RULE EDITOR</span>
-      <strong id="seed-title">Seed 0</strong>
-      <span class="phase">M0–M6</span>
+      <span class="eyebrow">结构编辑</span>
+      <strong id="seed-title">当前结构</strong>
+      
     </div>
     <nav class="tools" aria-label="直接绘制工具">
       <button class="tool active" id="select-tool" data-mode="select" type="button">选择</button>
       <button class="tool" id="add-tool" data-mode="add" type="button">新增枝</button>
       <button class="tool" id="root-range-tool" data-mode="root-range" type="button">根点范围</button>
-      <button class="tool" id="endpoint-region-tool" data-mode="endpoint-region" type="button">枝尖合法区</button>
+      <button class="tool" id="endpoint-region-tool" data-mode="endpoint-region" type="button">枝尖范围</button>
       <button class="tool" id="envelope-tool" data-mode="envelope" type="button">曲线包络</button>
       <button class="tool danger-tool" id="forbidden-tool" data-mode="forbidden" type="button">禁区</button>
       <span class="divider" aria-hidden="true"></span>
@@ -64,12 +64,12 @@
       <div id="save-status"></div>
     </section>
     <section class="canvas-shell">
-      <svg id="editor-canvas" role="img" aria-label="可直接操控和绘制合法域的 SVG 分支画布"></svg>
+      <svg id="editor-canvas" role="img" aria-label="结构编辑画布"></svg>
       <div class="mode-hint" id="mode-hint">选择分支后直接拖动根点、枝尖或控制柄</div>
       <div class="canvas-key" aria-hidden="true">
-        <span><i class="key-preferred"></i>preferred</span>
-        <span><i class="key-allowed"></i>allowed</span>
-        <span><i class="key-forbidden"></i>forbidden</span>
+        <span><i class="key-preferred"></i>曲线</span>
+        <span><i class="key-allowed"></i>允许区域</span>
+        <span><i class="key-forbidden"></i>禁区</span>
         <span><i class="key-ghost"></i>相邻周期</span>
       </div>
     </section>
@@ -81,7 +81,7 @@
       </article>
       <article>
         <h2>图形约束</h2>
-        <div id="constraint-stats">尚未绘制 allowed / forbidden 区域</div>
+        <div id="constraint-stats">尚未设置区域</div>
       </article>
       <article class="target-card">
         <h2>保存的版本</h2>
@@ -95,14 +95,14 @@
     </section>
 
     <section class="instructions">
-      <span><b>选择</b> 拖根点/枝尖/Bézier 柄</span>
+      <span><b>选择</b> 拖动根点、枝尖或控制柄</span>
       <span><b>新增枝</b> 从父枝直接拖出</span>
-      <span><b>合法区/禁区</b> 在画布自由圈定</span>
+      <span><b>允许区域/禁区</b> 在画布自由圈定</span>
       <span><b>包络</b> 拖两条边界曲线</span>
     </section>
   </main>
 
-  <section class="feedback-panel"><h2>自愿提交修改，用于改进</h2><p>保存版本供你继续编辑和下载。只有勾选下方说明并点击提交，这次修改才会进入研究数据集。</p><label><input id="feedback-consent" type="checkbox">我同意提交原始结构、修改后的结构、生成参数和修改记录，供研究团队分析并改进参数。此处不要求姓名或联系方式。</label><textarea id="feedback-note" maxlength="2000" placeholder="可选：为什么这样修改？"></textarea><div class="feedback-actions"><button class="save" id="feedback-submit">提交用于改进</button><span id="feedback-status"></span></div></section>
+  <section class="feedback-panel"><h2>向研究团队提交修改</h2><p>提交完全自愿。仅保存版本不会提交研究数据。</p><label><input id="feedback-consent" type="checkbox">我同意提交原始结构、修改后的结构、生成参数和修改记录，用于后续研究和参数改进。</label><textarea id="feedback-note" maxlength="2000" placeholder="可选：为什么这样修改？"></textarea><div class="feedback-actions"><button class="save" id="feedback-submit">提交修改</button><span id="feedback-status"></span></div></section>
   <template id="error-template"><div class="fatal-error" role="alert"></div></template>
   <script>window.EDITOR_SEED = 0;window.EDITOR_SOURCE = new URLSearchParams(location.search).get("source");</script>
   <script src="/editor/editor.js" defer></script>

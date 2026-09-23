@@ -8,7 +8,6 @@
     "short_sample_count": 48,
     "tangent_power": 8
   },
-  "edited_case_count": 14,
   "prior_id": "saved_editor_l2_placement_20260809__cotravel_v2_20260916",
   "profiles": {
     "global": {
@@ -830,7 +829,6 @@
           0.015548823
         ]
       },
-      "edited_case_count": 14,
       "mount_fraction": {
         "count": 103,
         "max": 0.897755688,
@@ -1681,7 +1679,6 @@
           0.0
         ]
       },
-      "edited_case_count": 3,
       "mount_fraction": {
         "count": 25,
         "max": 0.825064354,
@@ -2145,7 +2142,6 @@
           0.0
         ]
       },
-      "edited_case_count": 3,
       "mount_fraction": {
         "count": 26,
         "max": 0.780013388,
@@ -2620,7 +2616,6 @@
           0.0
         ]
       },
-      "edited_case_count": 3,
       "mount_fraction": {
         "count": 18,
         "max": 0.897755688,
@@ -2952,7 +2947,6 @@
           0.0
         ]
       },
-      "edited_case_count": 2,
       "mount_fraction": {
         "count": 12,
         "max": 0.862966557,
@@ -3327,7 +3321,6 @@
           0.015548823
         ]
       },
-      "edited_case_count": 3,
       "mount_fraction": {
         "count": 22,
         "max": 0.739971699,
@@ -3548,106 +3541,6 @@
       }
     }
   },
-  "provenance": [
-    {
-      "active_l2_count": 9,
-      "cross_unit_parallel_pair_count": 37,
-      "prototype_id": "proto_sw_1_1",
-      "seed": 4101,
-      "session_id": "seed4101_20260805T042249834982Z_fa5845c28a"
-    },
-    {
-      "active_l2_count": 8,
-      "cross_unit_parallel_pair_count": 53,
-      "prototype_id": "proto_sw_1_1",
-      "seed": 4102,
-      "session_id": "seed4102_20260805T053047327500Z_093d0f28d9"
-    },
-    {
-      "active_l2_count": 8,
-      "cross_unit_parallel_pair_count": 39,
-      "prototype_id": "proto_sw_1_1",
-      "seed": 4103,
-      "session_id": "seed4103_20260805T054145658060Z_cb3ee80f41"
-    },
-    {
-      "active_l2_count": 8,
-      "cross_unit_parallel_pair_count": 38,
-      "prototype_id": "proto_sw_1_3",
-      "seed": 4101,
-      "session_id": "seed4101_20260805T055011977970Z_2d78be17b0"
-    },
-    {
-      "active_l2_count": 9,
-      "cross_unit_parallel_pair_count": 47,
-      "prototype_id": "proto_sw_1_3",
-      "seed": 4102,
-      "session_id": "seed4102_20260805T055600774619Z_f6d11c9053"
-    },
-    {
-      "active_l2_count": 9,
-      "cross_unit_parallel_pair_count": 47,
-      "prototype_id": "proto_sw_1_3",
-      "seed": 4103,
-      "session_id": "seed4103_20260805T061536689555Z_45e1dd4915"
-    },
-    {
-      "active_l2_count": 8,
-      "cross_unit_parallel_pair_count": 57,
-      "prototype_id": "proto_sw_2_3",
-      "seed": 4101,
-      "session_id": "seed4101_20260805T083051013336Z_edff1292a8"
-    },
-    {
-      "active_l2_count": 9,
-      "cross_unit_parallel_pair_count": 78,
-      "prototype_id": "proto_sw_2_3",
-      "seed": 4102,
-      "session_id": "seed4102_20260805T083402102787Z_2d57da0fdd"
-    },
-    {
-      "active_l2_count": 1,
-      "cross_unit_parallel_pair_count": 7,
-      "prototype_id": "proto_sw_2_3",
-      "seed": 4103,
-      "session_id": "seed4103_20260805T083735178351Z_d0fe800797"
-    },
-    {
-      "active_l2_count": 6,
-      "cross_unit_parallel_pair_count": 38,
-      "prototype_id": "proto_sw_3_1",
-      "seed": 4101,
-      "session_id": "seed4101_20260806T062036615857Z_189616adbf"
-    },
-    {
-      "active_l2_count": 6,
-      "cross_unit_parallel_pair_count": 16,
-      "prototype_id": "proto_sw_3_1",
-      "seed": 4102,
-      "session_id": "seed4102_20260806T065228556147Z_f050f2e8b5"
-    },
-    {
-      "active_l2_count": 8,
-      "cross_unit_parallel_pair_count": 41,
-      "prototype_id": "proto_sw_3_2",
-      "seed": 4101,
-      "session_id": "seed4101_20260806T065921256665Z_fb1945fedc"
-    },
-    {
-      "active_l2_count": 8,
-      "cross_unit_parallel_pair_count": 31,
-      "prototype_id": "proto_sw_3_2",
-      "seed": 4102,
-      "session_id": "seed4102_20260806T073316251256Z_99457bb628"
-    },
-    {
-      "active_l2_count": 6,
-      "cross_unit_parallel_pair_count": 33,
-      "prototype_id": "proto_sw_3_2",
-      "seed": 4103,
-      "session_id": "seed4103_20260806T073939864080Z_ebd043119d"
-    }
-  ],
   "schema": "dynamic_branch_editor_l2_placement_prior_v1",
   "source_policy": {
     "active_l2_only": true,

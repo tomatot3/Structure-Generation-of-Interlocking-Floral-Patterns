@@ -65,6 +65,6 @@ Table 3 uses `U` and `U / number of ordinary parents`. This coverage is distinct
 
 ## Source annotations
 
-`source_materials/index.json` preserves 118 annotation identifiers and their existing source metadata. The annotation SVGs and embedded reference images are retained locally and are not distributed here. The ten core cases follow the current Table S1. `docs/SOURCE_INDEX.md` maps the displayed sources to manuscript figures, bibliography entries and page locations. Numerical identifiers are annotation IDs, not bibliographic citations.
+`source_materials/index.json` preserves 118 annotation identifiers and their existing source metadata. The vector annotations are provided in `source_materials/role_annotations/`; embedded source images have been removed. Original paths, role colors, transforms and object identifiers are preserved. The ten core cases follow the current Table S1. `docs/SOURCE_INDEX.md` maps the displayed sources to manuscript figures, bibliography entries and page locations. Numerical identifiers are annotation IDs, not bibliographic citations.
 
 No train/validation/test split is imposed. Related generated cases share prototypes and sometimes fixed upstream geometry; case records preserve the information needed to construct a split suited to the intended experiment.

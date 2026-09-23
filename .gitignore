@@ -16,8 +16,7 @@ web/.runtime/
 web/frontend/dist/
 .sites-runtime/
 
-# Source annotations are retained locally outside the public repository.
-/source_materials/role_annotations/
+# Image-free source annotations are public; original source images stay local.
 
 # Download large collections from GitHub Releases.
 /data/structural_assets/assets/

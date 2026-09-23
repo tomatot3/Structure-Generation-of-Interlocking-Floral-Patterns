@@ -4,9 +4,9 @@
 
 ## 数据可用性 Data availability
 
-本研究的1128份生成结构资产、500对结构与渲染图、生成参数和评价数据将公开于[仓库链接或DOI]。118份来源标注SVG及其内嵌图片不纳入公开仓库，已有出处和案例对应信息列于来源索引。[补充这部分材料不公开的实际原因，以及审稿核查和研究访问的联系人、条件。]
+本研究的1128份生成结构资产、500对结构与渲染图、生成参数和评价数据将公开于[仓库链接或DOI]。118份来源标注SVG去除内嵌来源图后随数据包提供，原始来源图片不包含在内；既有出处和案例对应信息列于来源索引。
 
-The 1,128 generated structural assets, 500 structure–rendering pairs, generation parameters and evaluation data will be made available at [repository URL or DOI]. The 118 source-annotation SVGs and their embedded images are not included in the public repository. Existing source references and case identifiers are provided in the source index. [Add the actual reason for non-public access and the contact and conditions for review or research access.]
+The 1,128 generated structural assets, 500 structure–rendering pairs, generation parameters and evaluation data will be made available at [repository URL or DOI]. The 118 source-annotation SVGs are provided with embedded source images removed. Existing source references and case identifiers are provided in the source index.
 
 ## 代码可用性 Code availability
 

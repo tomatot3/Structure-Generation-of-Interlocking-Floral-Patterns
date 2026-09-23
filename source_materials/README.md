@@ -1,9 +1,12 @@
-# Source index
+# Source vector annotations
 
-This directory contains bibliographic and source metadata only. The 118 role-annotation SVGs and their embedded reference images are retained locally and are not distributed in this repository.
+This collection contains the 118 vector annotations used for source analysis. Embedded source images have been removed. Original curve geometry, colors, object identifiers, group transforms and canvas coordinates are preserved.
 
-- `index.json`: 118 annotation identifiers with the existing source records. The ten core cases follow Table S1 of the current Supplementary Information.
-- `manuscript_sources.json`: the ten core sources and two additional image sources.
-- [Source list](../docs/SOURCE_INDEX.md): manuscript figure numbers, references and page locations.
+- `role_annotations/Rxxx.svg`: editable annotations, keyed by the source identifiers used in the paper. For example, R014 corresponds to the original annotation file 14.svg. The identifiers retain their original gaps.
+- `annotations.csv`: file mapping and counts of vector objects.
+- `index.json`: existing source descriptions, bibliographic locations and links, with paths to the vector annotations.
+- `manuscript_sources.json`: source records for manuscript examples.
 
-The metadata records where the material was obtained. It does not assign a reuse licence to third-party material.
+These are the original source-tracing vectors. Their segmentation and attributes differ from the generated semantic SVGs. Parent identifiers, prototype labels and uncertainty fields have not been inferred or added during export. Roles remain visible through the original annotation colors; consult the paper and its Supplementary Information for the interpretation of the illustrated cases.
+
+Open an SVG on a white background in a browser or vector editor. Its canvas and coordinate system match the original tracing. Source records can be used to locate the corresponding published or online image. Records with incomplete bibliographic information retain that status.
