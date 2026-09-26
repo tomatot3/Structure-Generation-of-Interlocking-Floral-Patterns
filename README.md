@@ -1,33 +1,26 @@
 # Structure Generation of Interlocking Floral Patterns
 
-This repository records compositional relationships in the studied floral scrolls and provides the six procedural prototypes, source annotations and code used for the two-stage selection method. The generated structure and rendering collection is available as a Git LFS archive.
-
-## Data and code
-
-Download [`PaperA_Generated_Dataset_1128_Structures_500_Pairs.zip`](archives/PaperA_Generated_Dataset_1128_Structures_500_Pairs.zip) for 1,128 generated structures, 500 structure–rendering pairs and an offline preview. Git LFS is required when cloning the archive. Source code, parameters, summary results and 118 source-annotation SVGs without embedded source images are also available here. Individual ratings and detailed experimental records remain in the local research archive.
+This repository provides six procedural prototypes, the two-stage structural generator, and reusable floral-scroll assets. It includes structure editing, geometric export and a website for exploring the generated collection.
 
 ## Contents
 
 | Directory | Contents |
 | --- | --- |
-| `data/structural_assets/` (dataset ZIP) | 1,128 distinct structures in semantic SVG, geometric JSON and PNG; 1,140 case records with seeds and controls |
-| `data/paired_renderings/` (dataset ZIP) | 500 structure–rendering pairs with matching filenames, case links and the submitted prompt |
-| `data/comparison_contexts/` (local archive) | 108 fixed parent layouts, complete candidate inventories and conflict graphs |
-| `data/evaluation/` | Published summaries, settings and analysis scripts |
-| `data/parameters/` | Archived numerical priors and selection settings |
-| `data/manual_corrections/` | 25 before/after comparison images of manual corrections, with an offline preview |
-| `code/` | New-seed generation, archived-case reproduction, asset export, evaluation and comparison entry points |
-| `source_materials/` | 118 editable source-annotation SVGs without embedded source images, with the existing source index |
-| `reproduction/` | Recomputed paper results and a concise record of package checks |
-| `docs/` | Data dictionary, rendering protocol and release notes |
+| `code/` | Core generation, geometry checks, asset export and dataset utilities |
+| `code/inputs/` | Materialized prototype inputs, numerical priors and control settings |
+| `data/parameters/` | Reference copies of the numerical priors and selection settings |
+| `data/structural_assets/` | Indexes and recorded controls for 1,128 distinct structures; asset files are in the dataset ZIP |
+| `data/paired_renderings/` | Links and submitted prompt for 500 structure–rendering pairs; images are in the dataset ZIP |
+| `data/manual_corrections/` | 25 before/after correction images with an offline preview |
+| `source_materials/` | 118 editable source-annotation SVGs and source metadata |
+| `web/` | Interactive generation, hierarchy exploration, editing and paired-image browsing |
+| `docs/` | Code map, data dictionary, rendering protocol and source index |
 
-Extract the dataset ZIP into the repository root to use the 500-pair offline preview.
-
-The interactive website is implemented in **[web/](web/README.md)**. It includes new structure generation, linked role highlighting, fixed-floral-configuration comparisons, the paired collection and downloads. Start it locally using the instructions there. A Cloudflare Quick Tunnel is available for temporary testing; see [the deployment notes](web/CLOUDFLARE.md).
+Download [`PaperA_Generated_Dataset_1128_Structures_500_Pairs.zip`](archives/PaperA_Generated_Dataset_1128_Structures_500_Pairs.zip) and extract it into the repository root. The archive includes the structural assets, paired images and an offline `preview.html`. Git LFS is required when cloning the archive.
 
 ## Quick start
 
-Use Python 3.12. Run these commands from the package directory. CPU execution is sufficient.
+Use Python 3.12. Run these commands from the repository root; CPU execution is sufficient.
 
 ```bash
 python -m venv .venv
@@ -37,45 +30,28 @@ python -m pip install -r code/requirements.txt
 python code/generate.py --prototype SW1-C --seed 20260920 --density medium --output results/new_structure
 ```
 
-Generation and comparison commands create new output directories. Choose a new directory for a repeat run. All inputs are resolved relative to the package, so the scripts can also be called from another working directory.
-Archived-case export and selector comparisons require the comparison and structural-asset folders retained in the local research archive.
+Choose a new output directory for each run. Input paths are resolved relative to the repository.
 
-New generation accepts six prototype labels, a production seed, a main-vine variant and a density level. Use repeated `--seed` arguments for a batch. Add `--control exact` for the prescribed-count profile. Each successful run saves geometric JSON, a semantic SVG and an unlabelled conditioning SVG. For a conditioning PNG, install Inkscape and add `--inkscape inkscape` or its executable path.
+Generation accepts six prototype labels, a production seed, a main-vine variant (`expanded`, `compact` or `swept`) and a density (`simple`, `medium` or `rich`). Repeat `--seed` for a batch. Add `--control exact` for the prescribed-count profile.
 
-The complete structural path and its source files are listed in [the code map](docs/CODE_MAP.md). It starts from the supplied procedural prototypes and priors. It generates new main-vine, flower/support and ordinary-branch geometry, then performs both selection stages and independent geometry checks.
+Each run saves geometric JSON, a semantic SVG and an unlabelled conditioning SVG, along with its parameters and geometry checks. To export a conditioning PNG, install Inkscape and add `--inkscape inkscape` or its executable path. See [the code map](docs/CODE_MAP.md) for the full generation path and output schema.
 
-To rerun all 336 Stage II requests across the four methods:
+Recorded assets can also be regenerated using `--case` with a case ID from `data/structural_assets/case_records.json`. Use `--group density`, `--group exact` or `--group seed` to regenerate a complete recorded group. The optional `--compare-archive` checks the regenerated geometry against the corresponding extracted asset.
 
-```bash
-python code/compare_selectors.py --all --output results/all_selectors
-```
+For the interactive generator, editor and gallery, follow [the website instructions](web/README.md).
 
-To rerun the compatible greedy parent-layout control for one context:
+## Using the assets
 
-```bash
-python code/compare_parent_layout.py --case C019 --output results/C019_parent
-```
+The collection contains 1,128 distinct structures and 1,140 generation records. Twelve records share geometry with another record; use `asset_id` when joining records to asset files. Seeds and controls are retained in `case_records.json`.
 
-To regenerate all cases in a group, use `generate.py --group density`, `--group exact` or `--group seed`, followed by `--output`. These groups contain 540, 540 and 60 records. Individual case IDs can be supplied with repeated `--case` options. The script uses the recorded seeds and the appropriate control profile, exports an SVG, and checks the generated geometry.
+The 500 pairs link to 500 distinct assets. Structure and rendering images share a filename, such as `sw1-A-01.png`. `pairs.csv` links each pair to its recorded case and canonical asset. SW1-A and SW1-B have 84 pairs each; the other four prototypes have 83 each.
 
-## Using the data
+Coordinates are normalized by repeat width. Geometry, roles and parent attachments are stored in `structure.json`; semantic SVGs retain object identifiers and role attributes. See [the data dictionary](docs/DATA_DICTIONARY.md). After extracting the dataset, `python code/check_dataset.py` checks paired images and their structural-asset links.
 
-Pairs have the same filename in `structures/` and `renderings/`, for example `sw1-A-01.png`. `pairs.csv` links each pair to its original case and canonical structural asset. The pair counts are 84 for SW1-A and SW1-B, and 83 for each of SW1-C, SW2-A, SW3-A and SW3-B.
+The local generation pipeline exports conditioning inputs. The completed appearance images and submitted prompt are included; new appearance generation uses an external image service. See [the rendering protocol](docs/RENDERING_PROTOCOL.md).
 
-`case_records.json` retains all 1,140 experimental identities. Twelve records share geometry with another record, leaving 1,128 distinct assets. Use `asset_id` when joining records to files. The 500 selected pairs link to 500 distinct assets.
+Source annotations are in `source_materials/role_annotations/`, with their existing metadata in `source_materials/index.json` and figure-level references in [the source index](docs/SOURCE_INDEX.md).
 
-Coordinates are normalized by repeat width. Geometry, roles and parent attachments are stored separately in `structure.json`. SVG files retain object identifiers and role attributes. See [the data dictionary](docs/DATA_DICTIONARY.md) for the schema and coordinate conventions.
+## Repository information
 
-The 500 pairs form a reusable public asset collection. The separate 30-image rendering evaluation and 54-structure evaluation are reported as manuscript summaries; their individual rating records are retained locally.
-
-The repository retains the ordinal-agreement analysis script and summary statistics. Settings, summaries and scripts for Stage II weight sensitivity and geometry-prior sensitivity are in `data/evaluation/human_and_cases/`.
-
-## Reproduction and release
-
-The original package was checked with Python 3.12.14, NumPy 2.3.5 and Pillow 12.3.0 on Windows. The main statistical summaries are in `reproduction/main_results.json`; detailed comparison inventories are retained locally.
-
-Appearance images were produced with the built-in image generation service. The package includes the actual submitted prompt, structure inputs, outputs and generation dates. The service did not return a model ID or random seed. Structural generation and numerical comparisons run locally; new appearance generation requires access to an image service. See [the rendering protocol](docs/RENDERING_PROTOCOL.md).
-
-Author/citation metadata and the license will be supplied separately. The 118 source-annotation SVGs are included without embedded source images in `source_materials/role_annotations/`. Their existing bibliographic and source metadata are retained in `source_materials/index.json`; figure-level sources are listed in `docs/SOURCE_INDEX.md`.
-
-The dataset ZIP is tracked with Git LFS. `.gitignore` excludes extracted asset folders, other ZIP archives, environments, caches and local run outputs. See [the data layout](docs/GITHUB.md).
+The generation dependencies are listed in `code/requirements.txt`. Author/citation metadata and the license will be supplied separately. The dataset ZIP is tracked with Git LFS; extracted asset files, environments and local run outputs are excluded from Git. See [the repository data layout](docs/GITHUB.md).

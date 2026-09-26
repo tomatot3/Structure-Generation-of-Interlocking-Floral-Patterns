@@ -1,4 +1,4 @@
-"""Regenerate archived structure cases using their recorded seeds and controls."""
+"""Generate new structures or regenerate recorded cases using their seeds and controls."""
 import argparse,json
 from pathlib import Path
 from package_paths import ROOT,CODE

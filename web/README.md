@@ -2,7 +2,7 @@
 
 The local website provides prototype previews, controlled branch generation, linked hierarchy highlighting, editable comparisons, a 500-pair gallery, and the original direct structural editor. The default interface is Chinese, with an English toggle for the main website.
 
-The numerical generator is the existing code in `code/`. Each job runs in a separate Python process. A SQLite queue stores task states and one worker processes them at a time. This first local implementation uses SQLite instead of the Redis/RQ option in the initial deployment plan, so it runs on Windows without starting Docker. The task interface and generator adapter can be reused when deploying later.
+The numerical generator is the existing code in `code/`. Each job runs in a separate Python process. A SQLite queue stores task states and one worker processes them at a time. The queue and generator run locally without a separate database service.
 
 ## Start
 
@@ -64,4 +64,4 @@ The bilingual Research page introduces the cultural purpose of recording composi
 
 `backend/app.py` exposes the API and durable single-worker queue. `backend/generate_task.py` calls the original generation functions and checks the actual output geometry before completing a task. `frontend/src/AppV2.tsx` contains the working surfaces; `StructureView.tsx` renders interactive semantic SVGs. `backend/editor_api.py` connects the reused editor in `editor/` to generated assets. `backend/legacy_editor_core.py` retains its geometry and attachment validation. `scripts/build_thumbnails.py` derives browsing thumbnails without altering the original images.
 
-The website now has a Cloudflare Quick Tunnel for public testing. The app and generator still run on this Windows computer, bound to loopback; only the tunnel provides the external entry. See [CLOUDFLARE.md](CLOUDFLARE.md) for the current test URL and start/stop commands. A fixed domain and permanent hosting remain future deployment work. The source-reference directory is not published.
+For optional temporary access from another device, the Windows tunnel helper is documented in [CLOUDFLARE.md](CLOUDFLARE.md).

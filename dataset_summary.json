@@ -11,16 +11,6 @@
     "SW3-A": 83,
     "SW3-B": 83
   },
-  "comparison_contexts": 108,
-  "stage_II_requests": 336,
-  "stage_II_methods": [
-    "LocalGreedy",
-    "LG+Count",
-    "LG+CS",
-    "JBC"
-  ],
-  "individual_structure_ratings": 270,
-  "individual_render_ratings": 150,
   "source_annotation_records": 118,
-  "source_annotation_svg_files_in_repository": 0
+  "source_annotation_svg_files_in_repository": 118
 }

@@ -37,6 +37,8 @@ The output directory contains `raw_cases/<case_id>/` with the case parameters, m
 
 The completed 500 images, conditioning inputs, matching IDs and submitted prompt are in `data/paired_renderings`. New appearance generation uses an external image service. The original subscription route was an agent's built-in `image_gen` call; its service implementation and model weights are not local project code. The reproducible local pipeline ends at the conditioning image, and the actual appearance-generation procedure is documented in `RENDERING_PROTOCOL.md`.
 
-## Evaluation
+## Dataset utility
 
-`compare_selectors.py` reruns the four Stage II methods on the 108 shared candidate spaces. `compare_parent_layout.py` runs the compatible greedy parent control. `summarize_results.py` recomputes the main paper statistics. `check_dataset.py` checks the 500 image pairs and their structural-asset links.
+`code/check_dataset.py` checks the 500 paired images and their links to structural assets after extracting the dataset ZIP.
+
+The two modules retained under the historical `paper_a_evaluation/` path supply the generation runner and runtime geometry checks. Both are used by the command-line generator and the website.
