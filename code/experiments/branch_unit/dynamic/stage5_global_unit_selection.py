@@ -598,9 +598,6 @@ def _select_joint_sparse_l2(
         nonlocal search_node_count, feasible_composition_count
         nonlocal backtrack_count, conflict_prune_count, budget_prune_count
         nonlocal bound_prune_count, node_limit_reached
-        if search_node_count >= node_limit:
-            node_limit_reached = True
-            return
         if lane_index == len(lane_order):
             if target_l2_count is not None and total_l2_count != target_l2_count:
                 return
@@ -630,6 +627,10 @@ def _select_joint_sparse_l2(
                 best_tie_value = tie_value
                 best_selected = list(selected)
                 best_components = components
+            return
+
+        if search_node_count >= node_limit:
+            node_limit_reached = True
             return
 
         current_components = score_components(
