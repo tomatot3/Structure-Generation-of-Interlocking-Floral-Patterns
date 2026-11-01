@@ -3,10 +3,15 @@ from pathlib import Path
 import argparse,json,os,signal,subprocess,sys,time,urllib.request,shutil
 ROOT=Path(__file__).resolve().parent.parent;RUNTIME=ROOT/'web/.runtime';RUNTIME.mkdir(exist_ok=True)
 STATE=RUNTIME/'server.json';SETTINGS=RUNTIME/'settings.json'
+PAUSED=RUNTIME/'server.stopped'
+def ensure_watchdog(port):
+ if os.name!='nt':return
+ with (RUNTIME/'watchdog-launch.log').open('a',encoding='utf-8') as log:
+  subprocess.Popen([sys.executable,str(ROOT/'web/autostart.py'),'--port',str(port)],cwd=ROOT,stdout=log,stderr=subprocess.STDOUT,stdin=subprocess.DEVNULL,creationflags=subprocess.CREATE_NO_WINDOW|subprocess.CREATE_NEW_PROCESS_GROUP)
 def get(url):
  with urllib.request.urlopen(url+'/api/v1/healthz',timeout=3) as r:return json.load(r)
 def main():
- p=argparse.ArgumentParser(description=__doc__);p.add_argument('command',choices=['install','start','stop','status','thumbnails']);p.add_argument('--port',type=int,default=8976);p.add_argument('--inkscape');p.add_argument('--public',action='store_true',help='Enable public-demo request limits');a=p.parse_args()
+ p=argparse.ArgumentParser(description=__doc__);p.add_argument('command',choices=['install','start','stop','status','thumbnails']);p.add_argument('--port',type=int,default=8976);p.add_argument('--inkscape');p.add_argument('--public',action='store_true',help='Enable public-demo request limits');p.add_argument('--supervised',action='store_true',help=argparse.SUPPRESS);a=p.parse_args()
  settings=json.loads(SETTINGS.read_text('utf-8')) if SETTINGS.exists() else {}
  if a.inkscape:settings['inkscape']=a.inkscape;SETTINGS.write_text(json.dumps(settings),'utf-8')
  if a.public:settings['public_mode']=True;SETTINGS.write_text(json.dumps(settings),'utf-8')
@@ -21,19 +26,26 @@ def main():
   except Exception:print('Not running')
   return
  if a.command=='stop':
-  info=get(state['url'])
+  PAUSED.write_text('Manual stop requested\n','utf-8')
+  try:info=get(state['url'])
+  except Exception:print('Automatic restart paused; website is not responding. No process was killed.');return
   if info.get('server_pid')!=state.get('pid'):raise RuntimeError('The recorded process does not match the website. Nothing was stopped.')
   os.kill(state['pid'],signal.SIGTERM);STATE.unlink(missing_ok=True);print('Stopped');return
+ if a.supervised and PAUSED.exists():print('Automatic restart paused');return
+ if not a.supervised:PAUSED.unlink(missing_ok=True)
  if not (ROOT/'web/frontend/dist/index.html').exists():raise RuntimeError('Build the frontend first: cd web/frontend, pnpm install, pnpm run build')
  url=f'http://127.0.0.1:{a.port}'
  try:
   info=get(url)
-  if info.get('generation')=='local_cpu':print('Already running:',url);return
+  if info.get('generation')=='local_cpu':
+   if not a.supervised:ensure_watchdog(a.port)
+   print('Already running:',url);return
  except Exception:pass
  executable=a.inkscape or settings.get('inkscape') or shutil.which('inkscape')
  if not executable:raise RuntimeError('Supply --inkscape with the Inkscape executable path.')
  env={**os.environ,'PAPERA_INKSCAPE':str(executable),'PAPERA_PORT':str(a.port),'PYTHONIOENCODING':'utf-8','PAPERA_PUBLIC_MODE':'1' if settings.get('public_mode') else '0'}
  with (RUNTIME/'server.log').open('a',encoding='utf-8') as log:
+  if a.supervised and PAUSED.exists():print('Automatic restart paused');return
   child=subprocess.Popen([sys.executable,str(ROOT/'web/backend/app.py')],cwd=ROOT,env=env,stdout=log,stderr=subprocess.STDOUT,stdin=subprocess.DEVNULL,creationflags=(subprocess.CREATE_NO_WINDOW|subprocess.CREATE_NEW_PROCESS_GROUP) if os.name=='nt' else 0,start_new_session=os.name!='nt')
   for _ in range(30):
    if child.poll() is not None:raise RuntimeError('The website could not start. See web/.runtime/server.log')
@@ -42,6 +54,11 @@ def main():
     if info.get('server_pid')==child.pid:break
    except Exception:pass
    time.sleep(.25)
-  else:raise RuntimeError('The website did not become ready. See web/.runtime/server.log')
+  else:
+   child.terminate();child.wait(timeout=10)
+   raise RuntimeError('The website did not become ready. See web/.runtime/server.log')
+ if PAUSED.exists():
+  child.terminate();child.wait(timeout=10);print('Manual stop requested during startup');return
  STATE.write_text(json.dumps({'pid':child.pid,'url':url},indent=2),'utf-8');print('Website ready:',url)
+ if not a.supervised:ensure_watchdog(a.port)
 if __name__=='__main__':main()

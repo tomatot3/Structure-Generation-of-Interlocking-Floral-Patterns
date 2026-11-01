@@ -1,0 +1,7 @@
+distinct_structural_signatures,exact_target_outputs,generated_outputs,independently_evaluated_outputs,mechanically_legal_outputs,planned_outputs,prototype_id,publication_label,signature_definition,signature_multiplicity_distribution
+10,10,10,10,10,10,proto_sw_1_1,SW1-A,selected L1 root set + per-root L2 child multiplicity (0/1/2),1x10
+10,10,10,10,10,10,proto_sw_1_3,SW1-B,selected L1 root set + per-root L2 child multiplicity (0/1/2),1x10
+10,10,10,10,10,10,proto_sw_2_3,SW2-A,selected L1 root set + per-root L2 child multiplicity (0/1/2),1x10
+10,10,10,10,10,10,proto_sw_3_1,SW3-A,selected L1 root set + per-root L2 child multiplicity (0/1/2),1x10
+10,10,10,10,10,10,proto_sw_3_2,SW3-B,selected L1 root set + per-root L2 child multiplicity (0/1/2),1x10
+10,10,10,10,10,10,proto_sw_1_c,SW1-C,selected L1 root set + per-root L2 child multiplicity (0/1/2),1x10

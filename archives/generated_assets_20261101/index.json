@@ -1,0 +1,84 @@
+{
+  "archive_name": "PaperA_Generated_Dataset_1128_Structures_500_Pairs.zip",
+  "archive_size": 995114379,
+  "parts": [
+    {
+      "file": "part-001.part",
+      "size": 52428800
+    },
+    {
+      "file": "part-002.part",
+      "size": 52428800
+    },
+    {
+      "file": "part-003.part",
+      "size": 52428800
+    },
+    {
+      "file": "part-004.part",
+      "size": 52428800
+    },
+    {
+      "file": "part-005.part",
+      "size": 52428800
+    },
+    {
+      "file": "part-006.part",
+      "size": 52428800
+    },
+    {
+      "file": "part-007.part",
+      "size": 52428800
+    },
+    {
+      "file": "part-008.part",
+      "size": 52428800
+    },
+    {
+      "file": "part-009.part",
+      "size": 52428800
+    },
+    {
+      "file": "part-010.part",
+      "size": 52428800
+    },
+    {
+      "file": "part-011.part",
+      "size": 52428800
+    },
+    {
+      "file": "part-012.part",
+      "size": 52428800
+    },
+    {
+      "file": "part-013.part",
+      "size": 52428800
+    },
+    {
+      "file": "part-014.part",
+      "size": 52428800
+    },
+    {
+      "file": "part-015.part",
+      "size": 52428800
+    },
+    {
+      "file": "part-016.part",
+      "size": 52428800
+    },
+    {
+      "file": "part-017.part",
+      "size": 52428800
+    },
+    {
+      "file": "part-018.part",
+      "size": 52428800
+    },
+    {
+      "file": "part-019.part",
+      "size": 51395979
+    }
+  ],
+  "structures": 1128,
+  "structure_rendering_pairs": 500
+}

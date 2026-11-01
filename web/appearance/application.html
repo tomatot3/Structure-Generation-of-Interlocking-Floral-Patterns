@@ -1,0 +1,10 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>器型应用 · StructVine</title>
+<style>body{margin:0;min-height:100vh;display:grid;place-content:center;background:#fafbfc;color:#29445b;font:16px/1.8 system-ui,sans-serif}main{max-width:440px;padding:30px}h1{font-size:28px;font-weight:500}a{color:#245e93}</style>
+<main><h1>器型应用</h1><p id="status">正在准备当前设计…</p><a href="/">返回工作台</a></main>
+<script type="module">
+try{
+ let id;try{const saved=JSON.parse(localStorage.getItem('papera-appearance')||'null');id=saved?.project_id;if(id){const r=await fetch('/api/v1/appearance/projects/'+encodeURIComponent(id)+'/state');if(!r.ok)id=null;}}catch{id=null;}
+ if(!id){document.getElementById('status').textContent='正在载入青花边饰示例…';const response=await fetch('/api/v1/appearance/cup-example',{method:'POST'});if(!response.ok)throw Error('示例暂时无法载入，请返回工作台重试。');id=(await response.json()).project_id;localStorage.setItem('papera-appearance',JSON.stringify({project_id:id,url:'/appearance/?project='+id,label:'青花边饰应用'}));}
+ location.replace('./?project='+encodeURIComponent(id)+'&application=1');
+}catch(e){document.getElementById('status').textContent=e.message;}
+</script></html>

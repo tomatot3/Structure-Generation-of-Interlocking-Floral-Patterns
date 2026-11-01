@@ -1176,6 +1176,26 @@
   document.querySelectorAll("button[data-status]").forEach((button) => button.addEventListener("click", () => setBranchStatus(button.dataset.status)));
   ui.undo.addEventListener("click", undo);
   ui.redo.addEventListener("click", redo);
+  let appearanceHandoffPending = false;
+  async function continueAppearance() {
+    if (appearanceHandoffPending || !state.bootstrap) return;
+    appearanceHandoffPending = true;
+    const button = document.getElementById("appearance-button");
+    button.disabled = true;
+    try {
+      if (state.dirty || !state.sessionId) await save();
+      if (state.dirty || !state.sessionId) return;
+      window.parent.postMessage({type:"papera-open-appearance",reference:{kind:"edit",id:state.sessionId}},location.origin);
+    } finally {
+      appearanceHandoffPending = false;
+      button.disabled = false;
+    }
+  }
+  document.getElementById("appearance-button").addEventListener("click",continueAppearance);
+  window.addEventListener("message",event=>{
+    if (event.origin!==location.origin || event.source!==window.parent || window.parent===window) return;
+    if (event.data?.type==="papera-request-appearance") continueAppearance();
+  });
   ui.save.addEventListener("click", save);
   ui.delete.addEventListener("click", deleteSelected);
   ui.seedSelect.addEventListener("change", () => switchSeed(Number(ui.seedSelect.value)).catch((error) => setMessage(error.message, "error")));

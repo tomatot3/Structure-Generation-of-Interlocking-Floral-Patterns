@@ -8,10 +8,11 @@ sys.path.insert(0,str(RUNTIME/'packages'))
 from fastapi import FastAPI,HTTPException,Request
 from fastapi.responses import FileResponse,JSONResponse
 from fastapi.staticfiles import StaticFiles
+from starlette.middleware.gzip import GZipMiddleware
 from pydantic import BaseModel,Field,ConfigDict
 from typing import Literal
 
-DATA=ROOT/'data';JOBS=RUNTIME/'jobs';JOBS.mkdir(exist_ok=True)
+DATA=Path(os.environ.get('PAPERA_DATA_ROOT',str(ROOT/'data')));JOBS=RUNTIME/'jobs';JOBS.mkdir(exist_ok=True)
 DB=RUNTIME/'jobs.sqlite3';STOP=threading.Event()
 read=lambda p:json.loads(p.read_text('utf-8'))
 RECORDS={r['case_id']:r for r in read(DATA/'structural_assets/case_records.json')}
@@ -65,6 +66,7 @@ async def lifespan(app):
 app=FastAPI(title='Floral Scroll Atlas',lifespan=lifespan)
 from public_access import install_public_access
 install_public_access(app,RUNTIME)
+app.add_middleware(GZipMiddleware,minimum_size=2048,compresslevel=3)
 class JobRequest(BaseModel):
  model_config=ConfigDict(extra='forbid')
  prototype:Literal['SW1-A','SW1-B','SW1-C','SW2-A','SW3-A','SW3-B']='SW1-A'
@@ -179,6 +181,9 @@ def editor_reference(kind,id):
 from editor_api import build_router
 app.include_router(build_router(ROOT,editor_reference))
 app.mount('/editor',StaticFiles(directory=ROOT/'web/editor',html=True),name='direct-editor')
+from appearance_api import build_router as appearance_router
+app.include_router(appearance_router(ROOT,editor_reference,PAIRS,DATA))
+app.mount('/appearance',StaticFiles(directory=ROOT/'web/appearance',html=True),name='appearance-editor')
 
 app.mount('/media/assets',StaticFiles(directory=DATA/'structural_assets/assets'),name='asset-files')
 app.mount('/media/pairs',StaticFiles(directory=DATA/'paired_renderings'),name='pair-files')

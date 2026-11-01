@@ -23,7 +23,7 @@
       "figure_or_object": "莫高窟392窟卷草边饰；表1.2第二行",
       "source_url": "https://ygx.sxu.edu.cn/db/%E5%AD%A6%E4%BD%8D/D01451691.pdf",
       "used_in": [
-        "正文图6a",
+        "正文图2a上方",
         "补充表S1及来源复核"
       ],
       "record_basis": "最新版补充材料表S1与正文参考文献"
@@ -57,7 +57,7 @@
     {
       "source_id": "R019",
       "annotation_id": "19",
-      "reference_number": 24,
+      "reference_number": 25,
       "bibliographic_reference": "陈振旺，佟艳．2017．中唐早期莫高窟藻井图案研究．敦煌学辑刊，(4)，131–140．",
       "printed_page": "138",
       "figure_or_object": "莫高窟180窟卷草纹边饰；表2卷草纹类别，第180窟行",
@@ -70,7 +70,7 @@
     {
       "source_id": "R020",
       "annotation_id": "20",
-      "reference_number": 24,
+      "reference_number": 25,
       "bibliographic_reference": "陈振旺，佟艳．2017．中唐早期莫高窟藻井图案研究．敦煌学辑刊，(4)，131–140．",
       "printed_page": "138",
       "figure_or_object": "莫高窟154窟卷草纹边饰；表2卷草纹类别，第154窟行",
@@ -112,7 +112,7 @@
     {
       "source_id": "R035",
       "annotation_id": "35",
-      "reference_number": 22,
+      "reference_number": 23,
       "bibliographic_reference": "范祎珂．2018．巩义石窟寺装饰图案及艺术研究．硕士学位论文，中原工学院．",
       "printed_page": "59",
       "figure_or_object": "龙门古阳洞南壁第一排东起第四小龛平台上边饰；附录4，龙门石窟栏C2-3",
@@ -120,7 +120,6 @@
       "used_in": [
         "正文图1",
         "正文图3",
-        "正文图6a",
         "补充表S1及来源复核"
       ],
       "record_basis": "最新版补充材料表S1与正文参考文献"
@@ -142,21 +141,20 @@
   "additional_sources": [
     {
       "source_id": "DHA-CAVE16",
-      "reference_number": 25,
+      "reference_number": 27,
       "bibliographic_reference": "敦煌研究院．莫高窟第16窟．图像：甬道—缠枝西番莲纹样．https://www.dha.ac.cn/info/1425/3607.htm（访问日期：2026年9月16日）．",
       "figure_or_object": "莫高窟第16窟甬道—缠枝西番莲纹样",
       "printed_page": "",
       "source_url": "https://www.dha.ac.cn/info/1425/3607.htm",
       "used_in": [
         "正文图3",
-        "正文图6b",
         "补充图S2"
       ],
       "record_basis": "正文及补充图注"
     },
     {
       "source_id": "YONGZHENG-BROCADE",
-      "reference_number": 27,
+      "reference_number": 28,
       "bibliographic_reference": "梁科．2016．明清宫廷织物中的牡丹纹样设计．紫禁城，(6)，70–91．图版见第87页．",
       "figure_or_object": "故宫博物院藏清雍正黄色地缠枝牡丹纹织金锦料",
       "printed_page": "87",
@@ -165,6 +163,84 @@
         "正文图3"
       ],
       "record_basis": "正文及补充图注"
+    },
+    {
+      "source_id": "JONES-72",
+      "reference_number": 29,
+      "bibliographic_reference": "Jones, O. Examples of Chinese Ornament, Selected from Objects in the South Kensington Museum and Other Collections (S. & T. Gilbert, 1867), Plate LXXII.",
+      "figure_or_object": "彩绘瓷罐花枝边饰，Owen Jones图录图版LXXII顶部",
+      "printed_page": "14; Plate LXXII",
+      "source_url": "https://archive.org/details/examplesofchines00jone",
+      "used_in": [
+        "正文图3",
+        "补充表S22",
+        "补充表S23"
+      ],
+      "annotation_svg": "role_annotations/JONES-72.svg"
+    }
+  ],
+  "source_index": "index.json",
+  "description": "Manuscript example selections from the unified source index; these entries are not additional to its 121 source records.",
+  "comparison_examples": [
+    {
+      "source_id": "R014",
+      "object_record": "莫高窟第392窟卷草边饰",
+      "source_locator": "陈茹茹[3]第8页表1.2第二行；PDF第14页",
+      "comparison_use": "与铜镜、金银器纹饰图比较主要走势及母题位置；正文图2a"
+    },
+    {
+      "source_id": "R058",
+      "object_record": "原图注所称铜镜、金银器纹饰",
+      "source_locator": "陈振旺[26]第136页图3-71；PDF第148页",
+      "comparison_use": "与392窟边饰比较连续走势及仰俯关系；正文图2a"
+    },
+    {
+      "source_id": "R062",
+      "object_record": "莫高窟第335窟藻井边饰",
+      "source_locator": "陈振旺[26]第149页表4-3，第147页表4-2；PDF第161、159页",
+      "comparison_use": "区分承花路径与普通分枝；正文图2b"
+    },
+    {
+      "source_id": "R035",
+      "object_record": "龙门古阳洞南壁第一排东起第四小龛平台上边饰",
+      "source_locator": "范祎珂[23]第28页、第59页附录4，C2-3；PDF第35、66页",
+      "comparison_use": "SW1-C主藤绕行与母题交替关系的参照；正文图1、图3"
+    },
+    {
+      "source_id": "R036",
+      "object_record": "龙门古阳洞法生造像龛平台上边饰",
+      "source_locator": "范祎珂[23]第59页附录4，C2-2；PDF第66页",
+      "comparison_use": "与古阳洞另一龛台边饰比较交替组织；正文图3"
+    },
+    {
+      "source_id": "R027",
+      "object_record": "原图录所称魏晋织物植物纹样",
+      "source_locator": "张红颖[2]第23页图3-12左图；PDF第32页；该图转引《中国传统艺术》第59页",
+      "comparison_use": "作为主枝与侧枝关系的形态参照；正文图2c"
+    },
+    {
+      "source_id": "YONGZHENG-BROCADE",
+      "object_record": "清雍正黄色地缠枝牡丹纹织金锦料及局部，故宫博物院藏",
+      "source_locator": "梁科[28]第87页；PDF第18页",
+      "comparison_use": "取一条连续花枝的局部解释SW2，花内路径记为推定；正文图3"
+    },
+    {
+      "source_id": "DHA-CAVE16",
+      "object_record": "莫高窟第16窟甬道缠枝西番莲纹样",
+      "source_locator": "敦煌研究院《莫高窟第16窟》页面，图像“甬道—缠枝西番莲纹样”[27]",
+      "comparison_use": "SW3侧枝承花与双花组织的来源参照；图3扩大裁片，补充图S2保留原局部"
+    },
+    {
+      "source_id": "R023",
+      "object_record": "莫高窟第217窟卷草纹边饰",
+      "source_locator": "陈茹茹[3]第9页表1.3第二行；PDF第15页",
+      "comparison_use": "与第16窟比较侧枝承花；正文图3"
+    },
+    {
+      "source_id": "JONES-72",
+      "object_record": "彩绘瓷罐花枝边饰，Owen Jones图录图版LXXII顶部",
+      "source_locator": "Jones，1867，Examples of Chinese Ornament，图版LXXII；图版说明第14页",
+      "comparison_use": "SW2构成接续的补充比较；正文图3"
     }
   ]
 }

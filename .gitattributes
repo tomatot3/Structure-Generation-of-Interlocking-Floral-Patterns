@@ -9,3 +9,5 @@
 *.jpg binary
 *.jpeg binary
 archives/*.zip filter=lfs diff=lfs merge=lfs -text
+
+archives/generated_assets_20261101/*.part filter=lfs diff=lfs merge=lfs -text

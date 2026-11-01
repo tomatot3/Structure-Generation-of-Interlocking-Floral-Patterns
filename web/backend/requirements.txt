@@ -1,2 +1,6 @@
 fastapi==0.141.1
 uvicorn==0.53.0
+
+opencv-python-headless==5.0.0.93
+
+lxml==6.1.1

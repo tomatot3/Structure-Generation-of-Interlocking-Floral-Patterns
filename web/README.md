@@ -56,7 +56,7 @@ The displayed structure uses an unclipped conditioning view; downloaded SVGs ret
 
 ## Research introduction
 
-The bilingual Research page introduces the cultural purpose of recording composition, then explains the SW families using flower position, connection origin and complete flower-bearing paths. Its terminology follows manuscript Section 2.2.3: SW1 crest–trough, SW2 axial flower-passing, and SW3 tangential flower-bearing. Six configuration diagrams can highlight the vine, flowers or their connecting paths; each links to its corresponding studio prototype.
+The bilingual Research page introduces the cultural purpose of recording composition, then explains the SW families using flower position, connection origin and complete flower-bearing paths. Its terminology follows the three connection types in the manuscript: SW1 crest–trough, SW2 axial flower-passing, and SW3 tangential flower-bearing. Six configuration diagrams can highlight the vine, flowers or their connecting paths; each links to its corresponding studio prototype.
 
 `scripts/build_research_diagrams.py` extracts these diagrams from the first archived pair of each prototype. It preserves the original vine, flower and support coordinates in `frontend/public/research/configurations.json`, with source asset identifiers. The page omits ordinary branches from these explanatory diagrams. Its appearance example is the existing `sw1-C-01` pair. Rebuild the frontend after changing the page or diagram data.
 
@@ -65,3 +65,21 @@ The bilingual Research page introduces the cultural purpose of recording composi
 `backend/app.py` exposes the API and durable single-worker queue. `backend/generate_task.py` calls the original generation functions and checks the actual output geometry before completing a task. `frontend/src/AppV2.tsx` contains the working surfaces; `StructureView.tsx` renders interactive semantic SVGs. `backend/editor_api.py` connects the reused editor in `editor/` to generated assets. `backend/legacy_editor_core.py` retains its geometry and attachment validation. `scripts/build_thumbnails.py` derives browsing thumbnails without altering the original images.
 
 For optional temporary access from another device, the Windows tunnel helper is documented in [CLOUDFLARE.md](CLOUDFLARE.md).
+
+
+
+## Continue a structure as appearance design
+
+Generated results, comparison structures and collection items have a **Continue appearance** action. The original structural editor also has **Save and continue appearance**: it first saves the current geometry, then transfers that edited structure, including removed branches and actual parent identifiers.
+
+The appearance module is served by the same Atlas backend at `/appearance/`. Its working projects and images live under `web/.runtime/appearance/`, scoped to the existing anonymous owner cookie. There is no second local server or shared global design file. The module exports versioned rendering conditions, accepts an externally produced image, supports structural registration and ownership correction, and edits complete appearance groups before SVG delivery. Conditions retain their exact structural snapshot. Keep downloaded project files when clearing browser data.
+
+The included A452 example retains its recorded alignment. Other collection images use the original structure viewport and image repetition to locate one period. The same registration maps structural objects into the recovered image; material crossing the boundary stays with its object and wraps consistently in editing, repeated SVGs and cup textures. Reopening an untouched gallery draft upgrades its original crop while retaining a backup. Authored drafts retain their saved alignment and edits. New generated or edited structures start with their actual geometry and wait for an appearance input. The generator and its scores remain unchanged.
+
+Local development can set `PAPERA_DATA_ROOT` to an existing extracted data directory. `CASE_DEPS` is an optional directory for already installed appearance dependencies; normal installations use `backend/requirements-lock.txt`.
+
+## Ceramic application preview
+
+In the appearance editor, **器型应用** applies the current edited SVG to a wide-rim plate, bowl or cup. Choose a sea-and-dragon motif or a blank centre; adjust border repeats, width and placement. Orbit and zoom the 3D view, then download PNG or GLB. Application settings are retained by the existing project and version save actions. The plate reuses the accepted case geometry. Preview models use metres.
+
+`/appearance/application.html` opens the most recent appearance project, or prepares the ceramic example on a first visit. The old cup-preview link forwards to this integrated workflow.

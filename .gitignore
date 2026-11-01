@@ -24,3 +24,12 @@ web/frontend/dist/
 /data/paired_renderings/structures/
 /data/paired_renderings/renderings/
 /data/comparison_contexts/
+
+# Stage II comparison inputs are distributed in the experiment archive.
+/data/evaluation/matched/objective_components.csv
+
+# Supplementary files are distributed as an LFS archive.
+/Supplementary_Data/
+
+.downloads/
+/archives/PaperA_Generated_Dataset_1128_Structures_500_Pairs.zip

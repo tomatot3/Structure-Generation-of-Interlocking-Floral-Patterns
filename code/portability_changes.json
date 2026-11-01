@@ -1,0 +1,14 @@
+[
+  [
+    "run_controls.py",
+    "Resolve sibling evaluation modules relative to this file."
+  ],
+  [
+    "run_stage3b_l1_flow.py",
+    "Replace staged local-input discovery with the same materialized inputs in code/inputs."
+  ],
+  [
+    "PNG helper modules",
+    "Replace workstation font paths with standard DejaVu font names; preserve fallback handling."
+  ]
+]

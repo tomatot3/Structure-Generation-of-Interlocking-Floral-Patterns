@@ -1,5 +1,5 @@
 {
-  "version": "2026-09-20",
+  "version": "2026-11-01",
   "generation_records": 1140,
   "unique_structural_assets": 1128,
   "paired_renderings": 500,
@@ -11,6 +11,16 @@
     "SW3-A": 83,
     "SW3-B": 83
   },
-  "source_annotation_records": 118,
-  "source_annotation_svg_files_in_repository": 118
+  "comparison_contexts": 108,
+  "stage_II_requests": 336,
+  "stage_II_methods": [
+    "LocalGreedy",
+    "LG+Count",
+    "LG+CS",
+    "JBC"
+  ],
+  "individual_structure_ratings": 270,
+  "individual_render_ratings": 150,
+  "source_annotation_records": 121,
+  "source_annotation_svg_files_in_repository": 121
 }
