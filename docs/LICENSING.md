@@ -6,7 +6,7 @@ Original project code uses [MIT](../LICENSE). Author-created structural datasets
 | --- | --- |
 | Original project code, scripts and associated software documentation, including author-written scripts stored under data directories | MIT |
 | Generated geometry, semantic SVGs, structure-only PNGs and case metadata in `data/structural_assets/` | CC BY 4.0 |
-| Numerical priors and parameters in `data/parameters/` and corresponding numerical inputs in `code/inputs/` | CC BY 4.0 |
+| Numerical priors and parameters used by the generator in `code/inputs/` and `code/experiments/branch_unit/dynamic/` | CC BY 4.0 |
 | Candidate inventories, conflict graphs and case inputs in `data/comparison_contexts/` | CC BY 4.0 |
 | Author-collected numerical evaluation data and calculated summaries in `data/evaluation/` and `reproduction/` | CC BY 4.0; scripts use MIT |
 | Structure input images, pair indexes, generation metadata and author-written prompts in `data/paired_renderings/`, plus `dataset_summary.json` | CC BY 4.0 |

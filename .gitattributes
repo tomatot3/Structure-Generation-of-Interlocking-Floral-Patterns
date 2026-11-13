@@ -11,3 +11,5 @@
 archives/*.zip filter=lfs diff=lfs merge=lfs -text
 
 archives/generated_assets_20261101/*.part filter=lfs diff=lfs merge=lfs -text
+
+archives/PaperA_Supplementary_Data.zip -filter -diff -merge -text

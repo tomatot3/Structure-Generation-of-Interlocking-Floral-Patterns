@@ -47,24 +47,24 @@ These records contain no new human ratings. D3 describes the separate 30-image r
 
 ## Evaluation files
 
-`evaluation/matrix_c/evaluated_results.csv` retains the original method names. `Ours` identifies the Global L1 Layout result in the Stage I comparison. `controls/l1/results.csv` contains HardConstraintGreedy. `root_coverage_qcov` is the root-position coverage measure used in Table 2; Stage I means use the 106 contexts completed by all three compared methods.
+`evaluation/matrix_c/evaluated_results.csv` retains the original method names. `Ours` identifies the Global L1 Layout result in the Stage I comparison. `controls/l1/results.csv` contains HardConstraintGreedy. `root_coverage_qcov` is the root-position coverage measure used in the Stage I comparison; Stage I means use the 106 contexts completed by all three compared methods.
 
 `evaluation/matched/objective_components.csv` has 1,344 rows: 336 requests × four methods. `target` is the requested L2 count; `attained` records whether it was reached. `score` is the common combination objective, `quality` its local-quality sum, `B` the child count, `U` the number of parents with children, and `total`/`peak` the total/maximum co-travel penalties. Objective differences are computed within the same context and requested count. For the confidence interval, request differences are first reduced to a median per context; the median across contexts is bootstrapped 2,000 times with seed 20260825.
 
-Table 3 uses `U` and `U / number of ordinary parents`. This coverage is distinct from the root-position measure `Qcov` in Table 2. `matched/independent_metrics.csv` contains geometric checks for completed requests, including crossings, clearances and periodic seams.
+Stage II branch coverage is reported as `U` and `U / number of ordinary parents`. The Stage I root-position coverage measure is `Qcov`. `matched/independent_metrics.csv` contains geometric checks for completed requests, including crossings, clearances and periodic seams.
 
 `evaluation/default` contains the corrected soft-density records and 180 matched triplets. `D` is the selected resource score, `target` its requested value and `residual = D − target`. The triplet files retain ties and decreases in each measured quantity. `evaluation/exact` and `evaluation/seed` contain the prescribed-count and seed-control experiments. The prescribed total L1 count includes flower-support paths; ordinary L1 is recorded separately.
 
-`evaluation/human_and_cases` contains D1–D8 and the analysis scripts. A1 is hierarchical organization; A2 is continuous composition and rhythm; B1 is appearance quality; C1 is structural preservation. Scores range from 1 to 5. D2 is empty because no optional comments were submitted. D7 reports ordinal agreement and item-bootstrap intervals; D8 contains Stage II weight-sensitivity settings and results.
+`evaluation/human_and_cases` contains D1, D3, D4, D6, D7 and D8 and the analysis scripts. A1 is hierarchical organization; A2 is continuous composition and rhythm; B1 is appearance quality; C1 is structural preservation. Scores range from 1 to 5. D7 reports ordinal agreement and item-bootstrap intervals; D8 contains Stage II weight-sensitivity settings and results.
 
 ## Prototype inputs and parameters
 
 `code/inputs/prototype_inputs.json` contains the six materialized prototype inputs consumed by generation. The priors and contracts alongside it preserve the numerical settings. The two-stage algorithm and geometric predicates are in `code/experiments/branch_unit/dynamic`. Package changes are limited to input loading and file/font paths; `code/portability_changes.json` records them.
 
-`data/parameters` preserves the archived parameter files. The original prior files retain their 14-case collection metadata. The manuscript's 25-case calibration count includes the additional cases reported by the author with unchanged final parameters; their individual correction records were not supplied on this machine.
+The release uses the settings read by the generation and evaluation code.
 
 ## Source annotations
 
-`source_materials/index.json` preserves 121 annotation identifiers and their existing source metadata. The vector annotations are provided in `source_materials/role_annotations/`; embedded source images have been removed. Original paths, role colors, transforms and object identifiers are preserved. The ten core cases follow the current Table S1. `docs/SOURCE_INDEX.md` maps the displayed sources to manuscript figures, bibliography entries and page locations. Numerical identifiers are annotation IDs, not bibliographic citations.
+`source_materials/index.json` preserves 121 annotation identifiers and their existing source metadata. The vector annotations are provided in `source_materials/role_annotations/`; embedded source images have been removed. Original paths, role colors, transforms and object identifiers are preserved. The ten core cases follow the current Table S1. `docs/SOURCE_INDEX.md` maps the displayed sources to manuscript figures and page locations. Numerical identifiers are annotation IDs, not bibliographic citations.
 
 No train/validation/test split is imposed. Related generated cases share prototypes and sometimes fixed upstream geometry; case records preserve the information needed to construct a split suited to the intended experiment.
