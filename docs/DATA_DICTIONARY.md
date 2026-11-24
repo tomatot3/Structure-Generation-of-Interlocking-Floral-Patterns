@@ -61,7 +61,7 @@ Table 4 uses `attained` and `score` to compare the four methods. The objective d
 
 `code/inputs/prototype_inputs.json` contains the six materialized prototype inputs consumed by generation. The priors and contracts alongside it preserve the numerical settings. The two-stage algorithm and geometric predicates are in `code/experiments/branch_unit/dynamic`. Package changes are limited to input loading and file/font paths; `code/portability_changes.json` records them.
 
-`data/parameters` preserves the archived parameters. The generator reads `code/inputs/curve_geometry_prior.json`, whose global profile records 79 effective ordinary-L1 exemplars. Use this numerical prior and the accompanying settings to reproduce the archived runs.
+`data/parameters` preserves the archived parameters. The generator reads the parent-curve prior from `code/inputs/curve_geometry_prior.json` and the child-placement prior from `code/experiments/branch_unit/dynamic/EDITOR_L2_PLACEMENT_PRIOR_V1.json`. Use this numerical prior and the accompanying settings to reproduce the archived runs.
 
 ## Source annotations
 

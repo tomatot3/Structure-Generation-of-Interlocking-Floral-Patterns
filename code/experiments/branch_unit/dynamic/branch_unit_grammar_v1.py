@@ -55,7 +55,10 @@ def _editor_l2_profile(
         raise UnitGrammarError(
             f"editor L2 placement prior has no profile for {prototype_id}"
         )
-    if int(profile.get("active_l2_count", 0)) < 5:
+    sample_count = profile.get("active_l2_count")
+    if sample_count is None:
+        sample_count = profile.get("mount_fraction", {}).get("count", 0)
+    if int(sample_count) < 5:
         raise UnitGrammarError("editor L2 placement profile is too small")
     return profile
 

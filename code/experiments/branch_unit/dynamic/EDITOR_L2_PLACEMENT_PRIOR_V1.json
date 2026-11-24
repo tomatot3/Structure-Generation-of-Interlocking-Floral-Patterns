@@ -11,7 +11,6 @@
   "prior_id": "saved_editor_l2_placement_20260809__cotravel_v2_20260916",
   "profiles": {
     "global": {
-      "active_l2_count": 103,
       "child_departure_turn_sign_histogram": {
         "negative": 54,
         "positive": 49
@@ -1450,7 +1449,6 @@
       }
     },
     "proto_sw_1_1": {
-      "active_l2_count": 25,
       "child_departure_turn_sign_histogram": {
         "negative": 16,
         "positive": 9
@@ -1910,7 +1908,6 @@
       }
     },
     "proto_sw_1_3": {
-      "active_l2_count": 26,
       "child_departure_turn_sign_histogram": {
         "negative": 8,
         "positive": 18
@@ -2389,7 +2386,6 @@
       }
     },
     "proto_sw_2_3": {
-      "active_l2_count": 18,
       "child_departure_turn_sign_histogram": {
         "negative": 10,
         "positive": 8
@@ -2820,7 +2816,6 @@
       }
     },
     "proto_sw_3_1": {
-      "active_l2_count": 12,
       "child_departure_turn_sign_histogram": {
         "negative": 6,
         "positive": 6
@@ -3122,7 +3117,6 @@
       }
     },
     "proto_sw_3_2": {
-      "active_l2_count": 22,
       "child_departure_turn_sign_histogram": {
         "negative": 14,
         "positive": 8

@@ -19,7 +19,6 @@
   "prior_id": "saved_editor_parent_local_l1_exemplars_20260811__cotravel_v2_20260916",
   "profiles": {
     "global": {
-      "active_l1_count": 79,
       "composition_pair_count": 199,
       "composition_pair_geometry": {
         "parallel_co_travel_score": {
@@ -5312,7 +5311,6 @@
       "single_cubic_l1_count": 79
     },
     "proto_sw_1_1": {
-      "active_l1_count": 16,
       "composition_pair_count": 40,
       "composition_pair_geometry": {
         "parallel_co_travel_score": {
@@ -6727,7 +6725,6 @@
       "single_cubic_l1_count": 16
     },
     "proto_sw_1_3": {
-      "active_l1_count": 15,
       "composition_pair_count": 30,
       "composition_pair_geometry": {
         "parallel_co_travel_score": {
@@ -8279,7 +8276,6 @@
       "single_cubic_l1_count": 15
     },
     "proto_sw_2_3": {
-      "active_l1_count": 19,
       "composition_pair_count": 53,
       "composition_pair_geometry": {
         "parallel_co_travel_score": {
@@ -9794,7 +9790,6 @@
       "single_cubic_l1_count": 19
     },
     "proto_sw_3_1": {
-      "active_l1_count": 11,
       "composition_pair_count": 27,
       "composition_pair_geometry": {
         "parallel_co_travel_score": {
@@ -10831,7 +10826,6 @@
       "single_cubic_l1_count": 11
     },
     "proto_sw_3_2": {
-      "active_l1_count": 18,
       "composition_pair_count": 49,
       "composition_pair_geometry": {
         "parallel_co_travel_score": {
