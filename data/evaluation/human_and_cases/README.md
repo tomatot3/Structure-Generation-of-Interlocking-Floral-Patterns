@@ -1,6 +1,6 @@
-# Supplementary Data for Paper A
+# Ratings and case data
 
-The data files accompany Supplementary Information. Individual observations and ratings are retained.
+The files in this directory provide D1–D7. Find the full [D1–D11 archive](../../../archives/PaperA_Supplementary_Data.zip) for the sensitivity experiments, source annotations and ceramic-border example.
 
 | File | Contents |
 | --- | --- |
@@ -11,7 +11,6 @@ The data files accompany Supplementary Information. Individual observations and 
 | D5_C076_components.json | Objective components for the C076 paired example |
 | D6_runtime_by_parent_count.json | Runtime summaries by run group and parent count |
 | D7_rating_agreement.json | Ordinal agreement, item-bootstrap intervals and image-level score summaries from D1 and D3 |
-| D8_weight_sensitivity/ | Six Stage II weights varied individually by ±20%; settings, full results, selected candidates and reproduction scripts |
 
 Example and evaluator identifiers match the manuscript and Supplementary Information. The tables and explanations in the English Supplementary Information provide their interpretation.
 

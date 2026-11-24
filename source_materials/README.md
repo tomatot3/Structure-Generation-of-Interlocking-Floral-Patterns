@@ -5,7 +5,7 @@ This collection brings together 121 source records and 121 vector annotations. T
 - `role_annotations/Rxxx.svg`: editable annotations, keyed by the source identifiers used in the paper. For example, R014 corresponds to the original annotation file 14.svg. The identifiers retain their original gaps.
 - `annotations.csv`: file mapping and counts of vector objects.
 - `index.json`: the unified index of 121 source records, with bibliographic locations, links and annotation paths where available.
-- `manuscript_sources.json`: selections from the same index for manuscript examples and the 10 illustrated source comparisons. These selections overlap the source collection and are not separate sample totals.
+- `manuscript_sources.json`: selections for the 10 source patterns reviewed in Supplementary Table S1 and the 10 representative comparisons in Supplementary Table S2. These selections overlap the source collection and are not separate sample totals.
 - `source_materials.csv`: a tabular view of the unified source index.
 
 The collection preserves the original source-tracing vectors and the two Figure 3 interpretations. Their segmentation and attributes differ from the generated semantic SVGs. Parent identifiers, prototype labels and uncertainty fields have not been inferred or added during export. Roles remain visible through the original annotation colors; consult the paper and its Supplementary Information for the interpretation of the illustrated cases.

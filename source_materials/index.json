@@ -254,8 +254,8 @@
     "used_in": [
       "正文图2a",
       "补充表S1及来源复核",
-      "补充表S22",
-      "补充表S23"
+      "补充表S2",
+      "补充数据D9"
     ],
     "annotation_distribution": "vector annotation only; embedded source image removed",
     "record_basis": "最新版补充材料表S1与正文参考文献；2026-10-31来源图版位置与构成观察补充",
@@ -367,7 +367,7 @@
     "annotation_distribution": "vector annotation only; embedded source image removed",
     "record_basis": "最新版补充材料表S1与正文参考文献",
     "bibliographic_reference": "陈振旺，佟艳．2017．中唐早期莫高窟藻井图案研究．敦煌学辑刊，(4)，131–140．",
-    "reference_number": 24,
+    "reference_number": 18,
     "annotation_svg": "role_annotations/R019.svg"
   },
   {
@@ -389,7 +389,7 @@
     "annotation_distribution": "vector annotation only; embedded source image removed",
     "record_basis": "最新版补充材料表S1与正文参考文献",
     "bibliographic_reference": "陈振旺，佟艳．2017．中唐早期莫高窟藻井图案研究．敦煌学辑刊，(4)，131–140．",
-    "reference_number": 24,
+    "reference_number": 18,
     "annotation_svg": "role_annotations/R020.svg"
   },
   {
@@ -447,8 +447,8 @@
     "printed_page": "9",
     "pdf_page_index": "15",
     "used_in": [
-      "补充表S22",
-      "补充表S23",
+      "补充表S2",
+      "补充数据D9",
       "正文图3"
     ],
     "annotation_distribution": "vector annotation only; embedded source image removed",
@@ -531,8 +531,8 @@
       "正文图2",
       "补充图S1",
       "补充表S1及来源复核",
-      "补充表S22",
-      "补充表S23"
+      "补充表S2",
+      "补充数据D9"
     ],
     "annotation_distribution": "vector annotation only; embedded source image removed",
     "record_basis": "最新版补充材料表S1与正文参考文献；2026-10-31来源图版位置与构成观察补充",
@@ -688,15 +688,15 @@
       "正文图1",
       "正文图3",
       "补充表S1及来源复核",
-      "补充表S22",
-      "补充表S23"
+      "补充表S2",
+      "补充数据D9"
     ],
     "annotation_distribution": "vector annotation only; embedded source image removed",
     "record_basis": "最新版补充材料表S1与正文参考文献；2026-10-31来源图版位置与构成观察补充",
     "bibliographic_reference": "范祎珂．2018．巩义石窟寺装饰图案及艺术研究．硕士学位论文，中原工学院．",
-    "reference_number": 23,
+    "reference_number": 16,
     "annotation_svg": "role_annotations/R035.svg",
-    "source_locator": "范祎珂[23]第28页、第59页附录4，C2-3；PDF第35、66页",
+    "source_locator": "范祎珂[16]第28页、第59页附录4，C2-3；PDF第35、66页",
     "image_form": "作者自绘图，附录4第60页说明",
     "date_as_reported": "该条图注未单列年代",
     "compositional_observation": "原文称七叶忍冬纹，叶片围绕主藤上下回旋，左右单位方向相异",
@@ -716,14 +716,14 @@
     "printed_page": "59",
     "pdf_page_index": "66",
     "used_in": [
-      "补充表S22",
-      "补充表S23",
+      "补充表S2",
+      "补充数据D9",
       "正文图3"
     ],
     "annotation_distribution": "vector annotation only; embedded source image removed",
     "record_basis": "既有118例来源恢复表（2026-09-10）；2026-10-31来源图版位置与构成观察补充",
     "annotation_svg": "role_annotations/R036.svg",
-    "source_locator": "范祎珂[23]第59页附录4，C2-2；PDF第66页",
+    "source_locator": "范祎珂[16]第59页附录4，C2-2；PDF第66页",
     "image_form": "作者自绘图，附录4第60页说明",
     "date_as_reported": "该条图注未单列年代",
     "compositional_observation": "植物母题仰俯交替，与第四小龛图样相比，叶形和回卷程度不同",
@@ -1072,7 +1072,7 @@
     "annotation_distribution": "vector annotation only; embedded source image removed",
     "record_basis": "最新版补充材料表S1与正文参考文献",
     "bibliographic_reference": "陈振旺．2018．隋及唐前期莫高窟藻井图案研究．博士学位论文，兰州大学．",
-    "reference_number": 26,
+    "reference_number": 19,
     "annotation_svg": "role_annotations/R056.svg"
   },
   {
@@ -1107,13 +1107,13 @@
     "printed_page": "136",
     "pdf_page_index": "148",
     "used_in": [
-      "补充表S22",
-      "补充表S23"
+      "补充表S2",
+      "补充数据D9"
     ],
     "annotation_distribution": "vector annotation only; embedded source image removed",
     "record_basis": "既有118例来源恢复表（2026-09-10）；2026-10-31来源图版位置与构成观察补充",
     "annotation_svg": "role_annotations/R058.svg",
-    "source_locator": "陈振旺[26]第136页图3-71；PDF第148页",
+    "source_locator": "陈振旺[19]第136页图3-71；PDF第148页",
     "image_form": "出版描绘图；该图未细分具体器物",
     "date_as_reported": "原图注标为七世纪后半期至八世纪中叶",
     "compositional_observation": "三个相邻母题与波状枝蔓相连，花叶外形与392窟图不同",
@@ -1187,13 +1187,13 @@
     "printed_page": "147,149",
     "pdf_page_index": "159,161",
     "used_in": [
-      "补充表S22",
-      "补充表S23"
+      "补充表S2",
+      "补充数据D9"
     ],
     "annotation_distribution": "vector annotation only; embedded source image removed",
     "record_basis": "既有118例来源恢复表（2026-09-10）；2026-10-31来源图版位置与构成观察补充",
     "annotation_svg": "role_annotations/R062.svg",
-    "source_locator": "陈振旺[26]第149页表4-3，第147页表4-2；PDF第161、159页",
+    "source_locator": "陈振旺[19]第149页表4-3，第147页表4-2；PDF第161、159页",
     "image_form": "出版描绘图；边饰表注明图片来源同前表，该窟列王一茗绘制",
     "date_as_reported": "表4-2列入盛唐第一组",
     "compositional_observation": "到达花位的弯曲路径与侧向短卷枝并存",
@@ -2227,22 +2227,22 @@
   },
   {
     "source_id": "YONGZHENG-BROCADE",
-    "reference_number": 28,
-    "bibliographic_reference": "梁科．2016．明清宫廷织物中的牡丹纹样设计．紫禁城，(6)，70–91．图版见第87页．",
+    "reference_number": 21,
+    "bibliographic_reference": "梁科．2016．明清宫廷织物中的牡丹纹样设计．紫禁城，(6)，70–91．",
     "figure_or_object": "故宫博物院藏清雍正黄色地缠枝牡丹纹织金锦料",
     "printed_page": "87",
     "source_url": "https://www.dpm.org.cn/Uploads/File/2019/05/27/u5cebb16dbc9e0.pdf",
     "used_in": [
       "正文图3",
-      "补充表S22",
-      "补充表S23"
+      "补充表S2",
+      "补充数据D9"
     ],
     "record_basis": "既有图3矢量构成解释，2026-10-31独立导出归档",
     "annotation_id": "122",
     "annotation_svg": "role_annotations/YONGZHENG-BROCADE.svg",
     "object_record": "清雍正黄色地缠枝牡丹纹织金锦料及局部，故宫博物院藏",
     "source_title": "梁科．2016．明清宫廷织物中的牡丹纹样设计．紫禁城，(6)，70–91．图版见第87页．",
-    "source_locator": "梁科[28]第87页；PDF第18页",
+    "source_locator": "梁科[21]第87页；PDF第18页",
     "image_form": "藏品照片及局部放大",
     "date_as_reported": "清雍正，按藏品图注",
     "compositional_observation": "花头遮蔽部分枝段，花外可见枝段用于分析接续",
@@ -2252,23 +2252,23 @@
   },
   {
     "source_id": "DHA-CAVE16",
-    "reference_number": 27,
-    "bibliographic_reference": "敦煌研究院．莫高窟第16窟．图像：甬道—缠枝西番莲纹样．https://www.dha.ac.cn/info/1425/3607.htm（访问日期：2026年9月16日）．",
+    "reference_number": 20,
+    "bibliographic_reference": "敦煌研究院．莫高窟第16窟．图像：甬道—缠枝西番莲纹样．https://www.dha.ac.cn/info/1425/3607.htm．",
     "figure_or_object": "莫高窟第16窟甬道—缠枝西番莲纹样",
     "printed_page": "",
     "source_url": "https://www.dha.ac.cn/info/1425/3607.htm",
     "used_in": [
       "正文图3",
       "补充图S2",
-      "补充表S22",
-      "补充表S23"
+      "补充表S2",
+      "补充数据D9"
     ],
     "record_basis": "既有图3矢量构成解释，2026-10-31独立导出归档",
     "annotation_id": "123",
     "annotation_svg": "role_annotations/DHA-CAVE16.svg",
     "object_record": "莫高窟第16窟甬道缠枝西番莲纹样",
     "source_title": "敦煌研究院．莫高窟第16窟．图像：甬道—缠枝西番莲纹样．https://www.dha.ac.cn/info/1425/3607.htm（访问日期：2026年9月16日）．",
-    "source_locator": "敦煌研究院《莫高窟第16窟》页面，图像“甬道—缠枝西番莲纹样”[27]",
+    "source_locator": "敦煌研究院《莫高窟第16窟》页面，图像“甬道—缠枝西番莲纹样”[20]",
     "image_form": "遗址壁画照片",
     "date_as_reported": "所用网页未对这处纹样单独断代",
     "compositional_observation": "相邻两处花位与连续主茎相连，局部枝段可见，花叶遮挡处按走势推定",
@@ -2295,12 +2295,12 @@
     "publication": "London: S. & T. Gilbert",
     "printed_page": "14; Plate LXXII",
     "used_in": [
-      "补充表S22",
-      "补充表S23",
+      "补充表S2",
+      "补充数据D9",
       "正文图3"
     ],
-    "bibliographic_reference": "Jones, O. Examples of Chinese Ornament, Selected from Objects in the South Kensington Museum and Other Collections (S. & T. Gilbert, 1867), Plate LXXII.",
+    "bibliographic_reference": "Jones, O. 1867. Examples of Chinese Ornament, Selected from Objects in the South Kensington Museum and Other Collections. London: S. & T. Gilbert. Plate LXXII.",
     "annotation_description": "用户标注的3段蓝色主藤路径与1个红色花位椭圆，保留原始几何及颜色。",
-    "reference_number": 29
+    "reference_number": 22
   }
 ]

@@ -17,7 +17,7 @@ Use `code/generate.py` to generate new structures or reproduce recorded cases. T
 | Check generated geometry | `paper_a_evaluation/evaluate_formal_cases.py::evaluate_case` | Crossings, clearance, attachment and periodic geometry metrics |
 | Export geometry and figures | `dynamic/export_batch_svgs.py::render_case_svg`, `code/asset_export.py` | Semantic JSON, role-labelled SVG and unlabelled conditioning SVG; optional PNG |
 
-`paper_a_evaluation/run_formal_cases.py::_run_case` connects the core generation steps. The packaged loader reads materialized inputs from `code/inputs`; it does not access the original workstation directories. Candidate construction, selection, geometric checks, thresholds and weights are retained.
+`paper_a_evaluation/run_formal_cases.py::_run_case` connects the core generation steps. The packaged loader reads materialized inputs from `code/inputs`. It uses `prototype_inputs.json` for the six prototypes and `curve_geometry_prior.json` for the frozen shape prior. The experimental exact-count settings are in `density_control_profile.json`. Candidate construction, selection, geometric checks, thresholds and weights are retained.
 
 ## New structures
 
@@ -39,4 +39,4 @@ The completed 500 images, conditioning inputs, matching IDs and submitted prompt
 
 ## Evaluation
 
-`compare_selectors.py` reruns the four Stage II methods on the 108 shared candidate spaces. `compare_parent_layout.py` runs the compatible greedy parent control. `summarize_results.py` recomputes the main paper statistics. `check_dataset.py` checks the 500 image pairs and their structural-asset links.
+`summarize_results.py` recomputes Tables 3 and 4 from the archived per-layout and per-request results. `check_dataset.py` checks the 500 image pairs and their structural-asset links.

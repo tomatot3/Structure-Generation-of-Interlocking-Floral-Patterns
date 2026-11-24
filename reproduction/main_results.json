@@ -7,6 +7,11 @@
       "GlobalL1": 108
     },
     "common_contexts": 106,
+    "mean_intersecting_pairs": {
+      "IndependentCurve": 1.7592592592592593,
+      "HardConstraintGreedy": 0.0,
+      "GlobalL1": 0.0
+    },
     "mean_root_coverage": {
       "IndependentCurve": 0.43967981702830183,
       "HardConstraintGreedy": 0.6020583189245283,
@@ -42,6 +47,14 @@
     "cotravel_reduced": 51,
     "cotravel_equal": 279,
     "cotravel_increased": 6,
+    "objective_difference_lgcs_minus_lgcount": {
+      "contexts": 108,
+      "median": 0.027544694030207484,
+      "CI95": [
+        0.025177215309830938,
+        0.031858278765795056
+      ]
+    },
     "parents_with_children": {
       "LG+CS": 1.5535714285714286,
       "JBC": 1.5982142857142858

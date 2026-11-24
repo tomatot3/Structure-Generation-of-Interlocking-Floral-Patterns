@@ -18,15 +18,46 @@ def main():
  for r in comp:groups[r['case_id'],r['target']][r['method']]=r
  pairs=[(cid,g['LG+CS'],g['JBC']) for (cid,_),g in groups.items()]
  delta=lambda x,y,k:float(y[k])-float(x[k])
- parent_counts={cid:len(json.loads((ROOT/'data/comparison_contexts'/cid/'methods/Ours/global_l1_flow_plan.json').read_text('utf-8'))['lanes']) for cid in {p[0] for p in pairs}}
+ matrix=rows('matrix_c/evaluated_results.csv')
+ parent_counts={
+     r['case_id']:int(r['ordinary_l1_count'])
+     for r in matrix if r['method']=='Ours' and int(r['l1_generation_success'])
+ }
  stage2={'requests':len(pairs),'completion':{m:sum(r['attained'].lower() in ['true','1'] for r in comp if r['method']==m) for m in ['LocalGreedy','LG+Count','LG+CS','JBC']},'objective_improved':sum(delta(x,y,'score')>1e-10 for _,x,y in pairs),'objective_tied':sum(abs(delta(x,y,'score'))<=1e-10 for _,x,y in pairs),'objective_difference':effect((cid,delta(x,y,'score')) for cid,x,y in pairs),'cotravel_reduced':sum(delta(x,y,'total') < -1e-10 for _,x,y in pairs),'cotravel_equal':sum(abs(delta(x,y,'total'))<=1e-10 for _,x,y in pairs),'cotravel_increased':sum(delta(x,y,'total')>1e-10 for _,x,y in pairs)}
+ attained={'true','1'}
+ count_score_pairs=(
+     (cid,delta(g['LG+Count'],g['LG+CS'],'score'))
+     for (cid,_),g in groups.items()
+     if all(g[m]['attained'].lower() in attained for m in ('LG+Count','LG+CS'))
+ )
+ stage2['objective_difference_lgcs_minus_lgcount']=effect(count_score_pairs)
  stage2['parents_with_children']={m:float(np.mean([float(g[m]['U']) for g in groups.values()])) for m in ['LG+CS','JBC']}
  stage2['parent_coverage_percent']={m:float(np.mean([100*float(g[m]['U'])/parent_counts[cid] for (cid,_),g in groups.items()])) for m in ['LG+CS','JBC']}
- matrix=rows('matrix_c/evaluated_results.csv');hcg=rows('controls/l1/results.csv');common={r['case_id'] for r in hcg if int(r['completed'])}
- stage1={'contexts':len(hcg),'completed':{'IndependentCurve':sum(int(r['l1_generation_success']) for r in matrix if r['method']=='IndependentCurve'),'HardConstraintGreedy':len(common),'GlobalL1':sum(int(r['l1_generation_success']) for r in matrix if r['method']=='Ours')},'common_contexts':len(common)}
- stage1['mean_root_coverage']={'IndependentCurve':float(np.mean([float(r['root_coverage_qcov']) for r in matrix if r['method']=='IndependentCurve' and r['case_id'] in common])),'HardConstraintGreedy':float(np.mean([float(r['root_coverage_qcov']) for r in hcg if r['case_id'] in common])),'GlobalL1':float(np.mean([float(r['root_coverage_qcov']) for r in matrix if r['method']=='Ours' and r['case_id'] in common]))}
- lookup={r['case_id']:float(r['root_coverage_qcov']) for r in hcg}
- stage1['root_coverage_difference']=effect((r['case_id'],float(r['root_coverage_qcov'])-lookup[r['case_id']]) for r in matrix if r['method']=='Ours' and r['case_id'] in common)
+ hcg=rows('controls/l1/results.csv')
+ completed={
+     'IndependentCurve':[r for r in matrix if r['method']=='IndependentCurve' and int(r['l1_generation_success'])],
+     'HardConstraintGreedy':[r for r in hcg if int(r['completed'])],
+     'GlobalL1':[r for r in matrix if r['method']=='Ours' and int(r['l1_generation_success'])],
+ }
+ common=set.intersection(*({r['case_id'] for r in results} for results in completed.values()))
+ stage1={
+     'contexts':len(hcg),
+     'completed':{method:len(results) for method,results in completed.items()},
+     'common_contexts':len(common),
+     'mean_intersecting_pairs':{
+         method:float(np.mean([int(r['l1_layout_crossing_count']) for r in results]))
+         for method,results in completed.items()
+     },
+     'mean_root_coverage':{
+         method:float(np.mean([float(r['root_coverage_qcov']) for r in results if r['case_id'] in common]))
+         for method,results in completed.items()
+     },
+ }
+ lookup={r['case_id']:float(r['root_coverage_qcov']) for r in completed['HardConstraintGreedy']}
+ stage1['root_coverage_difference']=effect(
+     (r['case_id'],float(r['root_coverage_qcov'])-lookup[r['case_id']])
+     for r in completed['GlobalL1'] if r['case_id'] in common
+ )
  ratings={}
  for name,fields in [('D1_structure_ratings.json',['A1','A2']),('D3_render_ratings.json',['B1','C1'])]:
   obs=json.loads((ROOT/'data/evaluation/human_and_cases'/name).read_text('utf-8'))

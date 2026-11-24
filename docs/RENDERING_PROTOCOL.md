@@ -4,7 +4,7 @@ The collection contains 500 separately generated blue-and-white floral-scroll im
 
 The author supplied the prompt. It specifies the appearance style and allows small leaves and curls along existing paths. The same structure and rendering filenames identify a pair. The index links each input to editable geometry and recorded generation controls.
 
-The images were generated with ChatGPT image2 through the built-in `image_gen` tool in Codex, using the author's subscription. The service did not return a random seed. The submitted prompts, input images and original outputs are archived with the pairs.
+The author submitted the input image and prompt through ChatGPT’s image-generation tool. Pair records identify the route as `builtin_image_gen` and retain the input, prompt and original output.
 
 To create a new image, submit a single PNG with the archived prompt to the chosen image service, save the returned original image and record the service/version supplied by that service. A local Python script can prepare inputs and indices but does not itself grant access to subscription image generation. All completed outputs are included here; browsing and structural analysis require no image-generation account.
 
