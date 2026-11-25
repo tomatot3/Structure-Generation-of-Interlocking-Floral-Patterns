@@ -1,0 +1,34 @@
+:root{
+ --ink:#24364b;--navy:#233f70;--paper:#fcfbf7;--linen:#f5f3eb;--line:#d5d9d4;
+ --muted:#545963;--control:#fdfcf8;--focus:#2863a6;
+ --ink:#2c323b;--muted-aux:#6b7078;--surface-muted:#f2efe8;--border-hairline:#1f3c6d20;
+ --curve-vine:#244880;--curve-flower:#9b5060;--curve-flower-fill:#9b506014;--curve-support:#546f54;--curve-parent:#9c652e;--curve-child:#3e7888;
+ --specimen-paper:linear-gradient(180deg,#fcfbf8,#f7f4ec);--vessel-veil:#151d31a1;
+ --paper-grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='130' height='130'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.78' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)' opacity='.022'/%3E%3C/svg%3E");
+ --sans:"DM Sans","Segoe UI","Microsoft YaHei",Arial,sans-serif;
+}
+button,select,input,textarea{font:inherit;}
+button,select,input,summary{accent-color:var(--navy);}
+select,input:not([type=range]):not([type=checkbox]):not([type=radio]):not([type=file]),textarea{
+ background:var(--control);border:1px solid #aab4b1;border-radius:5px;color:var(--ink);
+}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px;}
+button,summary{transition:background-color .14s ease,color .14s ease,border-color .14s ease;}
+button:disabled{cursor:not-allowed;}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important;}}
+
+/* Common tactile controls for the atlas and embedded editors. */
+input[type=range] {
+ appearance:none; -webkit-appearance:none; background:transparent; min-height:26px; cursor:pointer; padding:0;
+}
+input[type=range]::-webkit-slider-runnable-track { height:2px; background:#25406962; border-radius:2px; }
+input[type=range]::-moz-range-track { height:2px; background:#25406962; border-radius:2px; }
+input[type=range]::-webkit-slider-thumb {
+ appearance:none; -webkit-appearance:none; width:14px; height:14px; margin-top:-6px; border:1.5px solid var(--navy); border-radius:50%; background:#fcfbf6;
+}
+input[type=range]::-moz-range-thumb { width:12px; height:12px; border:1.5px solid var(--navy); border-radius:50%; background:#fcfbf6; }
+select {
+ appearance:none; --select-chevron:url("data:image/svg+xml,%3Csvg viewBox='0 0 12 8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='m2 2 4 4 4-4' fill='none' stroke='%233b4d63' stroke-width='1.25' stroke-linecap='round'/%3E%3C/svg%3E");
+ background-image:var(--select-chevron);
+ background-position:right 11px center; background-repeat:no-repeat; background-size:11px 8px; padding-right:28px;
+}

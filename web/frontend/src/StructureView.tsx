@@ -1,11 +1,136 @@
-import React,{useEffect,useState,useRef} from 'react';
+import {useEffect,useRef,useState} from 'react';
 import {ZoomIn,ZoomOut,RotateCcw} from 'lucide-react';
 import type {Item} from './types';
-export default function StructureView({item,role='all',onSelect,zh,compact=false,resetToken=0,sharedViewBox=''}:{item:Item|null;role?:string;onSelect?:(v:any)=>void;zh:boolean;compact?:boolean;resetToken?:number;sharedViewBox?:string}){
- useEffect(()=>{setPick(null)},[resetToken,role]);
- const [svg,setSvg]=useState(''),[data,setData]=useState<any>(null),[zoom,setZoom]=useState(1),[pick,setPick]=useState<any>(null);const ref=useRef<HTMLDivElement>(null);
- useEffect(()=>{let active=true;setPick(null);setZoom(1);if(!item)return;Promise.all([fetch(item.view_svg_url||item.svg_url).then(r=>r.text()),fetch(item.structure_url).then(r=>r.json())]).then(([text,d])=>{if(active){const doc=new DOMParser().parseFromString(text,'image/svg+xml');const root=doc.documentElement;root.querySelectorAll('metadata').forEach(n=>n.remove());root.removeAttribute('width');root.removeAttribute('height');root.setAttribute('preserveAspectRatio','xMidYMid meet');if(sharedViewBox)root.setAttribute('viewBox',sharedViewBox);const bg=root.querySelector('rect');if(bg)bg.setAttribute('fill','transparent');setSvg(new XMLSerializer().serializeToString(root));setData(d)}}).catch(()=>{if(active){setSvg('');setData(null)}});return()=>{active=false}},[item?.structure_url,sharedViewBox]);
- useEffect(()=>{if(!ref.current)return;ref.current.querySelectorAll('path,polyline,ellipse').forEach((el:any)=>{const level=el.dataset.level;const group=el.closest('[data-role]')?.getAttribute('data-role');const r=level||group;const palette:any={backbone:'#244880',flower_anchor:'#b36163',flower_support:'#708166',L1:'#b2864c',L2:'#618f9c',L3:'#936c9b'};if(palette[r])el.style.stroke=palette[r];const cid=el.dataset.curveId;const related=pick?.cid&&(cid===pick.cid||cid===pick.parent||el.dataset.parentCurveId===pick.cid);const flowerMatch=pick?.flowerId&&el.dataset.flowerId===pick.flowerId;const groupMatch=pick&&!pick.cid&&!pick.flowerId&&group===pick.role;el.style.opacity=pick?(related||flowerMatch||groupMatch?'1':'.14'):(role==='all'||r===role?'1':'.13');el.style.cursor='pointer';if(!compact){el.setAttribute('tabindex','0');el.setAttribute('role','button');el.setAttribute('aria-label',`${r} ${el.dataset.curveId?.split('__').pop()||el.dataset.flowerId||''}`)}el.style.transition='opacity .16s';if(el.tagName==='ellipse')el.style.fill='transparent'});},[svg,role,pick,zh]);
- function click(e:React.MouseEvent){const el=(e.target as Element).closest('path,polyline,ellipse') as SVGElement|null;if(!el)return;const group=el.closest('[data-role]')?.getAttribute('data-role')||'';const cid=el.getAttribute('data-curve-id');const curves=data?.selection.selected_candidates.flatMap((u:any)=>u.curves)||[];const c=curves.find((v:any)=>v.curve_id===cid);const parent=c?.parent_curve_id;const role=c?.level||group;if(role==='unit_boundary')return;const flowerId=el.getAttribute('data-flower-id');setPick({cid,parent,role,flowerId});const names:any={backbone:zh?'主藤':'Main vine',flower_anchor:zh?'花位':'Flower site',flower_support:zh?'承花路径':'Flower-support path',L1:zh?'普通父枝':'Parent branch',L2:zh?'子枝':'Child branch',L3:zh?'三级枝':'Third-level branch'};const desc:any={backbone:zh?'主藤贯穿重复单元，构成连续的花藤骨架。':'The main vine continues through adjacent repeats and anchors the floral composition.',flower_anchor:zh?'此花位及其对应的承花路径已高亮；位置范围与连接作用分别记录。':'This flower site and its supporting path are highlighted together. Position and connection are recorded separately.',flower_support:zh?'承花路径连接主藤与花位，属于给定花藤配置。':'This path connects a flower site to the main vine and belongs to the given floral configuration.',L1:zh?`此父枝带有 ${curves.filter((v:any)=>v.parent_curve_id===cid).length} 条子枝。父枝及其子枝作为完整配置参与选择。`:`This parent carries ${curves.filter((v:any)=>v.parent_curve_id===cid).length} child branches. They form a complete candidate configuration.`,L2:zh?'此子枝依附于高亮的父枝，随完整父子枝组共同参与几何检查与选择。':'This child attaches to the highlighted parent. Their complete configuration is checked and selected together.'};if(role==='flower_anchor'&&!data?.flower_mount_plan.mounts.some((m:any)=>m.flower_id===flowerId)){desc[role]=zh?'此花位已高亮。它的位置与主藤的连续走势共同构成这套花藤配置。':'This flower site is highlighted. Its position and the continuous main vine define this floral configuration.'}onSelect?.({label:names[role]||role,description:desc[role]||(zh?'依附于高亮父枝的自定义分枝。':'A custom branch attached to the highlighted parent.')})}
- return <div className={'structure-canvas '+(compact?'compact':'')}><div className="canvas-kicker"><span>{zh?'三周期视图':'THREE-REPEAT VIEW'}</span><div><button aria-label="Zoom out" onClick={()=>setZoom(Math.max(1,zoom-.25))}><ZoomOut size={16}/></button><span>{Math.round(zoom*100)}%</span><button aria-label="Zoom in" onClick={()=>setZoom(Math.min(2.5,zoom+.25))}><ZoomIn size={16}/></button><button aria-label="Reset view" onClick={()=>{setZoom(1);setPick(null);onSelect?.(null)}}><RotateCcw size={14}/></button></div></div><div className="svg-scroll" aria-label={zh?'可横向滚动的结构视图':'Scrollable structure view'}><div className="svg-stage" ref={ref} onClick={click} onKeyDown={e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();click(e as unknown as React.MouseEvent)}}} style={{width:`${zoom*100}%`}} dangerouslySetInnerHTML={{__html:svg}}/></div><div className="repeat-labels"><span>−1</span><span>{zh?'中央单元':'CENTRAL REPEAT'}</span><span>+1</span></div></div>
+import {ROLES} from './atlas';
+
+type Selection={label:string;description:string};
+type Mark={cid:string|null;parent?:string;role:string;flowerId:string|null};
+type Camera={zoom:number;left:number};
+type Props={
+ item:Item|null;zh:boolean;role?:string;onSelect?:(selection:Selection|null)=>void;
+ compact?:boolean;preview?:boolean;resetToken?:number;sharedViewBox?:string;camera?:Camera;onCamera?:(c:Camera)=>void;
+};
+const widths:Record<string,number>={backbone:2.4,flower_anchor:1.5,flower_support:1.8,L1:1.8,L2:1.3,L3:1.2};
+const colors:Record<string,string>=Object.fromEntries(ROLES.map(([key,color])=>[key,color]));
+colors.L3='#705c85';
+const cachedSvg=new Map<string,string>();
+async function svgFor(url:string,signal:AbortSignal){
+ const cached=cachedSvg.get(url);if(cached)return cached;
+ const r=await fetch(url,{signal});if(!r.ok)throw new Error('SVG '+r.status);
+ const text=await r.text();
+ if(cachedSvg.size>=64)cachedSvg.delete(cachedSvg.keys().next().value!);
+ cachedSvg.set(url,text);
+ return text;
+}
+function displaySvg(raw:string,viewBox:string){
+ const root=new DOMParser().parseFromString(raw,'image/svg+xml').documentElement;
+ if(root.localName!=='svg')throw new Error('SVG unavailable');
+ root.querySelectorAll('metadata,script,foreignObject').forEach(n=>n.remove());
+ [root,...root.querySelectorAll('*')].forEach(node=>{
+  for(const attr of [...node.attributes]) if(/^on/i.test(attr.name))node.removeAttribute(attr.name);
+ });
+ root.removeAttribute('width');root.removeAttribute('height');
+ root.setAttribute('preserveAspectRatio','xMidYMid meet');
+ if(viewBox)root.setAttribute('viewBox',viewBox);
+ const bg=root.querySelector('rect');if(bg)bg.setAttribute('fill','transparent');
+ if(root.getAttribute('data-repeat-mode')==='triple'&&!root.querySelector('[data-role=unit_boundary]')){
+  const group=document.createElementNS(root.namespaceURI,'g');
+  group.setAttribute('data-role','unit_boundary');
+  const shifts=[...new Set([...root.querySelectorAll('[data-repeat-shift]')].map(node=>Number(node.getAttribute('data-repeat-shift'))))].sort((a,b)=>a-b);
+  const [,y,,height]=(root.getAttribute('viewBox')||'').split(/[\s,]+/).map(Number);
+  if(shifts.length&&Number.isFinite(y)&&Number.isFinite(height)){
+   for(const x of [...shifts,shifts[shifts.length-1]+1]){
+    const line=document.createElementNS(root.namespaceURI,'line');
+    for(const [attr,value] of Object.entries({x1:x,x2:x,y1:y,y2:y+height}))line.setAttribute(attr,String(value));
+    group.append(line);
+   }
+   root.insertBefore(group,root.querySelector('g'));
+  }
+ }
+ return new XMLSerializer().serializeToString(root);
+}
+export default function StructureView({item,zh,role='all',onSelect,compact=false,preview=false,sharedViewBox='',resetToken=0,camera,onCamera}:Props){
+ const [loaded,setLoaded]=useState<{url:string;box:string;markup:string;failed?:boolean}|null>(null);
+ const [data,setData]=useState<any>(null);
+ const [localCamera,setLocalCamera]=useState<Camera>({zoom:1,left:0});
+ const [pick,setPick]=useState<Mark|null>(null);
+ const stage=useRef<HTMLDivElement>(null), scroll=useRef<HTMLDivElement>(null);
+ const url=item?.view_svg_url||item?.svg_url||'';
+ const t=(en:string,cn:string)=>zh?cn:en;
+ const current=camera||localCamera, setCamera=onCamera||setLocalCamera;
+ const shown=loaded?.url===url&&loaded.box===sharedViewBox?loaded:null;
+ const interaction=!compact&&!preview;
+ useEffect(()=>{setPick(null);},[resetToken,role]);
+ useEffect(()=>{setLocalCamera({zoom:1,left:0});setPick(null);},[url]);
+ useEffect(()=>{
+  if(!url)return;
+  const controller=new AbortController();
+  svgFor(url,controller.signal).then(raw=>{
+   if(!controller.signal.aborted)setLoaded({url,box:sharedViewBox,markup:displaySvg(raw,sharedViewBox)});
+  }).catch(()=>{if(!controller.signal.aborted)setLoaded({url,box:sharedViewBox,markup:'',failed:true});});
+  return()=>controller.abort();
+ },[url,sharedViewBox]);
+ useEffect(()=>{
+  setData(null);
+  if(!interaction||!item?.structure_url)return;
+  const controller=new AbortController();
+  fetch(item.structure_url,{signal:controller.signal}).then(r=>r.ok?r.json():null).then(d=>{if(!controller.signal.aborted)setData(d);}).catch(()=>{});
+  return()=>controller.abort();
+ },[item?.structure_url,interaction]);
+ useEffect(()=>{
+  if(scroll.current&&Math.abs(scroll.current.scrollLeft-current.left)>1)scroll.current.scrollLeft=current.left;
+ },[current.left,current.zoom,shown?.markup]);
+ const names:Record<string,string>=Object.fromEntries(ROLES.map(([key,_,en,cn])=>[key,t(en,cn)]));
+ useEffect(()=>{
+  for(const el of stage.current?.querySelectorAll<SVGElement>('path,polyline,ellipse')||[]){
+   const group=el.closest('[data-role]')?.getAttribute('data-role')||'';
+   const key=el.dataset.level||group;
+   if(colors[key]){
+    el.style.stroke=colors[key];el.style.strokeWidth=String(widths[key]*(preview ? 0.7 : 1));
+    el.style.strokeLinecap='round';el.style.strokeLinejoin='round';el.style.vectorEffect='non-scaling-stroke';
+    if(key==='flower_anchor')el.style.fill='var(--curve-flower-fill)';
+   }
+   if(interaction&&colors[key]){
+    el.setAttribute('tabindex','0');el.setAttribute('role','button');
+    el.setAttribute('aria-label',names[key]||key);el.style.cursor='pointer';
+   }
+   const id=el.dataset.curveId;
+   const related=pick?.cid&&[id,el.dataset.parentCurveId].includes(pick.cid)||pick?.parent&&pick.parent===id;
+   const flower=pick?.flowerId&&pick.flowerId===el.dataset.flowerId;
+   el.style.opacity=pick?(related||flower||!pick.cid&&!pick.flowerId&&pick.role===key?'1':'.25'):(role==='all'||role===key?'1':'.16');
+  }
+ },[shown?.markup,pick,role,zh,interaction,preview]);
+ function select(target:EventTarget){
+  if(!interaction)return;
+  const svg=(target as Element).closest('path,polyline,ellipse') as SVGElement|null;
+  if(!svg)return;
+  const cid=svg.getAttribute('data-curve-id'),flowerId=svg.getAttribute('data-flower-id');
+  const curves=(data?.selection?.selected_candidates||[]).flatMap((u:any)=>u.curves||[]);
+  const curve=curves.find((c:any)=>c.curve_id===cid);
+  const key=curve?.level||svg.dataset.level||svg.closest('[data-role]')?.getAttribute('data-role')||'';
+  if(!colors[key])return;
+  setPick({cid,parent:curve?.parent_curve_id,role:key,flowerId});
+  const childCount=curves.filter((v:any)=>v.parent_curve_id===cid).length;
+  const description:Record<string,string>={
+   backbone:t('The vine continues through adjacent repeats.','主藤贯穿相邻重复单元。'),
+   flower_anchor:t('This marker records the position and extent of a flower site.','此标记记录花位的位置和范围。'),
+   flower_support:t('The path links a flower site to the main vine.','承花路径连接花位和主藤。'),
+   L1:t('Child branches on this parent: '+childCount,'此父枝带有 '+childCount+' 条子枝。'),
+   L2:t('The highlighted parent carries this child branch.','高亮的父枝是这条子枝的挂接对象。'),
+  };
+  onSelect?.({label:names[key]||key,description:description[key]||t('Branch attachment','分枝挂接')});
+ }
+ const art=<div className="svg-stage" ref={stage} style={preview?undefined:{width:(current.zoom*100)+'%'}} onClick={e=>select(e.target)} onKeyDown={e=>{if(interaction&&(e.key==='Enter'||e.key===' ')){e.preventDefault();select(e.target);}}} dangerouslySetInnerHTML={{__html:shown?.markup||''}}/>;
+ if(preview)return <div className="structure-preview">{shown?.failed&&item?.png_url?<img src={item.png_url} alt={t('Structural drawing','结构线稿')}/>:art}</div>;
+ return <div className={'structure-canvas'+(compact?' compact':'')} aria-busy={!!url&&!shown}>
+  <div className="canvas-kicker"><span>{t('Three-repeat view','三周期视图')}</span><div>
+   <button aria-label={t('Zoom out','缩小')} disabled={!url||current.zoom<=1} onClick={()=>setCamera({...current,zoom:Math.max(1,current.zoom-.25)})}><ZoomOut size={16}/></button>
+   <span>{Math.round(current.zoom*100)}%</span>
+   <button aria-label={t('Zoom in','放大')} disabled={!url||current.zoom>=2.5} onClick={()=>setCamera({...current,zoom:Math.min(2.5,current.zoom+.25)})}><ZoomIn size={16}/></button>
+   <button aria-label={t('Reset view','适应画布')} disabled={!url} onClick={()=>{setCamera({zoom:1,left:0});setPick(null);onSelect?.(null);}}><RotateCcw size={15}/></button>
+  </div></div>
+  {url&&(!shown||shown.failed)&&<p className="canvas-status" role="status">{shown?.failed?t('The structure could not load.','结构图读取失败。'):t('Loading structure…','正在读取结构…')}</p>}
+  <div className="svg-scroll" ref={scroll} onScroll={e=>{if(e.currentTarget.clientWidth&&Math.abs(e.currentTarget.scrollLeft-current.left)>1)setCamera({...current,left:e.currentTarget.scrollLeft});}}>{art}</div>
+  <div className="repeat-labels"><span>{t('Previous repeat','前一单元')}</span><span>{t('Central repeat','中央单元')}</span><span>{t('Next repeat','后一单元')}</span></div>
+ </div>;
 }

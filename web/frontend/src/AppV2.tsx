@@ -1,83 +1,295 @@
-import React,{useEffect,useRef,useState} from 'react';
-import {createRoot} from 'react-dom/client';
-import {Layers,Grid2X2,BookOpen,GitCompareArrows,PenTool,Flower2,ArrowRight,ArrowUpRight,Download,Shuffle,LoaderCircle,X,Search,ChevronLeft,ChevronRight,LockKeyhole,ImagePlus,Check,ChevronDown} from 'lucide-react';
 import StructureView from './StructureView';
+import {useEffect,useRef,useState,type ReactNode} from 'react';
+import {createRoot} from 'react-dom/client';
+import {ArrowRight,ArrowUpRight,BookOpen,ChevronLeft,ChevronRight,Flower2,GitCompareArrows,Grid2X2,ImagePlus,Layers,LoaderCircle,Menu,PenTool,X} from 'lucide-react';
 import ResearchPage from './ResearchPage';
+import {FeaturedView,Gallery,PairDetail,filterFrom,galleryRoute} from './Gallery';
+import {Compare,Studio} from './Workspace';
+import {api,assetRoute,DEFAULT,displayCatalogId,parseRoute,post,PROTOTYPES,referenceFor,stored,useGeneration,type Catalog,type Job,type Reference,type Side,type Translate,type View} from './atlas';
 import type {Item,Params} from './types';
 import './style.css';
 import './v2.css';
-const DEFAULT:Params={prototype:'SW1-A',variant:'expanded',density:'medium',control:'soft',seed:20260920};
-const readSaved=(key:string,fallback:any)=>{try{return JSON.parse(localStorage.getItem(key)||'null')||fallback}catch{return fallback}};
-const saved=readSaved('papera-studio-v2',{}),remembered=readSaved('papera-editor',null);
-const cleanItem=(r:Item|null)=>r?.is_local?null:r;
-async function api(path:string,body?:unknown){const r=await fetch('/api/v1'+path,body===undefined?{}:{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});const d=await r.json();if(!r.ok)throw new Error(typeof d.detail==='string'?d.detail:'请检查输入参数 / Please check the parameters.');return d;}
+import './atlas.css';
+
+type Picker='editor'|'appearance'|Side;
+type Editor={url:string;item:Item};
+type Appearance={pairId?:string;url:string;label:string;project_id:string};
+type Saved={params?:Params;current?:Item|null;history?:Item[];comparison?:[Item|null,Item|null];aConfig?:Params;bConfig?:Params;lock?:boolean};
+const visibleViews: [View,string,string,typeof Layers][]=[
+ ['studio','Studio','工作台',Layers],['compare','Compare','结构对照',GitCompareArrows],['collection','Collection','配对图集',Grid2X2],
+ ['editor','Editor','结构编辑',PenTool],['appearance','Appearance','外观设计',ImagePlus],['research','Research','构成研究',BookOpen],
+];
+const saved=stored<Saved>('papera-studio-v2',{});
+const clean=(item:Item|null)=>item?.is_local?null:item;
+const frameSrc=(path:string)=>{const u=new URL(path,location.origin);u.searchParams.set('workspace','1');u.searchParams.set('v','atlas-copy-1');return u.pathname+u.search;};
+
 function App(){
- const [zh,setZh]=useState(localStorage.getItem('papera-language')!=='en');const t=(en:string,cn:string)=>zh?cn:en;
- const [tab,setTab]=useState(saved.tab||'studio'),[catalog,setCatalog]=useState<any>(null),[error,setError]=useState('');
- const [params,setParams]=useState<Params>(saved.params||DEFAULT),[current,setCurrent]=useState<Item|null>(saved.current||null);
- const [history,setHistory]=useState<Item[]>(saved.history||[]),[job,setJob]=useState<any>(readSaved('papera-active-job-v2',null)),[submitting,setSubmitting]=useState(false);
- const [selection,setSelection]=useState<any>(null),[role,setRole]=useState('all'),[resetToken,setResetToken]=useState(0);
+ const [zh,setZh]=useState(localStorage.getItem('papera-language')!=='en');
+ const t:Translate=(en,cn)=>zh?cn:en;
+ const [route,setRoute]=useState(()=>parseRoute(location.hash));
+ const [menu,setMenu]=useState(false);
+ const [error,setError]=useState('');
+ const [catalog,setCatalog]=useState<Catalog|null>(null),[catalogError,setCatalogError]=useState(false),[retryCatalog,setRetryCatalog]=useState(0);
+ const [params,setParams]=useState(saved.params||DEFAULT),[current,setCurrent]=useState<Item|null>(saved.current||null);
+ const [recent,setRecent]=useState(saved.history||[]);
  const [comparison,setComparison]=useState<[Item|null,Item|null]>(saved.comparison||[null,null]);
- const [aConfig,setAConfig]=useState<Params>(saved.aConfig||DEFAULT),[bConfig,setBConfig]=useState<Params>(saved.bConfig||{...DEFAULT,seed:20260921,density:'rich'});
- const [lock,setLock]=useState(saved.lock??true),[commonBox,setCommonBox]=useState('');
- const [picker,setPicker]=useState<'A'|'B'|'editor'|'appearance'|null>(null),[detail,setDetail]=useState<Item|null>(null);
- const [editor,setEditor]=useState<any>(remembered),[editorDirty,setEditorDirty]=useState(false),[editorHeight,setEditorHeight]=useState(1180);const frame=useRef<HTMLIFrameElement>(null);
- const [appearance,setAppearance]=useState<any>(readSaved('papera-appearance',null));
- const [appearancePending,setAppearancePending]=useState(false),appearanceOpening=useRef(false);
- const busy=!!job||submitting,proto=catalog?.prototypes.find((r:any)=>r.id===params.prototype)?.preview as Item|undefined;
- useEffect(()=>{api('/catalog').then(setCatalog).catch(e=>setError(e.message))},[]);
- useEffect(()=>{localStorage.setItem('papera-language',zh?'zh':'en')},[zh]);
- useEffect(()=>{localStorage.setItem('papera-studio-v2',JSON.stringify({tab,params,current:cleanItem(current),history:history.filter(r=>!r.is_local),comparison:comparison.map(cleanItem),aConfig,bConfig,lock}))},[tab,params,current,history,comparison,aConfig,bConfig,lock]);
- useEffect(()=>{if(job)localStorage.setItem('papera-active-job-v2',JSON.stringify(job));else localStorage.removeItem('papera-active-job-v2')},[job]);
- const addHistory=(item:Item)=>setHistory(rows=>[item,...rows.filter(r=>r.case_id!==item.case_id)].slice(0,30));
- async function startJob(payload:any,target:'main'|'A'|'B',continuation?:Params){setError('');setSubmitting(true);try{const d=await api('/jobs',payload);setJob({...d,target,continuation})}catch(e:any){setError(e.message)}finally{setSubmitting(false)}}
+ const [aConfig,setAConfig]=useState(saved.aConfig||DEFAULT),[bConfig,setBConfig]=useState(saved.bConfig||{...DEFAULT,seed:20260921,density:'rich'});
+ const [lock,setLock]=useState(saved.lock??true),[box,setBox]=useState(''),[activeSide,setActiveSide]=useState<Side>('A');
+ const [picker,setPicker]=useState<Picker|null>(null),[detailCache,setDetailCache]=useState<Item>();
+ const [editor,setEditor]=useState<Editor|null>(()=>stored('papera-editor',null));
+ const [appearance,setAppearance]=useState<Appearance|null>(()=>stored('papera-appearance',null));
+ const [pending,setPending]=useState<'editor'|'appearance'|null>(null);
+ const pendingRef=useRef(false);
+ const editorFrame=useRef<HTMLIFrameElement>(null),appearanceFrame=useRef<HTMLIFrameElement>(null);
+ const dirty=useRef({editor:false,appearance:false});
+ const [vesselOpen,setVesselOpen]=useState(false);
+ const [savedState,setSavedState]=useState({editor:false,appearance:false});
+ const routeRef=useRef(route);routeRef.current=route;
+ const galleryScroll=useRef<Record<string,number>>({});
+ const requested=route.query.get('prototype');
+ const workspace=route.view==='editor'||route.view==='appearance';
+ const addHistory=(item:Item)=>setRecent(items=>[item,...items.filter(r=>r.case_id!==item.case_id)].slice(0,30));
+ const generation=useGeneration((item,target)=>{
+  addHistory(item);
+  if(target==='main')setCurrent(item);
+  else setComparison(old=>target==='A'?[item,old[1]]:[old[0],item]);
+ },t);
+ const busy=generation.busy||!!pending;
+
  useEffect(()=>{
-  if(!job)return;let stopped=false,inFlight=false;
-  const poll=async()=>{if(inFlight)return;inFlight=true;try{const d=await api('/jobs/'+job.job_id);if(stopped)return;
-   if(d.state==='succeeded'){const item=d.result as Item;addHistory(item);if(job.target==='main'){setCurrent(item);setSelection(null);setRole('all');setResetToken(n=>n+1)}else setComparison(pair=>job.target==='A'?[item,pair[1]]:[pair[0],item]);setJob(null);if(job.continuation){const c=await api('/conditions',{job_id:item.job_id});await startJob({...job.continuation,prototype:item.prototype,variant:item.parameters.variant,condition_id:c.condition_id},'B')}}
-   else if(['failed','interrupted','expired'].includes(d.state)){setError(d.error||t('The task did not complete.','任务未完成。'));setJob(null)}else setJob((active:any)=>active?{...active,state:d.state,queue_position:d.queue_position}:active);
-  }catch(e:any){if(!stopped){setError(e.message);setJob(null)}}finally{inFlight=false}};
-  poll();const timer=setInterval(poll,1500);return()=>{stopped=true;clearInterval(timer)};
- },[job?.job_id]);
- useEffect(()=>{if(!comparison[0]||!comparison[1]||comparison.some(r=>r?.is_local)){setCommonBox('');return}let active=true;Promise.all(comparison.map(r=>fetch(r!.view_svg_url||r!.svg_url).then(v=>v.text()))).then(texts=>{const boxes=texts.map(v=>(new DOMParser().parseFromString(v,'image/svg+xml').documentElement.getAttribute('viewBox')||'-1.08 0 3.16 1.2').split(/\s+/).map(Number));const y=Math.min(...boxes.map(b=>b[1])),end=Math.max(...boxes.map(b=>b[1]+b[3]));if(active)setCommonBox(`-1.08 ${y} 3.16 ${end-y}`)}).catch(()=>setCommonBox(''));return()=>{active=false}},[comparison]);
- useEffect(()=>{const handler=(e:MessageEvent)=>{if(e.origin!==location.origin||e.source!==frame.current?.contentWindow)return;if(e.data?.type==='papera-editor-location')localStorage.setItem('papera-editor',JSON.stringify({...editor,url:e.data.url}));if(e.data?.type==='papera-editor-height'&&Number.isFinite(e.data.height))setEditorHeight(Math.max(700,Math.min(3000,e.data.height+2)));if(e.data?.type==='papera-open-appearance')startAppearance(e.data.reference);if(e.data?.type==='papera-editor-dirty')setEditorDirty(!!e.data.dirty);if(e.data?.type==='papera-editor-saved'){addHistory(e.data.item);setEditorDirty(false);setEditor((old:any)=>({...old,item:e.data.item}));localStorage.setItem('papera-editor',JSON.stringify({...editor,url:e.data.editor_url,item:e.data.item}))}};window.addEventListener('message',handler);return()=>window.removeEventListener('message',handler)},[editor]);
- function choosePrototype(prototype:string){setParams(v=>({...v,prototype}));setCurrent(null);setSelection(null);setRole('all');setResetToken(n=>n+1)}
- function chooseCompare(which:'A'|'B',item:Item){setComparison(pair=>which==='A'?[item,pair[1]]:[pair[0],item]);if(item.is_local||item.user_edited||which==='B')setLock(false);setPicker(null);setDetail(null);setTab('compare')}
- async function generateB(){if(!lock){await startJob(bConfig,'B');return}const source=comparison[0];if(!source){setError(t('Generate or choose A first.','请先生成或选择A。'));return}if(source.is_local||source.user_edited){setError(t('Use independent settings for edited or local images.','比较编辑结果或本地图像时，请取消固定花藤。'));return}try{if(source.job_id){const c=await api('/conditions',{job_id:source.job_id});await startJob({...bConfig,prototype:source.prototype,variant:source.parameters.variant,condition_id:c.condition_id},'B')}else await startJob({...source.parameters,archive_case:source.case_id},'A',bConfig)}catch(e:any){setError(e.message)}}
- async function openEditor(item:Item){if(editorDirty&&!window.confirm(t('Discard unsaved changes and switch structure?','当前有未保存的修改，确定切换结构吗？')))return;const kind=item.edit_id?'edit':item.job_id?'job':'asset',id=item.edit_id||item.job_id||item.asset_id;if(!id){setError(t('Choose a generated or collection structure.','请选择生成结果或图集中的结构。'));return}try{setSubmitting(true);const d=await api('/editor/sources',{kind,id});const next={url:d.editor_url,item};setEditor(next);localStorage.setItem('papera-editor',JSON.stringify(next));setEditorDirty(false);setPicker(null);setDetail(null);setTab('editor')}catch(e:any){setError(e.message)}finally{setSubmitting(false)}}
- async function startAppearance(reference:any){if(appearanceOpening.current)return;appearanceOpening.current=true;setAppearancePending(true);setPicker(null);setDetail(null);try{setSubmitting(true);setError('');const d=await api('/appearance/projects',reference);setAppearance(d);localStorage.setItem('papera-appearance',JSON.stringify(d));setTab('appearance')}catch(e:any){setError(e.message)}finally{appearanceOpening.current=false;setAppearancePending(false);setSubmitting(false)}}
- function openAppearance(item:Item){const kind=item.edit_id?'edit':item.job_id?'job':'asset',id=item.edit_id||item.job_id||item.asset_id;if(id)startAppearance({kind,id});}
- function continueEditorAppearance(){frame.current?.contentWindow?.postMessage({type:'papera-request-appearance'},location.origin);}
- function localImage(which:'A'|'B',file:File|undefined){if(!file)return;if(file.size>10*1024*1024){setError(t('Choose an image smaller than 10 MB.','请选择小于10 MB的图片。'));return}if(!/\.(png|jpe?g|svg)$/i.test(file.name)){setError(t('Choose a PNG, JPEG or SVG.','请选择PNG、JPEG或SVG图片。'));return}const reader=new FileReader();reader.onload=()=>chooseCompare(which,{case_id:'local-'+Date.now(),prototype:'',parameters:DEFAULT,l1:0,l2:0,flowers:0,structure_url:'',svg_url:'',png_url:'',json_url:'',parameters_url:'',is_local:true,local_url:String(reader.result),local_name:file.name});reader.readAsDataURL(file)}
- const title=tab==='studio'?t('Pattern studio','纹样工作台'):tab==='compare'?t('Structure comparison','结构对照'):tab==='gallery'?t('Pattern collection','配对图集'):tab==='editor'?t('Structure editor','结构编辑'):tab==='appearance'?t('Appearance design','外观设计'):t('The composition of floral scrolls','缠枝纹的构成与变化');
- const subtitle=tab==='studio'?t('Six floral configurations, with room for variation.','六种花藤配置，多种分枝变化。'):tab==='compare'?t('Compare variations in form and density.','比较不同形态与疏密。'):tab==='gallery'?t('500 structures and their paired renderings.','500对结构与渲染图。'):tab==='editor'?t('Adjust curves and save your design.','调整曲线，保存你的设计。'):tab==='appearance'?t('Continue from your structure to an editable decorative border.','从当前结构继续设计可编辑的装饰边饰。'):t('A study of vine continuity, flower placement and branch attachment.','关于主藤连续、花位排列与分枝依附的研究。');
- return <><header className="site-header"><a className="brand" href="#" onClick={e=>{e.preventDefault();setTab('studio')}}><span className="brand-mark"><Flower2 size={26}/></span><span>Floral Scroll Atlas<small>{t('FLORAL PATTERN STUDIES','缠枝纹研究')}</small></span></a><nav aria-label="Main navigation">{[['studio',t('Studio','工作台'),Layers],['compare',t('Compare','结构对照'),GitCompareArrows],['gallery',t('Collection','配对图集'),Grid2X2],['editor',t('Editor','结构编辑'),PenTool],['appearance',t('Appearance','外观设计'),ImagePlus],['about',t('Research','研究介绍'),BookOpen]].map(([id,label,Icon]:any)=><button key={id} className={tab===id?'nav-active':''} onClick={()=>setTab(id)}><Icon size={16}/>{label}</button>)}</nav><button className="language" onClick={()=>setZh(!zh)}>{zh?'English':'中文'}<ArrowUpRight size={14}/></button></header><main><div className={"page-intro "+(tab==='appearance'?'appearance-intro':'')}><div><p className="eyebrow">{t('A DIGITAL STUDY OF FLORAL SCROLLS','缠枝纹数字构成研究')}</p><h1>{title}</h1><p className="intro-copy">{subtitle}</p></div></div>
- {error&&<div className="error" role="alert">{error}<button onClick={()=>setError('')} aria-label="Dismiss"><X size={17}/></button></div>}{job&&<div className="job-status" role="status"><LoaderCircle className="spin" size={18}/><span>{job.continuation?t('Preparing comparison…','正在准备对照……'):job.state==='queued'?t(`Queued · position ${job.queue_position||1}`,`排队中 · 第 ${job.queue_position||1} 项`):t('Generating…','正在生成……')}</span></div>}
- {appearancePending&&<div className="appearance-loading" role="status">{t('Preparing appearance editor…','正在准备外观编辑…')}</div>}
- {tab==='studio'&&<><section className="workspace"><aside className="controls v2-controls"><div className="section-cap"><h2>{t('Floral configuration','花藤原型')}</h2></div><div className="prototype-grid">{catalog?.prototypes.map((p:any)=><button key={p.id} disabled={busy} className={params.prototype===p.id?'chosen':''} onClick={()=>choosePrototype(p.id)}><img src={p.preview.svg_url} alt=""/><span>{p.id}</span></button>)}</div><div className="section-cap divided"><h2>{t('Branch settings','分枝设置')}</h2></div><ParamControls value={params} onChange={setParams} zh={zh} disabled={busy} hidePrototype/><button className="primary generate" disabled={busy||!catalog} onClick={()=>startJob(params,'main')}><Shuffle size={17}/>{t('Generate branches','生成分枝')}<ArrowRight size={17}/></button></aside><div className="studio-main"><div className="canvas-head"><div><span className="tiny-label">{current?t('GENERATED STRUCTURE','生成结果'):t('PREVIEW','原型预览')}</span><h2>{current?.prototype||params.prototype}<span>{current?t('Branch hierarchy','分枝层级'):t('Main vine + flower sites','主藤＋花位')}</span></h2></div>{current&&<div className="result-actions"><button className="text-button" onClick={()=>chooseCompare('A',current)}><GitCompareArrows size={16}/>{t('Use as A','作为对照A')}</button><button className="secondary" disabled={busy} onClick={()=>openEditor(current)}><PenTool size={16}/>{t('Edit structure','编辑结构')}</button><button className="secondary" disabled={busy} onClick={()=>openAppearance(current)}><ImagePlus size={16}/>{t('Continue appearance','继续外观设计')}</button></div>}</div><StructureView item={current||proto||null} zh={zh} role={role} resetToken={resetToken} onSelect={setSelection}/>{current?<><div className="role-legend">{[['all',t('All roles','全部关系'),''],['backbone',t('Main vine','主藤'),'#244880'],['flower_anchor',t('Flower sites','花位'),'#b36163'],['flower_support',t('Supports','承花路径'),'#708166'],['L1',t('Parents','普通父枝'),'#b2864c'],['L2',t('Children','子枝'),'#618f9c']].map(([id,label,color])=><button key={id} className={role===id?'active':''} onClick={()=>{setRole(id);setSelection(null);setResetToken(v=>v+1)}}>{color&&<i style={{background:color}}/>}{label}</button>)}</div><div className="below-canvas"><div className="relationship"><div className="section-cap"><h2>{t('Branch relationships','分枝关系')}</h2></div><h3>{selection?.label||t('No branch selected','未选择分枝')}</h3><p>{selection?.description||t('Select a branch to view its connections.','点击分枝查看连接关系。')}</p>{selection&&<button className="text-button" onClick={()=>{setSelection(null);setResetToken(v=>v+1)}}>{t('Clear selection','清除选择')}</button>}</div><div className="result-summary"><Counts item={current} zh={zh}/><Downloads item={current} zh={zh}/></div></div></>:<div className="prototype-explanation"><p>{t('Branches appear after generation.','生成后可查看分枝与层级关系。')}</p></div>}</div></section></>}
- {tab==='compare'&&<section><div className="comparison-options"><label className="lock-option"><input type="checkbox" checked={lock} onChange={e=>setLock(e.target.checked)} disabled={!!comparison[0]?.is_local||!!comparison[0]?.user_edited}/><LockKeyhole size={18}/>{t('Keep A’s floral configuration','沿用A的花藤配置')}</label><p>{lock?t('B retains A’s vine, flower sites and supports; its branches can vary.','B保留A的主藤、花位与承花路径，分枝可单独调整。'):t('A and B are selected independently.','A、B独立设置或选择。')}</p></div><div className="comparison-grid v2-compare">{(['A','B'] as const).map((side,index)=>{const item=comparison[index],cfg=side==='A'?aConfig:bConfig,shown=side==='B'&&lock&&comparison[0]?{...cfg,prototype:comparison[0].prototype,variant:comparison[0].parameters.variant}:cfg;return <article key={side}><div className="canvas-head"><h2>{side} · {side==='A'?t('Reference','基准结构'):t('Comparison','对照结构')}</h2><span className="pill">{item?.is_local?item.local_name:item?.prototype||t('Not selected','尚未选择')}</span></div><div className="comparison-form"><ParamControls value={shown} onChange={side==='A'?setAConfig:setBConfig} zh={zh} disabled={busy} lockPrototype={side==='B'&&lock}/><div className="comparison-buttons"><button className="primary" disabled={busy||(side==='B'&&lock&&!comparison[0])} onClick={()=>side==='A'?startJob(aConfig,'A'):generateB()}><Shuffle size={15}/>{t(`Generate ${side}`,`生成${side}`)}</button><button className="secondary" onClick={()=>setPicker(side)}>{t('Choose existing','选择已有结构')}</button><label className="file-button"><ImagePlus size={15}/>{t('Local image','选择本地图')}<input type="file" accept=".png,.jpg,.jpeg,.svg" onChange={e=>{localImage(side,e.target.files?.[0]);e.target.value=''}}/></label></div></div>{item?item.is_local?<div className="local-compare"><img src={item.local_url} alt={item.local_name}/><p>{t('Local image · visual comparison only','本地图像 · 仅作视觉对照')}</p></div>:<><StructureView item={item} zh={zh} compact sharedViewBox={commonBox}/><div className="compare-stats"><Counts item={item} zh={zh}/></div><Downloads item={item} zh={zh}/><button className="text-button compare-edit" onClick={()=>openEditor(item)}><PenTool size={14}/>{t('Edit this structure','编辑这份结构')}</button><button className="text-button compare-edit" onClick={()=>openAppearance(item)}>{t('Continue appearance','继续外观设计')}</button></>:<div className="empty-state"><GitCompareArrows size={28}/><h3>{t(`Generate or select ${side}.`,`生成或选择结构${side}。`)}</h3></div>}</article>})}</div>{comparison[0]?.job_id&&comparison[1]?.condition_id===comparison[0].job_id&&<div className="verified"><Check size={16}/>{t('Same floral configuration','花藤配置一致')}</div>}</section>}
- {tab==='gallery'&&<Gallery zh={zh} onSelect={setDetail}/>}
- <section className="editor-page" style={{display:tab==='editor'?'block':'none'}}><div className="editor-heading"><div><h2>{editor?.item?t(`Editing ${editor.item.prototype}`,`正在编辑 ${editor.item.prototype}`):t('Choose a structure to edit','选择一份结构开始编辑')}</h2><p>{t('Edit branches while keeping the main vine, flower sites and supports.','可编辑普通分枝；主藤、花位与承花路径保持固定。')}</p></div><button className="secondary" onClick={()=>setPicker('editor')}>{t('Choose structure','选择结构')}</button>{editor?.item&&<button className="secondary" disabled={busy} onClick={continueEditorAppearance}>{t('Continue appearance','继续外观设计')}</button>}{current&&!editor&&<button className="primary" onClick={()=>openEditor(current)}>{t('Edit current result','编辑当前结果')}</button>}</div>{editor?<iframe ref={frame} className="editor-frame" title="结构编辑器" src={`${editor.url}${editor.url.includes('?')?'&':'?'}v=20260920-copy`} style={{height:editorHeight}}/>:<div className="editor-empty"><PenTool size={40}/><h3>{t('Start with a structure','选择起始结构')}</h3><p>{t('Open a generated result or a structure from the collection.','从生成记录或图集中打开一份结构。')}</p><button className="primary" onClick={()=>setPicker('editor')}>{t('Choose a structure','选择结构')}<ArrowRight size={16}/></button></div>}</section>
- <section className="appearance-page" style={{display:tab==='appearance'?'block':'none'}}><div className="editor-heading"><div><h2>{appearance?.label||t('Choose a structure','选择起始结构')}</h2></div><button className="secondary" disabled={busy} onClick={()=>setPicker('appearance')}>{t('Choose structure','选择结构')}</button></div>{appearance?<iframe className="appearance-frame" title="外观设计器" src={`${appearance.url}${appearance.url.includes("?")?"&":"?"}v=periodic-20261008-2`}/>:<div className="editor-empty"><ImagePlus size={36}/><h3>{t('Continue a generated or edited structure','接续生成或编辑后的结构')}</h3><button className="primary" onClick={()=>setPicker('appearance')}>{t('Choose structure','选择结构')}</button></div>}</section>
- {tab==='about'&&<ResearchPage zh={zh} busy={busy} onPrototype={id=>{choosePrototype(id);setTab('studio');window.scrollTo({top:0,behavior:'smooth'})}} onGallery={()=>{setTab('gallery');window.scrollTo({top:0,behavior:'smooth'})}}/>}
- </main><footer><span>Floral Scroll Atlas</span><p>{t('A digital collection of floral scroll patterns','缠枝纹数字图集')}</p><span>2026</span></footer>
- {picker&&<Dialog title={t(`Choose ${picker==='editor'||picker==='appearance'?'a structure to edit':picker}`,`选择${picker==='editor'||picker==='appearance'?'要编辑的结构':picker+'的结构'}`)} onClose={()=>setPicker(null)}><div className="picker-history"><h3>{t('Recent generated and edited results','最近的生成与编辑结果')}</h3>{history.length?<div className="history-list">{history.map(r=><button key={r.case_id} onClick={()=>picker==='editor'?openEditor(r):picker==='appearance'?openAppearance(r):chooseCompare(picker,r)}><img src={r.png_url} alt=""/><span>{r.prototype}<small>{r.user_edited?t('Edited version','编辑版本'):t(`${r.l1} parents · ${r.l2} children`,`${r.l1}父枝 · ${r.l2}子枝`)}</small></span><ArrowRight size={15}/></button>)}</div>:<p className="small-note">{t('New results will appear here.','新生成及保存的编辑结果会出现在这里。')}</p>}</div><Gallery zh={zh} onSelect={r=>picker==='editor'?openEditor(r):picker==='appearance'?openAppearance(r):chooseCompare(picker,r)} picker/></Dialog>}
- {detail&&<Dialog title={detail.pair_id||detail.case_id} onClose={()=>setDetail(null)}><p className="small-note">{detail.prototype} · {detail.case_id}</p><div className="modal-pair"><figure><img src={detail.png_url} alt="Structure"/><figcaption>{t('Structure','结构图')}</figcaption></figure><figure><img src={detail.render_url} alt="Rendering"/><figcaption>{t('Appearance rendering','外观渲染')}</figcaption></figure></div><div className="modal-bottom"><Downloads item={detail} zh={zh}/><a className="secondary" href={detail.render_url} download>{t('Rendering PNG','渲染PNG')}<Download size={14}/></a><button className="secondary" onClick={()=>chooseCompare('A',detail)}>{t('Use as A','作为A')}</button><button className="secondary" onClick={()=>chooseCompare('B',detail)}>{t('Use as B','作为B')}</button><button className="primary" onClick={()=>openEditor(detail)}><PenTool size={16}/>{t('Edit structure','编辑结构')}</button><button className="secondary" onClick={()=>openAppearance(detail)}>{t('Continue appearance','继续外观设计')}</button></div></Dialog>}
- </>
+  const abort=new AbortController();
+  setCatalogError(false);
+  api<Catalog>('/catalog',{signal:abort.signal}).then(setCatalog).catch(()=>{if(!abort.signal.aborted)setCatalogError(true);});
+  return()=>abort.abort();
+ },[retryCatalog]);
+ useEffect(()=>{
+  document.documentElement.lang=zh?'zh-CN':'en';
+  localStorage.setItem('papera-language',zh?'zh':'en');
+  sendLanguage(editorFrame.current);sendLanguage(appearanceFrame.current);
+ },[zh]);
+ useEffect(()=>{
+  localStorage.setItem('papera-studio-v2',JSON.stringify({params,current:clean(current),history:recent.filter(r=>!r.is_local),comparison:comparison.map(clean),aConfig,bConfig,lock}));
+ },[params,current,recent,comparison,aConfig,bConfig,lock]);
+ useEffect(()=>{
+  if(route.view==='studio' && requested && PROTOTYPES.includes(requested) && requested!==params.prototype){
+   setParams(p=>({...p,prototype:requested}));setCurrent(null);
+  }
+ },[route.view,requested]);
+ useEffect(()=>{
+  setBox('');
+  if(comparison.some(item=>!item||item.is_local))return;
+  const controller=new AbortController();
+  Promise.all(comparison.map(async item=>{
+   const res=await fetch(item!.view_svg_url||item!.svg_url,{signal:controller.signal});
+   const svg=new DOMParser().parseFromString(await res.text(),'image/svg+xml').documentElement;
+   return (svg.getAttribute('viewBox')||'').trim().split(/[\s,]+/).map(Number);
+  })).then(rects=>{
+   if(controller.signal.aborted||rects.some(b=>b.length!==4||b.some(n=>!Number.isFinite(n))))return;
+   const x=Math.min(...rects.map(b=>b[0])),y=Math.min(...rects.map(b=>b[1]));
+   const end=Math.max(...rects.map(b=>b[0]+b[2])),bottom=Math.max(...rects.map(b=>b[1]+b[3]));
+   setBox([x,y,end-x,bottom-y].join(' '));
+  }).catch(()=>{});
+  return()=>controller.abort();
+ },[comparison]);
+ useEffect(()=>{
+  document.body.classList.toggle('workspace-active',workspace);
+  return()=>document.body.classList.remove('workspace-active');
+ },[workspace]);
+ useEffect(()=>{
+  const label=visibleViews.find(([key])=>key===route.view);
+  document.title=label?(zh?label[2]:label[1])+' · Floral Scroll Atlas':'Floral Scroll Atlas · 缠枝纹数字图集';
+ },[route.view,zh]);
+ useEffect(()=>{
+  function capture(e:BeforeUnloadEvent){
+   if(dirty.current.editor||dirty.current.appearance){e.preventDefault();e.returnValue='';}
+  }
+  window.addEventListener('beforeunload',capture);
+  return()=>window.removeEventListener('beforeunload',capture);
+ },[]);
+ useEffect(()=>{
+  const handle=()=>{
+   const next=parseRoute(location.hash), old=routeRef.current;
+   if(next.hash===old.hash)return;
+   if(!leaveEditor(old.view,next.view)){
+    history.pushState(null,'',old.hash||location.pathname+location.search);return;
+   }
+   updateRoute(next);
+  };
+  window.addEventListener('hashchange',handle);
+  window.addEventListener('popstate',handle);
+  return()=>{window.removeEventListener('hashchange',handle);window.removeEventListener('popstate',handle);};
+ },[zh]);
+ useEffect(()=>{
+  const receive=(e:MessageEvent)=>{
+   if(e.origin!==location.origin)return;
+   const kind=e.source===editorFrame.current?.contentWindow?'editor':e.source===appearanceFrame.current?.contentWindow?'appearance':null;
+   if(!kind||!e.data)return;
+   if(kind==='appearance'&&e.data.type==='papera-vessel-modal'){setVesselOpen(e.data.open===true);return;}
+   if(e.data.type==='papera-ui-ready'){sendLanguage(kind==='editor'?editorFrame.current:appearanceFrame.current);return;}
+   if(e.data.type==='papera-'+kind+'-dirty')recordDirty(kind,!!e.data.dirty);
+   if(kind==='editor'&&e.data.type==='papera-editor-location'&&typeof e.data.url==='string'){
+    const next=stored<Editor|null>('papera-editor',null);
+    if(next)localStorage.setItem('papera-editor',JSON.stringify({...next,url:e.data.url}));
+   }
+   if(kind==='editor'&&e.data.type==='papera-editor-saved'){
+    addHistory(e.data.item);
+    setEditor(old=>old?{...old,item:e.data.item}:old);
+    localStorage.setItem('papera-editor',JSON.stringify({url:e.data.editor_url,item:e.data.item}));
+    recordDirty('editor',false);
+   }
+   if(kind==='editor'&&e.data.type==='papera-open-appearance')void openProject('appearance',e.data.reference);
+  };
+  window.addEventListener('message',receive);
+  return()=>window.removeEventListener('message',receive);
+ });
+ function sendLanguage(frame:HTMLIFrameElement|null){frame?.contentWindow?.postMessage({type:'papera-ui-language',lang:zh?'zh':'en'},location.origin);}
+ function recordDirty(kind:'editor'|'appearance',value:boolean){
+  dirty.current[kind]=value;setSavedState(old=>old[kind]===value?old:{...old,[kind]:value});
+ }
+ function leaveEditor(old:View,next:View){
+  return old===next||!(old==='editor'||old==='appearance')||!dirty.current[old]||
+   window.confirm(t('There are unsaved edits. Leave this workspace?','当前有未保存的修改。离开工作区？'));
+ }
+ function updateRoute(next:ReturnType<typeof parseRoute>){
+  if(next.view!=='appearance')setVesselOpen(false);
+  const from=routeRef.current.view;
+  routeRef.current=next;setRoute(next);setPicker(null);setMenu(false);setError('');
+  if(next.view!=='collection'||next.pairId||(from!=='collection'&&!galleryScroll.current[galleryRoute(filterFrom(next.query))]))window.scrollTo(0,0);
+ }
+ function go(hash:string,replace=false,alreadyConfirmed=false){
+  const next=parseRoute(hash);
+  if(next.hash===routeRef.current.hash)return true;
+  if(!alreadyConfirmed&&!leaveEditor(routeRef.current.view,next.view))return false;
+  const url=hash||location.pathname+location.search;
+  if(replace)history.replaceState(null,'',url);else history.pushState(null,'',url);
+  updateRoute(next);return true;
+ }
+ function openDetail(item:Item){
+  if(!item.pair_id)return;
+  galleryScroll.current[galleryRoute(filterFrom(route.query))]=window.scrollY;
+  setDetailCache(item);
+  const previous=galleryRoute(filterFrom(route.query));
+  go(assetRoute(item.pair_id)+(previous.includes('?')?previous.slice(previous.indexOf('?')):''));
+ }
+ function choosePrototype(prototype:string){
+  const target='#/studio?prototype='+encodeURIComponent(prototype);
+  setParams(p=>({...p,prototype}));setCurrent(null);
+  if(route.view==='studio')go(target,true);
+ }
+ function chooseCompare(side:Side,item:Item){
+  if(!go('#/compare'))return;
+  setComparison(old=>side==='A'?[item,old[1]]:[old[0],item]);
+  if(item.is_local||item.user_edited||side==='B')setLock(false);
+  setActiveSide(side);setPicker(null);
+ }
+ async function generateCompare(side:Side){
+  if(side==='A'){await generation.start(aConfig,'A');return;}
+  if(!lock){await generation.start(bConfig,'B');return;}
+  const source=comparison[0];
+  if(!source||source.is_local||source.user_edited)return;
+  try{
+   if(source.job_id){
+    const c=await post<{condition_id:string}>('/conditions',{job_id:source.job_id});
+    await generation.start({...bConfig,prototype:source.prototype,variant:source.parameters.variant,condition_id:c.condition_id},'B');
+   }else await generation.start({...source.parameters,archive_case:source.case_id},'A',bConfig);
+  }catch(e){setError((e as Error).message);}
+ }
+ async function openProject(kind:'editor'|'appearance',source:Reference|null,item?:Item){
+  if(!source||pendingRef.current)return;
+  const currentView=routeRef.current.view;
+  if(!leaveEditor(currentView,kind))return;
+  if((currentView!==kind)&&dirty.current[kind]&&!window.confirm(t('Replace the unsaved work in this workspace?','替换此工作区中未保存的修改？')))return;
+  if(currentView===kind&&dirty.current[kind]&&!window.confirm(t('Switch structures and discard unsaved edits?','切换结构并放弃当前未保存的修改？')))return;
+  pendingRef.current=true;setPending(kind);setError('');
+  try{
+   if(kind==='editor'&&item){
+    const response=await post<{editor_url:string}>('/editor/sources',source);
+    const state={url:response.editor_url,item};
+    setEditor(state);localStorage.setItem('papera-editor',JSON.stringify(state));
+   }else if(kind==='appearance'){
+    const state={...await post<Appearance>('/appearance/projects',source),pairId:item?.pair_id};
+    setAppearance(state);localStorage.setItem('papera-appearance',JSON.stringify(state));
+   }
+   recordDirty(kind,false);setPicker(null);go('#/'+kind,false,true);
+  }catch(e){setError((e as Error).message);}
+  finally{pendingRef.current=false;setPending(null);}
+ }
+ function openEditor(item:Item){void openProject('editor',referenceFor(item),item);}
+ function openAppearance(item:Item){void openProject('appearance',referenceFor(item),item);}
+ function localImage(side:Side,file?:File){
+  if(!file)return;
+  if(file.size>10*1024*1024||!/\.(png|jpe?g|svg)$/i.test(file.name)){setError(t('Choose a PNG, JPEG or SVG smaller than 10 MB.','请选择小于 10 MB 的 PNG、JPEG 或 SVG。'));return;}
+  const reader=new FileReader();
+  reader.onload=()=>chooseCompare(side,{case_id:'local-'+Date.now(),prototype:'',parameters:DEFAULT,l1:0,l2:0,flowers:0,structure_url:'',svg_url:'',png_url:'',json_url:'',parameters_url:'',is_local:true,local_url:String(reader.result),local_name:file.name});
+  reader.readAsDataURL(file);
+ }
+ const view=route.view;
+ const section=visibleViews.find(([key])=>key===view);
+ const title=section?t(section[1],section[2]):'';
+ const alert=error||generation.error;
+ const pickerChoose=(item:Item)=>picker==='editor'?openEditor(item):picker==='appearance'?openAppearance(item):picker&&chooseCompare(picker,item);
+ const selectedFilter=filterFrom(route.query);
+ return <div className={'atlas-shell'+(workspace?' atlas-workspace':'')+(view==='appearance'&&vesselOpen?' vessel-modal-open':'')} onClick={e=>{
+  const link=(e.target as HTMLElement).closest('a[href^="#/"]') as HTMLAnchorElement|null;
+  if(!link||e.defaultPrevented||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;
+  e.preventDefault();go(link.hash);
+ }}>
+  <header className="site-header" inert={view==='appearance'&&vesselOpen}><a className="brand" href="/" onClick={e=>{if(!e.metaKey&&!e.ctrlKey){e.preventDefault();go('');}}}><span className="brand-mark"><Flower2 size={23}/></span><span>Floral Scroll Atlas</span></a>
+   <nav className={menu?'nav-open':''} aria-label={t('Main navigation','主导航')}>{visibleViews.map(([key,en,cn,Icon])=><a href={'#/'+key} key={key} aria-current={key===view?'page':undefined}><Icon size={15}/>{t(en,cn)}</a>)}</nav>
+   <div className="site-tools"><button className="language" onClick={()=>setZh(!zh)}>{zh?'English':'中文'}<ArrowUpRight size={14}/></button><button className="nav-toggle" aria-label={t('Show navigation','打开导航')} aria-expanded={menu} onClick={()=>setMenu(!menu)}>{menu?<X size={22}/>:<Menu size={22}/>}</button></div>
+  </header>
+  {view==='appearance'&&vesselOpen&&<div className="vessel-host-scrim" aria-hidden="true"/>}
+  <main className={workspace?'immersive-main':undefined}>
+   {view!=='home'&&!workspace&&!route.pairId&&<div className="page-intro"><h1>{view==='research'?t('The composition of floral scrolls','缠枝纹的构成与变化'):title}</h1></div>}
+   {alert&&!picker&&<div className="error" role="alert">{alert}{!error&&generation.canRetry&&<button className="secondary" onClick={generation.retry}>{t('Retry generation','重试生成')}</button>}<button onClick={()=>{setError('');generation.clear();}} aria-label={t('Dismiss','关闭提示')}><X size={17}/></button></div>}
+   {(pending||generation.job||generation.submitting)&&<div className="job-status" role="status"><LoaderCircle className="spin" size={17}/>{pending?t('Opening the workspace…','正在打开工作区…'):generation.recovering?t('Connection interrupted. Reconnecting…','连接短暂中断，正在重连…'):generation.job?.state==='queued'?t('Queued · position '+(generation.job.queue_position||1),'排队中 · 第 '+(generation.job.queue_position||1)+' 项'):generation.submitting?t('Submitting…','正在提交…'):t('Generating a composition…','正在生成构图…')}</div>}
+   {view==='home'&&<FeaturedView t={t} zh={zh}/>}
+   {view==='studio'&&<Studio t={t} zh={zh} catalog={catalog} catalogError={catalogError} retryCatalog={()=>setRetryCatalog(n=>n+1)} params={params} current={current} onPrototype={choosePrototype} onParams={setParams} generate={()=>void generation.start(params,'main')} onCompare={i=>chooseCompare('A',i)} onEditor={openEditor} onAppearance={openAppearance} busy={busy}/>}
+   {view==='compare'&&<Compare t={t} zh={zh} items={comparison} a={aConfig} b={bConfig} setA={setAConfig} setB={setBConfig} lock={lock} setLock={setLock} commonBox={box} active={activeSide} setActive={setActiveSide} generate={side=>void generateCompare(side)} choose={setPicker} onLocal={localImage} onEditor={openEditor} onAppearance={openAppearance} busy={busy}/>}
+   {view==='collection'&&(route.pairId?<PairDetail id={route.pairId} cached={detailCache} zh={zh} t={t} back={galleryRoute(selectedFilter)} onCompare={chooseCompare} onEditor={openEditor} onAppearance={openAppearance} busy={busy}/>:<Gallery t={t} zh={zh} onSelect={openDetail} filter={selectedFilter} onFilter={(f,replace)=>go(galleryRoute(f),replace)} restoreScroll={galleryScroll.current[galleryRoute(selectedFilter)]}/>)}
+   {view==='research'&&<ResearchPage zh={zh} busy={busy} onPrototype={id=>{setParams(p=>({...p,prototype:id}));setCurrent(null);go('#/studio?prototype='+id);}} onGallery={()=>go('#/collection')}/>}
+   <section className="editor-workspace" hidden={view!=='editor'}>
+    <div className="editor-heading"><div><h1>{t('Structure editor','结构编辑')}</h1>{editor&&<span>{displayCatalogId(editor.item.pair_id||editor.item.prototype)} {savedState.editor?'· '+t('Unsaved edits','未保存'):''}</span>}</div>
+     <button className="secondary" disabled={busy} onClick={()=>setPicker('editor')}>{t('Choose structure','选择结构')}</button>
+    </div>
+    {editor?<iframe className="immersive-frame" ref={editorFrame} title={t('Structure editor','结构编辑器')} src={frameSrc(editor.url)} onLoad={()=>sendLanguage(editorFrame.current)} />:view==='editor'&&<div className="editor-empty"><PenTool size={35}/><h2>{t('Open a floral scroll to refine its branches','载入花藤结构，微调枝蔓走势')}</h2><button className="primary" onClick={()=>current?openEditor(current):setPicker('editor')}>{current?t('Open the studio composition','载入工作台构图'):t('Choose from collection','从图集中选择')}</button></div>}
+   </section>
+   <section className="editor-workspace appearance-host" hidden={view!=='appearance'}>
+    <div className="editor-heading" inert={vesselOpen}><div><h1>{t('Appearance editor','外观设计')}</h1>{appearance&&<span>{appearance.pairId?displayCatalogId(appearance.pairId):displayCatalogId(appearance.label.match(/^SW\d-[A-Z]/i)?.[0]||'')} <small className="case-chip">{appearance.pairId?t('Collection example','图集样例'):t('Current composition','当前构图')}</small> {savedState.appearance?'· '+t('Unsaved edits','未保存'):''}</span>}</div>
+     <button className="secondary" disabled={busy} onClick={()=>setPicker('appearance')}>{t('Choose structure','选择结构')}</button>
+    </div>
+    {appearance?<iframe className="immersive-frame" ref={appearanceFrame} title={t('Appearance editor','外观编辑器')} src={frameSrc(appearance.url)} onLoad={()=>sendLanguage(appearanceFrame.current)} />:view==='appearance'&&<div className="editor-empty"><ImagePlus size={34}/><h2>{t('Start with a paired pattern or a studio composition','从图集纹样或工作台构图开始设计')}</h2><button className="primary" onClick={()=>setPicker('appearance')}>{t('Choose structure','选择结构')}</button></div>}
+   </section>
+  </main>
+  {!workspace&&<footer><span>Floral Scroll Atlas</span><a href="#/research">{t('Floral Scroll Structures and Blue-and-White Patterns','缠枝纹数字构成与青花图集')}</a><span>2026</span></footer>}
+  {picker&&<Dialog title={picker==='A'||picker==='B'?t('Choose '+picker,'选择结构 '+picker):t('Choose a starting structure','选择起始结构')} close={()=>setPicker(null)} t={t}>
+   {recent.length>0&&<RecentDrafts items={recent} t={t} zh={zh} choose={pickerChoose} disabled={!!pending}/>}
+   {pending&&<p role="status">{t('Opening the workspace…','正在打开工作区…')}</p>}{error&&<p role="alert">{error}</p>}<Gallery picker t={t} zh={zh} onSelect={pickerChoose}/>
+  </Dialog>}
+ </div>;
 }
-function ParamControls({value,onChange,zh,disabled=false,hidePrototype=false,lockPrototype=false}:{value:Params;onChange:(p:Params)=>void;zh:boolean;disabled?:boolean;hidePrototype?:boolean;lockPrototype?:boolean}){
- const t=(en:string,cn:string)=>zh?cn:en,[advanced,setAdvanced]=useState(!hidePrototype),change=(k:string,v:any)=>onChange({...value,[k]:v});
- return <div className={'parameter-fields '+(hidePrototype?'':'compact-params')}>{!hidePrototype&&<label>{t('Prototype','花藤原型')}<select disabled={disabled||lockPrototype} value={value.prototype} onChange={e=>change('prototype',e.target.value)}>{['SW1-A','SW1-B','SW1-C','SW2-A','SW3-A','SW3-B'].map(p=><option key={p}>{p}</option>)}</select></label>}<label>{t('Main-vine variation','主藤变体')}<select disabled={disabled||lockPrototype} value={value.variant} onChange={e=>change('variant',e.target.value)}><option value="expanded">{t('Expanded','舒展')}</option><option value="compact">{t('Compact','紧凑')}</option><option value="swept">{t('Swept','偏转')}</option></select></label><label>{t('Branch density','分枝疏密')}<select disabled={disabled} value={value.density} onChange={e=>change('density',e.target.value)}><option value="simple">{t('Sparse','疏')}</option><option value="medium">{t('Balanced','中')}</option><option value="rich">{t('Dense','密')}</option></select></label>{hidePrototype&&<button className="advanced" onClick={()=>setAdvanced(!advanced)}>{t('Seed and count settings','种子与数量设置')}<ChevronDown size={15}/></button>}{advanced&&<><label>{t('Seed','随机种子')}<div className="seed-row"><input type="number" min="0" max="4294967295" disabled={disabled} value={value.seed} onChange={e=>change('seed',Number(e.target.value))}/><button disabled={disabled} aria-label={t('New seed','更换种子')} onClick={()=>change('seed',Math.floor(Math.random()*4294967295))}><Shuffle size={15}/></button></div></label><label>{t('Control','控制方式')}<select disabled={disabled} value={value.control} onChange={e=>change('control',e.target.value)}><option value="soft">{t('Density preference','疏密偏好')}</option><option value="exact">{t('Prescribed counts','预设数量')}</option></select></label>{value.control==='exact'&&<p className="small-note count-hint">{t('Total L1 / L2: 5/1, 7/3, 9/5. Total L1 includes supports.','总L1／L2：5／1、7／3、9／5；总L1包含承花路径。')}</p>}</>}</div>
-}
-function Counts({item,zh}:{item:Item;zh:boolean}){return <div className="numbers"><div><strong>{item.l1}</strong><span>{zh?'普通父枝':'parents'}</span></div><div><strong>{item.l2}</strong><span>{zh?'子枝':'children'}</span></div>{!!item.l3&&<div><strong>{item.l3}</strong><span>{zh?'三级枝':'third-level'}</span></div>}<div><strong>{item.flowers}</strong><span>{zh?'花位':'flower sites'}</span></div></div>}
-function Downloads({item,zh}:{item:Item;zh:boolean}){return <div className="downloads"><span><Download size={14}/>{zh?'下载':'Download'}</span>{[['SVG',item.svg_url],['PNG',item.png_url],['JSON',item.json_url],[zh?'参数':'Parameters',item.parameters_url]].map(([label,url])=>url&&<a key={label} href={url} download>{label}<ArrowUpRight size={11}/></a>)}</div>}
-function Gallery({zh,onSelect,picker=false}:{zh:boolean;onSelect:(item:Item)=>void;picker?:boolean}){
- const t=(en:string,cn:string)=>zh?cn:en,[prototype,setPrototype]=useState(''),[q,setQ]=useState(''),[page,setPage]=useState(1),[children,setChildren]=useState(0),[data,setData]=useState<any>({items:[],total:0}),[error,setError]=useState(''),size=picker?6:12;
- useEffect(()=>{const abort=new AbortController(),timer=setTimeout(()=>fetch(`/api/v1/assets?prototype=${prototype}&q=${encodeURIComponent(q)}&page=${page}&page_size=${size}&min_children=${children}`,{signal:abort.signal}).then(r=>{if(!r.ok)throw Error('图集读取失败');return r.json()}).then(setData).catch(e=>{if(e.name!=='AbortError')setError(e.message)}),150);return()=>{clearTimeout(timer);abort.abort()}},[prototype,q,page,size,children]);
- return <section className="collection"><div className="gallery-toolbar"><div className="filter-pills">{['','SW1-A','SW1-B','SW1-C','SW2-A','SW3-A','SW3-B'].map(p=><button key={p} className={p===prototype?'active':''} onClick={()=>{setPrototype(p);setPage(1)}}>{p||t('All','全部原型')}</button>)}</div><div className="search"><Search size={16}/><input aria-label={t('Search collection','搜索图集')} placeholder={t('Pair or case ID','图件或案例编号')} value={q} onChange={e=>{setQ(e.target.value);setPage(1)}}/></div></div><div className="gallery-count"><span>{data.total} {t('pairs','对图件')}</span><label>{t('Children','子枝数')}<select value={children} onChange={e=>{setChildren(Number(e.target.value));setPage(1)}}><option value={0}>{t('Any','不限')}</option><option value={1}>≥ 1</option><option value={3}>≥ 3</option><option value={5}>≥ 5</option></select></label></div>{error&&<p role="alert">{error}</p>}<div className="gallery-grid">{data.items.map((r:Item)=><button className="gallery-card" key={r.pair_id} onClick={()=>onSelect(r)}><div className="card-render"><img src={'/media/thumbs/'+r.pair_id+'.webp'} alt={r.pair_id} loading="lazy" onError={e=>{if(e.currentTarget.dataset.fallback)return;e.currentTarget.dataset.fallback='1';e.currentTarget.src=r.render_url!}}/></div><div className="card-structure"><img src={r.png_url} alt={t('Structure','结构')} loading="lazy"/></div><div className="card-caption"><div><strong>{r.pair_id}</strong><span>{r.l1} {t('parents','父枝')} · {r.l2} {t('children','子枝')}</span></div><ArrowUpRight size={17}/></div></button>)}</div>{!data.items.length&&!error&&<div className="empty-state">{t('No matching structures.','没有匹配的结构。')}</div>}<div className="pagination"><button disabled={page===1} onClick={()=>setPage(page-1)}><ChevronLeft size={15}/>{t('Previous','上一页')}</button><span>{page} / {Math.max(1,Math.ceil(data.total/size))}</span><button disabled={page*size>=data.total} onClick={()=>setPage(page+1)}>{t('Next','下一页')}<ChevronRight size={15}/></button></div></section>
-}
-function Dialog({title,onClose,children}:{title:string;onClose:()=>void;children:React.ReactNode}){
- const box=useRef<HTMLElement>(null);useEffect(()=>{const previous=document.activeElement as HTMLElement,old=document.body.style.overflow;document.body.style.overflow='hidden';box.current?.querySelector<HTMLButtonElement>('button')?.focus();const key=(e:KeyboardEvent)=>{if(e.key==='Escape')onClose();if(e.key==='Tab'){const els=Array.from(box.current?.querySelectorAll<HTMLElement>('button:not(:disabled),a[href],input,select')||[]);if(e.shiftKey&&document.activeElement===els[0]){e.preventDefault();els.at(-1)?.focus()}else if(!e.shiftKey&&document.activeElement===els.at(-1)){e.preventDefault();els[0]?.focus()}}};document.addEventListener('keydown',key);return()=>{document.body.style.overflow=old;document.removeEventListener('keydown',key);previous?.focus()}},[]);
- return <div className="modal-backdrop" onClick={onClose}><section ref={box} className="modal" role="dialog" aria-modal="true" aria-label={title} onClick={e=>e.stopPropagation()}><div className="modal-head"><h2>{title}</h2><button onClick={onClose} aria-label="Close"><X size={23}/></button></div>{children}</section></div>
+function Dialog({title,close,t,children}:{title:string;close:()=>void;t:Translate;children:ReactNode}){
+ const dialog=useRef<HTMLDialogElement>(null);
+ useEffect(()=>{
+  const el=dialog.current,previous=document.activeElement as HTMLElement|null;
+  el?.showModal();
+  return()=>{el?.close();previous?.focus();};
+ },[]);
+ return <dialog className="atlas-dialog" ref={dialog} onCancel={e=>{e.preventDefault();close();}}><div className="modal-head"><h2>{title}</h2><button type="button" aria-label={t('Close','关闭')} onClick={close}><X size={22}/></button></div>{children}</dialog>;
 }
 createRoot(document.getElementById('root')!).render(<App/>);
+
+function RecentDrafts({items,t,zh,choose,disabled}:{items:Item[];t:Translate;zh:boolean;choose:(item:Item)=>void;disabled:boolean}) {
+ const [page,setPage]=useState(0);
+ const size=3,count=Math.ceil(items.length/size),safePage=Math.min(page,count-1);
+ return <section className="picker-history">
+  <header><h3>{t('Recent drafts','最近草稿')}</h3>{count>1&&<div className="draft-paging">
+   <button type="button" disabled={safePage<=0} onClick={()=>setPage(safePage-1)} aria-label={t('Previous drafts','上一组草稿')}><ChevronLeft size={16}/></button>
+   <span>{safePage+1} / {count}</span>
+   <button type="button" disabled={safePage>=count-1} onClick={()=>setPage(safePage+1)} aria-label={t('Next drafts','下一组草稿')}><ChevronRight size={16}/></button>
+  </div>}</header>
+  <div className="draft-list">{items.slice(safePage*size,(safePage+1)*size).map((item,index)=><button key={item.case_id} onClick={()=>choose(item)} disabled={disabled}>
+   <StructureView zh={zh} item={item} preview/><span>{t('Draft','草稿')} {String(safePage*size+index+1).padStart(2,'0')} · {displayCatalogId(item.prototype)}</span><ArrowRight size={15}/>
+  </button>)}</div>
+ </section>;
+}

@@ -57,39 +57,78 @@ function decorate(svgImage,dragon,dragonWrap,settings){
  }
  return c;
 }
+function contactShadow(){
+ const canvas=document.createElement('canvas');canvas.width=canvas.height=128;
+ const ctx=canvas.getContext('2d');
+ for(const [radius,opacity] of [[58,.31],[39,.21]]){
+  const gradient=ctx.createRadialGradient(64,64,2,64,64,radius);
+  gradient.addColorStop(0,'rgba(26,23,32,'+opacity+')');
+  gradient.addColorStop(.55,'rgba(31,29,37,'+opacity*.32+')');
+  gradient.addColorStop(1,'rgba(34,30,38,0)');
+  ctx.fillStyle=gradient;ctx.fillRect(0,0,128,128);
+ }
+ const map=new THREE.CanvasTexture(canvas);map.colorSpace=THREE.SRGBColorSpace;
+ const shadow=new THREE.Mesh(new THREE.PlaneGeometry(1,1),new THREE.MeshBasicMaterial({map,transparent:true,depthWrite:false,toneMapped:false}));
+ shadow.rotation.x=-Math.PI/2;shadow.position.y=.0002;
+ return shadow;
+}
+
 export async function createVesselPreview(host,svg,initial={}){
- let settings={...defaults,...initial},alive=true,mesh,texture,canvas;
+ let settings={...defaults,...initial},alive=true,needsRender=true,mesh,texture,canvas;
  const url=URL.createObjectURL(new Blob([svg],{type:'image/svg+xml'}));let artwork;try{artwork=await imageOf(url);}finally{URL.revokeObjectURL(url);}
  const dragon=await imageOf(new URL('./assets/sea-dragon.png',import.meta.url).href);
  const dragonWrap=await imageOf(new URL('./assets/sea-dragon-wrap.png',import.meta.url).href);
- const renderer=new THREE.WebGLRenderer({antialias:true,preserveDrawingBuffer:true});renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=.95;renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;host.replaceChildren(renderer.domElement);
- const scene=new THREE.Scene();scene.background=new THREE.Color('white');const pmrem=new THREE.PMREMGenerator(renderer),room=new RoomEnvironment(),env=pmrem.fromScene(room,.04);room.dispose();scene.environment=env.texture;scene.environmentIntensity=.18;
+ const renderer=new THREE.WebGLRenderer({antialias:true,alpha:true,preserveDrawingBuffer:true});renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=.95;renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;renderer.shadowMap.autoUpdate=false;host.replaceChildren(renderer.domElement);
+ const scene=new THREE.Scene();const pmrem=new THREE.PMREMGenerator(renderer),room=new RoomEnvironment(),env=pmrem.fromScene(room,.04,.1,100,{size:128});room.dispose();scene.environment=env.texture;scene.environmentIntensity=.18;
  const plain=new THREE.MeshPhysicalMaterial({color:0xfafaf7,roughness:.32,clearcoat:.35,clearcoatRoughness:.32}),paint=plain.clone();
- const floor=new THREE.Mesh(new THREE.PlaneGeometry(3,3),new THREE.ShadowMaterial({opacity:.07}));floor.rotation.x=-Math.PI/2;floor.receiveShadow=true;scene.add(floor);
+ const floor=new THREE.Mesh(new THREE.PlaneGeometry(3,3),new THREE.ShadowMaterial({opacity:.026}));floor.rotation.x=-Math.PI/2;floor.receiveShadow=true;scene.add(floor);
+ const contact=contactShadow();scene.add(contact);
  const key=new THREE.DirectionalLight(0xffffff,1.8);key.position.set(-.32,.3,.2);key.castShadow=true;key.shadow.mapSize.set(2048,2048);Object.assign(key.shadow.camera,{left:-.22,right:.22,top:.22,bottom:-.22,near:.01,far:2});key.shadow.normalBias=.0003;scene.add(key);
  const fill=new THREE.DirectionalLight(0xffffff,.55);fill.position.set(.3,.25,-.2);scene.add(fill);
+ let lighting='day';
+ function setLighting(theme='day'){
+  lighting=theme;needsRender=true;
+  const night=lighting==='night';
+  key.color.set(night?0xc9dbff:0xffffff);key.intensity=night?2.1:1.8;
+  fill.color.set(night?0xefdbb7:0xffffff);fill.intensity=night ? 0.72 : 0.55;
+  scene.environmentIntensity=night ? 0.26 : 0.18;
+  contact.material.opacity=night ? 0.72 : 1;
+ }
  const camera=new THREE.PerspectiveCamera(32,1,.001,10),controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;controls.enablePan=false;controls.minDistance=.12;controls.maxDistance=1.2;controls.maxPolarAngle=Math.PI*.49;
+ controls.addEventListener('change',()=>{needsRender=true;});
  function view(name='front'){
   const [d,h]=sizes[settings.vessel],distance=Math.max(d,h*1.7)/1000*2.05,target=h/2000,angle=(name==='top'?78:name==='low'?20:settings.vessel==='plate'?38:18)*Math.PI/180;
   const azimuth=settings.vessel==='plate'?0:-Math.PI*.5;
   camera.position.set(distance*Math.cos(angle)*Math.sin(azimuth),target+distance*Math.sin(angle),distance*Math.cos(angle)*Math.cos(azimuth));controls.target.set(0,target,0);controls.update();
  }
  function update(next){
-  if(!alive)return;const old=settings.vessel;settings={...settings,...next};if(settings.motif==='sea')settings.motif='none';settings.repeats=THREE.MathUtils.clamp(Math.round(settings.repeats)||8,2,16);settings.band=THREE.MathUtils.clamp(Number(settings.band)||15,8,24);settings.position=THREE.MathUtils.clamp(Number(settings.position)||0,0,100);
+  if(!alive)return;needsRender=true;const old=settings.vessel;settings={...settings,...next};if(settings.motif==='sea')settings.motif='none';settings.repeats=THREE.MathUtils.clamp(Math.round(settings.repeats)||8,2,16);settings.band=THREE.MathUtils.clamp(Number(settings.band)||15,8,24);settings.position=THREE.MathUtils.clamp(Number(settings.position)||0,0,100);
   canvas=decorate(artwork,dragon,dragonWrap,settings);texture?.dispose();texture=new THREE.CanvasTexture(canvas);texture.colorSpace=THREE.SRGBColorSpace;texture.anisotropy=renderer.capabilities.getMaxAnisotropy();texture.wrapS=THREE.RepeatWrapping;paint.map=texture;paint.needsUpdate=true;
-  if(!mesh||old!==settings.vessel){if(mesh){scene.remove(mesh);mesh.geometry.dispose();}mesh=new THREE.Mesh(geometry(settings.vessel),[plain,paint]);mesh.name='StructVine ceramic '+settings.vessel;mesh.castShadow=true;scene.add(mesh);view();}
+  if(!mesh||old!==settings.vessel){if(mesh){scene.remove(mesh);mesh.geometry.dispose();}mesh=new THREE.Mesh(geometry(settings.vessel),[plain,paint]);mesh.name='StructVine ceramic '+settings.vessel;mesh.castShadow=true;scene.add(mesh);renderer.shadowMap.needsUpdate=true;contact.scale.setScalar(sizes[settings.vessel][0]/1000*1.45);view();}
   mesh.userData={application:{...settings},dimensions_mm:sizes[settings.vessel],source:'current edited periodic SVG'};
  }
  update(settings);
- function resize(){const w=Math.max(1,host.clientWidth),h=Math.max(1,host.clientHeight);renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();}
+ function resize(){needsRender=true;const w=Math.max(1,host.clientWidth),h=Math.max(1,host.clientHeight);renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();}
  const observer=new ResizeObserver(resize);observer.observe(host);resize();let frame;
- function tick(){if(!alive)return;controls.update();renderer.render(scene,camera);frame=requestAnimationFrame(tick);}tick();
+ function tick(){
+  if(!alive)return;
+  controls.update();
+  if(needsRender){renderer.render(scene,camera);needsRender=false;}
+  frame=requestAnimationFrame(tick);
+ }tick();
  async function snapshot(format){
   if(format==='glb')return new Blob([await new GLTFExporter().parseAsync(mesh,{binary:true,maxTextureSize:2048})],{type:'model/gltf-binary'});
   const size=new THREE.Vector2();renderer.getSize(size);const ratio=renderer.getPixelRatio(),aspect=camera.aspect;
-  renderer.setPixelRatio(1);renderer.setSize(2200,1800,false);camera.aspect=2200/1800;camera.updateProjectionMatrix();renderer.render(scene,camera);
-  const blob=await new Promise(resolve=>renderer.domElement.toBlob(resolve,'image/png'));
-  renderer.setPixelRatio(ratio);renderer.setSize(size.x,size.y,false);camera.aspect=aspect;camera.updateProjectionMatrix();return blob;
+  const originalLighting=lighting;
+  try{
+   setLighting('day');
+   scene.background=new THREE.Color(0xffffff);contact.visible=false;floor.material.opacity=.07;
+   renderer.setPixelRatio(1);renderer.setSize(2200,1800,false);camera.aspect=2200/1800;camera.updateProjectionMatrix();renderer.render(scene,camera);
+   return await new Promise(resolve=>renderer.domElement.toBlob(resolve,'image/png'));
+  }finally{
+   scene.background=null;contact.visible=true;floor.material.opacity=.026;setLighting(originalLighting);
+   renderer.setPixelRatio(ratio);renderer.setSize(size.x,size.y,false);camera.aspect=aspect;camera.updateProjectionMatrix();
+  }
  }
- return {update,view,snapshot,get settings(){return {...settings};},dispose(){alive=false;cancelAnimationFrame(frame);observer.disconnect();controls.dispose();mesh.geometry.dispose();texture.dispose();plain.dispose();paint.dispose();floor.geometry.dispose();floor.material.dispose();key.shadow.map?.dispose();env.dispose();pmrem.dispose();renderer.dispose();host.replaceChildren();}};
+ return {update,view,setLighting,snapshot,get settings(){return {...settings};},dispose(){alive=false;cancelAnimationFrame(frame);observer.disconnect();controls.dispose();mesh.geometry.dispose();texture.dispose();plain.dispose();paint.dispose();floor.geometry.dispose();floor.material.dispose();contact.geometry.dispose();contact.material.map.dispose();contact.material.dispose();key.shadow.map?.dispose();env.dispose();pmrem.dispose();renderer.dispose();host.replaceChildren();}};
 }

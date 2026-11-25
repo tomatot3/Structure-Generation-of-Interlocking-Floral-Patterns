@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>结构编辑</title>
-  <link rel="stylesheet" href="/editor/editor.css">
+  <link rel="stylesheet" href="/editor/editor.css?v=atlas-20261125"><link rel="stylesheet" href="/ui/tokens.css?v=editorial-2"><link rel="stylesheet" href="/ui/editor-workspace.css?v=copy-2"><script src="/ui/editor-locale.js?v=copy-1"></script>
 </head>
-<body>
+<body class="structure-workspace">
   <header class="topbar">
     <div class="identity">
       <span class="eyebrow">结构编辑</span>
@@ -14,16 +14,25 @@
       
     </div>
     <nav class="tools" aria-label="直接绘制工具">
+      <div class="editor-tool-group" role="group" aria-label="绘图">
       <button class="tool active" id="select-tool" data-mode="select" type="button">选择</button>
-      <button class="tool" id="add-tool" data-mode="add" type="button">新增枝</button>
-      <button class="tool" id="root-range-tool" data-mode="root-range" type="button">根点范围</button>
+      <button class="tool" id="add-tool" data-mode="add" type="button">新增枝</button></div>
+      <div class="editor-tool-group" role="group" aria-label="约束工具">
+      <details class="tool-menu"><summary>约束工具</summary><div class="tool-options"><button class="tool" id="root-range-tool" data-mode="root-range" type="button">根点范围</button>
       <button class="tool" id="endpoint-region-tool" data-mode="endpoint-region" type="button">枝尖范围</button>
       <button class="tool" id="envelope-tool" data-mode="envelope" type="button">曲线包络</button>
-      <button class="tool danger-tool" id="forbidden-tool" data-mode="forbidden" type="button">禁区</button>
-      <span class="divider" aria-hidden="true"></span>
+      <button class="tool danger-tool" id="forbidden-tool" data-mode="forbidden" type="button">禁区</button></div></details></div>
+      <div class="editor-tool-group" role="group" aria-label="编辑历史">
       <button class="tool" id="undo-button" type="button" disabled>撤销</button>
-      <button class="tool" id="redo-button" type="button" disabled>重做</button>
-      <button class="save" id="save-button" type="button">保存版本</button><button class="tool" id="appearance-button" type="button">保存并继续外观设计</button><div class="download-group"><button class="tool" data-download="svg">下载 SVG</button><button class="tool" data-download="png">下载 PNG</button><button class="tool" data-download="geometry">下载 JSON</button></div>
+      <button class="tool" id="redo-button" type="button" disabled>重做</button></div>
+      <div class="editor-tool-group archive-tools" role="group" aria-label="存档">
+      <button class="save" id="save-button" type="button">保存版本</button><button class="tool" id="appearance-button" type="button">保存并继续外观设计</button><details class="tool-menu"><summary>下载</summary><div class="tool-options"><button class="tool" data-download="svg">下载 SVG</button><button class="tool" data-download="png">下载 PNG</button><button class="tool" data-download="geometry">下载 JSON</button></div></details></div>
+      <details class="tool-menu guide-menu"><summary>操作指南</summary><div class="tool-options"><div class="instructions">
+      <span><b>选择</b> 拖动根点、枝尖或控制柄</span>
+      <span><b>新增枝</b> 从父枝直接拖出</span>
+      <span><b>允许区域/禁区</b> 在画布自由圈定</span>
+      <span><b>包络</b> 拖两条边界曲线</span>
+    </div></div></details>
     </nav>
   </header>
 
@@ -40,7 +49,7 @@
       <button class="micro" data-view="unit" type="button">枝组</button>
     </div>
     <span class="context-divider"></span>
-    <div class="branch-status-tools" role="group" aria-label="分支数量状态">
+    <div class="branch-status-tools" role="group" aria-label="分枝数量状态">
       <span>选中枝：</span>
       <button class="micro status-required" data-status="required" type="button">必需</button>
       <button class="micro status-optional" data-status="optional" type="button">可选</button>
@@ -65,7 +74,7 @@
     </section>
     <section class="canvas-shell">
       <svg id="editor-canvas" role="img" aria-label="结构编辑画布"></svg>
-      <div class="mode-hint" id="mode-hint">选择分支后直接拖动根点、枝尖或控制柄</div>
+      <div class="mode-hint" id="mode-hint">点选分枝，拖动根点、枝尖或控制柄调整形态</div>
       <div class="canvas-key" aria-hidden="true">
         <span><i class="key-preferred"></i>曲线</span>
         <span><i class="key-allowed"></i>允许区域</span>
@@ -76,17 +85,18 @@
 
     <section class="analysis-dock">
       <article>
-        <h2>枝组数量</h2>
+        <h2>枝组明细</h2>
         <div id="unit-stats">选择分枝查看所属枝组</div>
       </article>
       <article>
-        <h2>图形约束</h2>
-        <div id="constraint-stats">尚未设置区域</div>
+        <h2>约束边界</h2>
+        <details id="geometry-details" hidden><summary>几何细节</summary><div id="metrics-status"></div></details>
+        <div id="constraint-stats">尚未设置绘制约束。可从「约束工具」划定范围。</div>
       </article>
       <article class="target-card">
-        <h2>保存的版本</h2>
+        <h2>历史版本</h2>
         <div class="target-controls">
-          <select id="target-select" aria-label="保存的版本"><option value="">暂无保存版本</option></select>
+          <select id="target-select" aria-label="历史版本"><option value="">暂无保存版本</option></select>
           <button id="load-version" type="button">载入</button>
           <button class="micro" id="compare-button" type="button" disabled>比较</button>
         </div>
@@ -94,17 +104,11 @@
       </article>
     </section>
 
-    <section class="instructions">
-      <span><b>选择</b> 拖动根点、枝尖或控制柄</span>
-      <span><b>新增枝</b> 从父枝直接拖出</span>
-      <span><b>允许区域/禁区</b> 在画布自由圈定</span>
-      <span><b>包络</b> 拖两条边界曲线</span>
-    </section>
-  </main>
 
-  <section class="feedback-panel"><h2>向研究团队提交修改</h2><p>提交完全自愿。仅保存版本不会提交研究数据。</p><label><input id="feedback-consent" type="checkbox">我同意提交原始结构、修改后的结构、生成参数和修改记录，用于后续研究和参数改进。</label><textarea id="feedback-note" maxlength="2000" placeholder="可选：为什么这样修改？"></textarea><div class="feedback-actions"><button class="save" id="feedback-submit">提交修改</button><span id="feedback-status"></span></div></section>
+  <details class="feedback-panel"><summary>贡献修改案例</summary><label><input id="feedback-consent" type="checkbox">我同意将原始结构、修改后的结构、构图参数和修改记录提交给研究团队，用于后续研究和参数改进。</label><p class="feedback-explainer">提交为自愿选择，保存版本时不会提交案例。</p><textarea id="feedback-note" maxlength="2000" placeholder="修改思路（可选）"></textarea><div class="feedback-actions"><button class="save" id="feedback-submit">提交案例</button><span id="feedback-status"></span></div></details>
+  </main>
   <template id="error-template"><div class="fatal-error" role="alert"></div></template>
   <script>window.EDITOR_SEED = 0;window.EDITOR_SOURCE = new URLSearchParams(location.search).get("source");</script>
-  <script src="/editor/editor.js" defer></script>
+  <script src="/editor/editor.js?v=copy-1" defer></script>
 </body>
 </html>

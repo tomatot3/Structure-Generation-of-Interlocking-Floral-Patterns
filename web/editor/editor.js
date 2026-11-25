@@ -8,11 +8,11 @@
   const ROOT_MIN_FRACTION = 0.001;
   const ROOT_MAX_FRACTION = 0.985;
   const MODE_HINTS = {
-    select: "选择分支后直接拖动根点、枝尖或 Bézier 控制柄",
+    select: "选择分枝后直接拖动根点、枝尖或 Bézier 控制柄",
     add: "在主干或 L1/L2 父枝上按下，向空白处拖出一条新枝",
-    "root-range": "选择分支后，在它的父枝上拖出允许挂载的弧长区间",
-    "endpoint-region": "选择分支后，在画布上按住并自由圈出枝尖允许区域",
-    envelope: "选择分支，拖动橙色边界控制点定义曲线允许包络",
+    "root-range": "选择分枝后，在它的父枝上拖出允许挂载的弧长区间",
+    "endpoint-region": "选择分枝后，在画布上按住并自由圈出枝尖允许区域",
+    envelope: "选择分枝，拖动橙色边界控制点定义曲线允许包络",
     forbidden: "选择禁区范围后，在画布上按住并自由圈出禁区",
   };
 
@@ -22,6 +22,8 @@
     seedSelect: document.getElementById("seed-select"),
     selectionStatus: document.getElementById("selection-status"),
     geometryStatus: document.getElementById("geometry-status"),
+    metricsStatus: document.getElementById("metrics-status"),
+    geometryDetails: document.getElementById("geometry-details"),
     saveStatus: document.getElementById("save-status"),
     modeHint: document.getElementById("mode-hint"),
     undo: document.getElementById("undo-button"),
@@ -627,7 +629,7 @@
     ui.modeHint.textContent = MODE_HINTS[mode];
     if (mode === "envelope") {
       const branch = selectedBranch();
-      if (!branch) setMessage("请先选择一条分支，再创建曲线包络。", "error");
+      if (!branch) setMessage("请先选择一条分枝，再创建曲线包络。", "error");
       else {
         const before = currentSnapshot();
         if (ensureEnvelope(branch)) commitSnapshot(before);
@@ -746,7 +748,7 @@
     const scope = ui.forbiddenScope.value;
     const branch = selectedBranch();
     if (scope === "global") return { scope, target: null };
-    if (!branch) throw new Error("当前禁区范围需要先选择一条分支");
+    if (!branch) throw new Error("当前禁区范围需要先选择一条分枝");
     if (scope === "unit") return { scope, target: topUnitId(branch.curve_id) };
     if (scope === "parent") return { scope, target: branch.curve_id };
     return { scope: "level", target: branch.level };
@@ -754,7 +756,7 @@
 
   function startLasso(event) {
     if (state.mode === "endpoint-region" && !selectedBranch()) {
-      setMessage("请先选择一条分支，再圈出枝尖允许区域。", "error");
+      setMessage("请先选择一条分枝，再圈出枝尖允许区域。", "error");
       return;
     }
     try {
@@ -885,7 +887,7 @@
     const branch = selectedBranch();
     if (!branch) return;
     const descendants = descendantsOf(branch.curve_id);
-    if (descendants.length && !window.confirm(`该分支有 ${descendants.length} 条后代。确定删除整棵子树；取消则保留。`)) return;
+    if (descendants.length && !window.confirm(AtlasEditor.text(`该分枝有 ${descendants.length} 条后代。确定删除整棵子树；取消则保留。`))) return;
     const before = currentSnapshot();
     const ids = new Set([branch.curve_id, ...descendants.map((item) => item.curve_id)]);
     state.branches = state.branches.filter((item) => !ids.has(item.curve_id));
@@ -914,14 +916,18 @@
   function updateStatus() {
     const branch = selectedBranch();
     if (branch) {
-      ui.selectionStatus.textContent = `${branch.label || "新增分枝"} · L${branch.level} · 挂接位置 ${(branch.mount_fraction*100).toFixed(1)}%`;
+      const level = ["", "父枝", "子枝", "三级枝"][branch.level] || "分枝";
+      ui.selectionStatus.textContent = `${branch.label || "新增分枝"} · ${level} · 挂接位置 ${(branch.mount_fraction*100).toFixed(1)}%`;
       const metrics = geometryMetrics(branch);
       const envelope = branch.constraints?.curve_envelope;
-      ui.geometryStatus.textContent = `弓高 ${metrics.sagitta.toFixed(3)} · 曲率符号变化 ${metrics.changes}${envelope?.intersects ? " · 警告：包络边界相交" : ""}`;
+      ui.metricsStatus.textContent = `弓高 ${metrics.sagitta.toFixed(3)} · 曲率符号变化 ${metrics.changes}${envelope?.intersects ? " · 警告：包络边界相交" : ""}`;
+      ui.geometryDetails.hidden = false;
+      ui.geometryStatus.textContent = envelope?.intersects ? "包络边界相交" : "拖动根点、枝尖或控制柄调整分枝。";
     } else {
       const counts = [1, 2, 3].map((level) => state.branches.filter((item) => item.level === level).length);
-      ui.selectionStatus.textContent = `${state.branches.length} 条分枝：父枝 ${counts[0]}，子枝 ${counts[1]}${counts[2] ? `，三级枝 ${counts[2]}` : ""}`;
-      ui.geometryStatus.textContent = "主藤、花位与承花路径保持固定；拖动分枝进行编辑";
+      ui.geometryDetails.hidden = true;
+      ui.selectionStatus.textContent = `共 ${state.branches.length} 枝（${counts[0]} 父枝 · ${counts[1]} 子枝${counts[2] ? ` · ${counts[2]} 三级枝` : ""}）`;
+      ui.geometryStatus.textContent = "主藤、花位与承花路径已锁定，可直接拖动分枝。";
     }
     ui.undo.disabled = !state.undo.length;
     ui.redo.disabled = !state.redo.length;
@@ -951,7 +957,9 @@
     const endpoints = state.branches.filter((branch) => branch.constraints?.endpoint_region).length;
     const envelopes = state.branches.filter((branch) => branch.constraints?.curve_envelope).length;
     const intersections = state.branches.filter((branch) => branch.constraints?.curve_envelope?.intersects).length;
-    ui.constraintStats.textContent = `根点区间 ${rootRanges} · 枝尖区 ${endpoints} · 曲线包络 ${envelopes} · 禁区 ${state.forbiddenRegions.length}${intersections ? ` · ${intersections} 个包络相交` : ""}`;
+    ui.constraintStats.textContent = rootRanges || endpoints || envelopes || state.forbiddenRegions.length
+      ? `根点区间 ${rootRanges} · 枝尖区 ${endpoints} · 曲线包络 ${envelopes} · 禁区 ${state.forbiddenRegions.length}${intersections ? ` · ${intersections} 个包络相交` : ""}`
+      : "尚未设置绘制约束。可从「约束工具」划定范围。";
   }
 
   function buildPayload() {
@@ -1202,7 +1210,7 @@
   ui.compare.addEventListener("click", compareTarget);
   document.getElementById("load-version").addEventListener("click", () => {
     if (!ui.targetSelect.value) return;
-    if (state.dirty && !window.confirm("载入所选版本会放弃当前未保存的修改，是否载入？")) return;
+    if (state.dirty && !window.confirm(AtlasEditor.text("载入所选版本会放弃当前未保存的修改，是否载入？"))) return;
     state.dirty = false;
     const url = new URL(window.location.href);
     url.searchParams.set("session", ui.targetSelect.value);
@@ -1242,7 +1250,7 @@
     if(!consent.checked){setMessage("请先勾选自愿提交说明。","error");return;}
     if(state.dirty || !state.sessionId) await save();
     if(state.dirty || !state.sessionId)return;
-    try {const response=await fetchJson("/api/v1/editor/feedback",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({session_id:state.sessionId,consent:true,policy_version:"2026-09-20",note:document.getElementById("feedback-note").value})});setMessage("已提交，用于后续参数分析。当前生成参数保持不变。","success");document.getElementById("feedback-status").textContent=`已提交：${response.feedback_id.slice(0,8)}`;}catch(e){setMessage(e.message,"error")}
+    try {await fetchJson("/api/v1/editor/feedback",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({session_id:state.sessionId,consent:true,policy_version:"2026-09-20",note:document.getElementById("feedback-note").value})});document.getElementById("feedback-status").textContent="案例已提交。";}catch(e){setMessage(e.message,"error")}
   }
   document.querySelectorAll("[data-download]").forEach(b=>b.addEventListener("click",()=>downloadSaved(b.dataset.download)));
   document.getElementById("feedback-submit").addEventListener("click",contribute);
